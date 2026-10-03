@@ -1,0 +1,1498 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "initialisers.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "initialisers.c",
+   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/initialisers.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "origin",
+   "qualifiedName": "origin",
+   "type": 0,
+   "returnType": 1,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    14,
+    14
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     14,
+     27
+    ],
+    "end": [
+     0,
+     18,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       15,
+       3
+      ],
+      "end": [
+       0,
+       15,
+       36
+      ],
+      "decls": [
+       {
+        "id": 1,
+        "name": "p",
+        "type": 1,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         15,
+         16
+        ],
+        "init": {
+         "k": "constant",
+         "var": 1,
+         "const": {
+          "k": "constant",
+          "t": 1,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "designator"
+           },
+           {
+            "k": "constant",
+            "t": 3,
+            "ck": "integer",
+            "value": "2"
+           },
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "designator"
+           },
+           {
+            "k": "constant",
+            "t": 3,
+            "ck": "integer",
+            "value": "1"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       16,
+       3
+      ],
+      "end": [
+       0,
+       16,
+       26
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "grid",
+        "type": 4,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         16,
+         7
+        ],
+        "init": {
+         "k": "constant",
+         "var": 2,
+         "const": {
+          "k": "constant",
+          "t": 4,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "designator"
+           },
+           {
+            "k": "constant",
+            "t": 3,
+            "ck": "integer",
+            "value": "7"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       17,
+       3
+      ],
+      "end": [
+       0,
+       17,
+       56
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        17,
+        28
+       ],
+       "range": [
+        [
+         0,
+         17,
+         10
+        ],
+        [
+         0,
+         17,
+         55
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          17,
+          24
+         ],
+         "range": [
+          [
+           0,
+           17,
+           10
+          ],
+          [
+           0,
+           17,
+           26
+          ]
+         ],
+         "op": "gt",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 3,
+           "p": [
+            0,
+            17,
+            14
+           ],
+           "range": [
+            [
+             0,
+             17,
+             10
+            ],
+            [
+             0,
+             17,
+             22
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 3,
+             "p": [
+              0,
+              17,
+              11
+             ],
+             "range": [
+              [
+               0,
+               17,
+               10
+              ],
+              [
+               0,
+               17,
+               12
+              ]
+             ],
+             "op": "dot_field",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 1,
+               "p": [
+                0,
+                17,
+                10
+               ],
+               "range": [
+                [
+                 0,
+                 17,
+                 10
+                ],
+                [
+                 0,
+                 17,
+                 10
+                ]
+               ],
+               "lv": true,
+               "var": 1,
+               "name": "p"
+              },
+              {
+               "k": "field",
+               "t": 3,
+               "p": [
+                0,
+                17,
+                12
+               ],
+               "range": [
+                [
+                 0,
+                 17,
+                 12
+                ],
+                [
+                 0,
+                 17,
+                 12
+                ]
+               ],
+               "name": "x"
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 3,
+             "p": [
+              0,
+              17,
+              20
+             ],
+             "range": [
+              [
+               0,
+               17,
+               16
+              ],
+              [
+               0,
+               17,
+               22
+              ]
+             ],
+             "op": "subscript",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 5,
+               "p": [
+                0,
+                17,
+                16
+               ],
+               "implicit": true,
+               "op": "array_to_pointer",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 4,
+                 "p": [
+                  0,
+                  17,
+                  16
+                 ],
+                 "range": [
+                  [
+                   0,
+                   17,
+                   16
+                  ],
+                  [
+                   0,
+                   17,
+                   19
+                  ]
+                 ],
+                 "lv": true,
+                 "var": 2,
+                 "name": "grid"
+                }
+               ]
+              },
+              {
+               "k": "constant",
+               "t": 3,
+               "p": [
+                0,
+                17,
+                21
+               ],
+               "range": [
+                [
+                 0,
+                 17,
+                 21
+                ],
+                [
+                 0,
+                 17,
+                 21
+                ]
+               ],
+               "ck": "integer",
+               "value": "2"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "constant",
+           "t": 3,
+           "p": [
+            0,
+            17,
+            26
+           ],
+           "range": [
+            [
+             0,
+             17,
+             26
+            ],
+            [
+             0,
+             17,
+             26
+            ]
+           ],
+           "ck": "integer",
+           "value": "0"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          17,
+          30
+         ],
+         "range": [
+          [
+           0,
+           17,
+           30
+          ],
+          [
+           0,
+           17,
+           30
+          ]
+         ],
+         "var": 1,
+         "name": "p"
+        },
+        {
+         "k": "temp_init",
+         "t": 1,
+         "p": [
+          0,
+          17,
+          34
+         ],
+         "range": [
+          [
+           0,
+           17,
+           34
+          ],
+          [
+           0,
+           17,
+           55
+          ]
+         ],
+         "init": {
+          "k": "constant",
+          "const": {
+           "k": "constant",
+           "t": 1,
+           "ck": "aggregate",
+           "elements": [
+            {
+             "k": "constant",
+             "t": 2,
+             "ck": "designator"
+            },
+            {
+             "k": "constant",
+             "t": 3,
+             "ck": "integer",
+             "value": "0"
+            }
+           ]
+          }
+         }
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "sum",
+   "qualifiedName": "sum",
+   "type": 6,
+   "returnType": 3,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    20,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 3,
+     "name": "n",
+     "type": 3,
+     "storage": "auto",
+     "p": [
+      0,
+      20,
+      13
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     20,
+     16
+    ],
+    "end": [
+     0,
+     28,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       21,
+       3
+      ],
+      "end": [
+       0,
+       21,
+       16
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "values",
+        "type": 7,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         21,
+         7
+        ]
+       }
+      ]
+     },
+     {
+      "k": "set_vla_size",
+      "p": [
+       0,
+       21,
+       13
+      ],
+      "implicit": true
+     },
+     {
+      "k": "vla_decl",
+      "p": [
+       0,
+       21,
+       7
+      ],
+      "implicit": true
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       22,
+       3
+      ],
+      "end": [
+       0,
+       22,
+       16
+      ],
+      "decls": [
+       {
+        "id": 5,
+        "name": "total",
+        "type": 3,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         22,
+         7
+        ],
+        "init": {
+         "k": "constant",
+         "var": 5,
+         "const": {
+          "k": "constant",
+          "t": 3,
+          "ck": "integer",
+          "value": "0"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "init",
+      "p": [
+       0,
+       22,
+       13
+      ],
+      "end": [
+       0,
+       22,
+       15
+      ],
+      "var": 5,
+      "init": {
+       "k": "constant",
+       "var": 5,
+       "const": {
+        "k": "constant",
+        "t": 3,
+        "ck": "integer",
+        "value": "0"
+       }
+      }
+     },
+     {
+      "k": "block",
+      "implicit": true,
+      "stmts": [
+       {
+        "k": "for",
+        "p": [
+         0,
+         23,
+         3
+        ],
+        "end": [
+         0,
+         26,
+         3
+        ],
+        "init": {
+         "k": "block",
+         "implicit": true,
+         "stmts": [
+          {
+           "k": "decl",
+           "p": [
+            0,
+            23,
+            8
+           ],
+           "end": [
+            0,
+            23,
+            17
+           ],
+           "decls": [
+            {
+             "id": 6,
+             "name": "i",
+             "type": 3,
+             "storage": "auto",
+             "linkage": "none",
+             "p": [
+              0,
+              23,
+              12
+             ],
+             "init": {
+              "k": "constant",
+              "var": 6,
+              "const": {
+               "k": "constant",
+               "t": 3,
+               "ck": "integer",
+               "value": "0"
+              }
+             }
+            }
+           ]
+          },
+          {
+           "k": "init",
+           "p": [
+            0,
+            23,
+            14
+           ],
+           "end": [
+            0,
+            23,
+            16
+           ],
+           "var": 6,
+           "init": {
+            "k": "constant",
+            "var": 6,
+            "const": {
+             "k": "constant",
+             "t": 3,
+             "ck": "integer",
+             "value": "0"
+            }
+           }
+          }
+         ]
+        },
+        "cond": {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          23,
+          21
+         ],
+         "range": [
+          [
+           0,
+           23,
+           19
+          ],
+          [
+           0,
+           23,
+           23
+          ]
+         ],
+         "op": "lt",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 3,
+           "p": [
+            0,
+            23,
+            19
+           ],
+           "range": [
+            [
+             0,
+             23,
+             19
+            ],
+            [
+             0,
+             23,
+             19
+            ]
+           ],
+           "var": 6,
+           "name": "i"
+          },
+          {
+           "k": "variable",
+           "t": 3,
+           "p": [
+            0,
+            23,
+            23
+           ],
+           "range": [
+            [
+             0,
+             23,
+             23
+            ],
+            [
+             0,
+             23,
+             23
+            ]
+           ],
+           "var": 3,
+           "name": "n"
+          }
+         ]
+        },
+        "inc": {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          23,
+          27
+         ],
+         "range": [
+          [
+           0,
+           23,
+           26
+          ],
+          [
+           0,
+           23,
+           28
+          ]
+         ],
+         "op": "post_incr",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 3,
+           "p": [
+            0,
+            23,
+            26
+           ],
+           "range": [
+            [
+             0,
+             23,
+             26
+            ],
+            [
+             0,
+             23,
+             26
+            ]
+           ],
+           "lv": true,
+           "var": 6,
+           "name": "i"
+          }
+         ]
+        },
+        "body": {
+         "k": "block",
+         "p": [
+          0,
+          23,
+          31
+         ],
+         "end": [
+          0,
+          26,
+          3
+         ],
+         "stmts": [
+          {
+           "k": "expr",
+           "p": [
+            0,
+            24,
+            5
+           ],
+           "end": [
+            0,
+            24,
+            18
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 3,
+            "p": [
+             0,
+             24,
+             15
+            ],
+            "range": [
+             [
+              0,
+              24,
+              5
+             ],
+             [
+              0,
+              24,
+              17
+             ]
+            ],
+            "op": "assign",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 3,
+              "p": [
+               0,
+               24,
+               11
+              ],
+              "range": [
+               [
+                0,
+                24,
+                5
+               ],
+               [
+                0,
+                24,
+                13
+               ]
+              ],
+              "lv": true,
+              "op": "subscript",
+              "ops": [
+               {
+                "k": "operation",
+                "t": 5,
+                "p": [
+                 0,
+                 24,
+                 5
+                ],
+                "implicit": true,
+                "op": "array_to_pointer",
+                "ops": [
+                 {
+                  "k": "variable",
+                  "t": 7,
+                  "p": [
+                   0,
+                   24,
+                   5
+                  ],
+                  "range": [
+                   [
+                    0,
+                    24,
+                    5
+                   ],
+                   [
+                    0,
+                    24,
+                    10
+                   ]
+                  ],
+                  "lv": true,
+                  "var": 4,
+                  "name": "values"
+                 }
+                ]
+               },
+               {
+                "k": "variable",
+                "t": 3,
+                "p": [
+                 0,
+                 24,
+                 12
+                ],
+                "range": [
+                 [
+                  0,
+                  24,
+                  12
+                 ],
+                 [
+                  0,
+                  24,
+                  12
+                 ]
+                ],
+                "var": 6,
+                "name": "i"
+               }
+              ]
+             },
+             {
+              "k": "variable",
+              "t": 3,
+              "p": [
+               0,
+               24,
+               17
+              ],
+              "range": [
+               [
+                0,
+                24,
+                17
+               ],
+               [
+                0,
+                24,
+                17
+               ]
+              ],
+              "var": 6,
+              "name": "i"
+             }
+            ]
+           }
+          },
+          {
+           "k": "expr",
+           "p": [
+            0,
+            25,
+            5
+           ],
+           "end": [
+            0,
+            25,
+            23
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 3,
+            "p": [
+             0,
+             25,
+             11
+            ],
+            "range": [
+             [
+              0,
+              25,
+              5
+             ],
+             [
+              0,
+              25,
+              22
+             ]
+            ],
+            "op": "add_assign",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 3,
+              "p": [
+               0,
+               25,
+               5
+              ],
+              "range": [
+               [
+                0,
+                25,
+                5
+               ],
+               [
+                0,
+                25,
+                9
+               ]
+              ],
+              "lv": true,
+              "var": 5,
+              "name": "total"
+             },
+             {
+              "k": "operation",
+              "t": 3,
+              "p": [
+               0,
+               25,
+               20
+              ],
+              "range": [
+               [
+                0,
+                25,
+                14
+               ],
+               [
+                0,
+                25,
+                22
+               ]
+              ],
+              "op": "subscript",
+              "ops": [
+               {
+                "k": "operation",
+                "t": 5,
+                "p": [
+                 0,
+                 25,
+                 14
+                ],
+                "implicit": true,
+                "op": "array_to_pointer",
+                "ops": [
+                 {
+                  "k": "variable",
+                  "t": 7,
+                  "p": [
+                   0,
+                   25,
+                   14
+                  ],
+                  "range": [
+                   [
+                    0,
+                    25,
+                    14
+                   ],
+                   [
+                    0,
+                    25,
+                    19
+                   ]
+                  ],
+                  "lv": true,
+                  "var": 4,
+                  "name": "values"
+                 }
+                ]
+               },
+               {
+                "k": "variable",
+                "t": 3,
+                "p": [
+                 0,
+                 25,
+                 21
+                ],
+                "range": [
+                 [
+                  0,
+                  25,
+                  21
+                 ],
+                 [
+                  0,
+                  25,
+                  21
+                 ]
+                ],
+                "var": 6,
+                "name": "i"
+               }
+              ]
+             }
+            ]
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       27,
+       3
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 3,
+       "op": "assign",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 3,
+         "lv": true,
+         "var": 7,
+         "name": ""
+        },
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          27,
+          16
+         ],
+         "range": [
+          [
+           0,
+           27,
+           10
+          ],
+          [
+           0,
+           27,
+           44
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 3,
+           "p": [
+            0,
+            27,
+            10
+           ],
+           "range": [
+            [
+             0,
+             27,
+             10
+            ],
+            [
+             0,
+             27,
+             14
+            ]
+           ],
+           "var": 5,
+           "name": "total"
+          },
+          {
+           "k": "constant",
+           "t": 3,
+           "p": [
+            0,
+            27,
+            18
+           ],
+           "range": [
+            [
+             0,
+             27,
+             18
+            ],
+            [
+             0,
+             27,
+             44
+            ]
+           ],
+           "ck": "integer",
+           "value": "8",
+           "expr": {
+            "k": "operation",
+            "t": 3,
+            "p": [
+             0,
+             27,
+             18
+            ],
+            "range": [
+             [
+              0,
+              27,
+              18
+             ],
+             [
+              0,
+              27,
+              44
+             ]
+            ],
+            "op": "cast",
+            "ops": [
+             {
+              "k": "constant",
+              "t": 8,
+              "p": [
+               0,
+               27,
+               23
+              ],
+              "range": [
+               [
+                0,
+                27,
+                23
+               ],
+               [
+                0,
+                27,
+                44
+               ]
+              ],
+              "ck": "integer",
+              "value": "8",
+              "expr": {
+               "k": "sizeof",
+               "t": 8,
+               "p": [
+                0,
+                27,
+                23
+               ],
+               "range": [
+                [
+                 0,
+                 27,
+                 23
+                ],
+                [
+                 0,
+                 27,
+                 44
+                ]
+               ],
+               "of": 9
+              }
+             }
+            ]
+           }
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "expr",
+      "implicit": true,
+      "expr": {
+       "k": "vla_dealloc",
+       "t": 2
+      }
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       27,
+       3
+      ],
+      "end": [
+       0,
+       27,
+       45
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 3,
+       "var": 7,
+       "name": ""
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "struct point (void)",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 1,
+   "kind": "struct",
+   "name": "struct point",
+   "size": 8,
+   "tag": "point",
+   "qualifiedName": "point",
+   "p": [
+    0,
+    5,
+    8
+   ],
+   "fields": [
+    {
+     "name": "x",
+     "type": 3,
+     "offset": 0,
+     "p": [
+      0,
+      6,
+      7
+     ]
+    },
+    {
+     "name": "y",
+     "type": 3,
+     "offset": 4,
+     "p": [
+      0,
+      6,
+      10
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 2,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 3,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 4,
+   "kind": "array",
+   "name": "int [4]",
+   "size": 16,
+   "of": 3,
+   "count": 4
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "int *",
+   "size": 8,
+   "to": 3
+  },
+  {
+   "id": 6,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 3,
+   "params": [
+    3
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "array",
+   "name": "int [<expr>]",
+   "size": 4,
+   "of": 3,
+   "variableSize": true
+  },
+  {
+   "id": 8,
+   "kind": "integer",
+   "name": "unsigned long",
+   "size": 8,
+   "signed": false
+  },
+  {
+   "id": 9,
+   "kind": "struct",
+   "name": "struct message",
+   "size": 8,
+   "tag": "message",
+   "qualifiedName": "message",
+   "p": [
+    0,
+    9,
+    8
+   ],
+   "fields": [
+    {
+     "name": "length",
+     "type": 10,
+     "offset": 0,
+     "p": [
+      0,
+      10,
+      10
+     ]
+    },
+    {
+     "name": "body",
+     "type": 11,
+     "offset": 8,
+     "p": [
+      0,
+      11,
+      8
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 10,
+   "kind": "typeref",
+   "name": "size_t",
+   "of": 8,
+   "typedef": "size_t",
+   "refKind": "none"
+  },
+  {
+   "id": 11,
+   "kind": "array",
+   "name": "char []",
+   "of": 12,
+   "count": 0
+  },
+  {
+   "id": 12,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  }
+ ],
+ "diagnostics": []
+}

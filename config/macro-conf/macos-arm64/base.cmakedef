@@ -1,0 +1,5 @@
+# macOS on Apple silicon: Clang-compatible, LP64.
+import <support/platform/macos-arm64/base>
+import <support/compiler/clang/macos/base>
+import <support/simple-conf/release/base>
+import <edga/common>

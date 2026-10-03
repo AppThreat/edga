@@ -1,0 +1,6 @@
+# Linux on aarch64 hosts: as on x86_64, except that host floating point cannot use the x86-only
+# quadmath library, so float128 values are not computed by the front end.
+import <edga/linux-x86_64/base>
+USE_FLOAT128_FOR_HOST_FP_VALUE=0
+USE_QUADMATH_LIBRARY=0
+FLOAT128_ENABLING_POSSIBLE=0

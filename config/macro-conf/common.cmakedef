@@ -1,0 +1,28 @@
+# What the exporter reads from the IL, on every platform.
+
+# Macro invocation records and the positions macro-expanded code came from.
+MACRO_INVOCATION_TREE_IN_IL=1
+# Start and end positions of expressions and declarations.
+EXTRA_SOURCE_POSITIONS_IN_IL=1
+# Declarations and statements in source order, per scope.
+GENERATE_SOURCE_SEQUENCE_LISTS=1
+MAINTAIN_NEEDED_FLAGS=1
+RECORD_UNRECOGNIZED_ATTRIBUTES=1
+
+import <support/feature/microsoft-extensions/on>
+DEFAULT_MICROSOFT_MODE=0
+
+# The exporter is the back end: no generated C or C++, no lowering, one translation unit per run,
+# and it runs when the code has errors too, so the valid parts of a file are still exported.
+BACK_END_IS_C_GEN_BE=0
+BACK_END_IS_CP_GEN_BE=0
+BACK_END_SHOULD_BE_CALLED=1
+DO_IL_LOWERING=0
+COMPILE_MULTIPLE_TRANSLATION_UNITS=0
+CALL_BACK_END_EVEN_WITH_ERRORS=1
+NEED_IL_DISPLAY=0
+IL_SHOULD_BE_WRITTEN_TO_FILE=0
+
+# The front end is called from the exporter's own main program.
+EDG_MAIN=edg_main
+MAKE_FRONT_END_CALLABLE=1

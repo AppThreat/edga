@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  format:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v5
+      - name: clang-format
+        run: |
+          sudo apt-get install -y clang-format
+          clang-format --dry-run --Werror src/*.cpp src/*.h
+
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-24.04
+          - os: ubuntu-24.04-arm
+          - os: macos-15
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+      # The EDG repository carries a large test suite the build does not need.
+      - name: EDG sources
+        run: |
+          git submodule init
+          git -c protocol.version=2 submodule update --depth 1 --filter=blob:none --no-checkout
+          git -C third_party/edgcpp sparse-checkout set --no-cone '/*' '!/tests/'
+          git -C third_party/edgcpp checkout
+      - name: Tools (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ninja-build g++
+      - name: Tools (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ninja
+      - name: Build
+        run: |
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --target edga
+          ./build/bin/edga --version
+      - name: Golden tests
+        run: |
+          python3 -m pip install --quiet jsonschema || python3 -m pip install --quiet --break-system-packages jsonschema
+          python3 tests/run.py --edga build/bin/edga

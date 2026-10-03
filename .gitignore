@@ -1,0 +1,4 @@
+/build*/
+/out/
+*.json.tmp
+__pycache__/

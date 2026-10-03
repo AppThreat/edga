@@ -1,0 +1,8 @@
+edga
+Copyright 2026 AppThreat contributors
+
+This product builds on the EDG C/C++ front end (the EDG Compiler Project),
+https://github.com/edgcpp/compiler, included as a git submodule under
+third_party/edgcpp and licensed under the Apache License v2.0 with LLVM
+Exceptions (third_party/edgcpp/LICENSE.txt). Binaries of edga contain the
+front end compiled from those sources, unmodified.

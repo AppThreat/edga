@@ -1,0 +1,6 @@
+# Linux on x86_64: GCC-compatible, LP64 by default; the other targets the platform knows
+# (linux_aarch64, linux_i686, win64, ...) are selected at run time with --target.
+import <support/platform/linux-x86_64/base>
+import <support/compiler/gcc/linux/base>
+import <support/simple-conf/release/base>
+import <edga/common>

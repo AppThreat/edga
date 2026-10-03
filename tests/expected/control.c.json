@@ -1,0 +1,1366 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "control.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "control.c",
+   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/control.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "classify",
+   "qualifiedName": "classify",
+   "type": 0,
+   "returnType": 1,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    3,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "n",
+     "type": 1,
+     "storage": "auto",
+     "modified": true,
+     "p": [
+      0,
+      3,
+      18
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     3,
+     21
+    ],
+    "end": [
+     0,
+     26,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       4,
+       3
+      ],
+      "end": [
+       0,
+       4,
+       17
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "result",
+        "type": 1,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         4,
+         7
+        ],
+        "init": {
+         "k": "constant",
+         "var": 2,
+         "const": {
+          "k": "constant",
+          "t": 1,
+          "ck": "integer",
+          "value": "0"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "block",
+      "implicit": true,
+      "stmts": [
+       {
+        "k": "switch",
+        "p": [
+         0,
+         5,
+         3
+        ],
+        "end": [
+         0,
+         13,
+         3
+        ],
+        "cond": {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          5,
+          11
+         ],
+         "range": [
+          [
+           0,
+           5,
+           11
+          ],
+          [
+           0,
+           5,
+           11
+          ]
+         ],
+         "var": 1,
+         "name": "n"
+        },
+        "body": {
+         "k": "block",
+         "p": [
+          0,
+          5,
+          14
+         ],
+         "end": [
+          0,
+          13,
+          3
+         ],
+         "stmts": [
+          {
+           "k": "switch_case",
+           "p": [
+            0,
+            6,
+            5
+           ],
+           "end": [
+            0,
+            6,
+            11
+           ],
+           "value": "0"
+          },
+          {
+           "k": "expr",
+           "p": [
+            0,
+            7,
+            7
+           ],
+           "end": [
+            0,
+            7,
+            17
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             7,
+             14
+            ],
+            "range": [
+             [
+              0,
+              7,
+              7
+             ],
+             [
+              0,
+              7,
+              16
+             ]
+            ],
+            "op": "assign",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               7
+              ],
+              "range": [
+               [
+                0,
+                7,
+                7
+               ],
+               [
+                0,
+                7,
+                12
+               ]
+              ],
+              "lv": true,
+              "var": 2,
+              "name": "result"
+             },
+             {
+              "k": "constant",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               16
+              ],
+              "range": [
+               [
+                0,
+                7,
+                16
+               ],
+               [
+                0,
+                7,
+                16
+               ]
+              ],
+              "ck": "integer",
+              "value": "1"
+             }
+            ]
+           }
+          },
+          {
+           "k": "switch_case",
+           "p": [
+            0,
+            8,
+            5
+           ],
+           "end": [
+            0,
+            8,
+            11
+           ],
+           "value": "1"
+          },
+          {
+           "k": "expr",
+           "p": [
+            0,
+            9,
+            7
+           ],
+           "end": [
+            0,
+            9,
+            18
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             9,
+             14
+            ],
+            "range": [
+             [
+              0,
+              9,
+              7
+             ],
+             [
+              0,
+              9,
+              17
+             ]
+            ],
+            "op": "add_assign",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 1,
+              "p": [
+               0,
+               9,
+               7
+              ],
+              "range": [
+               [
+                0,
+                9,
+                7
+               ],
+               [
+                0,
+                9,
+                12
+               ]
+              ],
+              "lv": true,
+              "var": 2,
+              "name": "result"
+             },
+             {
+              "k": "constant",
+              "t": 1,
+              "p": [
+               0,
+               9,
+               17
+              ],
+              "range": [
+               [
+                0,
+                9,
+                17
+               ],
+               [
+                0,
+                9,
+                17
+               ]
+              ],
+              "ck": "integer",
+              "value": "2"
+             }
+            ]
+           }
+          },
+          {
+           "k": "goto",
+           "p": [
+            0,
+            10,
+            7
+           ],
+           "end": [
+            0,
+            10,
+            12
+           ],
+           "implicit": true,
+           "jump": "break"
+          },
+          {
+           "k": "switch_case",
+           "p": [
+            0,
+            11,
+            5
+           ],
+           "end": [
+            0,
+            11,
+            12
+           ],
+           "default": true
+          },
+          {
+           "k": "expr",
+           "p": [
+            0,
+            12,
+            7
+           ],
+           "end": [
+            0,
+            12,
+            18
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             12,
+             14
+            ],
+            "range": [
+             [
+              0,
+              12,
+              7
+             ],
+             [
+              0,
+              12,
+              17
+             ]
+            ],
+            "op": "assign",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 1,
+              "p": [
+               0,
+               12,
+               7
+              ],
+              "range": [
+               [
+                0,
+                12,
+                7
+               ],
+               [
+                0,
+                12,
+                12
+               ]
+              ],
+              "lv": true,
+              "var": 2,
+              "name": "result"
+             },
+             {
+              "k": "constant",
+              "t": 1,
+              "p": [
+               0,
+               12,
+               16
+              ],
+              "range": [
+               [
+                0,
+                12,
+                16
+               ],
+               [
+                0,
+                12,
+                17
+               ]
+              ],
+              "ck": "integer",
+              "value": "-1",
+              "expr": {
+               "k": "operation",
+               "t": 1,
+               "p": [
+                0,
+                12,
+                16
+               ],
+               "range": [
+                [
+                 0,
+                 12,
+                 16
+                ],
+                [
+                 0,
+                 12,
+                 17
+                ]
+               ],
+               "op": "negate",
+               "ops": [
+                {
+                 "k": "constant",
+                 "t": 1,
+                 "p": [
+                  0,
+                  12,
+                  17
+                 ],
+                 "range": [
+                  [
+                   0,
+                   12,
+                   17
+                  ],
+                  [
+                   0,
+                   12,
+                   17
+                  ]
+                 ],
+                 "ck": "integer",
+                 "value": "1"
+                }
+               ]
+              }
+             }
+            ]
+           }
+          }
+         ]
+        }
+       },
+       {
+        "k": "label"
+       }
+      ]
+     },
+     {
+      "k": "block",
+      "implicit": true,
+      "stmts": [
+       {
+        "k": "while",
+        "p": [
+         0,
+         14,
+         3
+        ],
+        "end": [
+         0,
+         18,
+         3
+        ],
+        "cond": {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          14,
+          12
+         ],
+         "range": [
+          [
+           0,
+           14,
+           10
+          ],
+          [
+           0,
+           14,
+           15
+          ]
+         ],
+         "op": "gt",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            14,
+            10
+           ],
+           "range": [
+            [
+             0,
+             14,
+             10
+            ],
+            [
+             0,
+             14,
+             10
+            ]
+           ],
+           "var": 1,
+           "name": "n"
+          },
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            14,
+            14
+           ],
+           "range": [
+            [
+             0,
+             14,
+             14
+            ],
+            [
+             0,
+             14,
+             15
+            ]
+           ],
+           "ck": "integer",
+           "value": "10"
+          }
+         ]
+        },
+        "body": {
+         "k": "block",
+         "p": [
+          0,
+          14,
+          18
+         ],
+         "end": [
+          0,
+          18,
+          3
+         ],
+         "stmts": [
+          {
+           "k": "expr",
+           "p": [
+            0,
+            15,
+            5
+           ],
+           "end": [
+            0,
+            15,
+            11
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             15,
+             7
+            ],
+            "range": [
+             [
+              0,
+              15,
+              5
+             ],
+             [
+              0,
+              15,
+              10
+             ]
+            ],
+            "op": "divide_assign",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 1,
+              "p": [
+               0,
+               15,
+               5
+              ],
+              "range": [
+               [
+                0,
+                15,
+                5
+               ],
+               [
+                0,
+                15,
+                5
+               ]
+              ],
+              "lv": true,
+              "var": 1,
+              "name": "n"
+             },
+             {
+              "k": "constant",
+              "t": 1,
+              "p": [
+               0,
+               15,
+               10
+              ],
+              "range": [
+               [
+                0,
+                15,
+                10
+               ],
+               [
+                0,
+                15,
+                10
+               ]
+              ],
+              "ck": "integer",
+              "value": "2"
+             }
+            ]
+           }
+          },
+          {
+           "k": "block",
+           "implicit": true,
+           "stmts": [
+            {
+             "k": "if",
+             "p": [
+              0,
+              16,
+              5
+             ],
+             "end": [
+              0,
+              16,
+              26
+             ],
+             "cond": {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               16,
+               11
+              ],
+              "range": [
+               [
+                0,
+                16,
+                9
+               ],
+               [
+                0,
+                16,
+                15
+               ]
+              ],
+              "op": "eq",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 1,
+                "p": [
+                 0,
+                 16,
+                 9
+                ],
+                "range": [
+                 [
+                  0,
+                  16,
+                  9
+                 ],
+                 [
+                  0,
+                  16,
+                  9
+                 ]
+                ],
+                "var": 1,
+                "name": "n"
+               },
+               {
+                "k": "constant",
+                "t": 1,
+                "p": [
+                 0,
+                 16,
+                 14
+                ],
+                "range": [
+                 [
+                  0,
+                  16,
+                  14
+                 ],
+                 [
+                  0,
+                  16,
+                  15
+                 ]
+                ],
+                "ck": "integer",
+                "value": "12"
+               }
+              ]
+             },
+             "then": {
+              "k": "block",
+              "implicit": true,
+              "stmts": [
+               {
+                "k": "goto",
+                "p": [
+                 0,
+                 16,
+                 18
+                ],
+                "end": [
+                 0,
+                 16,
+                 26
+                ],
+                "implicit": true,
+                "jump": "continue"
+               }
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "k": "block",
+           "implicit": true,
+           "stmts": [
+            {
+             "k": "if",
+             "p": [
+              0,
+              17,
+              5
+             ],
+             "end": [
+              0,
+              17,
+              23
+             ],
+             "cond": {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               17,
+               11
+              ],
+              "range": [
+               [
+                0,
+                17,
+                9
+               ],
+               [
+                0,
+                17,
+                15
+               ]
+              ],
+              "op": "eq",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 1,
+                "p": [
+                 0,
+                 17,
+                 9
+                ],
+                "range": [
+                 [
+                  0,
+                  17,
+                  9
+                 ],
+                 [
+                  0,
+                  17,
+                  9
+                 ]
+                ],
+                "var": 1,
+                "name": "n"
+               },
+               {
+                "k": "constant",
+                "t": 1,
+                "p": [
+                 0,
+                 17,
+                 14
+                ],
+                "range": [
+                 [
+                  0,
+                  17,
+                  14
+                 ],
+                 [
+                  0,
+                  17,
+                  15
+                 ]
+                ],
+                "ck": "integer",
+                "value": "11"
+               }
+              ]
+             },
+             "then": {
+              "k": "block",
+              "implicit": true,
+              "stmts": [
+               {
+                "k": "goto",
+                "p": [
+                 0,
+                 17,
+                 18
+                ],
+                "end": [
+                 0,
+                 17,
+                 23
+                ],
+                "implicit": true,
+                "jump": "break"
+               }
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "k": "label"
+          }
+         ]
+        }
+       },
+       {
+        "k": "label"
+       }
+      ]
+     },
+     {
+      "k": "block",
+      "implicit": true,
+      "stmts": [
+       {
+        "k": "end_test_while",
+        "p": [
+         0,
+         19,
+         3
+        ],
+        "end": [
+         0,
+         21,
+         18
+        ],
+        "cond": {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          21,
+          14
+         ],
+         "range": [
+          [
+           0,
+           21,
+           12
+          ],
+          [
+           0,
+           21,
+           16
+          ]
+         ],
+         "op": "lt",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            21,
+            12
+           ],
+           "range": [
+            [
+             0,
+             21,
+             12
+            ],
+            [
+             0,
+             21,
+             12
+            ]
+           ],
+           "var": 1,
+           "name": "n"
+          },
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            21,
+            16
+           ],
+           "range": [
+            [
+             0,
+             21,
+             16
+            ],
+            [
+             0,
+             21,
+             16
+            ]
+           ],
+           "ck": "integer",
+           "value": "3"
+          }
+         ]
+        },
+        "body": {
+         "k": "block",
+         "p": [
+          0,
+          19,
+          6
+         ],
+         "end": [
+          0,
+          21,
+          3
+         ],
+         "stmts": [
+          {
+           "k": "expr",
+           "p": [
+            0,
+            20,
+            5
+           ],
+           "end": [
+            0,
+            20,
+            8
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             20,
+             6
+            ],
+            "range": [
+             [
+              0,
+              20,
+              5
+             ],
+             [
+              0,
+              20,
+              7
+             ]
+            ],
+            "op": "post_incr",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 1,
+              "p": [
+               0,
+               20,
+               5
+              ],
+              "range": [
+               [
+                0,
+                20,
+                5
+               ],
+               [
+                0,
+                20,
+                5
+               ]
+              ],
+              "lv": true,
+              "var": 1,
+              "name": "n"
+             }
+            ]
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "block",
+      "implicit": true,
+      "stmts": [
+       {
+        "k": "if",
+        "p": [
+         0,
+         22,
+         3
+        ],
+        "end": [
+         0,
+         22,
+         23
+        ],
+        "cond": {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          22,
+          9
+         ],
+         "range": [
+          [
+           0,
+           22,
+           7
+          ],
+          [
+           0,
+           22,
+           11
+          ]
+         ],
+         "op": "lt",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            22,
+            7
+           ],
+           "range": [
+            [
+             0,
+             22,
+             7
+            ],
+            [
+             0,
+             22,
+             7
+            ]
+           ],
+           "var": 1,
+           "name": "n"
+          },
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            22,
+            11
+           ],
+           "range": [
+            [
+             0,
+             22,
+             11
+            ],
+            [
+             0,
+             22,
+             11
+            ]
+           ],
+           "ck": "integer",
+           "value": "0"
+          }
+         ]
+        },
+        "then": {
+         "k": "block",
+         "implicit": true,
+         "stmts": [
+          {
+           "k": "goto",
+           "p": [
+            0,
+            22,
+            14
+           ],
+           "end": [
+            0,
+            22,
+            23
+           ],
+           "jump": "goto",
+           "label": "fail"
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       23,
+       3
+      ],
+      "end": [
+       0,
+       23,
+       16
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 1,
+       "p": [
+        0,
+        23,
+        10
+       ],
+       "range": [
+        [
+         0,
+         23,
+         10
+        ],
+        [
+         0,
+         23,
+         15
+        ]
+       ],
+       "var": 2,
+       "name": "result"
+      }
+     },
+     {
+      "k": "label",
+      "p": [
+       0,
+       24,
+       1
+      ],
+      "end": [
+       0,
+       24,
+       5
+      ],
+      "label": "fail"
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       25,
+       3
+      ],
+      "end": [
+       0,
+       25,
+       12
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 1,
+       "p": [
+        0,
+        25,
+        10
+       ],
+       "range": [
+        [
+         0,
+         25,
+         10
+        ],
+        [
+         0,
+         25,
+         11
+        ]
+       ],
+       "ck": "integer",
+       "value": "-1",
+       "expr": {
+        "k": "operation",
+        "t": 1,
+        "p": [
+         0,
+         25,
+         10
+        ],
+        "range": [
+         [
+          0,
+          25,
+          10
+         ],
+         [
+          0,
+          25,
+          11
+         ]
+        ],
+        "op": "negate",
+        "ops": [
+         {
+          "k": "constant",
+          "t": 1,
+          "p": [
+           0,
+           25,
+           11
+          ],
+          "range": [
+           [
+            0,
+            25,
+            11
+           ],
+           [
+            0,
+            25,
+            11
+           ]
+          ],
+          "ck": "integer",
+          "value": "1"
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 1,
+   "params": [
+    1
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  }
+ ],
+ "diagnostics": []
+}

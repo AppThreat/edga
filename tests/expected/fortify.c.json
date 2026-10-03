@@ -1,0 +1,962 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "fortify.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "fortify.c",
+   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/fortify.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [
+  {
+   "id": 34,
+   "name": "memcpy",
+   "objectLike": false,
+   "text": "#define memcpy(d,s,n) __builtin___memcpy_chk(d, s, n, __builtin_object_size(d, 0))",
+   "p": [
+    0,
+    5,
+    9
+   ]
+  }
+ ],
+ "macroInvocations": [
+  {
+   "id": 1,
+   "parent": 0,
+   "macro": 34,
+   "name": "memcpy",
+   "start": [
+    0,
+    13,
+    3
+   ],
+   "end": [
+    0,
+    13,
+    25
+   ]
+  }
+ ],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "fill",
+   "qualifiedName": "fill",
+   "type": 0,
+   "returnType": 1,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    12,
+    6
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "p",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      26
+     ]
+    },
+    {
+     "id": 2,
+     "name": "src",
+     "type": 3,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      41
+     ]
+    },
+    {
+     "id": 3,
+     "name": "n",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      53
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     12,
+     56
+    ],
+    "end": [
+     0,
+     15,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "expr",
+      "p": [
+       0,
+       13,
+       3
+      ],
+      "mi": 1,
+      "po": [
+       0,
+       5,
+       25
+      ],
+      "end": [
+       0,
+       13,
+       26
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 5,
+       "p": [
+        0,
+        13,
+        3
+       ],
+       "mi": 1,
+       "po": [
+        0,
+        5,
+        47
+       ],
+       "range": [
+        [
+         0,
+         13,
+         3
+        ],
+        [
+         0,
+         13,
+         3
+        ]
+       ],
+       "op": "call",
+       "callee": 2,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 6,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "mi": 1,
+         "po": [
+          0,
+          5,
+          25
+         ],
+         "range": [
+          [
+           0,
+           13,
+           3
+          ],
+          [
+           0,
+           13,
+           3
+          ]
+         ],
+         "routine": 2,
+         "name": "__builtin___memcpy_chk"
+        },
+        {
+         "k": "operation",
+         "t": 5,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "mi": 1,
+         "po": [
+          0,
+          13,
+          10
+         ],
+         "implicit": true,
+         "op": "cast",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 7,
+           "p": [
+            0,
+            13,
+            3
+           ],
+           "mi": 1,
+           "po": [
+            0,
+            13,
+            11
+           ],
+           "implicit": true,
+           "op": "array_to_pointer",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 8,
+             "p": [
+              0,
+              13,
+              3
+             ],
+             "mi": 1,
+             "po": [
+              0,
+              13,
+              11
+             ],
+             "range": [
+              [
+               0,
+               13,
+               3
+              ],
+              [
+               0,
+               13,
+               3
+              ]
+             ],
+             "lv": true,
+             "op": "points_to_field",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 2,
+               "p": [
+                0,
+                13,
+                3
+               ],
+               "mi": 1,
+               "po": [
+                0,
+                13,
+                10
+               ],
+               "range": [
+                [
+                 0,
+                 13,
+                 3
+                ],
+                [
+                 0,
+                 13,
+                 3
+                ]
+               ],
+               "var": 1,
+               "name": "p"
+              },
+              {
+               "k": "field",
+               "t": 8,
+               "p": [
+                0,
+                13,
+                3
+               ],
+               "mi": 1,
+               "po": [
+                0,
+                13,
+                13
+               ],
+               "range": [
+                [
+                 0,
+                 13,
+                 3
+                ],
+                [
+                 0,
+                 13,
+                 3
+                ]
+               ],
+               "name": "data"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 9,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "mi": 1,
+         "po": [
+          0,
+          13,
+          19
+         ],
+         "implicit": true,
+         "op": "cast",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 3,
+           "p": [
+            0,
+            13,
+            3
+           ],
+           "mi": 1,
+           "po": [
+            0,
+            13,
+            19
+           ],
+           "range": [
+            [
+             0,
+             13,
+             3
+            ],
+            [
+             0,
+             13,
+             3
+            ]
+           ],
+           "var": 2,
+           "name": "src"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 4,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "mi": 1,
+         "po": [
+          0,
+          13,
+          24
+         ],
+         "range": [
+          [
+           0,
+           13,
+           3
+          ],
+          [
+           0,
+           13,
+           3
+          ]
+         ],
+         "var": 3,
+         "name": "n"
+        },
+        {
+         "k": "operation",
+         "t": 10,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "mi": 1,
+         "po": [
+          0,
+          5,
+          78
+         ],
+         "range": [
+          [
+           0,
+           13,
+           3
+          ],
+          [
+           0,
+           13,
+           3
+          ]
+         ],
+         "op": "call",
+         "callee": 3,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 11,
+           "p": [
+            0,
+            13,
+            3
+           ],
+           "mi": 1,
+           "po": [
+            0,
+            5,
+            57
+           ],
+           "range": [
+            [
+             0,
+             13,
+             3
+            ],
+            [
+             0,
+             13,
+             3
+            ]
+           ],
+           "routine": 3,
+           "name": "__builtin_object_size"
+          },
+          {
+           "k": "operation",
+           "t": 9,
+           "p": [
+            0,
+            13,
+            3
+           ],
+           "mi": 1,
+           "po": [
+            0,
+            13,
+            10
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 7,
+             "p": [
+              0,
+              13,
+              3
+             ],
+             "mi": 1,
+             "po": [
+              0,
+              13,
+              11
+             ],
+             "implicit": true,
+             "op": "array_to_pointer",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 8,
+               "p": [
+                0,
+                13,
+                3
+               ],
+               "mi": 1,
+               "po": [
+                0,
+                13,
+                11
+               ],
+               "range": [
+                [
+                 0,
+                 13,
+                 3
+                ],
+                [
+                 0,
+                 13,
+                 3
+                ]
+               ],
+               "lv": true,
+               "op": "points_to_field",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 2,
+                 "p": [
+                  0,
+                  13,
+                  3
+                 ],
+                 "mi": 1,
+                 "po": [
+                  0,
+                  13,
+                  10
+                 ],
+                 "range": [
+                  [
+                   0,
+                   13,
+                   3
+                  ],
+                  [
+                   0,
+                   13,
+                   3
+                  ]
+                 ],
+                 "var": 1,
+                 "name": "p"
+                },
+                {
+                 "k": "field",
+                 "t": 8,
+                 "p": [
+                  0,
+                  13,
+                  3
+                 ],
+                 "mi": 1,
+                 "po": [
+                  0,
+                  13,
+                  13
+                 ],
+                 "range": [
+                  [
+                   0,
+                   13,
+                   3
+                  ],
+                  [
+                   0,
+                   13,
+                   3
+                  ]
+                 ],
+                 "name": "data"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "constant",
+           "t": 12,
+           "p": [
+            0,
+            13,
+            3
+           ],
+           "mi": 1,
+           "po": [
+            0,
+            5,
+            82
+           ],
+           "range": [
+            [
+             0,
+             13,
+             3
+            ],
+            [
+             0,
+             13,
+             3
+            ]
+           ],
+           "ck": "integer",
+           "value": "0"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       14,
+       3
+      ],
+      "end": [
+       0,
+       14,
+       29
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 13,
+       "p": [
+        0,
+        14,
+        10
+       ],
+       "range": [
+        [
+         0,
+         14,
+         3
+        ],
+        [
+         0,
+         14,
+         28
+        ]
+       ],
+       "op": "assign",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 13,
+         "p": [
+          0,
+          14,
+          4
+         ],
+         "range": [
+          [
+           0,
+           14,
+           3
+          ],
+          [
+           0,
+           14,
+           8
+          ]
+         ],
+         "lv": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 2,
+           "p": [
+            0,
+            14,
+            3
+           ],
+           "range": [
+            [
+             0,
+             14,
+             3
+            ],
+            [
+             0,
+             14,
+             3
+            ]
+           ],
+           "var": 1,
+           "name": "p"
+          },
+          {
+           "k": "field",
+           "t": 13,
+           "p": [
+            0,
+            14,
+            6
+           ],
+           "range": [
+            [
+             0,
+             14,
+             6
+            ],
+            [
+             0,
+             14,
+             8
+            ]
+           ],
+           "name": "len",
+           "offset": 16
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 13,
+         "p": [
+          0,
+          14,
+          12
+         ],
+         "range": [
+          [
+           0,
+           14,
+           12
+          ],
+          [
+           0,
+           14,
+           28
+          ]
+         ],
+         "op": "cast",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 4,
+           "p": [
+            0,
+            14,
+            28
+           ],
+           "range": [
+            [
+             0,
+             14,
+             28
+            ],
+            [
+             0,
+             14,
+             28
+            ]
+           ],
+           "var": 3,
+           "name": "n"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "void (struct packet *, const char *, size_t)",
+   "returns": 1,
+   "params": [
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 2,
+   "kind": "pointer",
+   "name": "struct packet *",
+   "size": 8,
+   "to": 14
+  },
+  {
+   "id": 3,
+   "kind": "pointer",
+   "name": "const char *",
+   "size": 8,
+   "to": 15
+  },
+  {
+   "id": 4,
+   "kind": "typeref",
+   "name": "size_t",
+   "of": 10,
+   "typedef": "size_t",
+   "refKind": "none"
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "void *",
+   "size": 8,
+   "to": 1
+  },
+  {
+   "id": 6,
+   "kind": "pointer",
+   "name": "void *(*)(void *, const void *, unsigned long, unsigned long)",
+   "size": 8,
+   "to": 16
+  },
+  {
+   "id": 7,
+   "kind": "pointer",
+   "name": "char *",
+   "size": 8,
+   "to": 17
+  },
+  {
+   "id": 8,
+   "kind": "array",
+   "name": "char [16]",
+   "size": 16,
+   "of": 17,
+   "count": 16
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "const void *",
+   "size": 8,
+   "to": 18
+  },
+  {
+   "id": 10,
+   "kind": "integer",
+   "name": "unsigned long",
+   "size": 8,
+   "signed": false
+  },
+  {
+   "id": 11,
+   "kind": "pointer",
+   "name": "unsigned long (*)(const void *, int)",
+   "size": 8,
+   "to": 19
+  },
+  {
+   "id": 12,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 13,
+   "kind": "integer",
+   "name": "unsigned short",
+   "size": 2,
+   "signed": false
+  },
+  {
+   "id": 14,
+   "kind": "struct",
+   "name": "struct packet",
+   "size": 18,
+   "tag": "packet",
+   "qualifiedName": "packet",
+   "p": [
+    0,
+    7,
+    8
+   ],
+   "fields": [
+    {
+     "name": "data",
+     "type": 8,
+     "offset": 0,
+     "p": [
+      0,
+      8,
+      8
+     ]
+    },
+    {
+     "name": "len",
+     "type": 13,
+     "offset": 16,
+     "p": [
+      0,
+      9,
+      18
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 15,
+   "kind": "typeref",
+   "name": "const char",
+   "of": 17,
+   "refKind": "none"
+  },
+  {
+   "id": 16,
+   "kind": "routine",
+   "name": "void *(void *, const void *, unsigned long, unsigned long)",
+   "returns": 5,
+   "params": [
+    5,
+    9,
+    10,
+    10
+   ]
+  },
+  {
+   "id": 17,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  },
+  {
+   "id": 18,
+   "kind": "typeref",
+   "name": "const void",
+   "of": 1,
+   "refKind": "none"
+  },
+  {
+   "id": 19,
+   "kind": "routine",
+   "name": "unsigned long (const void *, int)",
+   "returns": 10,
+   "params": [
+    9,
+    12
+   ]
+  }
+ ],
+ "diagnostics": []
+}

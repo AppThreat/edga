@@ -1,0 +1,1473 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "pointers.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "pointers.c",
+   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/pointers.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "distance",
+   "qualifiedName": "distance",
+   "type": 0,
+   "returnType": 1,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    9,
+    6
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "b",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      9,
+      30
+     ]
+    },
+    {
+     "id": 2,
+     "name": "end",
+     "type": 3,
+     "storage": "auto",
+     "p": [
+      0,
+      9,
+      39
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     9,
+     44
+    ],
+    "end": [
+     0,
+     9,
+     68
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       9,
+       46
+      ],
+      "end": [
+       0,
+       9,
+       66
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        9,
+        57
+       ],
+       "range": [
+        [
+         0,
+         9,
+         53
+        ],
+        [
+         0,
+         9,
+         65
+        ]
+       ],
+       "op": "pdiff",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 3,
+         "p": [
+          0,
+          9,
+          53
+         ],
+         "range": [
+          [
+           0,
+           9,
+           53
+          ],
+          [
+           0,
+           9,
+           55
+          ]
+         ],
+         "var": 2,
+         "name": "end"
+        },
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          9,
+          60
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 4,
+           "p": [
+            0,
+            9,
+            60
+           ],
+           "range": [
+            [
+             0,
+             9,
+             59
+            ],
+            [
+             0,
+             9,
+             65
+            ]
+           ],
+           "lv": true,
+           "op": "points_to_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 2,
+             "p": [
+              0,
+              9,
+              59
+             ],
+             "range": [
+              [
+               0,
+               9,
+               59
+              ],
+              [
+               0,
+               9,
+               59
+              ]
+             ],
+             "var": 1,
+             "name": "b"
+            },
+            {
+             "k": "field",
+             "t": 4,
+             "p": [
+              0,
+              9,
+              62
+             ],
+             "range": [
+              [
+               0,
+               9,
+               62
+              ],
+              [
+               0,
+               9,
+               65
+              ]
+             ],
+             "name": "data"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "advance",
+   "qualifiedName": "advance",
+   "type": 5,
+   "returnType": 3,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    11,
+    7
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 3,
+     "name": "b",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      11,
+      30
+     ]
+    },
+    {
+     "id": 4,
+     "name": "n",
+     "type": 6,
+     "storage": "auto",
+     "p": [
+      0,
+      11,
+      37
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     11,
+     40
+    ],
+    "end": [
+     0,
+     16,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       12,
+       3
+      ],
+      "end": [
+       0,
+       12,
+       24
+      ],
+      "decls": [
+       {
+        "id": 5,
+        "name": "p",
+        "type": 3,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         12,
+         9
+        ],
+        "init": {
+         "k": "expression",
+         "var": 5,
+         "expr": {
+          "k": "operation",
+          "t": 3,
+          "p": [
+           0,
+           12,
+           21
+          ],
+          "range": [
+           [
+            0,
+            12,
+            13
+           ],
+           [
+            0,
+            12,
+            23
+           ]
+          ],
+          "op": "padd",
+          "ops": [
+           {
+            "k": "operation",
+            "t": 3,
+            "p": [
+             0,
+             12,
+             14
+            ],
+            "implicit": true,
+            "op": "array_to_pointer",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 4,
+              "p": [
+               0,
+               12,
+               14
+              ],
+              "range": [
+               [
+                0,
+                12,
+                13
+               ],
+               [
+                0,
+                12,
+                19
+               ]
+              ],
+              "lv": true,
+              "op": "points_to_field",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 2,
+                "p": [
+                 0,
+                 12,
+                 13
+                ],
+                "range": [
+                 [
+                  0,
+                  12,
+                  13
+                 ],
+                 [
+                  0,
+                  12,
+                  13
+                 ]
+                ],
+                "var": 3,
+                "name": "b"
+               },
+               {
+                "k": "field",
+                "t": 4,
+                "p": [
+                 0,
+                 12,
+                 16
+                ],
+                "range": [
+                 [
+                  0,
+                  12,
+                  16
+                 ],
+                 [
+                  0,
+                  12,
+                  19
+                 ]
+                ],
+                "name": "data"
+               }
+              ]
+             }
+            ]
+           },
+           {
+            "k": "variable",
+            "t": 6,
+            "p": [
+             0,
+             12,
+             23
+            ],
+            "range": [
+             [
+              0,
+              12,
+              23
+             ],
+             [
+              0,
+              12,
+              23
+             ]
+            ],
+            "var": 4,
+            "name": "n"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       13,
+       3
+      ],
+      "end": [
+       0,
+       13,
+       9
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 3,
+       "p": [
+        0,
+        13,
+        5
+       ],
+       "range": [
+        [
+         0,
+         13,
+         3
+        ],
+        [
+         0,
+         13,
+         8
+        ]
+       ],
+       "op": "padd_assign",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 3,
+         "p": [
+          0,
+          13,
+          3
+         ],
+         "range": [
+          [
+           0,
+           13,
+           3
+          ],
+          [
+           0,
+           13,
+           3
+          ]
+         ],
+         "lv": true,
+         "var": 5,
+         "name": "p"
+        },
+        {
+         "k": "constant",
+         "t": 6,
+         "p": [
+          0,
+          13,
+          8
+         ],
+         "range": [
+          [
+           0,
+           13,
+           8
+          ],
+          [
+           0,
+           13,
+           8
+          ]
+         ],
+         "ck": "integer",
+         "value": "2"
+        }
+       ]
+      }
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       14,
+       3
+      ],
+      "end": [
+       0,
+       14,
+       6
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 3,
+       "p": [
+        0,
+        14,
+        4
+       ],
+       "range": [
+        [
+         0,
+         14,
+         3
+        ],
+        [
+         0,
+         14,
+         5
+        ]
+       ],
+       "op": "post_decr",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 3,
+         "p": [
+          0,
+          14,
+          3
+         ],
+         "range": [
+          [
+           0,
+           14,
+           3
+          ],
+          [
+           0,
+           14,
+           3
+          ]
+         ],
+         "lv": true,
+         "var": 5,
+         "name": "p"
+        }
+       ]
+      }
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       15,
+       3
+      ],
+      "end": [
+       0,
+       15,
+       11
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 3,
+       "p": [
+        0,
+        15,
+        10
+       ],
+       "range": [
+        [
+         0,
+         15,
+         10
+        ],
+        [
+         0,
+         15,
+         10
+        ]
+       ],
+       "var": 5,
+       "name": "p"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "pick",
+   "qualifiedName": "pick",
+   "type": 7,
+   "returnType": 6,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    18,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 6,
+     "name": "values",
+     "type": 8,
+     "storage": "auto",
+     "p": [
+      0,
+      18,
+      15
+     ]
+    },
+    {
+     "id": 7,
+     "name": "i",
+     "type": 6,
+     "storage": "auto",
+     "p": [
+      0,
+      18,
+      27
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     18,
+     30
+    ],
+    "end": [
+     0,
+     18,
+     66
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       18,
+       32
+      ],
+      "end": [
+       0,
+       18,
+       64
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 6,
+       "p": [
+        0,
+        18,
+        49
+       ],
+       "range": [
+        [
+         0,
+         18,
+         39
+        ],
+        [
+         0,
+         18,
+         63
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 6,
+         "p": [
+          0,
+          18,
+          40
+         ],
+         "range": [
+          [
+           0,
+           18,
+           39
+          ],
+          [
+           0,
+           18,
+           47
+          ]
+         ],
+         "op": "subscript",
+         "pointerSecond": true,
+         "ops": [
+          {
+           "k": "variable",
+           "t": 6,
+           "p": [
+            0,
+            18,
+            39
+           ],
+           "range": [
+            [
+             0,
+             18,
+             39
+            ],
+            [
+             0,
+             18,
+             39
+            ]
+           ],
+           "var": 7,
+           "name": "i"
+          },
+          {
+           "k": "variable",
+           "t": 8,
+           "p": [
+            0,
+            18,
+            41
+           ],
+           "range": [
+            [
+             0,
+             18,
+             41
+            ],
+            [
+             0,
+             18,
+             46
+            ]
+           ],
+           "var": 6,
+           "name": "values"
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 6,
+         "p": [
+          0,
+          18,
+          57
+         ],
+         "range": [
+          [
+           0,
+           18,
+           51
+          ],
+          [
+           0,
+           18,
+           63
+          ]
+         ],
+         "op": "subscript",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 8,
+           "p": [
+            0,
+            18,
+            51
+           ],
+           "range": [
+            [
+             0,
+             18,
+             51
+            ],
+            [
+             0,
+             18,
+             56
+            ]
+           ],
+           "var": 6,
+           "name": "values"
+          },
+          {
+           "k": "operation",
+           "t": 6,
+           "p": [
+            0,
+            18,
+            60
+           ],
+           "range": [
+            [
+             0,
+             18,
+             58
+            ],
+            [
+             0,
+             18,
+             62
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 6,
+             "p": [
+              0,
+              18,
+              58
+             ],
+             "range": [
+              [
+               0,
+               18,
+               58
+              ],
+              [
+               0,
+               18,
+               58
+              ]
+             ],
+             "var": 7,
+             "name": "i"
+            },
+            {
+             "k": "constant",
+             "t": 6,
+             "p": [
+              0,
+              18,
+              62
+             ],
+             "range": [
+              [
+               0,
+               18,
+               62
+              ],
+              [
+               0,
+               18,
+               62
+              ]
+             ],
+             "ck": "integer",
+             "value": "1"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "name": "narrow",
+   "qualifiedName": "narrow",
+   "type": 9,
+   "returnType": 10,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    20,
+    15
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 8,
+     "name": "n",
+     "type": 6,
+     "storage": "auto",
+     "p": [
+      0,
+      20,
+      26
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     20,
+     29
+    ],
+    "end": [
+     0,
+     24,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       21,
+       3
+      ],
+      "end": [
+       0,
+       21,
+       22
+      ],
+      "decls": [
+       {
+        "id": 9,
+        "name": "c",
+        "type": 10,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         21,
+         17
+        ],
+        "init": {
+         "k": "expression",
+         "var": 9,
+         "expr": {
+          "k": "operation",
+          "t": 10,
+          "p": [
+           0,
+           21,
+           21
+          ],
+          "implicit": true,
+          "op": "cast",
+          "ops": [
+           {
+            "k": "variable",
+            "t": 6,
+            "p": [
+             0,
+             21,
+             21
+            ],
+            "range": [
+             [
+              0,
+              21,
+              21
+             ],
+             [
+              0,
+              21,
+              21
+             ]
+            ],
+            "var": 8,
+            "name": "n"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       22,
+       3
+      ],
+      "end": [
+       0,
+       22,
+       22
+      ],
+      "decls": [
+       {
+        "id": 10,
+        "name": "u",
+        "type": 11,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         22,
+         16
+        ],
+        "init": {
+         "k": "constant",
+         "var": 10,
+         "const": {
+          "k": "constant",
+          "t": 11,
+          "ck": "integer",
+          "value": "4294967295",
+          "expr": {
+           "k": "operation",
+           "t": 11,
+           "p": [
+            0,
+            22,
+            20
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "constant",
+             "t": 6,
+             "p": [
+              0,
+              22,
+              20
+             ],
+             "range": [
+              [
+               0,
+               22,
+               20
+              ],
+              [
+               0,
+               22,
+               21
+              ]
+             ],
+             "ck": "integer",
+             "value": "-1",
+             "expr": {
+              "k": "operation",
+              "t": 6,
+              "p": [
+               0,
+               22,
+               20
+              ],
+              "range": [
+               [
+                0,
+                22,
+                20
+               ],
+               [
+                0,
+                22,
+                21
+               ]
+              ],
+              "op": "negate",
+              "ops": [
+               {
+                "k": "constant",
+                "t": 6,
+                "p": [
+                 0,
+                 22,
+                 21
+                ],
+                "range": [
+                 [
+                  0,
+                  22,
+                  21
+                 ],
+                 [
+                  0,
+                  22,
+                  21
+                 ]
+                ],
+                "ck": "integer",
+                "value": "1"
+               }
+              ]
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       23,
+       3
+      ],
+      "end": [
+       0,
+       23,
+       21
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 10,
+       "p": [
+        0,
+        23,
+        10
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 6,
+         "p": [
+          0,
+          23,
+          12
+         ],
+         "range": [
+          [
+           0,
+           23,
+           10
+          ],
+          [
+           0,
+           23,
+           20
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 6,
+           "p": [
+            0,
+            23,
+            10
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 10,
+             "p": [
+              0,
+              23,
+              10
+             ],
+             "range": [
+              [
+               0,
+               23,
+               10
+              ],
+              [
+               0,
+               23,
+               10
+              ]
+             ],
+             "var": 9,
+             "name": "c"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 6,
+           "p": [
+            0,
+            23,
+            17
+           ],
+           "range": [
+            [
+             0,
+             23,
+             15
+            ],
+            [
+             0,
+             23,
+             19
+            ]
+           ],
+           "op": "gt",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 11,
+             "p": [
+              0,
+              23,
+              15
+             ],
+             "range": [
+              [
+               0,
+               23,
+               15
+              ],
+              [
+               0,
+               23,
+               15
+              ]
+             ],
+             "var": 10,
+             "name": "u"
+            },
+            {
+             "k": "constant",
+             "t": 11,
+             "p": [
+              0,
+              23,
+              19
+             ],
+             "range": [
+              [
+               0,
+               23,
+               19
+              ],
+              [
+               0,
+               23,
+               19
+              ]
+             ],
+             "ck": "integer",
+             "value": "0",
+             "expr": {
+              "k": "operation",
+              "t": 11,
+              "p": [
+               0,
+               23,
+               19
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "constant",
+                "t": 6,
+                "p": [
+                 0,
+                 23,
+                 19
+                ],
+                "range": [
+                 [
+                  0,
+                  23,
+                  19
+                 ],
+                 [
+                  0,
+                  23,
+                  19
+                 ]
+                ],
+                "ck": "integer",
+                "value": "0"
+               }
+              ]
+             }
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "long (struct buffer *, char *)",
+   "returns": 1,
+   "params": [
+    2,
+    3
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "long",
+   "size": 8,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "pointer",
+   "name": "struct buffer *",
+   "size": 8,
+   "to": 12
+  },
+  {
+   "id": 3,
+   "kind": "pointer",
+   "name": "char *",
+   "size": 8,
+   "to": 13
+  },
+  {
+   "id": 4,
+   "kind": "array",
+   "name": "char [16]",
+   "size": 16,
+   "of": 13,
+   "count": 16
+  },
+  {
+   "id": 5,
+   "kind": "routine",
+   "name": "char *(struct buffer *, int)",
+   "returns": 3,
+   "params": [
+    2,
+    6
+   ]
+  },
+  {
+   "id": 6,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 7,
+   "kind": "routine",
+   "name": "int (int *, int)",
+   "returns": 6,
+   "params": [
+    8,
+    6
+   ]
+  },
+  {
+   "id": 8,
+   "kind": "pointer",
+   "name": "int *",
+   "size": 8,
+   "to": 6
+  },
+  {
+   "id": 9,
+   "kind": "routine",
+   "name": "unsigned char (int)",
+   "returns": 10,
+   "params": [
+    6
+   ]
+  },
+  {
+   "id": 10,
+   "kind": "integer",
+   "name": "unsigned char",
+   "size": 1,
+   "signed": false
+  },
+  {
+   "id": 11,
+   "kind": "integer",
+   "name": "unsigned int",
+   "size": 4,
+   "signed": false
+  },
+  {
+   "id": 12,
+   "kind": "struct",
+   "name": "struct buffer",
+   "size": 20,
+   "tag": "buffer",
+   "qualifiedName": "buffer",
+   "p": [
+    0,
+    4,
+    8
+   ],
+   "fields": [
+    {
+     "name": "data",
+     "type": 4,
+     "offset": 0,
+     "p": [
+      0,
+      5,
+      8
+     ]
+    },
+    {
+     "name": "used",
+     "type": 6,
+     "offset": 16,
+     "p": [
+      0,
+      6,
+      7
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 13,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  }
+ ],
+ "diagnostics": [
+  {
+   "level": "warning",
+   "code": "EC68",
+   "message": "integer conversion resulted in a change of sign",
+   "file": "file:///Users/prabhu/work/AppThreat/edga/tests/fixtures/pointers.c",
+   "line": 22,
+   "column": 20
+  }
+ ]
+}

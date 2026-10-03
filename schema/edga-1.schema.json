@@ -1,0 +1,301 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/AppThreat/edga/schema/edga-1.schema.json",
+  "title": "edga translation unit, version 1",
+  "description": "One C or C++ translation unit as the EDG front end built it. Kinds (statement, expression, operator, type, storage class, linkage) are the front end's names without their prefix (stmk_, enk_, eok_, tk_, sc_, nlk_). Ids are per document. Positions are [file id, line, column]; a node inside a macro expansion has its top-level invocation's position in p, the innermost invocation in mi, and where its text was written (the definition or an argument) in po.",
+  "type": "object",
+  "required": ["schema", "tool", "tu"],
+  "properties": {
+    "schema": { "const": "edga/1" },
+    "tool": {
+      "type": "object",
+      "required": ["name", "version", "edgCommit", "config"],
+      "properties": {
+        "name": { "const": "edga" },
+        "version": { "type": "string" },
+        "edgCommit": { "type": "string" },
+        "config": { "type": "string", "description": "The front end configuration's name and a fingerprint of its settings." }
+      }
+    },
+    "tu": {
+      "type": "object",
+      "required": ["path", "status"],
+      "properties": {
+        "path": { "type": "string" },
+        "language": { "enum": ["c", "c++"] },
+        "status": { "enum": ["ok", "errors", "failed"], "description": "errors: exported with the parts the front end could build; failed: the front end gave up before the back end ran, so only diagnostics follow." },
+        "mode": {
+          "type": "object",
+          "properties": {
+            "gcc": { "type": "boolean" },
+            "gpp": { "type": "boolean" },
+            "clang": { "type": "boolean" },
+            "microsoft": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "files": { "type": "array", "items": { "$ref": "#/$defs/file" } },
+    "macros": { "type": "array", "items": { "$ref": "#/$defs/macro" } },
+    "macroInvocations": { "type": "array", "items": { "$ref": "#/$defs/macroInvocation" } },
+    "globals": { "type": "array", "items": { "$ref": "#/$defs/variable" }, "description": "Variables of file and namespace scope, and static data members." },
+    "routines": { "type": "array", "items": { "$ref": "#/$defs/routine" } },
+    "types": { "type": "array", "items": { "$ref": "#/$defs/type" } },
+    "diagnostics": { "type": "array", "items": { "$ref": "#/$defs/diagnostic" } }
+  },
+  "$defs": {
+    "position": {
+      "oneOf": [
+        { "type": "array", "prefixItems": [{ "type": "integer" }, { "type": "integer" }, { "type": "integer" }], "minItems": 3, "maxItems": 3 },
+        { "type": "null" }
+      ]
+    },
+    "located": {
+      "type": "object",
+      "properties": {
+        "p": { "$ref": "#/$defs/position" },
+        "mi": { "type": "integer", "description": "The innermost macro invocation the node was expanded in." },
+        "po": { "$ref": "#/$defs/position" }
+      }
+    },
+    "file": {
+      "type": "object",
+      "required": ["id", "path", "system", "inRoot"],
+      "properties": {
+        "id": { "type": "integer" },
+        "path": { "type": "string" },
+        "written": { "type": "string", "description": "The name as an #include wrote it." },
+        "system": { "type": "boolean" },
+        "inRoot": { "type": "boolean" },
+        "lineDirective": { "type": "boolean" },
+        "includedFrom": { "type": "array", "prefixItems": [{ "type": "integer" }, { "type": "integer" }], "description": "[file id, line]" },
+        "systemInclude": { "type": "boolean" }
+      }
+    },
+    "macro": {
+      "allOf": [{ "$ref": "#/$defs/located" }],
+      "type": "object",
+      "required": ["id", "name", "objectLike"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "objectLike": { "type": "boolean" },
+        "undef": { "type": "boolean" },
+        "text": { "type": "string" }
+      }
+    },
+    "macroInvocation": {
+      "type": "object",
+      "required": ["id", "parent", "name"],
+      "properties": {
+        "id": { "type": "integer" },
+        "parent": { "type": "integer", "description": "The invocation this one appears in (its argument or expansion), 0 for none." },
+        "macro": { "type": "integer" },
+        "name": { "type": "string" },
+        "start": { "$ref": "#/$defs/position" },
+        "end": { "$ref": "#/$defs/position" }
+      }
+    },
+    "variable": {
+      "allOf": [{ "$ref": "#/$defs/located" }],
+      "type": "object",
+      "required": ["id", "name", "type", "storage"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "qualifiedName": { "type": "string" },
+        "type": { "type": "integer" },
+        "storage": { "type": "string" },
+        "linkage": { "type": "string" },
+        "this": { "type": "boolean" },
+        "implicit": { "type": "boolean" },
+        "addressTaken": { "type": "boolean" },
+        "modified": { "type": "boolean" },
+        "init": { "$ref": "#/$defs/initializer" },
+        "zeroInit": { "type": "boolean" }
+      }
+    },
+    "routine": {
+      "allOf": [{ "$ref": "#/$defs/located" }],
+      "type": "object",
+      "required": ["id", "name", "qualifiedName", "type", "defined", "params"],
+      "properties": {
+        "id": { "type": "integer" },
+        "name": { "type": "string" },
+        "qualifiedName": { "type": "string" },
+        "type": { "type": "integer" },
+        "returnType": { "type": "integer" },
+        "variadic": { "type": "boolean" },
+        "thisClass": { "type": "integer" },
+        "noReturn": { "type": "boolean" },
+        "linkage": { "type": "string" },
+        "storage": { "type": "string" },
+        "special": { "type": "string", "description": "constructor, destructor, conversion, operator, ..." },
+        "operator": { "type": "string" },
+        "class": { "type": "integer" },
+        "virtual": { "type": "boolean" },
+        "pureVirtual": { "type": "boolean" },
+        "inline": { "type": "boolean" },
+        "implicit": { "type": "boolean" },
+        "templateInstance": { "type": "boolean" },
+        "lambda": { "type": "boolean" },
+        "mangled": { "type": "string" },
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
+        "defined": { "type": "boolean", "description": "The routine has a body in this translation unit; it is exported only for files under the project root." },
+        "params": { "type": "array", "items": { "type": "object" } },
+        "ctorInits": { "type": "array", "items": { "type": "object" } },
+        "body": { "$ref": "#/$defs/statement" }
+      }
+    },
+    "attribute": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": { "type": "string" },
+        "name": { "type": "string" },
+        "args": { "type": "array" }
+      }
+    },
+    "statement": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "allOf": [{ "$ref": "#/$defs/located" }],
+          "type": "object",
+          "required": ["k"],
+          "properties": {
+            "k": { "type": "string" },
+            "end": { "$ref": "#/$defs/position" },
+            "implicit": { "type": "boolean" },
+            "expr": { "$ref": "#/$defs/expression" },
+            "cond": { "$ref": "#/$defs/expression" },
+            "inc": { "$ref": "#/$defs/expression" },
+            "then": { "$ref": "#/$defs/statement" },
+            "else": { "$ref": "#/$defs/statement" },
+            "body": { "$ref": "#/$defs/statement" },
+            "init": { "$ref": "#/$defs/initializerOrStatement" },
+            "stmts": { "type": "array", "items": { "$ref": "#/$defs/statement" } },
+            "decls": { "type": "array" },
+            "jump": { "enum": ["break", "continue", "goto"] },
+            "label": { "type": "string" },
+            "default": { "type": "boolean" },
+            "value": { "type": ["string", "null"] },
+            "rangeEnd": { "type": ["string", "null"] },
+            "handlers": { "type": "array" },
+            "var": { "type": "integer" },
+            "statementExpression": { "type": "boolean" }
+          }
+        }
+      ]
+    },
+    "initializerOrStatement": {
+      "anyOf": [{ "$ref": "#/$defs/initializer" }, { "$ref": "#/$defs/statement" }]
+    },
+    "initializer": {
+      "description": "A dynamic initialisation (k: expression, constructor, constant, zero, bitwise_copy, ...) or a constant (k: constant).",
+      "oneOf": [
+        { "type": "null" },
+        {
+          "type": "object",
+          "required": ["k"],
+          "properties": {
+            "k": { "type": "string" },
+            "var": { "type": "integer" },
+            "expr": { "$ref": "#/$defs/expression" },
+            "routine": { "type": "integer" },
+            "args": { "type": "array", "items": { "$ref": "#/$defs/expression" } },
+            "const": { "$ref": "#/$defs/expression" },
+            "destructor": { "type": "integer" }
+          }
+        }
+      ]
+    },
+    "expression": {
+      "oneOf": [
+        { "type": "null" },
+        {
+          "allOf": [{ "$ref": "#/$defs/located" }],
+          "type": "object",
+          "required": ["k"],
+          "properties": {
+            "k": { "type": "string", "description": "operation, constant, variable, field, routine, temp_init, lambda, new_delete, throw, condition, sizeof, statement, ..." },
+            "t": { "type": "integer" },
+            "range": { "type": "array", "items": { "$ref": "#/$defs/position" } },
+            "lv": { "type": "boolean" },
+            "implicit": { "type": "boolean", "description": "Made by the front end: a conversion, a != 0 test, an implicit this." },
+            "op": { "type": "string" },
+            "ops": { "type": "array", "items": { "$ref": "#/$defs/expression" } },
+            "pointerSecond": { "type": "boolean" },
+            "virtual": { "type": "boolean" },
+            "operatorSyntax": { "type": "boolean" },
+            "conversion": { "type": "boolean" },
+            "callee": { "type": "integer" },
+            "ck": { "type": "string" },
+            "value": { "type": "string" },
+            "base": { "type": "string" },
+            "elements": { "type": "array" },
+            "var": { "type": "integer" },
+            "name": { "type": "string" },
+            "offset": { "type": "integer" },
+            "routine": { "type": "integer" },
+            "closure": { "type": "integer" },
+            "of": { "anyOf": [{ "type": "integer" }, { "$ref": "#/$defs/expression" }] },
+            "new": { "type": "boolean" },
+            "array": { "type": "boolean" },
+            "placement": { "type": "boolean" },
+            "count": { "$ref": "#/$defs/expression" },
+            "args": { "type": "array", "items": { "$ref": "#/$defs/expression" } },
+            "init": { "$ref": "#/$defs/initializer" },
+            "rethrow": { "type": "boolean" },
+            "decl": { "$ref": "#/$defs/variable" },
+            "expr": { "$ref": "#/$defs/expression" },
+            "stmt": { "$ref": "#/$defs/statement" }
+          }
+        }
+      ]
+    },
+    "type": {
+      "allOf": [{ "$ref": "#/$defs/located" }],
+      "type": "object",
+      "required": ["id", "kind", "name"],
+      "properties": {
+        "id": { "type": "integer" },
+        "kind": { "type": "string" },
+        "name": { "type": "string", "description": "The type as C or C++ spells it." },
+        "size": { "type": "integer" },
+        "signed": { "type": "boolean" },
+        "enum": { "type": "boolean" },
+        "bool": { "type": "boolean" },
+        "tag": { "type": "string" },
+        "to": { "type": "integer" },
+        "reference": { "type": "boolean" },
+        "rvalueReference": { "type": "boolean" },
+        "of": { "type": "integer" },
+        "count": { "type": "integer" },
+        "variableSize": { "type": "boolean" },
+        "returns": { "type": "integer" },
+        "params": { "type": "array", "items": { "type": "integer" } },
+        "variadic": { "type": "boolean" },
+        "qualifiedName": { "type": "string" },
+        "incomplete": { "type": "boolean" },
+        "fields": { "type": "array" },
+        "bases": { "type": "array" },
+        "closure": { "type": "boolean" },
+        "typedef": { "type": "string" },
+        "refKind": { "type": "string" }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "required": ["level", "message"],
+      "properties": {
+        "level": { "type": "string" },
+        "code": { "type": "string" },
+        "message": { "type": "string" },
+        "file": { "type": "string" },
+        "line": { "type": "integer" },
+        "column": { "type": "integer" }
+      }
+    }
+  }
+}
