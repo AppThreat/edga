@@ -302,7 +302,8 @@ class Exporter {
     }
     for (a_namespace_ptr ns = s->namespaces; ns != nullptr; ns = ns->next) {
       if (ns->is_namespace_alias) continue;
-      if (ns->is_inline) inlineNamespaces_.insert(qualifiedName(&ns->source_corresp, iek_namespace));
+      if (ns->is_inline)
+        inlineNamespaces_.insert(qualifiedName(&ns->source_corresp, iek_namespace));
       collect(ns->variant.assoc_scope);
     }
   }
@@ -449,9 +450,10 @@ class Exporter {
           writeExpr(expr_node_from_attribute_arg(arg));
         }
       }
-      if (!raw.empty()) json_.string(raw.substr(raw.front() == '(' ? 1 : 0,
-                                              raw.size() - (raw.front() == '(' ? 1 : 0) -
-                                                  (raw.back() == ')' ? 1 : 0)));
+      if (!raw.empty())
+        json_.string(
+            raw.substr(raw.front() == '(' ? 1 : 0,
+                       raw.size() - (raw.front() == '(' ? 1 : 0) - (raw.back() == ')' ? 1 : 0)));
       json_.endArray();
       json_.endObject();
     }

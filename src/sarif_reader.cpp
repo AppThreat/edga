@@ -194,7 +194,8 @@ std::vector<Diagnostic> readSarifResults(const std::string& text) {
   for (size_t at = text.find(start); at != std::string::npos; at = text.find(start, at + 1)) {
     const std::string rest = text.substr(at);
     Value result;
-    if (Parser(rest).parse(result) && result.kind == Value::Object) out.push_back(diagnosticOf(result));
+    if (Parser(rest).parse(result) && result.kind == Value::Object)
+      out.push_back(diagnosticOf(result));
   }
   return out;
 }

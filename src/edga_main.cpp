@@ -106,7 +106,8 @@ int main(int argc, char* argv[]) {
           startsWith(arg, "--no_remove_unneeded_entities"))
         userPruning = true;
       // the dialect options: C++ (`--c++17`, `--g++`) or C (`--c11`, `--gcc`)
-      if (startsWith(arg, "--c++") || std::strcmp(arg, "-p") == 0 || std::strcmp(arg, "--g++") == 0) {
+      if (startsWith(arg, "--c++") || std::strcmp(arg, "-p") == 0 ||
+          std::strcmp(arg, "--g++") == 0) {
         cppDialect = true;
         dialect = true;
       } else if (std::strcmp(arg, "--c") == 0 || (startsWith(arg, "--c") && std::isdigit(arg[3])) ||
@@ -129,9 +130,9 @@ int main(int argc, char* argv[]) {
   }
 
   // Defaults for exporting: keep the bodies of functions nothing calls, give every template the
-  // unit uses its instances' bodies (here, without the prelinker's files), keep going past many errors (the valid parts of the file are
-  // still exported), and diagnostics as SARIF for the document. The user's own options come
-  // after, so they win.
+  // unit uses its instances' bodies (here, without the prelinker's files), keep going past many
+  // errors (the valid parts of the file are still exported), and diagnostics as SARIF for the
+  // document. The user's own options come after, so they win.
   std::vector<std::string> args;
   args.push_back(argv[0]);
   if (!userPruning) args.push_back("--no_remove_unneeded_entities");
