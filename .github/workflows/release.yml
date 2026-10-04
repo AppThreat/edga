@@ -1,0 +1,85 @@
+name: release
+
+# A v* tag builds edga for each platform, runs the golden tests on the binary, and attaches it to
+# the tag's GitHub release with its SHA-256. cdxgen-plugins-bin downloads these assets.
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions: {}
+
+jobs:
+  build:
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - os: ubuntu-24.04
+            platform: linux-amd64
+          - os: ubuntu-24.04-arm
+            platform: linux-arm64
+          - os: macos-15
+            platform: darwin-arm64
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+      - name: EDG sources
+        run: |
+          git submodule init
+          git -c protocol.version=2 submodule update --depth 1 --filter=blob:none --no-checkout
+          git -C third_party/edgcpp sparse-checkout set --no-cone '/*' '!/tests/'
+          git -C third_party/edgcpp checkout
+      - name: Tools (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get install -y ninja-build g++
+      - name: Tools (macOS)
+        if: runner.os == 'macOS'
+        run: brew install ninja
+      - name: Build
+        run: |
+          # Linux release builds are static; the macOS one runs on macOS 13 and later.
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0
+          cmake --build build --target edga
+          ./build/bin/edga --version
+      - name: Golden tests
+        run: |
+          python3 -m pip install --quiet jsonschema || python3 -m pip install --quiet --break-system-packages jsonschema
+          python3 tests/run.py --edga build/bin/edga
+      - name: Package
+        run: |
+          mkdir dist
+          cp build/bin/edga "dist/edga-${{ matrix.platform }}"
+          cd dist
+          shasum -a 256 "edga-${{ matrix.platform }}" > "edga-${{ matrix.platform }}.sha256"
+          cat "edga-${{ matrix.platform }}.sha256"
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
+        with:
+          name: edga-${{ matrix.platform }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 1
+
+  release:
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          pattern: edga-*
+          path: dist
+          merge-multiple: true
+      - name: Release
+        run: |
+          ls -l dist
+          gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
+            gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes
+          gh release upload "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" dist/edga-* --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

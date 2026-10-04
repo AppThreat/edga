@@ -35,6 +35,12 @@ edga is a single binary: it does not read EDG's predefined macro file (pass the 
 with `--preinclude_macros`, or `--edg_base_dir` for an EDG installation), and it writes nothing
 next to the source files, so a read-only source tree works.
 
+## Releases
+
+Each GitHub release carries edga for linux-amd64 and linux-arm64 (static) and darwin-arm64, with
+SHA-256 files; [cdxgen-plugins-bin](https://github.com/cdxgen/cdxgen-plugins-bin) ships them to
+cdxgen and atom.
+
 ## Building
 
 The EDG sources are a git submodule. Its test suite is large and not needed for the build:

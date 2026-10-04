@@ -11,7 +11,9 @@ jobs:
   format:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
       - name: clang-format
         run: |
           sudo apt-get install -y clang-format
@@ -27,7 +29,9 @@ jobs:
           - os: macos-15
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
       # The EDG repository carries a large test suite the build does not need.
       - name: EDG sources
         run: |
