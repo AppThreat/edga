@@ -704,10 +704,217 @@
    }
   },
   {
+   "id": 7,
+   "name": "depth",
+   "qualifiedName": "geometry::depth",
+   "type": 12,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    37,
+    5
+   ],
+   "start": [
+    0,
+    37,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "s",
+     "type": 13,
+     "storage": "auto",
+     "p": [
+      0,
+      37,
+      17
+     ],
+     "start": [
+      0,
+      37,
+      11
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     37,
+     20
+    ],
+    "end": [
+     0,
+     37,
+     55
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       37,
+       22
+      ],
+      "end": [
+       0,
+       37,
+       53
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        37,
+        46
+       ],
+       "range": [
+        [
+         0,
+         37,
+         29
+        ],
+        [
+         0,
+         37,
+         52
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 14,
+         "p": [
+          0,
+          37,
+          31
+         ],
+         "range": [
+          [
+           0,
+           37,
+           29
+          ],
+          [
+           0,
+           37,
+           44
+          ]
+         ],
+         "op": "eq",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 13,
+           "p": [
+            0,
+            37,
+            29
+           ],
+           "range": [
+            [
+             0,
+             37,
+             29
+            ],
+            [
+             0,
+             37,
+             29
+            ]
+           ],
+           "var": 5,
+           "name": "s"
+          },
+          {
+           "k": "constant",
+           "t": 13,
+           "p": [
+            0,
+            37,
+            34
+           ],
+           "range": [
+            [
+             0,
+             37,
+             34
+            ],
+            [
+             0,
+             37,
+             44
+            ]
+           ],
+           "ck": "integer",
+           "value": "4"
+          }
+         ]
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          37,
+          48
+         ],
+         "range": [
+          [
+           0,
+           37,
+           48
+          ],
+          [
+           0,
+           37,
+           48
+          ]
+         ],
+         "ck": "integer",
+         "value": "2"
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          37,
+          52
+         ],
+         "range": [
+          [
+           0,
+           37,
+           52
+          ],
+          [
+           0,
+           37,
+           52
+          ]
+         ],
+         "ck": "integer",
+         "value": "1"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
    "id": 6,
    "name": "operator+",
    "qualifiedName": "geometry::Vec2::operator+",
-   "type": 12,
+   "type": 15,
    "returnType": 7,
    "prototyped": true,
    "thisClass": 7,
@@ -730,14 +937,14 @@
    "defined": true,
    "params": [
     {
-     "id": 5,
+     "id": 6,
      "name": "",
-     "type": 13,
+     "type": 16,
      "storage": "auto",
      "this": true
     },
     {
-     "id": 6,
+     "id": 7,
      "name": "other",
      "type": 10,
      "storage": "auto",
@@ -826,8 +1033,8 @@
               "ops": [
                {
                 "k": "variable",
-                "t": 14,
-                "var": 5,
+                "t": 17,
+                "var": 6,
                 "name": ""
                },
                {
@@ -908,7 +1115,7 @@
                     61
                    ]
                   ],
-                  "var": 6,
+                  "var": 7,
                   "name": "other"
                  }
                 ]
@@ -982,8 +1189,8 @@
               "ops": [
                {
                 "k": "variable",
-                "t": 14,
-                "var": 5,
+                "t": 17,
+                "var": 6,
                 "name": ""
                },
                {
@@ -1065,7 +1272,7 @@
                     74
                    ]
                   ],
-                  "var": 6,
+                  "var": 7,
                   "name": "other"
                  }
                 ]
@@ -1107,11 +1314,11 @@
    }
   },
   {
-   "id": 7,
+   "id": 8,
    "name": "operator=",
    "qualifiedName": "geometry::Vec2::operator=",
-   "type": 15,
-   "returnType": 16,
+   "type": 18,
+   "returnType": 19,
    "prototyped": true,
    "thisClass": 7,
    "linkage": "cplusplus_external",
@@ -1135,11 +1342,11 @@
    ]
   },
   {
-   "id": 8,
+   "id": 9,
    "name": "operator=",
    "qualifiedName": "geometry::Vec2::operator=",
-   "type": 17,
-   "returnType": 16,
+   "type": 20,
+   "returnType": 19,
    "prototyped": true,
    "thisClass": 7,
    "linkage": "cplusplus_external",
@@ -1158,22 +1365,22 @@
    "params": [
     {
      "name": "",
-     "type": 18
+     "type": 21
     }
    ]
   },
   {
-   "id": 9,
+   "id": 10,
    "name": "~Shape",
    "qualifiedName": "geometry::Shape::~Shape",
-   "type": 19,
-   "returnType": 20,
+   "type": 22,
+   "returnType": 23,
    "prototyped": true,
-   "thisClass": 21,
+   "thisClass": 24,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "special": "destructor",
-   "class": 21,
+   "class": 24,
    "virtual": true,
    "inline": true,
    "p": [
@@ -1189,9 +1396,9 @@
    "defined": true,
    "params": [
     {
-     "id": 7,
+     "id": 8,
      "name": "",
-     "type": 22,
+     "type": 25,
      "storage": "auto",
      "this": true
     }
@@ -1220,13 +1427,13 @@
    "id": 2,
    "name": "area",
    "qualifiedName": "geometry::Shape::area",
-   "type": 23,
+   "type": 26,
    "returnType": 1,
    "prototyped": true,
-   "thisClass": 21,
+   "thisClass": 24,
    "linkage": "cplusplus_external",
    "storage": "extern",
-   "class": 21,
+   "class": 24,
    "virtual": true,
    "pureVirtual": true,
    "p": [
@@ -1243,17 +1450,17 @@
    "params": []
   },
   {
-   "id": 10,
+   "id": 11,
    "name": "Shape",
    "qualifiedName": "geometry::Shape::Shape",
-   "type": 24,
-   "returnType": 20,
+   "type": 27,
+   "returnType": 23,
    "prototyped": true,
-   "thisClass": 21,
+   "thisClass": 24,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "special": "constructor",
-   "class": 21,
+   "class": 24,
    "inline": true,
    "implicit": true,
    "p": [
@@ -1264,9 +1471,9 @@
    "defined": true,
    "params": [
     {
-     "id": 8,
+     "id": 9,
      "name": "",
-     "type": 22,
+     "type": 25,
      "storage": "auto",
      "this": true
     }
@@ -1283,17 +1490,17 @@
    }
   },
   {
-   "id": 11,
+   "id": 12,
    "name": "Shape",
    "qualifiedName": "geometry::Shape::Shape",
-   "type": 25,
-   "returnType": 20,
+   "type": 28,
+   "returnType": 23,
    "prototyped": true,
-   "thisClass": 21,
+   "thisClass": 24,
    "linkage": "cplusplus_external",
    "storage": "extern",
    "special": "constructor",
-   "class": 21,
+   "class": 24,
    "inline": true,
    "implicit": true,
    "p": [
@@ -1310,18 +1517,18 @@
    ]
   },
   {
-   "id": 12,
+   "id": 13,
    "name": "operator=",
    "qualifiedName": "geometry::Shape::operator=",
-   "type": 26,
-   "returnType": 27,
+   "type": 29,
+   "returnType": 30,
    "prototyped": true,
-   "thisClass": 21,
+   "thisClass": 24,
    "linkage": "cplusplus_external",
    "storage": "extern",
    "special": "operator",
    "operator": "assign",
-   "class": 21,
+   "class": 24,
    "inline": true,
    "implicit": true,
    "p": [
@@ -1341,8 +1548,8 @@
    "id": 4,
    "name": "Square",
    "qualifiedName": "geometry::Square::Square",
-   "type": 28,
-   "returnType": 20,
+   "type": 31,
+   "returnType": 23,
    "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
@@ -1363,14 +1570,14 @@
    "defined": true,
    "params": [
     {
-     "id": 9,
+     "id": 10,
      "name": "",
-     "type": 29,
+     "type": 32,
      "storage": "auto",
      "this": true
     },
     {
-     "id": 10,
+     "id": 11,
      "name": "side",
      "type": 1,
      "storage": "auto",
@@ -1388,13 +1595,13 @@
    ],
    "ctorInits": [
     {
-     "base": 21,
+     "base": 24,
      "implicit": true,
      "init": {
       "k": "constructor",
-      "routine": 10,
+      "routine": 11,
       "args": [],
-      "destructor": 9
+      "destructor": 10
      }
     },
     {
@@ -1421,7 +1628,7 @@
          40
         ]
        ],
-       "var": 10,
+       "var": 11,
        "name": "side"
       }
      }
@@ -1451,8 +1658,8 @@
    "id": 5,
    "name": "~Square",
    "qualifiedName": "geometry::Square::~Square",
-   "type": 30,
-   "returnType": 20,
+   "type": 33,
+   "returnType": 23,
    "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
@@ -1474,20 +1681,20 @@
    "defined": true,
    "params": [
     {
-     "id": 11,
+     "id": 12,
      "name": "",
-     "type": 29,
+     "type": 32,
      "storage": "auto",
      "this": true
     }
    ],
    "ctorInits": [
     {
-     "base": 21,
+     "base": 24,
      "implicit": true,
      "init": {
       "k": "none",
-      "destructor": 9
+      "destructor": 10
      }
     }
    ],
@@ -1512,10 +1719,10 @@
    }
   },
   {
-   "id": 13,
+   "id": 14,
    "name": "area",
    "qualifiedName": "geometry::Square::area",
-   "type": 31,
+   "type": 34,
    "returnType": 1,
    "prototyped": true,
    "thisClass": 6,
@@ -1537,9 +1744,9 @@
    "defined": true,
    "params": [
     {
-     "id": 12,
+     "id": 13,
      "name": "",
-     "type": 32,
+     "type": 35,
      "storage": "auto",
      "this": true
     }
@@ -1604,8 +1811,8 @@
          "ops": [
           {
            "k": "variable",
-           "t": 33,
-           "var": 12,
+           "t": 36,
+           "var": 13,
            "name": ""
           },
           {
@@ -1646,8 +1853,8 @@
          "ops": [
           {
            "k": "variable",
-           "t": 33,
-           "var": 12,
+           "t": 36,
+           "var": 13,
            "name": ""
           },
           {
@@ -1682,11 +1889,11 @@
    }
   },
   {
-   "id": 14,
+   "id": 15,
    "name": "Square",
    "qualifiedName": "geometry::Square::Square",
-   "type": 34,
-   "returnType": 20,
+   "type": 37,
+   "returnType": 23,
    "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
@@ -1704,16 +1911,16 @@
    "params": [
     {
      "name": "",
-     "type": 35
+     "type": 38
     }
    ]
   },
   {
-   "id": 15,
+   "id": 16,
    "name": "operator=",
    "qualifiedName": "geometry::Square::operator=",
-   "type": 36,
-   "returnType": 37,
+   "type": 39,
+   "returnType": 40,
    "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
@@ -1732,7 +1939,7 @@
    "params": [
     {
      "name": "",
-     "type": 35
+     "type": 38
     }
    ]
   }
@@ -1767,13 +1974,13 @@
    "kind": "pointer",
    "name": "int (*)() const",
    "size": 8,
-   "to": 23
+   "to": 26
   },
   {
    "id": 4,
    "kind": "typeref",
    "name": "const geometry::Shape",
-   "of": 21,
+   "of": 24,
    "refKind": "none"
   },
   {
@@ -1821,7 +2028,7 @@
    ],
    "bases": [
     {
-     "type": 21
+     "type": 24
     }
    ]
   },
@@ -1878,7 +2085,7 @@
    "kind": "pointer",
    "name": "geometry::Vec2 (*)(const geometry::Vec2 &) const",
    "size": 8,
-   "to": 12
+   "to": 15
   },
   {
    "id": 9,
@@ -1905,6 +2112,71 @@
   {
    "id": 12,
    "kind": "routine",
+   "name": "int (geometry::Shade)",
+   "returns": 1,
+   "params": [
+    13
+   ]
+  },
+  {
+   "id": 13,
+   "kind": "integer",
+   "name": "geometry::Shade",
+   "size": 4,
+   "signed": true,
+   "enum": true,
+   "tag": "Shade",
+   "qualifiedName": "geometry::Shade",
+   "scoped": true,
+   "p": [
+    0,
+    35,
+    12
+   ],
+   "span": [
+    [
+     0,
+     35,
+     1
+    ],
+    [
+     0,
+     35,
+     42
+    ]
+   ],
+   "enumerators": [
+    {
+     "name": "Light",
+     "value": "0",
+     "p": [
+      0,
+      35,
+      26
+     ]
+    },
+    {
+     "name": "Dark",
+     "value": "4",
+     "p": [
+      0,
+      35,
+      33
+     ]
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "kind": "integer",
+   "name": "bool",
+   "size": 1,
+   "signed": true,
+   "bool": true
+  },
+  {
+   "id": 15,
+   "kind": "routine",
    "name": "geometry::Vec2 (const geometry::Vec2 &) const",
    "returns": 7,
    "params": [
@@ -1912,30 +2184,30 @@
    ]
   },
   {
-   "id": 13,
+   "id": 16,
    "kind": "typeref",
    "name": "const geometry::Vec2 *const",
-   "of": 14,
+   "of": 17,
    "refKind": "none"
   },
   {
-   "id": 14,
+   "id": 17,
    "kind": "pointer",
    "name": "const geometry::Vec2 *",
    "size": 8,
    "to": 9
   },
   {
-   "id": 15,
+   "id": 18,
    "kind": "routine",
    "name": "geometry::Vec2 &(const geometry::Vec2 &)",
-   "returns": 16,
+   "returns": 19,
    "params": [
     10
    ]
   },
   {
-   "id": 16,
+   "id": 19,
    "kind": "pointer",
    "name": "geometry::Vec2 &",
    "size": 8,
@@ -1943,16 +2215,16 @@
    "reference": true
   },
   {
-   "id": 17,
+   "id": 20,
    "kind": "routine",
    "name": "geometry::Vec2 &(geometry::Vec2 &&)",
-   "returns": 16,
+   "returns": 19,
    "params": [
-    18
+    21
    ]
   },
   {
-   "id": 18,
+   "id": 21,
    "kind": "pointer",
    "name": "geometry::Vec2 &&",
    "size": 8,
@@ -1961,19 +2233,19 @@
    "rvalueReference": true
   },
   {
-   "id": 19,
+   "id": 22,
    "kind": "routine",
    "name": "void () noexcept",
-   "returns": 20,
+   "returns": 23,
    "params": []
   },
   {
-   "id": 20,
+   "id": 23,
    "kind": "void",
    "name": "void"
   },
   {
-   "id": 21,
+   "id": 24,
    "kind": "class",
    "name": "geometry::Shape",
    "size": 8,
@@ -2000,124 +2272,124 @@
    "bases": []
   },
   {
-   "id": 22,
+   "id": 25,
    "kind": "typeref",
    "name": "geometry::Shape *const",
-   "of": 38,
+   "of": 41,
    "refKind": "none"
   },
   {
-   "id": 23,
+   "id": 26,
    "kind": "routine",
    "name": "int () const",
    "returns": 1,
    "params": []
   },
   {
-   "id": 24,
+   "id": 27,
    "kind": "routine",
    "name": "void () noexcept",
-   "returns": 20,
+   "returns": 23,
    "params": []
-  },
-  {
-   "id": 25,
-   "kind": "routine",
-   "name": "void (const geometry::Shape &)",
-   "returns": 20,
-   "params": [
-    2
-   ]
-  },
-  {
-   "id": 26,
-   "kind": "routine",
-   "name": "geometry::Shape &(const geometry::Shape &)",
-   "returns": 27,
-   "params": [
-    2
-   ]
-  },
-  {
-   "id": 27,
-   "kind": "pointer",
-   "name": "geometry::Shape &",
-   "size": 8,
-   "to": 21,
-   "reference": true
   },
   {
    "id": 28,
    "kind": "routine",
+   "name": "void (const geometry::Shape &)",
+   "returns": 23,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 29,
+   "kind": "routine",
+   "name": "geometry::Shape &(const geometry::Shape &)",
+   "returns": 30,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 30,
+   "kind": "pointer",
+   "name": "geometry::Shape &",
+   "size": 8,
+   "to": 24,
+   "reference": true
+  },
+  {
+   "id": 31,
+   "kind": "routine",
    "name": "void (int)",
-   "returns": 20,
+   "returns": 23,
    "params": [
     1
    ]
   },
   {
-   "id": 29,
+   "id": 32,
    "kind": "typeref",
    "name": "geometry::Square *const",
-   "of": 39,
+   "of": 42,
    "refKind": "none"
   },
   {
-   "id": 30,
+   "id": 33,
    "kind": "routine",
    "name": "void () noexcept",
-   "returns": 20,
+   "returns": 23,
    "params": []
   },
   {
-   "id": 31,
+   "id": 34,
    "kind": "routine",
    "name": "int () const",
    "returns": 1,
    "params": []
   },
   {
-   "id": 32,
+   "id": 35,
    "kind": "typeref",
    "name": "const geometry::Square *const",
-   "of": 33,
+   "of": 36,
    "refKind": "none"
   },
   {
-   "id": 33,
+   "id": 36,
    "kind": "pointer",
    "name": "const geometry::Square *",
    "size": 8,
-   "to": 40
-  },
-  {
-   "id": 34,
-   "kind": "routine",
-   "name": "void (const geometry::Square &)",
-   "returns": 20,
-   "params": [
-    35
-   ]
-  },
-  {
-   "id": 35,
-   "kind": "pointer",
-   "name": "const geometry::Square &",
-   "size": 8,
-   "to": 40,
-   "reference": true
-  },
-  {
-   "id": 36,
-   "kind": "routine",
-   "name": "geometry::Square &(const geometry::Square &)",
-   "returns": 37,
-   "params": [
-    35
-   ]
+   "to": 43
   },
   {
    "id": 37,
+   "kind": "routine",
+   "name": "void (const geometry::Square &)",
+   "returns": 23,
+   "params": [
+    38
+   ]
+  },
+  {
+   "id": 38,
+   "kind": "pointer",
+   "name": "const geometry::Square &",
+   "size": 8,
+   "to": 43,
+   "reference": true
+  },
+  {
+   "id": 39,
+   "kind": "routine",
+   "name": "geometry::Square &(const geometry::Square &)",
+   "returns": 40,
+   "params": [
+    38
+   ]
+  },
+  {
+   "id": 40,
    "kind": "pointer",
    "name": "geometry::Square &",
    "size": 8,
@@ -2125,21 +2397,21 @@
    "reference": true
   },
   {
-   "id": 38,
+   "id": 41,
    "kind": "pointer",
    "name": "geometry::Shape *",
    "size": 8,
-   "to": 21
+   "to": 24
   },
   {
-   "id": 39,
+   "id": 42,
    "kind": "pointer",
    "name": "geometry::Square *",
    "size": 8,
    "to": 6
   },
   {
-   "id": 40,
+   "id": 43,
    "kind": "typeref",
    "name": "const geometry::Square",
    "of": 6,

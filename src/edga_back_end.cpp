@@ -924,6 +924,35 @@ class Exporter {
   }
 
   // A constant as a node: its value, and the expression it was folded from.
+  // An enumeration's specifier and its enumerators, each with its value and where it is named.
+  void writeEnumerators(a_type_ptr t) {
+    if (t->variant.integer.is_scoped_enum) json_.fieldBool("scoped", true);
+    position(t->source_corresp.decl_position);
+    if (t->source_corresp.decl_pos_info != nullptr)
+      range(t->source_corresp.decl_pos_info->specifiers_range, "span");
+    a_constant_ptr first = nullptr;
+    if (t->variant.integer.is_scoped_enum) {
+      a_scope_ptr scope = t->variant.integer.enum_info.assoc_scope;
+      if (scope != nullptr) first = scope->constants;
+    } else {
+      first = t->variant.integer.enum_info.constant_list;
+    }
+    if (first == nullptr) return;
+    json_.key("enumerators");
+    json_.beginArray();
+    for (a_constant_ptr c = first; c != nullptr; c = c->next) {
+      json_.beginObject();
+      json_.field("name", c->source_corresp.name != nullptr ? c->source_corresp.name : "");
+      if (c->kind == ck_integer) {
+        json_.key("value");
+        writeConstantValue(c);
+      }
+      position(c->source_corresp.decl_position);
+      json_.endObject();
+    }
+    json_.endArray();
+  }
+
   void writeConstantNode(a_constant_ptr c, a_type_ptr type) {
     json_.beginObject();
     json_.field("k", "constant");
@@ -1069,7 +1098,11 @@ class Exporter {
         json_.fieldBool("signed", int_type_is_signed(t));
         if (t->variant.integer.enum_type) {
           json_.fieldBool("enum", true);
-          if (t->source_corresp.name != nullptr) json_.field("tag", t->source_corresp.name);
+          if (t->source_corresp.name != nullptr) {
+            json_.field("tag", t->source_corresp.name);
+            json_.field("qualifiedName", qualifiedName(&t->source_corresp, iek_type));
+          }
+          writeEnumerators(t);
         }
         if (t->variant.integer.bool_type) json_.fieldBool("bool", true);
         break;

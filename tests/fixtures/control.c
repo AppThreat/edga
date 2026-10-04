@@ -24,3 +24,9 @@ int classify(int n) {
 fail:
   return -1;
 }
+
+/* An enumeration with explicit and implicit values, indexing a table with one entry for each. */
+enum mode { MODE_READ = 1, MODE_WRITE, MODE_BOTH = MODE_READ | MODE_WRITE };
+static const char *const mode_names[4] = {"none", "read", "write", "both"};
+
+const char *mode_name(enum mode m) { return mode_names[m]; }

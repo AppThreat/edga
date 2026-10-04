@@ -23,14 +23,288 @@
  "macros": [],
  "macroInvocations": [],
  "inlineNamespaces": [],
- "globals": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "mode_names",
+   "type": 0,
+   "storage": "static",
+   "linkage": "internal",
+   "addressTaken": true,
+   "p": [
+    0,
+    30,
+    26
+   ],
+   "start": [
+    0,
+    30,
+    1
+   ],
+   "init": {
+    "k": "constant",
+    "t": 0,
+    "ck": "aggregate",
+    "elements": [
+     {
+      "k": "constant",
+      "t": 1,
+      "ck": "address",
+      "base": "constant",
+      "of": {
+       "k": "constant",
+       "t": 2,
+       "ck": "string",
+       "value": "none"
+      },
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        30,
+        43
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          30,
+          43
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "constant",
+           "t": 2,
+           "p": [
+            0,
+            30,
+            43
+           ],
+           "range": [
+            [
+             0,
+             30,
+             43
+            ],
+            [
+             0,
+             30,
+             48
+            ]
+           ],
+           "lv": true,
+           "ck": "string",
+           "value": "none"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "constant",
+      "t": 1,
+      "ck": "address",
+      "base": "constant",
+      "of": {
+       "k": "constant",
+       "t": 2,
+       "ck": "string",
+       "value": "read"
+      },
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        30,
+        51
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          30,
+          51
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "constant",
+           "t": 2,
+           "p": [
+            0,
+            30,
+            51
+           ],
+           "range": [
+            [
+             0,
+             30,
+             51
+            ],
+            [
+             0,
+             30,
+             56
+            ]
+           ],
+           "lv": true,
+           "ck": "string",
+           "value": "read"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "constant",
+      "t": 1,
+      "ck": "address",
+      "base": "constant",
+      "of": {
+       "k": "constant",
+       "t": 4,
+       "ck": "string",
+       "value": "write"
+      },
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        30,
+        59
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          30,
+          59
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "constant",
+           "t": 4,
+           "p": [
+            0,
+            30,
+            59
+           ],
+           "range": [
+            [
+             0,
+             30,
+             59
+            ],
+            [
+             0,
+             30,
+             65
+            ]
+           ],
+           "lv": true,
+           "ck": "string",
+           "value": "write"
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "constant",
+      "t": 1,
+      "ck": "address",
+      "base": "constant",
+      "of": {
+       "k": "constant",
+       "t": 2,
+       "ck": "string",
+       "value": "both"
+      },
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        30,
+        68
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          30,
+          68
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "constant",
+           "t": 2,
+           "p": [
+            0,
+            30,
+            68
+           ],
+           "range": [
+            [
+             0,
+             30,
+             68
+            ],
+            [
+             0,
+             30,
+             73
+            ]
+           ],
+           "lv": true,
+           "ck": "string",
+           "value": "both"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
  "routines": [
   {
    "id": 1,
    "name": "classify",
    "qualifiedName": "classify",
-   "type": 0,
-   "returnType": 1,
+   "type": 5,
+   "returnType": 6,
    "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
@@ -47,9 +321,9 @@
    "defined": true,
    "params": [
     {
-     "id": 1,
+     "id": 2,
      "name": "n",
-     "type": 1,
+     "type": 6,
      "storage": "auto",
      "modified": true,
      "p": [
@@ -91,9 +365,9 @@
       ],
       "decls": [
        {
-        "id": 2,
+        "id": 3,
         "name": "result",
-        "type": 1,
+        "type": 6,
         "storage": "auto",
         "linkage": "none",
         "p": [
@@ -108,10 +382,10 @@
         ],
         "init": {
          "k": "constant",
-         "var": 2,
+         "var": 3,
          "const": {
           "k": "constant",
-          "t": 1,
+          "t": 6,
           "ck": "integer",
           "value": "0"
          }
@@ -137,7 +411,7 @@
         ],
         "cond": {
          "k": "variable",
-         "t": 1,
+         "t": 6,
          "p": [
           0,
           5,
@@ -155,7 +429,7 @@
            11
           ]
          ],
-         "var": 1,
+         "var": 2,
          "name": "n"
         },
         "body": {
@@ -199,7 +473,7 @@
            ],
            "expr": {
             "k": "operation",
-            "t": 1,
+            "t": 6,
             "p": [
              0,
              7,
@@ -221,7 +495,7 @@
             "ops": [
              {
               "k": "variable",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                7,
@@ -240,12 +514,12 @@
                ]
               ],
               "lv": true,
-              "var": 2,
+              "var": 3,
               "name": "result"
              },
              {
               "k": "constant",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                7,
@@ -297,7 +571,7 @@
            ],
            "expr": {
             "k": "operation",
-            "t": 1,
+            "t": 6,
             "p": [
              0,
              9,
@@ -319,7 +593,7 @@
             "ops": [
              {
               "k": "variable",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                9,
@@ -338,12 +612,12 @@
                ]
               ],
               "lv": true,
-              "var": 2,
+              "var": 3,
               "name": "result"
              },
              {
               "k": "constant",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                9,
@@ -410,7 +684,7 @@
            ],
            "expr": {
             "k": "operation",
-            "t": 1,
+            "t": 6,
             "p": [
              0,
              12,
@@ -432,7 +706,7 @@
             "ops": [
              {
               "k": "variable",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                12,
@@ -451,12 +725,12 @@
                ]
               ],
               "lv": true,
-              "var": 2,
+              "var": 3,
               "name": "result"
              },
              {
               "k": "constant",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                12,
@@ -478,7 +752,7 @@
               "value": "-1",
               "expr": {
                "k": "operation",
-               "t": 1,
+               "t": 6,
                "p": [
                 0,
                 12,
@@ -500,7 +774,7 @@
                "ops": [
                 {
                  "k": "constant",
-                 "t": 1,
+                 "t": 6,
                  "p": [
                   0,
                   12,
@@ -553,7 +827,7 @@
         ],
         "cond": {
          "k": "operation",
-         "t": 1,
+         "t": 6,
          "p": [
           0,
           14,
@@ -575,7 +849,7 @@
          "ops": [
           {
            "k": "variable",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             14,
@@ -593,12 +867,12 @@
              10
             ]
            ],
-           "var": 1,
+           "var": 2,
            "name": "n"
           },
           {
            "k": "constant",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             14,
@@ -648,7 +922,7 @@
            ],
            "expr": {
             "k": "operation",
-            "t": 1,
+            "t": 6,
             "p": [
              0,
              15,
@@ -670,7 +944,7 @@
             "ops": [
              {
               "k": "variable",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                15,
@@ -689,12 +963,12 @@
                ]
               ],
               "lv": true,
-              "var": 1,
+              "var": 2,
               "name": "n"
              },
              {
               "k": "constant",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                15,
@@ -736,7 +1010,7 @@
              ],
              "cond": {
               "k": "operation",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                16,
@@ -758,7 +1032,7 @@
               "ops": [
                {
                 "k": "variable",
-                "t": 1,
+                "t": 6,
                 "p": [
                  0,
                  16,
@@ -776,12 +1050,12 @@
                   9
                  ]
                 ],
-                "var": 1,
+                "var": 2,
                 "name": "n"
                },
                {
                 "k": "constant",
-                "t": 1,
+                "t": 6,
                 "p": [
                  0,
                  16,
@@ -846,7 +1120,7 @@
              ],
              "cond": {
               "k": "operation",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                17,
@@ -868,7 +1142,7 @@
               "ops": [
                {
                 "k": "variable",
-                "t": 1,
+                "t": 6,
                 "p": [
                  0,
                  17,
@@ -886,12 +1160,12 @@
                   9
                  ]
                 ],
-                "var": 1,
+                "var": 2,
                 "name": "n"
                },
                {
                 "k": "constant",
-                "t": 1,
+                "t": 6,
                 "p": [
                  0,
                  17,
@@ -967,7 +1241,7 @@
         ],
         "cond": {
          "k": "operation",
-         "t": 1,
+         "t": 6,
          "p": [
           0,
           21,
@@ -989,7 +1263,7 @@
          "ops": [
           {
            "k": "variable",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             21,
@@ -1007,12 +1281,12 @@
              12
             ]
            ],
-           "var": 1,
+           "var": 2,
            "name": "n"
           },
           {
            "k": "constant",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             21,
@@ -1062,7 +1336,7 @@
            ],
            "expr": {
             "k": "operation",
-            "t": 1,
+            "t": 6,
             "p": [
              0,
              20,
@@ -1084,7 +1358,7 @@
             "ops": [
              {
               "k": "variable",
-              "t": 1,
+              "t": 6,
               "p": [
                0,
                20,
@@ -1103,7 +1377,7 @@
                ]
               ],
               "lv": true,
-              "var": 1,
+              "var": 2,
               "name": "n"
              }
             ]
@@ -1132,7 +1406,7 @@
         ],
         "cond": {
          "k": "operation",
-         "t": 1,
+         "t": 6,
          "p": [
           0,
           22,
@@ -1154,7 +1428,7 @@
          "ops": [
           {
            "k": "variable",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             22,
@@ -1172,12 +1446,12 @@
              7
             ]
            ],
-           "var": 1,
+           "var": 2,
            "name": "n"
           },
           {
            "k": "constant",
-           "t": 1,
+           "t": 6,
            "p": [
             0,
             22,
@@ -1238,7 +1512,7 @@
       ],
       "expr": {
        "k": "variable",
-       "t": 1,
+       "t": 6,
        "p": [
         0,
         23,
@@ -1256,7 +1530,7 @@
          15
         ]
        ],
-       "var": 2,
+       "var": 3,
        "name": "result"
       }
      },
@@ -1288,7 +1562,7 @@
       ],
       "expr": {
        "k": "constant",
-       "t": 1,
+       "t": 6,
        "p": [
         0,
         25,
@@ -1310,7 +1584,7 @@
        "value": "-1",
        "expr": {
         "k": "operation",
-        "t": 1,
+        "t": 6,
         "p": [
          0,
          25,
@@ -1332,7 +1606,7 @@
         "ops": [
          {
           "k": "constant",
-          "t": 1,
+          "t": 6,
           "p": [
            0,
            25,
@@ -1359,23 +1633,305 @@
      }
     ]
    }
+  },
+  {
+   "id": 2,
+   "name": "mode_name",
+   "qualifiedName": "mode_name",
+   "type": 7,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    32,
+    13
+   ],
+   "start": [
+    0,
+    32,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 4,
+     "name": "m",
+     "type": 8,
+     "storage": "auto",
+     "p": [
+      0,
+      32,
+      33
+     ],
+     "start": [
+      0,
+      32,
+      23
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     32,
+     36
+    ],
+    "end": [
+     0,
+     32,
+     60
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       32,
+       38
+      ],
+      "end": [
+       0,
+       32,
+       58
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        32,
+        55
+       ],
+       "range": [
+        [
+         0,
+         32,
+         45
+        ],
+        [
+         0,
+         32,
+         57
+        ]
+       ],
+       "op": "subscript",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 9,
+         "p": [
+          0,
+          32,
+          45
+         ],
+         "implicit": true,
+         "op": "array_to_pointer",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 0,
+           "p": [
+            0,
+            32,
+            45
+           ],
+           "range": [
+            [
+             0,
+             32,
+             45
+            ],
+            [
+             0,
+             32,
+             54
+            ]
+           ],
+           "lv": true,
+           "var": 1,
+           "name": "mode_names"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 8,
+         "p": [
+          0,
+          32,
+          56
+         ],
+         "range": [
+          [
+           0,
+           32,
+           56
+          ],
+          [
+           0,
+           32,
+           56
+          ]
+         ],
+         "var": 4,
+         "name": "m"
+        }
+       ]
+      }
+     }
+    ]
+   }
   }
  ],
  "types": [
   {
    "id": 0,
-   "kind": "routine",
-   "name": "int (int)",
-   "returns": 1,
-   "params": [
-    1
-   ]
+   "kind": "array",
+   "name": "const char *const [4]",
+   "size": 32,
+   "of": 10,
+   "count": 4
   },
   {
    "id": 1,
+   "kind": "pointer",
+   "name": "const char *",
+   "size": 8,
+   "to": 11
+  },
+  {
+   "id": 2,
+   "kind": "array",
+   "name": "char [5]",
+   "size": 5,
+   "of": 12,
+   "count": 5
+  },
+  {
+   "id": 3,
+   "kind": "pointer",
+   "name": "char *",
+   "size": 8,
+   "to": 12
+  },
+  {
+   "id": 4,
+   "kind": "array",
+   "name": "char [6]",
+   "size": 6,
+   "of": 12,
+   "count": 6
+  },
+  {
+   "id": 5,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 6,
+   "params": [
+    6
+   ]
+  },
+  {
+   "id": 6,
    "kind": "integer",
    "name": "int",
    "size": 4,
+   "signed": true
+  },
+  {
+   "id": 7,
+   "kind": "routine",
+   "name": "const char *(enum mode)",
+   "returns": 1,
+   "params": [
+    8
+   ]
+  },
+  {
+   "id": 8,
+   "kind": "integer",
+   "name": "enum mode",
+   "size": 4,
+   "signed": false,
+   "enum": true,
+   "tag": "mode",
+   "qualifiedName": "mode",
+   "p": [
+    0,
+    29,
+    6
+   ],
+   "span": [
+    [
+     0,
+     29,
+     1
+    ],
+    [
+     0,
+     29,
+     75
+    ]
+   ],
+   "enumerators": [
+    {
+     "name": "MODE_READ",
+     "value": "1",
+     "p": [
+      0,
+      29,
+      13
+     ]
+    },
+    {
+     "name": "MODE_WRITE",
+     "value": "2",
+     "p": [
+      0,
+      29,
+      28
+     ]
+    },
+    {
+     "name": "MODE_BOTH",
+     "value": "3",
+     "p": [
+      0,
+      29,
+      40
+     ]
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "const char *const *",
+   "size": 8,
+   "to": 10
+  },
+  {
+   "id": 10,
+   "kind": "typeref",
+   "name": "const char *const",
+   "of": 1,
+   "refKind": "none"
+  },
+  {
+   "id": 11,
+   "kind": "typeref",
+   "name": "const char",
+   "of": 12,
+   "refKind": "none"
+  },
+  {
+   "id": 12,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
    "signed": true
   }
  ],

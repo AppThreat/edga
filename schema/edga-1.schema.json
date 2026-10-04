@@ -289,7 +289,21 @@
         "variadic": { "type": "boolean" },
         "qualifiedName": { "type": "string" },
         "incomplete": { "type": "boolean" },
-        "span": { "type": "array", "items": { "$ref": "#/$defs/position" }, "description": "A class-specifier's first and last token: what is written in its braces is inside." },
+        "span": { "type": "array", "items": { "$ref": "#/$defs/position" }, "description": "A class- or enum-specifier's first and last token: what is written in its braces is inside." },
+        "scoped": { "type": "boolean", "description": "An `enum class`." },
+        "enumerators": {
+          "type": "array",
+          "description": "An enumeration's constants in declaration order, each with its value and where it is named.",
+          "items": {
+            "type": "object",
+            "required": ["name"],
+            "properties": {
+              "name": { "type": "string" },
+              "value": { "type": "string" },
+              "p": { "$ref": "#/$defs/position" }
+            }
+          }
+        },
         "fields": { "type": "array" },
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },

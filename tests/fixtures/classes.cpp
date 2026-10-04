@@ -32,4 +32,8 @@ int combined() {
   return measure(sq) + b.x;
 }
 
+enum class Shade : int { Light, Dark = 4 };
+
+int depth(Shade s) { return s == Shade::Dark ? 2 : 1; }
+
 }  // namespace geometry
