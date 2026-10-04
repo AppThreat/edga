@@ -547,6 +547,22 @@ class Exporter {
           writeStatement(s->variant.if_stmt.else_statement);
         }
         break;
+      // `if constexpr`: in an instance, the branch not taken is an empty statement, and the
+      // condition's value is known
+      case stmk_constexpr_if: {
+        a_constexpr_if_ptr ci = s->variant.constexpr_if;
+        writeExprField("cond", s->expr);
+        if (ci != nullptr) {
+          if (ci->value_known) json_.fieldBool("value", ci->value);
+          json_.key("then");
+          writeStatement(ci->then_statement);
+          if (ci->else_statement != nullptr) {
+            json_.key("else");
+            writeStatement(ci->else_statement);
+          }
+        }
+        break;
+      }
       case stmk_while:
       case stmk_end_test_while:
         writeExprField("cond", s->expr);
@@ -698,6 +714,20 @@ class Exporter {
       case stmk_stmt_expr_result:
         writeExprField("expr", s->expr);
         break;
+      // a variable length array: the number of elements, evaluated here, and the variable whose
+      // storage is allocated where the declaration is
+      case stmk_set_vla_size: {
+        a_vla_dimension_ptr dim = s->variant.vla_dimension;
+        if (dim != nullptr) {
+          if (dim->type != nullptr) json_.field("arrayType", typeId(dim->type));
+          writeExprField("size", dim->dimension_expr);
+        }
+        break;
+      }
+      case stmk_vla_decl:
+        if (!s->variant.vla.is_typedef_decl && s->variant.vla.variant.variable != nullptr)
+          json_.field("var", variableId(s->variant.vla.variant.variable));
+        break;
       case stmk_assigned_goto:
         writeExprField("expr", s->expr);
         break;
@@ -753,6 +783,8 @@ class Exporter {
     }
     if (e->is_lvalue) json_.fieldBool("lv", true);
     if (e->compiler_generated) json_.fieldBool("implicit", true);
+    // a call's argument the declaration's default supplied
+    if (e->generated_default_arg) json_.fieldBool("defaultArgument", true);
     switch (e->kind) {
       case enk_operation: {
         an_expr_operator_kind op = e->variant.operation.kind;

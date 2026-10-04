@@ -34,6 +34,8 @@ int combined() {
 
 enum class Shade : int { Light, Dark = 4 };
 
-int depth(Shade s) { return s == Shade::Dark ? 2 : 1; }
+int depth(Shade s, int scale = 2) { return s == Shade::Dark ? scale : 1; }
+
+int dark_depth() { return depth(Shade::Dark); }
 
 }  // namespace geometry

@@ -192,7 +192,9 @@
             "var": { "type": "integer" },
             "variable": { "$ref": "#/$defs/variable", "description": "range_based_for: the variable the for-range-declaration declares." },
             "over": { "$ref": "#/$defs/initializer", "description": "range_based_for: what is iterated over." },
-            "statementExpression": { "type": "boolean" }
+            "statementExpression": { "type": "boolean" },
+            "arrayType": { "type": "integer", "description": "set_vla_size: the variable length array type whose number of elements is fixed here." },
+            "size": { "$ref": "#/$defs/expression", "description": "set_vla_size: the number of elements, as written." }
           }
         }
       ]
@@ -235,6 +237,7 @@
             "op": { "type": "string" },
             "ops": { "type": "array", "items": { "$ref": "#/$defs/expression" } },
             "pointerSecond": { "type": "boolean" },
+            "defaultArgument": { "type": "boolean", "description": "A call's argument the declaration's default supplied." },
             "virtual": { "type": "boolean" },
             "operatorSyntax": { "type": "boolean" },
             "conversion": { "type": "boolean" },

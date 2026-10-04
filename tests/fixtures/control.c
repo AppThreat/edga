@@ -30,3 +30,12 @@ enum mode { MODE_READ = 1, MODE_WRITE, MODE_BOTH = MODE_READ | MODE_WRITE };
 static const char *const mode_names[4] = {"none", "read", "write", "both"};
 
 const char *mode_name(enum mode m) { return mode_names[m]; }
+
+/* A variable length array, its number of elements evaluated where it is declared. */
+int vla_sum(int n) {
+  int values[n];
+  int total = 0;
+  for (int i = 0; i < n; i++) values[i] = i;
+  for (int i = 0; i < n; i++) total += values[i];
+  return total;
+}

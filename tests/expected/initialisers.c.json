@@ -604,7 +604,31 @@
        21,
        13
       ],
-      "implicit": true
+      "implicit": true,
+      "arrayType": 7,
+      "size": {
+       "k": "variable",
+       "t": 3,
+       "p": [
+        0,
+        21,
+        14
+       ],
+       "range": [
+        [
+         0,
+         21,
+         14
+        ],
+        [
+         0,
+         21,
+         14
+        ]
+       ],
+       "var": 3,
+       "name": "n"
+      }
      },
      {
       "k": "vla_decl",
@@ -613,7 +637,8 @@
        21,
        7
       ],
-      "implicit": true
+      "implicit": true,
+      "var": 4
      },
      {
       "k": "decl",
