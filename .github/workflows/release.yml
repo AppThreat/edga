@@ -1,8 +1,8 @@
 name: release
 
 # A v* tag builds edga for each platform, runs the golden tests on the binary, and attaches it to
-# the tag's GitHub release with its SHA-256, next to the build's SBOM. cdxgen-plugins-bin downloads
-# these assets.
+# the tag's GitHub release with its SHA-256, next to the build's SBOM. atom's container images
+# download these assets.
 on:
   push:
     tags:
@@ -20,6 +20,12 @@ jobs:
             platform: linux-amd64
           - os: ubuntu-24.04-arm
             platform: linux-arm64
+          - os: ubuntu-24.04
+            platform: linuxmusl-amd64
+            musl: true
+          - os: ubuntu-24.04-arm
+            platform: linuxmusl-arm64
+            musl: true
           - os: macos-15
             platform: darwin-arm64
     runs-on: ${{ matrix.os }}
@@ -31,19 +37,24 @@ jobs:
           persist-credentials: false
       - name: EDG sources
         run: tools/fetch-edg.sh
+      - name: Build and golden tests (musl)
+        if: ${{ matrix.musl }}
+        run: tools/build-alpine.sh build
       - name: Tools (Linux)
-        if: runner.os == 'Linux'
+        if: ${{ runner.os == 'Linux' && !matrix.musl }}
         run: sudo apt-get install -y ninja-build g++
       - name: Tools (macOS)
         if: runner.os == 'macOS'
         run: brew install ninja
       - name: Build
+        if: ${{ !matrix.musl }}
         run: |
           # Linux release builds are static; the macOS one runs on macOS 13 and later.
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0
           cmake --build build --target edga
           ./build/bin/edga --version
       - name: Golden tests
+        if: ${{ !matrix.musl }}
         run: |
           python3 -m pip install --quiet jsonschema || python3 -m pip install --quiet --break-system-packages jsonschema
           python3 tests/run.py --edga build/bin/edga

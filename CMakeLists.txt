@@ -3,7 +3,7 @@
 
 cmake_minimum_required(VERSION 3.19)
 
-project(edga VERSION 0.1.0 LANGUAGES CXX)
+project(edga VERSION 0.1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -106,6 +106,13 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
   if(UNIX AND NOT APPLE)
     # A self-contained, stripped binary for distribution.
     add_link_options("$<$<CONFIG:Release>:-static>" "$<$<CONFIG:Release>:-s>")
+    # On Linux the front end tests for NaN with glibc's __isnan, which musl does not have.
+    include(CheckCXXSourceCompiles)
+    check_cxx_source_compiles("#include <math.h>\nint main() { return __isnan(0.0); }"
+                              EDGA_HAVE___ISNAN)
+    if(NOT EDGA_HAVE___ISNAN)
+      list(APPEND EDG_COMPILE_OPTIONS -D__isnan=__builtin_isnan)
+    endif()
   endif()
 else()
   set(EDG_COMPILE_OPTIONS /bigobj /w)

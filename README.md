@@ -37,10 +37,10 @@ next to the source files, so a read-only source tree works.
 
 ## Releases
 
-Each GitHub release carries edga for linux-amd64 and linux-arm64 (static) and darwin-arm64, with
-SHA-256 files and a CycloneDX SBOM (`sbom-edga.cdx.json`, from `tools/sbom.py`);
-[cdxgen-plugins-bin](https://github.com/cdxgen/cdxgen-plugins-bin) ships them to
-cdxgen and atom.
+Each GitHub release carries edga for linux-amd64 and linux-arm64 (static, glibc), linuxmusl-amd64
+and linuxmusl-arm64 (static, musl, built in Alpine: `tools/build-alpine.sh`) and darwin-arm64, with
+SHA-256 files and a CycloneDX SBOM (`sbom-edga.cdx.json`, from `tools/sbom.py`). atom's container
+images install it; chen finds edga with `EDGA_PATH`, `--edga-path` or on the `PATH`.
 
 ## Building
 
