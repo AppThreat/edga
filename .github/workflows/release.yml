@@ -29,11 +29,7 @@ jobs:
         with:
           persist-credentials: false
       - name: EDG sources
-        run: |
-          git submodule init
-          git -c protocol.version=2 submodule update --depth 1 --filter=blob:none --no-checkout
-          git -C third_party/edgcpp sparse-checkout set --no-cone '/*' '!/tests/'
-          git -C third_party/edgcpp checkout
+        run: tools/fetch-edg.sh
       - name: Tools (Linux)
         if: runner.os == 'Linux'
         run: sudo apt-get install -y ninja-build g++

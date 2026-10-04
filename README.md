@@ -43,13 +43,12 @@ cdxgen and atom.
 
 ## Building
 
-The EDG sources are a git submodule. Its test suite is large and not needed for the build:
+The EDG sources are a git submodule. Its test suite is large and not needed for the build, so
+`tools/fetch-edg.sh` fetches the pinned commit one deep without it (`git submodule update --init`
+works too):
 
 ```bash
-git submodule init
-git submodule update --depth 1 --filter=blob:none --no-checkout
-git -C third_party/edgcpp sparse-checkout set --no-cone '/*' '!/tests/'
-git -C third_party/edgcpp checkout
+tools/fetch-edg.sh
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build --target edga
 ```
