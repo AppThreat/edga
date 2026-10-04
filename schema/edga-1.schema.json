@@ -114,6 +114,9 @@
         "modified": { "type": "boolean" },
         "init": { "$ref": "#/$defs/initializer" },
         "zeroInit": { "type": "boolean" },
+        "bound": { "$ref": "#/$defs/expression", "description": "A structured binding: the part of its object it names." },
+        "bindingContainer": { "type": "boolean", "description": "The unnamed object a structured binding declaration initialises." },
+        "bindings": { "type": "array", "items": { "$ref": "#/$defs/variable" }, "description": "The bindings that name the parts of a binding container." },
         "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
         "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers." }
       }

@@ -483,6 +483,16 @@ class Exporter {
       if (info->specifiers_range.start.seq != 0) position(info->specifiers_range.start, "start");
     }
     if (withInitializer) writeVariableInitializer(v);
+    // `auto [a, b] = f();`: the unnamed object the declaration initialises, and the bindings that
+    // name its parts
+    if (v->is_struct_binding_container) {
+      json_.fieldBool("bindingContainer", true);
+      json_.key("bindings");
+      json_.beginArray();
+      for (an_il_entity_list_entry_ptr e = v->variant.bindings; e != nullptr; e = e->next)
+        writeVariable(reinterpret_cast<a_variable_ptr>(e->entity.ptr), true);
+      json_.endArray();
+    }
     json_.endObject();
   }
 
@@ -502,6 +512,10 @@ class Exporter {
         break;
       case initk_zero:
         json_.fieldBool("zeroInit", true);
+        break;
+      // a binding stands for a part of its object (`b` for `obj.second`)
+      case initk_binding:
+        writeExprField("bound", v->initializer.bound_expr);
         break;
       default:
         break;

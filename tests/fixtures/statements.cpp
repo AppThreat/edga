@@ -35,3 +35,21 @@ int lifetimes(int n) {
   delete one;
   return result;
 }
+
+// A structured binding: the object it initialises and the bindings that name its parts; and the
+// name the front end predefines in every function.
+struct Span {
+  char *data;
+  size_type size;
+};
+Span make_span(char *p, size_type n);
+void note(const char *where);
+
+size_type split(char *p, size_type n) {
+  note(__func__);
+  auto [data, size] = make_span(p, n);
+  Span spans[2] = {{p, n}, {p, 0}};
+  size_type total = 0;
+  for (auto [d, s] : spans) total += s;
+  return data[0] + size + total;
+}
