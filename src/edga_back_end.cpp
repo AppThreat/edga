@@ -22,10 +22,6 @@
 #include "json_writer.h"
 #include "sarif_reader.h"
 
-#if NEED_NAME_MANGLING
-#include "lower_name.h"
-#endif
-
 USING_NAMESPACE_EDG
 
 namespace edga {
@@ -71,7 +67,8 @@ class Exporter {
     json_.endArray();
     json_.key("routines");
     json_.beginArray();
-    for (a_routine_ptr r : routines_) writeRoutine(r);
+    // writing a routine can add the routines it refers to: the list grows while it is written
+    for (size_t i = 0; i < routines_.size(); ++i) writeRoutine(routines_[i]);
     json_.endArray();
     // last: every type the document refers to, and the types they refer to
     json_.key("types");
@@ -203,6 +200,16 @@ class Exporter {
     }
   }
 
+  // `key`: [start, end] of a range both ends of which the front end recorded
+  void range(const a_source_range& r, const char* key) {
+    if (r.start.seq == 0 || r.end.seq == 0) return;
+    json_.key(key);
+    json_.beginArray();
+    writePosition(r.start.seq, r.start.column);
+    writePosition(r.end.seq, r.end.column);
+    json_.endArray();
+  }
+
   // ---- macros -----------------------------------------------------------------------------------
 
   void writeMacros() {
@@ -305,6 +312,7 @@ class Exporter {
       a_routine_type_supplement_ptr extra = routineType->variant.routine.extra_info;
       if (extra != nullptr) {
         if (extra->has_ellipsis) json_.fieldBool("variadic", true);
+        if (extra->prototyped) json_.fieldBool("prototyped", true);
         if (extra->this_class != nullptr) json_.field("thisClass", typeId(extra->this_class));
         if (extra->does_not_return) json_.fieldBool("noReturn", true);
       }
@@ -328,14 +336,14 @@ class Exporter {
     if (r->is_template_function) json_.fieldBool("templateInstance", true);
     if (r->is_lambda_body) json_.fieldBool("lambda", true);
     position(r->source_corresp.decl_position);
-#if NEED_NAME_MANGLING && \
-    (TEMPLATE_LOOKUP_NEEDED || MICROSOFT_EXTENSIONS_ALLOWED || MODULE_ID_NEEDED)
-    if (!C_mode()) {
-      const char* mangled = get_mangled_function_name(r);
-      if (mangled != nullptr && (name == nullptr || std::strcmp(mangled, name) != 0))
-        json_.field("mangled", mangled);
+    // where the declaration starts: its specifiers (`int`, `static`), else its declarator (a
+    // constructor's name)
+    if (const a_decl_position_supplement* info = r->source_corresp.decl_pos_info) {
+      const a_source_position& start = info->specifiers_range.start.seq != 0
+                                           ? info->specifiers_range.start
+                                           : info->variant.declarator_range.start;
+      if (start.seq != 0) position(start, "start");
     }
-#endif
     writeAttributes(r->source_corresp.attributes);
 
     a_scope_ptr body = nullptr;
@@ -515,6 +523,30 @@ class Exporter {
         if (loop != nullptr && loop->increment != nullptr) writeExprField("inc", loop->increment);
         json_.key("body");
         writeStatement(s->variant.for_loop.statement);
+        break;
+      }
+      case stmk_range_based_for: {
+        a_range_based_for_loop_ptr loop = s->variant.range_based_for_loop.extra_info;
+        if (loop != nullptr) {
+          if (loop->initialization != nullptr) {
+            json_.key("init");
+            writeStatement(loop->initialization);
+          }
+          // the variable the for-range-declaration declares, set to each element in turn
+          if (loop->iterator != nullptr) {
+            json_.key("variable");
+            writeVariable(loop->iterator, false);
+          }
+          // what is iterated over: the initialiser of the front end's own range variable
+          a_variable_ptr range = loop->range;
+          if (range != nullptr && range->init_kind == initk_dynamic &&
+              range->initializer.dynamic != nullptr) {
+            json_.key("over");
+            writeDynamicInit(range->initializer.dynamic);
+          }
+        }
+        json_.key("body");
+        writeStatement(s->variant.range_based_for_loop.statement);
         break;
       }
       case stmk_switch:
@@ -915,6 +947,19 @@ class Exporter {
         json_.key("init");
         writeDynamicInit(c->variant.dynamic_init.ptr);
         break;
+      case ck_designator:
+        // the element of an aggregate the next constant initialises
+        if (!c->variant.designator.is_generic) {
+          if (c->variant.designator.is_field_designator) {
+            a_field_ptr f = c->variant.designator.variant.field;
+            if (f != nullptr && f->source_corresp.name != nullptr)
+              json_.field("field", f->source_corresp.name);
+          } else {
+            json_.field("index",
+                        static_cast<long long>(c->variant.designator.variant.array_element));
+          }
+        }
+        break;
       default:
         break;
     }
@@ -1021,6 +1066,9 @@ class Exporter {
         if (t->source_corresp.name != nullptr) json_.field("tag", t->source_corresp.name);
         json_.field("qualifiedName", qualifiedName(&t->source_corresp, iek_type));
         position(t->source_corresp.decl_position);
+        // the class-specifier, `struct S { ... }`: what is defined inside the braces
+        if (t->source_corresp.decl_pos_info != nullptr)
+          range(t->source_corresp.decl_pos_info->specifiers_range, "span");
         if (t->incomplete) json_.fieldBool("incomplete", true);
         json_.key("fields");
         json_.beginArray();
@@ -1051,7 +1099,10 @@ class Exporter {
       }
       case tk_typeref:
         json_.field("of", typeId(t->variant.typeref.type));
-        if (t->source_corresp.name != nullptr) json_.field("typedef", t->source_corresp.name);
+        if (t->source_corresp.name != nullptr) {
+          json_.field("typedef", t->source_corresp.name);
+          position(t->source_corresp.decl_position);
+        }
         json_.field("refKind", typerefKindName(t->variant.typeref.kind));
         break;
       default:
@@ -1118,6 +1169,15 @@ std::FILE* openOutput() {
   return f;
 }
 
+// The back end's document goes to a temporary file when the output is stdout, so a back end that
+// stops part way never leaves half a document there.
+std::FILE* openBackEndOutput() {
+  if (options().out != "-") return openOutput();
+  std::FILE* f = std::tmpfile();
+  if (f == nullptr) std::fprintf(stderr, "edga: cannot create a temporary file\n");
+  return f;
+}
+
 std::FILE* output = nullptr;
 JsonWriter* writer = nullptr;
 
@@ -1156,13 +1216,28 @@ void finishUnit(const std::vector<Diagnostic>& diagnostics) {
   writeDiagnostics(*writer, diagnostics);
   writer->endObject();
   std::fputc('\n', output);
-  if (output != stdout) std::fclose(output);
   delete writer;
   writer = nullptr;
+  if (options().out == "-") {
+    std::rewind(output);
+    char buffer[1 << 16];
+    for (std::size_t n; (n = std::fread(buffer, 1, sizeof buffer, output)) > 0;)
+      std::fwrite(buffer, 1, n, stdout);
+    std::fflush(stdout);
+  }
+  std::fclose(output);
   output = nullptr;
 }
 
 void writeFailedUnit(const char* sourceFile, const std::vector<Diagnostic>& diagnostics) {
+  // A back end that stopped part way (an internal error in the front end's routines) leaves its
+  // document open: drop it, so the failed document replaces it instead of being written over it.
+  if (writer != nullptr) {
+    delete writer;
+    writer = nullptr;
+  }
+  if (output != nullptr) std::fclose(output);
+  output = nullptr;
   std::FILE* f = openOutput();
   if (f == nullptr) return;
   JsonWriter json(f);
@@ -1183,7 +1258,7 @@ void writeFailedUnit(const char* sourceFile, const std::vector<Diagnostic>& diag
 }  // namespace edga
 
 void back_end(void) {
-  edga::output = edga::openOutput();
+  edga::output = edga::openBackEndOutput();
   if (edga::output == nullptr) return;
   edga::writer = new edga::JsonWriter(edga::output);
   edga::writer->beginObject();

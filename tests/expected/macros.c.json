@@ -156,12 +156,18 @@
    "qualifiedName": "clamp_size",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     8,
     5
+   ],
+   "start": [
+    0,
+    8,
+    1
    ],
    "defined": true,
    "params": [
@@ -736,12 +742,18 @@
    "qualifiedName": "field_name",
    "type": 2,
    "returnType": 3,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     13,
     13
+   ],
+   "start": [
+    0,
+    13,
+    1
    ],
    "defined": true,
    "params": [],

@@ -21,6 +21,11 @@ struct Diagnostic {
 // The results of a SARIF log; empty when the file is missing or unreadable.
 std::vector<Diagnostic> readSarifDiagnostics(const std::string& path);
 
+// The results in text that holds SARIF results without the log around them: what the front end
+// writes to the standard error for errors it finds in its command line, before its SARIF log is
+// open.
+std::vector<Diagnostic> readSarifResults(const std::string& text);
+
 }  // namespace edga
 
 #endif

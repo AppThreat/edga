@@ -30,6 +30,7 @@
    "qualifiedName": "use",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "p": [
@@ -37,7 +38,11 @@
     14,
     5
    ],
-   "mangled": "_Z3usei",
+   "start": [
+    0,
+    14,
+    1
+   ],
    "defined": true,
    "params": [
     {
@@ -1135,30 +1140,385 @@
    "qualifiedName": "clamp_add",
    "type": 15,
    "returnType": 2,
+   "prototyped": true,
    "linkage": "cplusplus_external",
-   "storage": "extern",
+   "storage": "unspecified",
    "templateInstance": true,
    "p": [
     0,
     5,
     3
    ],
-   "mangled": "_Z9clamp_addIsET_S0_S0_S0_",
-   "defined": false,
+   "defined": true,
    "params": [
     {
+     "id": 7,
      "name": "a",
-     "type": 2
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      15
+     ]
     },
     {
+     "id": 8,
      "name": "b",
-     "type": 2
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      20
+     ]
     },
     {
+     "id": 9,
      "name": "limit",
-     "type": 2
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      25
+     ]
     }
-   ]
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     5,
+     32
+    ],
+    "end": [
+     0,
+     8,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       6,
+       3
+      ],
+      "end": [
+       0,
+       6,
+       16
+      ],
+      "decls": [
+       {
+        "id": 10,
+        "name": "sum",
+        "type": 2,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         6,
+         5
+        ],
+        "init": {
+         "k": "expression",
+         "var": 10,
+         "expr": {
+          "k": "operation",
+          "t": 2,
+          "p": [
+           0,
+           6,
+           11
+          ],
+          "implicit": true,
+          "op": "cast",
+          "ops": [
+           {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             6,
+             13
+            ],
+            "range": [
+             [
+              0,
+              6,
+              11
+             ],
+             [
+              0,
+              6,
+              15
+             ]
+            ],
+            "op": "add",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               6,
+               11
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 2,
+                "p": [
+                 0,
+                 6,
+                 11
+                ],
+                "range": [
+                 [
+                  0,
+                  6,
+                  11
+                 ],
+                 [
+                  0,
+                  6,
+                  11
+                 ]
+                ],
+                "var": 7,
+                "name": "a"
+               }
+              ]
+             },
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               6,
+               15
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 2,
+                "p": [
+                 0,
+                 6,
+                 15
+                ],
+                "range": [
+                 [
+                  0,
+                  6,
+                  15
+                 ],
+                 [
+                  0,
+                  6,
+                  15
+                 ]
+                ],
+                "var": 8,
+                "name": "b"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       35
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        7,
+        22
+       ],
+       "range": [
+        [
+         0,
+         7,
+         10
+        ],
+        [
+         0,
+         7,
+         34
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 8,
+         "p": [
+          0,
+          7,
+          14
+         ],
+         "range": [
+          [
+           0,
+           7,
+           10
+          ],
+          [
+           0,
+           7,
+           20
+          ]
+         ],
+         "op": "gt",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            7,
+            10
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 2,
+             "p": [
+              0,
+              7,
+              10
+             ],
+             "range": [
+              [
+               0,
+               7,
+               10
+              ],
+              [
+               0,
+               7,
+               12
+              ]
+             ],
+             "var": 10,
+             "name": "sum"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            7,
+            16
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 2,
+             "p": [
+              0,
+              7,
+              16
+             ],
+             "range": [
+              [
+               0,
+               7,
+               16
+              ],
+              [
+               0,
+               7,
+               20
+              ]
+             ],
+             "var": 9,
+             "name": "limit"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 2,
+         "p": [
+          0,
+          7,
+          24
+         ],
+         "range": [
+          [
+           0,
+           7,
+           24
+          ],
+          [
+           0,
+           7,
+           28
+          ]
+         ],
+         "var": 9,
+         "name": "limit"
+        },
+        {
+         "k": "variable",
+         "t": 2,
+         "p": [
+          0,
+          7,
+          32
+         ],
+         "range": [
+          [
+           0,
+           7,
+           32
+          ],
+          [
+           0,
+           7,
+           34
+          ]
+         ],
+         "var": 10,
+         "name": "sum"
+        }
+       ]
+      }
+     }
+    ]
+   }
   },
   {
    "id": 3,
@@ -1166,30 +1526,320 @@
    "qualifiedName": "clamp_add",
    "type": 16,
    "returnType": 4,
+   "prototyped": true,
    "linkage": "cplusplus_external",
-   "storage": "extern",
+   "storage": "unspecified",
    "templateInstance": true,
    "p": [
     0,
     5,
     3
    ],
-   "mangled": "_Z9clamp_addIlET_S0_S0_S0_",
-   "defined": false,
+   "defined": true,
    "params": [
     {
+     "id": 11,
      "name": "a",
-     "type": 4
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      15
+     ]
     },
     {
+     "id": 12,
      "name": "b",
-     "type": 4
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      20
+     ]
     },
     {
+     "id": 13,
      "name": "limit",
-     "type": 4
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      5,
+      25
+     ]
     }
-   ]
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     5,
+     32
+    ],
+    "end": [
+     0,
+     8,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       6,
+       3
+      ],
+      "end": [
+       0,
+       6,
+       16
+      ],
+      "decls": [
+       {
+        "id": 14,
+        "name": "sum",
+        "type": 4,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         6,
+         5
+        ],
+        "init": {
+         "k": "expression",
+         "var": 14,
+         "expr": {
+          "k": "operation",
+          "t": 4,
+          "p": [
+           0,
+           6,
+           13
+          ],
+          "range": [
+           [
+            0,
+            6,
+            11
+           ],
+           [
+            0,
+            6,
+            15
+           ]
+          ],
+          "op": "add",
+          "ops": [
+           {
+            "k": "variable",
+            "t": 4,
+            "p": [
+             0,
+             6,
+             11
+            ],
+            "range": [
+             [
+              0,
+              6,
+              11
+             ],
+             [
+              0,
+              6,
+              11
+             ]
+            ],
+            "var": 11,
+            "name": "a"
+           },
+           {
+            "k": "variable",
+            "t": 4,
+            "p": [
+             0,
+             6,
+             15
+            ],
+            "range": [
+             [
+              0,
+              6,
+              15
+             ],
+             [
+              0,
+              6,
+              15
+             ]
+            ],
+            "var": 12,
+            "name": "b"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       35
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 4,
+       "p": [
+        0,
+        7,
+        22
+       ],
+       "range": [
+        [
+         0,
+         7,
+         10
+        ],
+        [
+         0,
+         7,
+         34
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 8,
+         "p": [
+          0,
+          7,
+          14
+         ],
+         "range": [
+          [
+           0,
+           7,
+           10
+          ],
+          [
+           0,
+           7,
+           20
+          ]
+         ],
+         "op": "gt",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 4,
+           "p": [
+            0,
+            7,
+            10
+           ],
+           "range": [
+            [
+             0,
+             7,
+             10
+            ],
+            [
+             0,
+             7,
+             12
+            ]
+           ],
+           "var": 14,
+           "name": "sum"
+          },
+          {
+           "k": "variable",
+           "t": 4,
+           "p": [
+            0,
+            7,
+            16
+           ],
+           "range": [
+            [
+             0,
+             7,
+             16
+            ],
+            [
+             0,
+             7,
+             20
+            ]
+           ],
+           "var": 13,
+           "name": "limit"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 4,
+         "p": [
+          0,
+          7,
+          24
+         ],
+         "range": [
+          [
+           0,
+           7,
+           24
+          ],
+          [
+           0,
+           7,
+           28
+          ]
+         ],
+         "var": 13,
+         "name": "limit"
+        },
+        {
+         "k": "variable",
+         "t": 4,
+         "p": [
+          0,
+          7,
+          32
+         ],
+         "range": [
+          [
+           0,
+           7,
+           32
+          ],
+          [
+           0,
+           7,
+           34
+          ]
+         ],
+         "var": 14,
+         "name": "sum"
+        }
+       ]
+      }
+     }
+    ]
+   }
   },
   {
    "id": 5,
@@ -1197,6 +1847,7 @@
    "qualifiedName": "Failure::operator=",
    "type": 17,
    "returnType": 18,
+   "prototyped": true,
    "thisClass": 10,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1210,7 +1861,6 @@
     10,
     8
    ],
-   "mangled": "_ZN7FailureaSERKS_",
    "defined": false,
    "params": [
     {
@@ -1225,6 +1875,7 @@
    "qualifiedName": "Failure::operator=",
    "type": 19,
    "returnType": 18,
+   "prototyped": true,
    "thisClass": 10,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1238,7 +1889,6 @@
     10,
     8
    ],
-   "mangled": "_ZN7FailureaSEOS_",
    "defined": false,
    "params": [
     {
@@ -1246,6 +1896,233 @@
      "type": 20
     }
    ]
+  },
+  {
+   "id": 4,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 18, col. 17::operator()",
+   "type": 21,
+   "returnType": 1,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 6,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    18,
+    28
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 15,
+     "name": "",
+     "type": 22,
+     "storage": "auto",
+     "this": true
+    },
+    {
+     "id": 16,
+     "name": "v",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      18,
+      33
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     18,
+     36
+    ],
+    "end": [
+     0,
+     18,
+     60
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       18,
+       38
+      ],
+      "end": [
+       0,
+       18,
+       58
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        18,
+        55
+       ],
+       "range": [
+        [
+         0,
+         18,
+         45
+        ],
+        [
+         0,
+         18,
+         57
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          18,
+          47
+         ],
+         "range": [
+          [
+           0,
+           18,
+           45
+          ],
+          [
+           0,
+           18,
+           53
+          ]
+         ],
+         "op": "multiply",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            18,
+            45
+           ],
+           "range": [
+            [
+             0,
+             18,
+             45
+            ],
+            [
+             0,
+             18,
+             45
+            ]
+           ],
+           "var": 16,
+           "name": "v"
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            18,
+            49
+           ],
+           "implicit": true,
+           "op": "ref_indirect",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 7,
+             "p": [
+              0,
+              18,
+              49
+             ],
+             "range": [
+              [
+               0,
+               18,
+               49
+              ],
+              [
+               0,
+               18,
+               53
+              ]
+             ],
+             "implicit": true,
+             "op": "points_to_field",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 23,
+               "var": 15,
+               "name": ""
+              },
+              {
+               "k": "field",
+               "t": 7,
+               "name": "scale"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 24,
+         "p": [
+          0,
+          18,
+          57
+         ],
+         "range": [
+          [
+           0,
+           18,
+           57
+          ],
+          [
+           0,
+           18,
+           57
+          ]
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 23,
+           "var": 15,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 1,
+           "name": "n",
+           "offset": 8
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
   }
  ],
  "types": [
@@ -1362,6 +2239,18 @@
     10,
     8
    ],
+   "span": [
+    [
+     0,
+     10,
+     1
+    ],
+    [
+     0,
+     12,
+     1
+    ]
+   ],
    "fields": [
     {
      "name": "code",
@@ -1470,6 +2359,27 @@
    "params": [
     1
    ]
+  },
+  {
+   "id": 22,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 18, col. 17 *const",
+   "of": 23,
+   "refKind": "none"
+  },
+  {
+   "id": 23,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 18, col. 17 *",
+   "size": 8,
+   "to": 12
+  },
+  {
+   "id": 24,
+   "kind": "typeref",
+   "name": "const int",
+   "of": 1,
+   "refKind": "none"
   }
  ],
  "diagnostics": []

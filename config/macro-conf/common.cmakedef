@@ -8,6 +8,9 @@ EXTRA_SOURCE_POSITIONS_IN_IL=1
 GENERATE_SOURCE_SEQUENCE_LISTS=1
 MAINTAIN_NEEDED_FLAGS=1
 RECORD_UNRECOGNIZED_ATTRIBUTES=1
+# A variable-length array's deallocation is the generated code's business: with it in the IL, a
+# `return` in its scope is rewritten through a temporary.
+VLA_DEALLOCATIONS_IN_IL=0
 
 import <support/feature/microsoft-extensions/on>
 DEFAULT_MICROSOFT_MODE=0

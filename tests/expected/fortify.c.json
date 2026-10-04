@@ -59,12 +59,18 @@
    "qualifiedName": "fill",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     12,
     6
+   ],
+   "start": [
+    0,
+    12,
+    1
    ],
    "defined": true,
    "params": [
@@ -773,6 +779,58 @@
      }
     ]
    }
+  },
+  {
+   "id": 2,
+   "name": "__builtin___memcpy_chk",
+   "qualifiedName": "__builtin___memcpy_chk",
+   "type": 14,
+   "returnType": 5,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "extern",
+   "implicit": true,
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 5
+    },
+    {
+     "name": "",
+     "type": 9
+    },
+    {
+     "name": "",
+     "type": 10
+    },
+    {
+     "name": "",
+     "type": 10
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "__builtin_object_size",
+   "qualifiedName": "__builtin_object_size",
+   "type": 15,
+   "returnType": 10,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "extern",
+   "implicit": true,
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 9
+    },
+    {
+     "name": "",
+     "type": 12
+    }
+   ]
   }
  ],
  "types": [
@@ -797,14 +855,14 @@
    "kind": "pointer",
    "name": "struct packet *",
    "size": 8,
-   "to": 14
+   "to": 16
   },
   {
    "id": 3,
    "kind": "pointer",
    "name": "const char *",
    "size": 8,
-   "to": 15
+   "to": 17
   },
   {
    "id": 4,
@@ -812,6 +870,11 @@
    "name": "size_t",
    "of": 10,
    "typedef": "size_t",
+   "p": [
+    0,
+    4,
+    23
+   ],
    "refKind": "none"
   },
   {
@@ -826,21 +889,21 @@
    "kind": "pointer",
    "name": "void *(*)(void *, const void *, unsigned long, unsigned long)",
    "size": 8,
-   "to": 16
+   "to": 14
   },
   {
    "id": 7,
    "kind": "pointer",
    "name": "char *",
    "size": 8,
-   "to": 17
+   "to": 18
   },
   {
    "id": 8,
    "kind": "array",
    "name": "char [16]",
    "size": 16,
-   "of": 17,
+   "of": 18,
    "count": 16
   },
   {
@@ -848,7 +911,7 @@
    "kind": "pointer",
    "name": "const void *",
    "size": 8,
-   "to": 18
+   "to": 19
   },
   {
    "id": 10,
@@ -862,7 +925,7 @@
    "kind": "pointer",
    "name": "unsigned long (*)(const void *, int)",
    "size": 8,
-   "to": 19
+   "to": 15
   },
   {
    "id": 12,
@@ -880,6 +943,28 @@
   },
   {
    "id": 14,
+   "kind": "routine",
+   "name": "void *(void *, const void *, unsigned long, unsigned long)",
+   "returns": 5,
+   "params": [
+    5,
+    9,
+    10,
+    10
+   ]
+  },
+  {
+   "id": 15,
+   "kind": "routine",
+   "name": "unsigned long (const void *, int)",
+   "returns": 10,
+   "params": [
+    9,
+    12
+   ]
+  },
+  {
+   "id": 16,
    "kind": "struct",
    "name": "struct packet",
    "size": 18,
@@ -889,6 +974,18 @@
     0,
     7,
     8
+   ],
+   "span": [
+    [
+     0,
+     7,
+     1
+    ],
+    [
+     0,
+     10,
+     1
+    ]
    ],
    "fields": [
     {
@@ -915,47 +1012,25 @@
    "bases": []
   },
   {
-   "id": 15,
+   "id": 17,
    "kind": "typeref",
    "name": "const char",
-   "of": 17,
+   "of": 18,
    "refKind": "none"
   },
   {
-   "id": 16,
-   "kind": "routine",
-   "name": "void *(void *, const void *, unsigned long, unsigned long)",
-   "returns": 5,
-   "params": [
-    5,
-    9,
-    10,
-    10
-   ]
-  },
-  {
-   "id": 17,
+   "id": 18,
    "kind": "integer",
    "name": "char",
    "size": 1,
    "signed": true
   },
   {
-   "id": 18,
+   "id": 19,
    "kind": "typeref",
    "name": "const void",
    "of": 1,
    "refKind": "none"
-  },
-  {
-   "id": 19,
-   "kind": "routine",
-   "name": "unsigned long (const void *, int)",
-   "returns": 10,
-   "params": [
-    9,
-    12
-   ]
   }
  ],
  "diagnostics": []

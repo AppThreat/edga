@@ -126,6 +126,7 @@
         "type": { "type": "integer" },
         "returnType": { "type": "integer" },
         "variadic": { "type": "boolean" },
+        "prototyped": { "type": "boolean", "description": "Declared with a parameter list, `(void)` included." },
         "thisClass": { "type": "integer" },
         "noReturn": { "type": "boolean" },
         "linkage": { "type": "string" },
@@ -139,7 +140,7 @@
         "implicit": { "type": "boolean" },
         "templateInstance": { "type": "boolean" },
         "lambda": { "type": "boolean" },
-        "mangled": { "type": "string" },
+        "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers, else its declarator." },
         "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
         "defined": { "type": "boolean", "description": "The routine has a body in this translation unit; it is exported only for files under the project root." },
         "params": { "type": "array", "items": { "type": "object" } },
@@ -183,6 +184,8 @@
             "rangeEnd": { "type": ["string", "null"] },
             "handlers": { "type": "array" },
             "var": { "type": "integer" },
+            "variable": { "$ref": "#/$defs/variable", "description": "range_based_for: the variable the for-range-declaration declares." },
+            "over": { "$ref": "#/$defs/initializer", "description": "range_based_for: what is iterated over." },
             "statementExpression": { "type": "boolean" }
           }
         }
@@ -234,6 +237,8 @@
             "value": { "type": "string" },
             "base": { "type": "string" },
             "elements": { "type": "array" },
+            "field": { "type": "string", "description": "A designator's field." },
+            "index": { "type": "integer", "description": "A designator's array element." },
             "var": { "type": "integer" },
             "name": { "type": "string" },
             "offset": { "type": "integer" },
@@ -278,6 +283,7 @@
         "variadic": { "type": "boolean" },
         "qualifiedName": { "type": "string" },
         "incomplete": { "type": "boolean" },
+        "span": { "type": "array", "items": { "$ref": "#/$defs/position" }, "description": "A class-specifier's first and last token: what is written in its braces is inside." },
         "fields": { "type": "array" },
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },

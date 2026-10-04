@@ -30,12 +30,18 @@
    "qualifiedName": "distance",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     9,
     6
+   ],
+   "start": [
+    0,
+    9,
+    1
    ],
    "defined": true,
    "params": [
@@ -227,12 +233,18 @@
    "qualifiedName": "advance",
    "type": 5,
    "returnType": 3,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     11,
     7
+   ],
+   "start": [
+    0,
+    11,
+    1
    ],
    "defined": true,
    "params": [
@@ -623,12 +635,18 @@
    "qualifiedName": "pick",
    "type": 7,
    "returnType": 6,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     18,
     5
+   ],
+   "start": [
+    0,
+    18,
+    1
    ],
    "defined": true,
    "params": [
@@ -902,12 +920,18 @@
    "qualifiedName": "narrow",
    "type": 9,
    "returnType": 10,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     20,
     15
+   ],
+   "start": [
+    0,
+    20,
+    1
    ],
    "defined": true,
    "params": [
@@ -1427,6 +1451,18 @@
     0,
     4,
     8
+   ],
+   "span": [
+    [
+     0,
+     4,
+     1
+    ],
+    [
+     0,
+     7,
+     1
+    ]
    ],
    "fields": [
     {

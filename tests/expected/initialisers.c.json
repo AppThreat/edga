@@ -30,12 +30,18 @@
    "qualifiedName": "origin",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     14,
     14
+   ],
+   "start": [
+    0,
+    14,
+    1
    ],
    "defined": true,
    "params": [],
@@ -87,7 +93,8 @@
            {
             "k": "constant",
             "t": 2,
-            "ck": "designator"
+            "ck": "designator",
+            "field": "y"
            },
            {
             "k": "constant",
@@ -98,7 +105,8 @@
            {
             "k": "constant",
             "t": 2,
-            "ck": "designator"
+            "ck": "designator",
+            "field": "x"
            },
            {
             "k": "constant",
@@ -148,7 +156,8 @@
            {
             "k": "constant",
             "t": 2,
-            "ck": "designator"
+            "ck": "designator",
+            "index": 2
            },
            {
             "k": "constant",
@@ -474,7 +483,8 @@
             {
              "k": "constant",
              "t": 2,
-             "ck": "designator"
+             "ck": "designator",
+             "field": "x"
             },
             {
              "k": "constant",
@@ -498,12 +508,18 @@
    "qualifiedName": "sum",
    "type": 6,
    "returnType": 3,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     20,
     5
+   ],
+   "start": [
+    0,
+    20,
+    1
    ],
    "defined": true,
    "params": [
@@ -1149,175 +1165,6 @@
       ]
      },
      {
-      "k": "expr",
-      "p": [
-       0,
-       27,
-       3
-      ],
-      "expr": {
-       "k": "operation",
-       "t": 3,
-       "op": "assign",
-       "ops": [
-        {
-         "k": "variable",
-         "t": 3,
-         "lv": true,
-         "var": 7,
-         "name": ""
-        },
-        {
-         "k": "operation",
-         "t": 3,
-         "p": [
-          0,
-          27,
-          16
-         ],
-         "range": [
-          [
-           0,
-           27,
-           10
-          ],
-          [
-           0,
-           27,
-           44
-          ]
-         ],
-         "op": "add",
-         "ops": [
-          {
-           "k": "variable",
-           "t": 3,
-           "p": [
-            0,
-            27,
-            10
-           ],
-           "range": [
-            [
-             0,
-             27,
-             10
-            ],
-            [
-             0,
-             27,
-             14
-            ]
-           ],
-           "var": 5,
-           "name": "total"
-          },
-          {
-           "k": "constant",
-           "t": 3,
-           "p": [
-            0,
-            27,
-            18
-           ],
-           "range": [
-            [
-             0,
-             27,
-             18
-            ],
-            [
-             0,
-             27,
-             44
-            ]
-           ],
-           "ck": "integer",
-           "value": "8",
-           "expr": {
-            "k": "operation",
-            "t": 3,
-            "p": [
-             0,
-             27,
-             18
-            ],
-            "range": [
-             [
-              0,
-              27,
-              18
-             ],
-             [
-              0,
-              27,
-              44
-             ]
-            ],
-            "op": "cast",
-            "ops": [
-             {
-              "k": "constant",
-              "t": 8,
-              "p": [
-               0,
-               27,
-               23
-              ],
-              "range": [
-               [
-                0,
-                27,
-                23
-               ],
-               [
-                0,
-                27,
-                44
-               ]
-              ],
-              "ck": "integer",
-              "value": "8",
-              "expr": {
-               "k": "sizeof",
-               "t": 8,
-               "p": [
-                0,
-                27,
-                23
-               ],
-               "range": [
-                [
-                 0,
-                 27,
-                 23
-                ],
-                [
-                 0,
-                 27,
-                 44
-                ]
-               ],
-               "of": 9
-              }
-             }
-            ]
-           }
-          }
-         ]
-        }
-       ]
-      }
-     },
-     {
-      "k": "expr",
-      "implicit": true,
-      "expr": {
-       "k": "vla_dealloc",
-       "t": 2
-      }
-     },
-     {
       "k": "return",
       "p": [
        0,
@@ -1330,10 +1177,143 @@
        45
       ],
       "expr": {
-       "k": "variable",
+       "k": "operation",
        "t": 3,
-       "var": 7,
-       "name": ""
+       "p": [
+        0,
+        27,
+        16
+       ],
+       "range": [
+        [
+         0,
+         27,
+         10
+        ],
+        [
+         0,
+         27,
+         44
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 3,
+         "p": [
+          0,
+          27,
+          10
+         ],
+         "range": [
+          [
+           0,
+           27,
+           10
+          ],
+          [
+           0,
+           27,
+           14
+          ]
+         ],
+         "var": 5,
+         "name": "total"
+        },
+        {
+         "k": "constant",
+         "t": 3,
+         "p": [
+          0,
+          27,
+          18
+         ],
+         "range": [
+          [
+           0,
+           27,
+           18
+          ],
+          [
+           0,
+           27,
+           44
+          ]
+         ],
+         "ck": "integer",
+         "value": "8",
+         "expr": {
+          "k": "operation",
+          "t": 3,
+          "p": [
+           0,
+           27,
+           18
+          ],
+          "range": [
+           [
+            0,
+            27,
+            18
+           ],
+           [
+            0,
+            27,
+            44
+           ]
+          ],
+          "op": "cast",
+          "ops": [
+           {
+            "k": "constant",
+            "t": 8,
+            "p": [
+             0,
+             27,
+             23
+            ],
+            "range": [
+             [
+              0,
+              27,
+              23
+             ],
+             [
+              0,
+              27,
+              44
+             ]
+            ],
+            "ck": "integer",
+            "value": "8",
+            "expr": {
+             "k": "sizeof",
+             "t": 8,
+             "p": [
+              0,
+              27,
+              23
+             ],
+             "range": [
+              [
+               0,
+               27,
+               23
+              ],
+              [
+               0,
+               27,
+               44
+              ]
+             ],
+             "of": 9
+            }
+           }
+          ]
+         }
+        }
+       ]
       }
      }
     ]
@@ -1359,6 +1339,18 @@
     0,
     5,
     8
+   ],
+   "span": [
+    [
+     0,
+     5,
+     1
+    ],
+    [
+     0,
+     7,
+     1
+    ]
    ],
    "fields": [
     {
@@ -1447,6 +1439,18 @@
     9,
     8
    ],
+   "span": [
+    [
+     0,
+     9,
+     1
+    ],
+    [
+     0,
+     12,
+     1
+    ]
+   ],
    "fields": [
     {
      "name": "length",
@@ -1477,6 +1481,11 @@
    "name": "size_t",
    "of": 8,
    "typedef": "size_t",
+   "p": [
+    0,
+    3,
+    23
+   ],
    "refKind": "none"
   },
   {

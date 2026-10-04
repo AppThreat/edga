@@ -174,7 +174,30 @@ class Parser {
   size_t i_ = 0;
 };
 
+Diagnostic diagnosticOf(const Value& result) {
+  Diagnostic d;
+  d.level = result["level"].text;
+  d.code = result["ruleId"].text;
+  d.message = result["message"]["text"].text;
+  const Value& location = result["locations"].at(0)["physicalLocation"];
+  d.file = location["artifactLocation"]["uri"].text;
+  d.line = static_cast<long>(location["region"]["startLine"].number);
+  d.column = static_cast<long>(location["region"]["startColumn"].number);
+  return d;
+}
+
 }  // namespace
+
+std::vector<Diagnostic> readSarifResults(const std::string& text) {
+  std::vector<Diagnostic> out;
+  static const std::string start = "{\"ruleId\"";
+  for (size_t at = text.find(start); at != std::string::npos; at = text.find(start, at + 1)) {
+    const std::string rest = text.substr(at);
+    Value result;
+    if (Parser(rest).parse(result) && result.kind == Value::Object) out.push_back(diagnosticOf(result));
+  }
+  return out;
+}
 
 std::vector<Diagnostic> readSarifDiagnostics(const std::string& path) {
   std::vector<Diagnostic> out;
@@ -188,17 +211,7 @@ std::vector<Diagnostic> readSarifDiagnostics(const std::string& path) {
   Value root;
   if (!Parser(text).parse(root)) return out;
   for (const Value& run : root["runs"].items) {
-    for (const Value& result : run["results"].items) {
-      Diagnostic d;
-      d.level = result["level"].text;
-      d.code = result["ruleId"].text;
-      d.message = result["message"]["text"].text;
-      const Value& location = result["locations"].at(0)["physicalLocation"];
-      d.file = location["artifactLocation"]["uri"].text;
-      d.line = static_cast<long>(location["region"]["startLine"].number);
-      d.column = static_cast<long>(location["region"]["startColumn"].number);
-      out.push_back(d);
-    }
+    for (const Value& result : run["results"].items) out.push_back(diagnosticOf(result));
   }
   return out;
 }

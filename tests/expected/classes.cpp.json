@@ -30,6 +30,7 @@
    "qualifiedName": "geometry::measure",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "p": [
@@ -37,7 +38,11 @@
     26,
     5
    ],
-   "mangled": "_ZN8geometry7measureERKNS_5ShapeE",
+   "start": [
+    0,
+    26,
+    1
+   ],
    "defined": true,
    "params": [
     {
@@ -173,6 +178,7 @@
    "qualifiedName": "geometry::combined",
    "type": 5,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "p": [
@@ -180,7 +186,11 @@
     28,
     5
    ],
-   "mangled": "_ZN8geometry8combinedEv",
+   "start": [
+    0,
+    28,
+    1
+   ],
    "defined": true,
    "params": [],
    "body": {
@@ -678,6 +688,7 @@
    "qualifiedName": "geometry::Vec2::operator+",
    "type": 12,
    "returnType": 7,
+   "prototyped": true,
    "thisClass": 7,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -690,7 +701,11 @@
     7,
     8
    ],
-   "mangled": "_ZNK8geometry4Vec2plERKS0_",
+   "start": [
+    0,
+    7,
+    3
+   ],
    "defined": true,
    "params": [
     {
@@ -1071,6 +1086,7 @@
    "qualifiedName": "geometry::Vec2::operator=",
    "type": 15,
    "returnType": 16,
+   "prototyped": true,
    "thisClass": 7,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1084,7 +1100,6 @@
     5,
     8
    ],
-   "mangled": "_ZN8geometry4Vec2aSERKS0_",
    "defined": false,
    "params": [
     {
@@ -1099,6 +1114,7 @@
    "qualifiedName": "geometry::Vec2::operator=",
    "type": 17,
    "returnType": 16,
+   "prototyped": true,
    "thisClass": 7,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1112,7 +1128,6 @@
     5,
     8
    ],
-   "mangled": "_ZN8geometry4Vec2aSEOS0_",
    "defined": false,
    "params": [
     {
@@ -1127,6 +1142,7 @@
    "qualifiedName": "geometry::Shape::~Shape",
    "type": 19,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 21,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -1139,7 +1155,11 @@
     12,
     11
    ],
-   "mangled": "_ZN8geometry5ShapeD1Ev",
+   "start": [
+    0,
+    12,
+    3
+   ],
    "defined": true,
    "params": [
     {
@@ -1176,6 +1196,7 @@
    "qualifiedName": "geometry::Shape::area",
    "type": 23,
    "returnType": 1,
+   "prototyped": true,
    "thisClass": 21,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1187,7 +1208,11 @@
     13,
     15
    ],
-   "mangled": "_ZNK8geometry5Shape4areaEv",
+   "start": [
+    0,
+    13,
+    3
+   ],
    "defined": false,
    "params": []
   },
@@ -1197,6 +1222,7 @@
    "qualifiedName": "geometry::Shape::Shape",
    "type": 24,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 21,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -1209,7 +1235,6 @@
     10,
     7
    ],
-   "mangled": "_ZN8geometry5ShapeC1Ev",
    "defined": true,
    "params": [
     {
@@ -1237,6 +1262,7 @@
    "qualifiedName": "geometry::Shape::Shape",
    "type": 25,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 21,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1249,7 +1275,6 @@
     10,
     7
    ],
-   "mangled": "_ZN8geometry5ShapeC1ERKS0_",
    "defined": false,
    "params": [
     {
@@ -1264,6 +1289,7 @@
    "qualifiedName": "geometry::Shape::operator=",
    "type": 26,
    "returnType": 27,
+   "prototyped": true,
    "thisClass": 21,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1277,7 +1303,6 @@
     10,
     7
    ],
-   "mangled": "_ZN8geometry5ShapeaSERKS0_",
    "defined": false,
    "params": [
     {
@@ -1292,6 +1317,7 @@
    "qualifiedName": "geometry::Square::Square",
    "type": 28,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -1303,7 +1329,11 @@
     18,
     12
    ],
-   "mangled": "_ZN8geometry6SquareC1Ei",
+   "start": [
+    0,
+    18,
+    3
+   ],
    "defined": true,
    "params": [
     {
@@ -1392,6 +1422,7 @@
    "qualifiedName": "geometry::Square::~Square",
    "type": 30,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -1404,7 +1435,11 @@
     19,
     3
    ],
-   "mangled": "_ZN8geometry6SquareD1Ev",
+   "start": [
+    0,
+    19,
+    3
+   ],
    "defined": true,
    "params": [
     {
@@ -1451,6 +1486,7 @@
    "qualifiedName": "geometry::Square::area",
    "type": 31,
    "returnType": 1,
+   "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
    "storage": "unspecified",
@@ -1462,7 +1498,11 @@
     20,
     7
    ],
-   "mangled": "_ZNK8geometry6Square4areaEv",
+   "start": [
+    0,
+    20,
+    3
+   ],
    "defined": true,
    "params": [
     {
@@ -1616,6 +1656,7 @@
    "qualifiedName": "geometry::Square::Square",
    "type": 34,
    "returnType": 20,
+   "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1628,7 +1669,6 @@
     16,
     7
    ],
-   "mangled": "_ZN8geometry6SquareC1ERKS0_",
    "defined": false,
    "params": [
     {
@@ -1643,6 +1683,7 @@
    "qualifiedName": "geometry::Square::operator=",
    "type": 36,
    "returnType": 37,
+   "prototyped": true,
    "thisClass": 6,
    "linkage": "cplusplus_external",
    "storage": "extern",
@@ -1656,7 +1697,6 @@
     16,
     7
    ],
-   "mangled": "_ZN8geometry6SquareaSERKS0_",
    "defined": false,
    "params": [
     {
@@ -1724,6 +1764,18 @@
     16,
     7
    ],
+   "span": [
+    [
+     0,
+     16,
+     1
+    ],
+    [
+     0,
+     24,
+     1
+    ]
+   ],
    "fields": [
     {
      "name": "side_",
@@ -1753,6 +1805,18 @@
     0,
     5,
     8
+   ],
+   "span": [
+    [
+     0,
+     5,
+     1
+    ],
+    [
+     0,
+     8,
+     1
+    ]
    ],
    "fields": [
     {
@@ -1888,6 +1952,18 @@
     0,
     10,
     7
+   ],
+   "span": [
+    [
+     0,
+     10,
+     1
+    ],
+    [
+     0,
+     14,
+     1
+    ]
    ],
    "fields": [],
    "bases": []

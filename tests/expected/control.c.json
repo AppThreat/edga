@@ -30,12 +30,18 @@
    "qualifiedName": "classify",
    "type": 0,
    "returnType": 1,
+   "prototyped": true,
    "linkage": "external",
    "storage": "unspecified",
    "p": [
     0,
     3,
     5
+   ],
+   "start": [
+    0,
+    3,
+    1
    ],
    "defined": true,
    "params": [
