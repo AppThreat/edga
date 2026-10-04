@@ -38,6 +38,7 @@
     "files": { "type": "array", "items": { "$ref": "#/$defs/file" } },
     "macros": { "type": "array", "items": { "$ref": "#/$defs/macro" } },
     "macroInvocations": { "type": "array", "items": { "$ref": "#/$defs/macroInvocation" } },
+    "inlineNamespaces": { "type": "array", "items": { "type": "string" }, "description": "The inline namespaces of the unit, qualified (`std::__1`): names include them, as the front end qualifies names." },
     "globals": { "type": "array", "items": { "$ref": "#/$defs/variable" }, "description": "Variables of file and namespace scope, and static data members." },
     "routines": { "type": "array", "items": { "$ref": "#/$defs/routine" } },
     "types": { "type": "array", "items": { "$ref": "#/$defs/type" } },
@@ -112,7 +113,8 @@
         "addressTaken": { "type": "boolean" },
         "modified": { "type": "boolean" },
         "init": { "$ref": "#/$defs/initializer" },
-        "zeroInit": { "type": "boolean" }
+        "zeroInit": { "type": "boolean" },
+        "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers." }
       }
     },
     "routine": {
@@ -287,6 +289,7 @@
         "fields": { "type": "array" },
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },
+        "templateInstance": { "type": "boolean", "description": "An instance of a class template." },
         "typedef": { "type": "string" },
         "refKind": { "type": "string" }
       }

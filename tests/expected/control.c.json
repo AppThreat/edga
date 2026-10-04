@@ -22,6 +22,7 @@
  ],
  "macros": [],
  "macroInvocations": [],
+ "inlineNamespaces": [],
  "globals": [],
  "routines": [
   {
@@ -55,6 +56,11 @@
       0,
       3,
       18
+     ],
+     "start": [
+      0,
+      3,
+      14
      ]
     }
    ],
@@ -94,6 +100,11 @@
          0,
          4,
          7
+        ],
+        "start": [
+         0,
+         4,
+         3
         ],
         "init": {
          "k": "constant",

@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstring>
+#include <set>
 #include <string>
 #include <unordered_map>
 #include <unordered_set>
@@ -61,6 +62,12 @@ class Exporter {
     json_.key("macroInvocations");
     writeMacroInvocations();
     collect(il_header.primary_scope);
+    // names are written as the front end qualifies them, inline namespaces included
+    // (`std::__1::vector`); a program names their members without them
+    json_.key("inlineNamespaces");
+    json_.beginArray();
+    for (const std::string& name : inlineNamespaces_) json_.string(name);
+    json_.endArray();
     json_.key("globals");
     json_.beginArray();
     for (a_variable_ptr v : globals_) writeVariable(v, /*withInitializer=*/true);
@@ -293,8 +300,11 @@ class Exporter {
         }
       }
     }
-    for (a_namespace_ptr ns = s->namespaces; ns != nullptr; ns = ns->next)
-      if (!ns->is_namespace_alias) collect(ns->variant.assoc_scope);
+    for (a_namespace_ptr ns = s->namespaces; ns != nullptr; ns = ns->next) {
+      if (ns->is_namespace_alias) continue;
+      if (ns->is_inline) inlineNamespaces_.insert(qualifiedName(&ns->source_corresp, iek_namespace));
+      collect(ns->variant.assoc_scope);
+    }
   }
 
   // ---- routines -------------------------------------------------------------------------------
@@ -456,6 +466,10 @@ class Exporter {
     if (v->address_taken) json_.fieldBool("addressTaken", true);
     if (parameter && v->param_value_has_been_changed) json_.fieldBool("modified", true);
     position(v->source_corresp.decl_position);
+    // where the declaration starts: its specifiers (`const std::vector<int> &v` at `const`)
+    if (const a_decl_position_supplement* info = v->source_corresp.decl_pos_info) {
+      if (info->specifiers_range.start.seq != 0) position(info->specifiers_range.start, "start");
+    }
     if (withInitializer) writeVariableInitializer(v);
     json_.endObject();
   }
@@ -1094,6 +1108,10 @@ class Exporter {
           }
           json_.endArray();
           if (supp->is_lambda_closure_class) json_.fieldBool("closure", true);
+          // an instance of a class template with real arguments: `Box<int>`
+          if (t->variant.class_struct_union.is_template_class &&
+              !t->variant.class_struct_union.is_nonreal_class)
+            json_.fieldBool("templateInstance", true);
         }
         break;
       }
@@ -1155,6 +1173,7 @@ class Exporter {
   std::vector<a_routine_ptr> routines_;
   std::unordered_set<a_routine_ptr> seenRoutines_;
   std::vector<a_variable_ptr> globals_;
+  std::set<std::string> inlineNamespaces_;
   an_il_to_str_output_control_block octl_;
   a_text_buffer_ptr textBuffer_ = nullptr;
   int depth_ = 0;
