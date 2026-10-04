@@ -1,7 +1,8 @@
 name: release
 
 # A v* tag builds edga for each platform, runs the golden tests on the binary, and attaches it to
-# the tag's GitHub release with its SHA-256. cdxgen-plugins-bin downloads these assets.
+# the tag's GitHub release with its SHA-256, next to the build's SBOM. cdxgen-plugins-bin downloads
+# these assets.
 on:
   push:
     tags:
@@ -66,16 +67,24 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
         with:
           pattern: edga-*
           path: dist
           merge-multiple: true
+      - name: SBOM
+        run: |
+          python3 tools/sbom.py dist/sbom-edga.cdx.json
+          cd dist
+          shasum -a 256 sbom-edga.cdx.json > sbom-edga.cdx.json.sha256
       - name: Release
         run: |
           ls -l dist
           gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 || \
             gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes
-          gh release upload "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" dist/edga-* --clobber
+          gh release upload "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" dist/edga-* dist/sbom-edga.* --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
