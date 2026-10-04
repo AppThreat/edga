@@ -56,7 +56,7 @@ cmake --build build --target edga
 
 The build needs CMake 3.19+, Python 3 (EDG's configuration tool), and a C++14 compiler. The front
 end's configuration for the host is chosen from `config/macro-conf` (`linux-x86_64`,
-`linux-aarch64`, `macos-arm64`); set `-DEDGA_MACRO_CONF=<name>` to pick one. The front end's
+`linux-x86_64-musl`, `linux-aarch64`, `macos-arm64`); set `-DEDGA_MACRO_CONF=<name>` to pick one. The front end's
 sources are compiled unmodified.
 
 ## Tests

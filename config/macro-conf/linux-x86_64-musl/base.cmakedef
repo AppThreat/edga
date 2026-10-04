@@ -1,0 +1,6 @@
+# Linux on x86_64 with musl: as with glibc, except that musl has no static quadmath library, so
+# float128 values are not computed by the front end (as on aarch64).
+import <edga/linux-x86_64/base>
+USE_FLOAT128_FOR_HOST_FP_VALUE=0
+USE_QUADMATH_LIBRARY=0
+FLOAT128_ENABLING_POSSIBLE=0
