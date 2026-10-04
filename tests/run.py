@@ -87,7 +87,8 @@ def main():
         fixtures = [p for p in fixtures if p.stem in args.names or p.name in args.names]
     failures = 0
     for fixture in fixtures:
-        document = export(args.edga, fixture)
+        # absolute: edga runs from the fixtures directory
+        document = export(Path(args.edga).resolve(), fixture)
         if validator is not None:
             errors = sorted(validator.iter_errors(document), key=lambda e: list(e.path))
             if errors:
