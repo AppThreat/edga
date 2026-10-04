@@ -36,9 +36,14 @@ def normalise(document):
     document.pop("tool", None)
     for f in document.get("files", []):
         f["path"] = os.path.basename(f["path"])
+        if "written" in f:
+            f["written"] = os.path.basename(f["written"])
     tu = document.get("tu", {})
     if "path" in tu:
         tu["path"] = os.path.basename(tu["path"])
+    for d in document.get("diagnostics", []):
+        if "file" in d:
+            d["file"] = os.path.basename(d["file"])
     return document
 
 
@@ -47,7 +52,8 @@ def export(edga, fixture):
         out = Path(tmp) / "out.json"
         cmd = [
             str(edga),
-            "--clear_flag=use_predefined_macro_file",
+            # plain char is unsigned on aarch64 Linux and signed on the other hosts
+            "--signed_chars",
             *fixture_options(fixture),
             "--edga-root",
             str(FIXTURES),

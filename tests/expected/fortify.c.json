@@ -15,14 +15,14 @@
   {
    "id": 0,
    "path": "fortify.c",
-   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/fortify.c",
+   "written": "fortify.c",
    "system": false,
    "inRoot": true
   }
  ],
  "macros": [
   {
-   "id": 34,
+   "id": 1,
    "name": "memcpy",
    "objectLike": false,
    "text": "#define memcpy(d,s,n) __builtin___memcpy_chk(d, s, n, __builtin_object_size(d, 0))",
@@ -37,7 +37,7 @@
   {
    "id": 1,
    "parent": 0,
-   "macro": 34,
+   "macro": 1,
    "name": "memcpy",
    "start": [
     0,

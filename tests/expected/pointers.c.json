@@ -15,7 +15,7 @@
   {
    "id": 0,
    "path": "pointers.c",
-   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/pointers.c",
+   "written": "pointers.c",
    "system": false,
    "inRoot": true
   }
@@ -1552,7 +1552,7 @@
    "level": "warning",
    "code": "EC68",
    "message": "integer conversion resulted in a change of sign",
-   "file": "file:///Users/prabhu/work/AppThreat/edga/tests/fixtures/pointers.c",
+   "file": "pointers.c",
    "line": 22,
    "column": 20
   }

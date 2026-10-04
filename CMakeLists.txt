@@ -104,8 +104,8 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
   set(EDGA_COMPILE_OPTIONS -fno-exceptions -fno-unwind-tables -fno-rtti -Wall
                            -Wno-unused-parameter)
   if(UNIX AND NOT APPLE)
-    # A self-contained binary for distribution.
-    add_link_options("$<$<CONFIG:Release>:-static>")
+    # A self-contained, stripped binary for distribution.
+    add_link_options("$<$<CONFIG:Release>:-static>" "$<$<CONFIG:Release>:-s>")
   endif()
 else()
   set(EDG_COMPILE_OPTIONS /bigobj /w)

@@ -31,6 +31,10 @@ options (`doc/source/ext_intf.rst` in the EDG repository).
 A translation unit with errors is still exported, with `"status": "errors"` and the parts the
 front end could build; one the front end gave up on is written with `"status": "failed"`.
 
+edga is a single binary: it does not read EDG's predefined macro file (pass the compiler's macros
+with `--preinclude_macros`, or `--edg_base_dir` for an EDG installation), and it writes nothing
+next to the source files, so a read-only source tree works.
+
 ## Building
 
 The EDG sources are a git submodule. Its test suite is large and not needed for the build:

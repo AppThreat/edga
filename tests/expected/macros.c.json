@@ -15,14 +15,14 @@
   {
    "id": 0,
    "path": "macros.c",
-   "written": "/Users/prabhu/work/AppThreat/edga/tests/fixtures/macros.c",
+   "written": "macros.c",
    "system": false,
    "inRoot": true
   }
  ],
  "macros": [
   {
-   "id": 34,
+   "id": 1,
    "name": "LIMIT",
    "objectLike": true,
    "text": "#define LIMIT 16",
@@ -33,7 +33,7 @@
    ]
   },
   {
-   "id": 35,
+   "id": 2,
    "name": "MIN",
    "objectLike": false,
    "text": "#define MIN(a,b) ((a) < (b) ? (a) : (b))",
@@ -44,7 +44,7 @@
    ]
   },
   {
-   "id": 36,
+   "id": 3,
    "name": "CLAMP",
    "objectLike": false,
    "text": "#define CLAMP(v,lo,hi) MIN(MIN(v, hi), lo)",
@@ -55,7 +55,7 @@
    ]
   },
   {
-   "id": 37,
+   "id": 4,
    "name": "NAME_OF",
    "objectLike": false,
    "text": "#define NAME_OF(x) #x",
@@ -70,7 +70,7 @@
   {
    "id": 1,
    "parent": 0,
-   "macro": 36,
+   "macro": 3,
    "name": "CLAMP",
    "start": [
     0,
@@ -86,7 +86,7 @@
   {
    "id": 2,
    "parent": 1,
-   "macro": 34,
+   "macro": 1,
    "name": "LIMIT",
    "start": [
     0,
@@ -102,7 +102,7 @@
   {
    "id": 3,
    "parent": 1,
-   "macro": 35,
+   "macro": 2,
    "name": "MIN",
    "start": [
     0,
@@ -118,7 +118,7 @@
   {
    "id": 4,
    "parent": 1,
-   "macro": 35,
+   "macro": 2,
    "name": "MIN",
    "start": [
     0,
@@ -134,7 +134,7 @@
   {
    "id": 5,
    "parent": 0,
-   "macro": 37,
+   "macro": 4,
    "name": "NAME_OF",
    "start": [
     0,

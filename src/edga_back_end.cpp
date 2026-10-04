@@ -221,10 +221,12 @@ class Exporter {
 
   void writeMacros() {
     json_.beginArray();
-    long id = 1;
-    for (a_macro_ptr m = il_header.macros; m != nullptr; m = m->next, ++id) {
-      macroIds_[m] = id;
+    // Ids count the exported macros only, so they do not depend on how many macros the
+    // configuration predefines.
+    long id = 0;
+    for (a_macro_ptr m = il_header.macros; m != nullptr; m = m->next) {
       if (m->is_predefined || m->is_command_line_definition) continue;
+      macroIds_[m] = ++id;
       json_.beginObject();
       json_.field("id", id);
       json_.field("name", m->source_corresp.name);

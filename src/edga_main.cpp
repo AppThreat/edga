@@ -76,7 +76,8 @@ int main(int argc, char* argv[]) {
   std::vector<std::string> userArgs;
   const char* sourceFile = nullptr;
   bool userDiagnostics = false, userErrorLimit = false, userPruning = false,
-       userInstantiation = false, cppDialect = false, dialect = false;
+       userInstantiation = false, userMacroFile = false, userTemplateInfo = false,
+       cppDialect = false, dialect = false;
   for (int i = 1; i < argc; ++i) {
     const char* arg = argv[i];
     if (std::strcmp(arg, "--edga-version") == 0) {
@@ -105,6 +106,8 @@ int main(int argc, char* argv[]) {
       if (startsWith(arg, "--remove_unneeded_entities") ||
           startsWith(arg, "--no_remove_unneeded_entities"))
         userPruning = true;
+      if (startsWith(arg, "--edg_base_dir") || std::strstr(arg, "use_predefined_macro_file"))
+        userMacroFile = true;
       // the dialect options: C++ (`--c++17`, `--g++`) or C (`--c11`, `--gcc`)
       if (startsWith(arg, "--c++") || std::strcmp(arg, "-p") == 0 ||
           std::strcmp(arg, "--g++") == 0) {
@@ -118,6 +121,7 @@ int main(int argc, char* argv[]) {
           startsWith(arg, "--auto_instantiation") || startsWith(arg, "--no_auto_instantiation") ||
           std::strcmp(arg, "-T") == 0)
         userInstantiation = true;
+      if (startsWith(arg, "--template_info_file")) userTemplateInfo = true;
       userArgs.push_back(arg);
       // the source file: the last argument that is not an option and names a readable file
       if (arg[0] != '-') {
@@ -136,6 +140,9 @@ int main(int argc, char* argv[]) {
   std::vector<std::string> args;
   args.push_back(argv[0]);
   if (!userPruning) args.push_back("--no_remove_unneeded_entities");
+  // EDG's predefined macro file is in the lib directory of an EDG installation, which edga is
+  // not; the compiler's own macros come from the caller (`--preinclude_macros`).
+  if (!userMacroFile) args.push_back("--clear_flag=use_predefined_macro_file");
   // without dialect options, the source file's name says which language it is
   bool cpp = cppDialect;
   if (!dialect && sourceFile != nullptr) {
@@ -150,6 +157,16 @@ int main(int argc, char* argv[]) {
     args.push_back("used");
     // in this translation unit, without the prelinker's template information file
     args.push_back("--no_auto_instantiation");
+  }
+  // The front end still writes that file for a unit that uses templates, by default next to the
+  // source file, which may be read-only; it goes to a temporary file instead.
+  std::string templateInfoFile;
+  if (cpp && !userTemplateInfo) {
+    templateInfoFile = temporaryFile();
+    if (!templateInfoFile.empty()) {
+      args.push_back("--template_info_file");
+      args.push_back(templateInfoFile);
+    }
   }
   if (!userErrorLimit) {
     args.push_back("--error_limit");
@@ -198,6 +215,7 @@ int main(int argc, char* argv[]) {
     }
   }
   if (!stderrFile.empty()) std::remove(stderrFile.c_str());
+  if (!templateInfoFile.empty()) std::remove(templateInfoFile.c_str());
 
   std::vector<edga::Diagnostic> diagnostics = edga::readSarifResults(earlyErrors);
   // anything else the front end wrote there is passed on
