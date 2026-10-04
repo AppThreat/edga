@@ -434,13 +434,24 @@ class Exporter {
       if (a->name != nullptr) json_.field("name", a->name);
       json_.key("args");
       json_.beginArray();
+      // an attribute the front end does not know keeps its argument tokens: one argument, as
+      // written (`write_only,1,2`)
+      std::string raw;
       for (an_attribute_arg_ptr arg = a->arguments; arg != nullptr; arg = arg->next) {
         if (arg->kind == aak_constant && arg->variant.constant != nullptr) {
           writeConstantValue(arg->variant.constant);
         } else if (arg->kind == aak_token && arg->variant.token != nullptr) {
           json_.string(arg->variant.token);
+        } else if (arg->kind == aak_raw_token && arg->variant.token != nullptr) {
+          raw += arg->variant.token;
+        } else if (arg->kind == aak_expression) {
+          // a name the attribute refers to (`cleanup(unlock)`), or a constant expression
+          writeExpr(expr_node_from_attribute_arg(arg));
         }
       }
+      if (!raw.empty()) json_.string(raw.substr(raw.front() == '(' ? 1 : 0,
+                                              raw.size() - (raw.front() == '(' ? 1 : 0) -
+                                                  (raw.back() == ')' ? 1 : 0)));
       json_.endArray();
       json_.endObject();
     }
@@ -466,6 +477,7 @@ class Exporter {
     if (v->address_taken) json_.fieldBool("addressTaken", true);
     if (parameter && v->param_value_has_been_changed) json_.fieldBool("modified", true);
     position(v->source_corresp.decl_position);
+    writeAttributes(v->source_corresp.attributes);
     // where the declaration starts: its specifiers (`const std::vector<int> &v` at `const`)
     if (const a_decl_position_supplement* info = v->source_corresp.decl_pos_info) {
       if (info->specifiers_range.start.seq != 0) position(info->specifiers_range.start, "start");

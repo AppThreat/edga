@@ -114,6 +114,7 @@
         "modified": { "type": "boolean" },
         "init": { "$ref": "#/$defs/initializer" },
         "zeroInit": { "type": "boolean" },
+        "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
         "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers." }
       }
     },
