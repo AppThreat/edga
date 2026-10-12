@@ -1,8 +1,11 @@
 name: ci
 
+# format is a required status check on main, so this workflow must trigger
+# on merge-group builds too.
 on:
   push:
   pull_request:
+  merge_group:
 
 permissions:
   contents: read
