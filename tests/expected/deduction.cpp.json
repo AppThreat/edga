@@ -1,0 +1,1655 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "deduction.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "deduction.cpp",
+   "written": "deduction.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "table",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "cplusplus_external",
+   "p": [
+    0,
+    16,
+    5
+   ],
+   "start": [
+    0,
+    16,
+    1
+   ]
+  }
+ ],
+ "routines": [
+  {
+   "id": 1,
+   "name": "quiet",
+   "qualifiedName": "quiet",
+   "type": 1,
+   "returnType": 2,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "p": [
+    0,
+    9,
+    6
+   ],
+   "start": [
+    0,
+    9,
+    1
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 2,
+   "name": "loud",
+   "qualifiedName": "loud",
+   "type": 3,
+   "returnType": 2,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "p": [
+    0,
+    10,
+    6
+   ],
+   "start": [
+    0,
+    10,
+    1
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 3,
+   "name": "add",
+   "qualifiedName": "add",
+   "type": 4,
+   "returnType": 5,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "inline": true,
+   "p": [
+    0,
+    12,
+    15
+   ],
+   "start": [
+    0,
+    12,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 2,
+     "name": "a",
+     "type": 5,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      23
+     ],
+     "start": [
+      0,
+      12,
+      19
+     ]
+    },
+    {
+     "id": 3,
+     "name": "b",
+     "type": 5,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      30
+     ],
+     "start": [
+      0,
+      12,
+      26
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     12,
+     33
+    ],
+    "end": [
+     0,
+     12,
+     49
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       12,
+       35
+      ],
+      "end": [
+       0,
+       12,
+       47
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 5,
+       "p": [
+        0,
+        12,
+        44
+       ],
+       "range": [
+        [
+         0,
+         12,
+         42
+        ],
+        [
+         0,
+         12,
+         46
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 5,
+         "p": [
+          0,
+          12,
+          42
+         ],
+         "range": [
+          [
+           0,
+           12,
+           42
+          ],
+          [
+           0,
+           12,
+           42
+          ]
+         ],
+         "var": 2,
+         "name": "a"
+        },
+        {
+         "k": "variable",
+         "t": 5,
+         "p": [
+          0,
+          12,
+          46
+         ],
+         "range": [
+          [
+           0,
+           12,
+           46
+          ],
+          [
+           0,
+           12,
+           46
+          ]
+         ],
+         "var": 3,
+         "name": "b"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "name": "depth",
+   "qualifiedName": "depth",
+   "type": 6,
+   "returnType": 5,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "inline": true,
+   "p": [
+    0,
+    13,
+    15
+   ],
+   "start": [
+    0,
+    13,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 4,
+     "name": "n",
+     "type": 5,
+     "storage": "auto",
+     "p": [
+      0,
+      13,
+      25
+     ],
+     "start": [
+      0,
+      13,
+      21
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     13,
+     28
+    ],
+    "end": [
+     0,
+     13,
+     72
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       13,
+       30
+      ],
+      "end": [
+       0,
+       13,
+       70
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 5,
+       "p": [
+        0,
+        13,
+        44
+       ],
+       "range": [
+        [
+         0,
+         13,
+         37
+        ],
+        [
+         0,
+         13,
+         69
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 7,
+         "p": [
+          0,
+          13,
+          39
+         ],
+         "range": [
+          [
+           0,
+           13,
+           37
+          ],
+          [
+           0,
+           13,
+           42
+          ]
+         ],
+         "op": "eq",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 5,
+           "p": [
+            0,
+            13,
+            37
+           ],
+           "range": [
+            [
+             0,
+             13,
+             37
+            ],
+            [
+             0,
+             13,
+             37
+            ]
+           ],
+           "var": 4,
+           "name": "n"
+          },
+          {
+           "k": "constant",
+           "t": 5,
+           "p": [
+            0,
+            13,
+            42
+           ],
+           "range": [
+            [
+             0,
+             13,
+             42
+            ],
+            [
+             0,
+             13,
+             42
+            ]
+           ],
+           "ck": "integer",
+           "value": "0"
+          }
+         ]
+        },
+        {
+         "k": "constant",
+         "t": 5,
+         "p": [
+          0,
+          13,
+          46
+         ],
+         "range": [
+          [
+           0,
+           13,
+           46
+          ],
+          [
+           0,
+           13,
+           46
+          ]
+         ],
+         "ck": "integer",
+         "value": "0"
+        },
+        {
+         "k": "operation",
+         "t": 5,
+         "p": [
+          0,
+          13,
+          53
+         ],
+         "range": [
+          [
+           0,
+           13,
+           50
+          ],
+          [
+           0,
+           13,
+           69
+          ]
+         ],
+         "op": "call",
+         "callee": 3,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 8,
+           "p": [
+            0,
+            13,
+            50
+           ],
+           "range": [
+            [
+             0,
+             13,
+             50
+            ],
+            [
+             0,
+             13,
+             52
+            ]
+           ],
+           "routine": 3,
+           "name": "add"
+          },
+          {
+           "k": "constant",
+           "t": 5,
+           "p": [
+            0,
+            13,
+            54
+           ],
+           "range": [
+            [
+             0,
+             13,
+             54
+            ],
+            [
+             0,
+             13,
+             54
+            ]
+           ],
+           "ck": "integer",
+           "value": "1"
+          },
+          {
+           "k": "operation",
+           "t": 5,
+           "p": [
+            0,
+            13,
+            62
+           ],
+           "range": [
+            [
+             0,
+             13,
+             57
+            ],
+            [
+             0,
+             13,
+             68
+            ]
+           ],
+           "op": "call",
+           "callee": 4,
+           "ops": [
+            {
+             "k": "routine",
+             "t": 9,
+             "p": [
+              0,
+              13,
+              57
+             ],
+             "range": [
+              [
+               0,
+               13,
+               57
+              ],
+              [
+               0,
+               13,
+               61
+              ]
+             ],
+             "routine": 4,
+             "name": "depth"
+            },
+            {
+             "k": "operation",
+             "t": 5,
+             "p": [
+              0,
+              13,
+              65
+             ],
+             "range": [
+              [
+               0,
+               13,
+               63
+              ],
+              [
+               0,
+               13,
+               67
+              ]
+             ],
+             "op": "subtract",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 5,
+               "p": [
+                0,
+                13,
+                63
+               ],
+               "range": [
+                [
+                 0,
+                 13,
+                 63
+                ],
+                [
+                 0,
+                 13,
+                 63
+                ]
+               ],
+               "var": 4,
+               "name": "n"
+              },
+              {
+               "k": "constant",
+               "t": 5,
+               "p": [
+                0,
+                13,
+                67
+               ],
+               "range": [
+                [
+                 0,
+                 13,
+                 67
+                ],
+                [
+                 0,
+                 13,
+                 67
+                ]
+               ],
+               "ck": "integer",
+               "value": "1"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "name": "pick",
+   "qualifiedName": "pick",
+   "type": 10,
+   "returnType": 5,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    18,
+    5
+   ],
+   "start": [
+    0,
+    18,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     18,
+     12
+    ],
+    "end": [
+     0,
+     18,
+     94
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       18,
+       14
+      ],
+      "end": [
+       0,
+       18,
+       92
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 5,
+       "p": [
+        0,
+        18,
+        21
+       ],
+       "range": [
+        [
+         0,
+         18,
+         21
+        ],
+        [
+         0,
+         18,
+         91
+        ]
+       ],
+       "ck": "integer",
+       "value": "1025",
+       "expr": {
+        "k": "operation",
+        "t": 5,
+        "p": [
+         0,
+         18,
+         21
+        ],
+        "implicit": true,
+        "op": "cast",
+        "ops": [
+         {
+          "k": "constant",
+          "t": 11,
+          "p": [
+           0,
+           18,
+           21
+          ],
+          "range": [
+           [
+            0,
+            18,
+            21
+           ],
+           [
+            0,
+            18,
+            91
+           ]
+          ],
+          "ck": "integer",
+          "value": "1025",
+          "expr": {
+           "k": "operation",
+           "t": 11,
+           "p": [
+            0,
+            18,
+            78
+           ],
+           "range": [
+            [
+             0,
+             18,
+             21
+            ],
+            [
+             0,
+             18,
+             91
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "constant",
+             "t": 11,
+             "p": [
+              0,
+              18,
+              21
+             ],
+             "range": [
+              [
+               0,
+               18,
+               21
+              ],
+              [
+               0,
+               18,
+               76
+              ]
+             ],
+             "ck": "integer",
+             "value": "1",
+             "expr": {
+              "k": "operation",
+              "t": 11,
+              "p": [
+               0,
+               18,
+               21
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "constant",
+                "t": 5,
+                "p": [
+                 0,
+                 18,
+                 21
+                ],
+                "range": [
+                 [
+                  0,
+                  18,
+                  21
+                 ],
+                 [
+                  0,
+                  18,
+                  76
+                 ]
+                ],
+                "ck": "integer",
+                "value": "1",
+                "expr": {
+                 "k": "operation",
+                 "t": 5,
+                 "p": [
+                  0,
+                  18,
+                  49
+                 ],
+                 "range": [
+                  [
+                   0,
+                   18,
+                   21
+                  ],
+                  [
+                   0,
+                   18,
+                   76
+                  ]
+                 ],
+                 "op": "add",
+                 "ops": [
+                  {
+                   "k": "constant",
+                   "t": 5,
+                   "p": [
+                    0,
+                    18,
+                    21
+                   ],
+                   "range": [
+                    [
+                     0,
+                     18,
+                     21
+                    ],
+                    [
+                     0,
+                     18,
+                     47
+                    ]
+                   ],
+                   "ck": "integer",
+                   "value": "1",
+                   "expr": {
+                    "k": "operation",
+                    "t": 5,
+                    "p": [
+                     0,
+                     18,
+                     40
+                    ],
+                    "range": [
+                     [
+                      0,
+                      18,
+                      22
+                     ],
+                     [
+                      0,
+                      18,
+                      46
+                     ]
+                    ],
+                    "op": "question",
+                    "ops": [
+                     {
+                      "k": "constant",
+                      "t": 7,
+                      "p": [
+                       0,
+                       18,
+                       22
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        22
+                       ],
+                       [
+                        0,
+                        18,
+                        38
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "1",
+                      "expr": {
+                       "k": "operation",
+                       "t": 7,
+                       "p": [
+                        0,
+                        18,
+                        32
+                       ],
+                       "range": [
+                        [
+                         0,
+                         18,
+                         22
+                        ],
+                        [
+                         0,
+                         18,
+                         38
+                        ]
+                       ],
+                       "op": "call",
+                       "callee": 6,
+                       "ops": [
+                        {
+                         "k": "routine",
+                         "t": 12,
+                         "p": [
+                          0,
+                          18,
+                          22
+                         ],
+                         "range": [
+                          [
+                           0,
+                           18,
+                           22
+                          ],
+                          [
+                           0,
+                           18,
+                           31
+                          ]
+                         ],
+                         "routine": 6,
+                         "name": "is_nothrow"
+                        },
+                        {
+                         "k": "constant",
+                         "t": 13,
+                         "p": [
+                          0,
+                          18,
+                          33
+                         ],
+                         "range": [
+                          [
+                           0,
+                           18,
+                           33
+                          ],
+                          [
+                           0,
+                           18,
+                           37
+                          ]
+                         ],
+                         "ck": "address",
+                         "base": "routine",
+                         "routine": 1,
+                         "expr": {
+                          "k": "routine",
+                          "t": 13,
+                          "p": [
+                           0,
+                           18,
+                           33
+                          ],
+                          "range": [
+                           [
+                            0,
+                            18,
+                            33
+                           ],
+                           [
+                            0,
+                            18,
+                            37
+                           ]
+                          ],
+                          "routine": 1,
+                          "name": "quiet"
+                         }
+                        }
+                       ]
+                      }
+                     },
+                     {
+                      "k": "constant",
+                      "t": 5,
+                      "p": [
+                       0,
+                       18,
+                       42
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        42
+                       ],
+                       [
+                        0,
+                        18,
+                        42
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "1"
+                     },
+                     {
+                      "k": "constant",
+                      "t": 5,
+                      "p": [
+                       0,
+                       18,
+                       46
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        46
+                       ],
+                       [
+                        0,
+                        18,
+                        46
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "0"
+                     }
+                    ]
+                   }
+                  },
+                  {
+                   "k": "constant",
+                   "t": 5,
+                   "p": [
+                    0,
+                    18,
+                    51
+                   ],
+                   "range": [
+                    [
+                     0,
+                     18,
+                     51
+                    ],
+                    [
+                     0,
+                     18,
+                     76
+                    ]
+                   ],
+                   "ck": "integer",
+                   "value": "0",
+                   "expr": {
+                    "k": "operation",
+                    "t": 5,
+                    "p": [
+                     0,
+                     18,
+                     69
+                    ],
+                    "range": [
+                     [
+                      0,
+                      18,
+                      52
+                     ],
+                     [
+                      0,
+                      18,
+                      75
+                     ]
+                    ],
+                    "op": "question",
+                    "ops": [
+                     {
+                      "k": "constant",
+                      "t": 7,
+                      "p": [
+                       0,
+                       18,
+                       52
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        52
+                       ],
+                       [
+                        0,
+                        18,
+                        67
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "0",
+                      "expr": {
+                       "k": "operation",
+                       "t": 7,
+                       "p": [
+                        0,
+                        18,
+                        62
+                       ],
+                       "range": [
+                        [
+                         0,
+                         18,
+                         52
+                        ],
+                        [
+                         0,
+                         18,
+                         67
+                        ]
+                       ],
+                       "op": "call",
+                       "callee": 7,
+                       "ops": [
+                        {
+                         "k": "routine",
+                         "t": 14,
+                         "p": [
+                          0,
+                          18,
+                          52
+                         ],
+                         "range": [
+                          [
+                           0,
+                           18,
+                           52
+                          ],
+                          [
+                           0,
+                           18,
+                           61
+                          ]
+                         ],
+                         "routine": 7,
+                         "name": "is_nothrow"
+                        },
+                        {
+                         "k": "constant",
+                         "t": 15,
+                         "p": [
+                          0,
+                          18,
+                          63
+                         ],
+                         "range": [
+                          [
+                           0,
+                           18,
+                           63
+                          ],
+                          [
+                           0,
+                           18,
+                           66
+                          ]
+                         ],
+                         "ck": "address",
+                         "base": "routine",
+                         "routine": 2,
+                         "expr": {
+                          "k": "routine",
+                          "t": 15,
+                          "p": [
+                           0,
+                           18,
+                           63
+                          ],
+                          "range": [
+                           [
+                            0,
+                            18,
+                            63
+                           ],
+                           [
+                            0,
+                            18,
+                            66
+                           ]
+                          ],
+                          "routine": 2,
+                          "name": "loud"
+                         }
+                        }
+                       ]
+                      }
+                     },
+                     {
+                      "k": "constant",
+                      "t": 5,
+                      "p": [
+                       0,
+                       18,
+                       71
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        71
+                       ],
+                       [
+                        0,
+                        18,
+                        71
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "2"
+                     },
+                     {
+                      "k": "constant",
+                      "t": 5,
+                      "p": [
+                       0,
+                       18,
+                       75
+                      ],
+                      "range": [
+                       [
+                        0,
+                        18,
+                        75
+                       ],
+                       [
+                        0,
+                        18,
+                        75
+                       ]
+                      ],
+                      "ck": "integer",
+                      "value": "0"
+                     }
+                    ]
+                   }
+                  }
+                 ]
+                }
+               }
+              ]
+             }
+            },
+            {
+             "k": "constant",
+             "t": 11,
+             "p": [
+              0,
+              18,
+              80
+             ],
+             "range": [
+              [
+               0,
+               18,
+               80
+              ],
+              [
+               0,
+               18,
+               91
+              ]
+             ],
+             "ck": "integer",
+             "value": "1024",
+             "expr": {
+              "k": "sizeof",
+              "t": 11,
+              "p": [
+               0,
+               18,
+               80
+              ],
+              "range": [
+               [
+                0,
+                18,
+                80
+               ],
+               [
+                0,
+                18,
+                91
+               ]
+              ],
+              "expr": {
+               "k": "variable",
+               "t": 0,
+               "p": [
+                0,
+                18,
+                87
+               ],
+               "range": [
+                [
+                 0,
+                 18,
+                 87
+                ],
+                [
+                 0,
+                 18,
+                 91
+                ]
+               ],
+               "lv": true,
+               "var": 1,
+               "name": "table"
+              }
+             }
+            }
+           ]
+          }
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "is_nothrow",
+   "qualifiedName": "is_nothrow",
+   "type": 16,
+   "returnType": 7,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "inline": true,
+   "templateInstance": true,
+   "p": [
+    0,
+    6,
+    16
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "",
+     "type": 17,
+     "storage": "auto",
+     "start": [
+      0,
+      6,
+      27
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     6,
+     51
+    ],
+    "end": [
+     0,
+     8,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       11
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 7,
+       "p": [
+        0,
+        7,
+        10
+       ],
+       "range": [
+        [
+         0,
+         7,
+         10
+        ],
+        [
+         0,
+         7,
+         10
+        ]
+       ],
+       "ck": "integer",
+       "value": "1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 7,
+   "name": "is_nothrow",
+   "qualifiedName": "is_nothrow",
+   "type": 18,
+   "returnType": 7,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "inline": true,
+   "templateInstance": true,
+   "p": [
+    0,
+    6,
+    16
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 6,
+     "name": "",
+     "type": 19,
+     "storage": "auto",
+     "start": [
+      0,
+      6,
+      27
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     6,
+     51
+    ],
+    "end": [
+     0,
+     8,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       11
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 7,
+       "p": [
+        0,
+        7,
+        10
+       ],
+       "range": [
+        [
+         0,
+         7,
+         10
+        ],
+        [
+         0,
+         7,
+         10
+        ]
+       ],
+       "ck": "integer",
+       "value": "0"
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "array",
+   "name": "int [256]",
+   "size": 1024,
+   "of": 5,
+   "count": 256
+  },
+  {
+   "id": 1,
+   "kind": "routine",
+   "name": "void () noexcept",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 2,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "void ()",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 4,
+   "kind": "routine",
+   "name": "int (int, int)",
+   "returns": 5,
+   "params": [
+    5,
+    5
+   ]
+  },
+  {
+   "id": 5,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 6,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 5,
+   "params": [
+    5
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "integer",
+   "name": "bool",
+   "size": 1,
+   "signed": true,
+   "bool": true
+  },
+  {
+   "id": 8,
+   "kind": "pointer",
+   "name": "int (*)(int, int)",
+   "size": 8,
+   "to": 4
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "int (*)(int)",
+   "size": 8,
+   "to": 6
+  },
+  {
+   "id": 10,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 5,
+   "params": []
+  },
+  {
+   "id": 11,
+   "kind": "integer",
+   "name": "unsigned long",
+   "size": 8,
+   "signed": false
+  },
+  {
+   "id": 12,
+   "kind": "pointer",
+   "name": "bool (*)(void (*)() noexcept(true))",
+   "size": 8,
+   "to": 16
+  },
+  {
+   "id": 13,
+   "kind": "pointer",
+   "name": "void (*)() noexcept",
+   "size": 8,
+   "to": 1
+  },
+  {
+   "id": 14,
+   "kind": "pointer",
+   "name": "bool (*)(void (*)())",
+   "size": 8,
+   "to": 18
+  },
+  {
+   "id": 15,
+   "kind": "pointer",
+   "name": "void (*)()",
+   "size": 8,
+   "to": 3
+  },
+  {
+   "id": 16,
+   "kind": "routine",
+   "name": "bool (void (*)() noexcept(true))",
+   "returns": 7,
+   "params": [
+    17
+   ]
+  },
+  {
+   "id": 17,
+   "kind": "pointer",
+   "name": "void (*)() noexcept(true)",
+   "size": 8,
+   "to": 20
+  },
+  {
+   "id": 18,
+   "kind": "routine",
+   "name": "bool (void (*)())",
+   "returns": 7,
+   "params": [
+    19
+   ]
+  },
+  {
+   "id": 19,
+   "kind": "pointer",
+   "name": "void (*)()",
+   "size": 8,
+   "to": 21
+  },
+  {
+   "id": 20,
+   "kind": "routine",
+   "name": "void () noexcept(true)",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 21,
+   "kind": "routine",
+   "name": "void ()",
+   "returns": 2,
+   "params": []
+  }
+ ],
+ "diagnostics": []
+}
