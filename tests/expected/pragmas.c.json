@@ -1,0 +1,537 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "pragmas.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "pragmas.c",
+   "written": "pragmas.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "first",
+   "qualifiedName": "first",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    6,
+    5
+   ],
+   "start": [
+    0,
+    6,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     6,
+     17
+    ],
+    "end": [
+     0,
+     9,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       12
+      ],
+      "decls": [
+       {
+        "id": 1,
+        "name": "a",
+        "type": 1,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         7,
+         7
+        ],
+        "start": [
+         0,
+         7,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 1,
+         "const": {
+          "k": "constant",
+          "t": 1,
+          "ck": "integer",
+          "value": "1"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       8,
+       3
+      ],
+      "end": [
+       0,
+       8,
+       11
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 1,
+       "p": [
+        0,
+        8,
+        10
+       ],
+       "range": [
+        [
+         0,
+         8,
+         10
+        ],
+        [
+         0,
+         8,
+         10
+        ]
+       ],
+       "var": 1,
+       "name": "a"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "unused_helper",
+   "qualifiedName": "unused_helper",
+   "type": 2,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "internal",
+   "storage": "static",
+   "p": [
+    0,
+    12,
+    12
+   ],
+   "start": [
+    0,
+    12,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     12,
+     32
+    ],
+    "end": [
+     0,
+     12,
+     44
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       12,
+       34
+      ],
+      "end": [
+       0,
+       12,
+       42
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 1,
+       "p": [
+        0,
+        12,
+        41
+       ],
+       "range": [
+        [
+         0,
+         12,
+         41
+        ],
+        [
+         0,
+         12,
+         41
+        ]
+       ],
+       "ck": "integer",
+       "value": "0"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "second",
+   "qualifiedName": "second",
+   "type": 3,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    13,
+    5
+   ],
+   "start": [
+    0,
+    13,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 2,
+     "name": "p",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      13,
+      17
+     ],
+     "start": [
+      0,
+      13,
+      12
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     13,
+     20
+    ],
+    "end": [
+     0,
+     13,
+     51
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       13,
+       22
+      ],
+      "end": [
+       0,
+       13,
+       49
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        13,
+        31
+       ],
+       "range": [
+        [
+         0,
+         13,
+         29
+        ],
+        [
+         0,
+         13,
+         48
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 4,
+         "p": [
+          0,
+          13,
+          29
+         ],
+         "range": [
+          [
+           0,
+           13,
+           29
+          ],
+          [
+           0,
+           13,
+           29
+          ]
+         ],
+         "var": 2,
+         "name": "p"
+        },
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          13,
+          36
+         ],
+         "range": [
+          [
+           0,
+           13,
+           33
+          ],
+          [
+           0,
+           13,
+           44
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            13,
+            33
+           ],
+           "range": [
+            [
+             0,
+             13,
+             33
+            ],
+            [
+             0,
+             13,
+             34
+            ]
+           ],
+           "op": "indirect",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 4,
+             "p": [
+              0,
+              13,
+              34
+             ],
+             "range": [
+              [
+               0,
+               13,
+               34
+              ],
+              [
+               0,
+               13,
+               34
+              ]
+             ],
+             "var": 2,
+             "name": "p"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            13,
+            43
+           ],
+           "range": [
+            [
+             0,
+             13,
+             38
+            ],
+            [
+             0,
+             13,
+             44
+            ]
+           ],
+           "op": "call",
+           "callee": 1,
+           "ops": [
+            {
+             "k": "routine",
+             "t": 5,
+             "p": [
+              0,
+              13,
+              38
+             ],
+             "range": [
+              [
+               0,
+               13,
+               38
+              ],
+              [
+               0,
+               13,
+               42
+              ]
+             ],
+             "routine": 1,
+             "name": "first"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          13,
+          48
+         ],
+         "range": [
+          [
+           0,
+           13,
+           48
+          ],
+          [
+           0,
+           13,
+           48
+          ]
+         ],
+         "ck": "integer",
+         "value": "0"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int (void)",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "routine",
+   "name": "int (void)",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "int (int *)",
+   "returns": 1,
+   "params": [
+    4
+   ]
+  },
+  {
+   "id": 4,
+   "kind": "pointer",
+   "name": "int *",
+   "size": 8,
+   "to": 1
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "int (*)(void)",
+   "size": 8,
+   "to": 0
+  }
+ ],
+ "diagnostics": [
+  {
+   "level": "warning",
+   "code": "EC1224",
+   "message": "expected an error number or error tag",
+   "file": "pragmas.c",
+   "line": 5,
+   "column": 22
+  },
+  {
+   "level": "warning",
+   "code": "EC1224",
+   "message": "expected an error number or error tag",
+   "file": "pragmas.c",
+   "line": 11,
+   "column": 27
+  }
+ ]
+}
