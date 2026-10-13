@@ -108,6 +108,7 @@
         "type": { "type": "integer" },
         "storage": { "type": "string" },
         "linkage": { "type": "string" },
+        "asmName": { "type": "string", "description": "The symbol an asm label gives it: `int v __asm__(\"w\")`." },
         "this": { "type": "boolean" },
         "implicit": { "type": "boolean" },
         "addressTaken": { "type": "boolean" },
@@ -137,6 +138,7 @@
         "noReturn": { "type": "boolean" },
         "linkage": { "type": "string" },
         "storage": { "type": "string" },
+        "asmName": { "type": "string", "description": "The symbol an asm label gives it: `int f(void) __asm__(\"g\")`, glibc's `__REDIRECT`." },
         "special": { "type": "string", "description": "constructor, destructor, conversion, operator, ..." },
         "operator": { "type": "string" },
         "class": { "type": "integer" },
@@ -194,7 +196,26 @@
             "over": { "$ref": "#/$defs/initializer", "description": "range_based_for: what is iterated over." },
             "statementExpression": { "type": "boolean" },
             "arrayType": { "type": "integer", "description": "set_vla_size: the variable length array type whose number of elements is fixed here." },
-            "size": { "$ref": "#/$defs/expression", "description": "set_vla_size: the number of elements, as written." }
+            "size": { "$ref": "#/$defs/expression", "description": "set_vla_size: the number of elements, as written." },
+            "text": { "type": "string", "description": "asm: the instructions, as written." },
+            "volatile": { "type": "boolean", "description": "asm: volatile, written so or without outputs." },
+            "goto": { "type": "boolean", "description": "asm: an `asm goto`." },
+            "operands": {
+              "type": "array",
+              "description": "asm: the outputs, then the inputs.",
+              "items": {
+                "type": "object",
+                "required": ["dir", "constraint"],
+                "properties": {
+                  "name": { "type": "string", "description": "The symbolic name, `[dst]`." },
+                  "dir": { "enum": ["in", "out", "inout"], "description": "Whether the statement reads the operand, writes it (`=`) or both (`+`)." },
+                  "constraint": { "type": "string" },
+                  "expr": { "$ref": "#/$defs/expression" }
+                }
+              }
+            },
+            "clobbers": { "type": "array", "items": { "type": "string" }, "description": "asm: the registers it clobbers, `memory` included." },
+            "labels": { "type": "array", "items": { "type": "string" }, "description": "asm goto: the labels it may jump to." }
           }
         }
       ]

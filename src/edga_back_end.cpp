@@ -333,6 +333,11 @@ class Exporter {
     json_.field("linkage",
                 linkageName(static_cast<a_name_linkage_kind>(r->source_corresp.name_linkage)));
     json_.field("storage", storageClassName(r->storage_class));
+#if GNU_EXTENSIONS_ALLOWED || REDEFINE_EXTNAME_PRAGMA_ENABLED
+    // the symbol an asm label gives it: glibc's `__REDIRECT` makes `strtol` `__isoc23_strtol`
+    if (a_gnu_routine_supplement_ptr gnu = gnu_routine_supp_or_null(r))
+      if (gnu->asm_name != nullptr) json_.field("asmName", gnu->asm_name);
+#endif
     if (r->special_kind != sfk_none) {
       json_.field("special", specialFunctionName(r->special_kind));
       if (r->special_kind == sfk_operator)
@@ -476,6 +481,10 @@ class Exporter {
     if (!parameter)
       json_.field("linkage",
                   linkageName(static_cast<a_name_linkage_kind>(v->source_corresp.name_linkage)));
+#if GNU_EXTENSIONS_ALLOWED || REDEFINE_EXTNAME_PRAGMA_ENABLED
+    if (v->asm_name_is_valid && v->asm_name_or_reg.name != nullptr)
+      json_.field("asmName", v->asm_name_or_reg.name);
+#endif
     if (v->is_this_parameter) json_.fieldBool("this", true);
     if (v->compiler_generated) json_.fieldBool("implicit", true);
     if (v->address_taken) json_.fieldBool("addressTaken", true);
@@ -735,11 +744,74 @@ class Exporter {
       case stmk_assigned_goto:
         writeExprField("expr", s->expr);
         break;
+      case stmk_asm:
+        writeAsm(s->variant.asm_entry);
+        break;
       default:
         if (s->expr != nullptr) writeExprField("expr", s->expr);
         break;
     }
     json_.endObject();
+  }
+
+  // `asm volatile("..." : "=r"(out) : "r"(in) : "memory")`: the instructions, the operands the
+  // statement writes and reads, the registers it clobbers and the labels `asm goto` may jump to
+  void writeAsm(an_asm_entry_ptr a) {
+    if (a == nullptr) return;
+    if (a->asm_string != nullptr && a->asm_string->kind == ck_string) {
+      size_t length = static_cast<size_t>(a->asm_string->variant.string.length);
+      while (length > 0 && a->asm_string->variant.string.value[length - 1] == '\0') --length;
+      json_.key("text");
+      json_.string(a->asm_string->variant.string.value, length);
+    }
+#if GNU_EXTENSIONS_ALLOWED
+    if (a->is_volatile) json_.fieldBool("volatile", true);
+    if (a->is_asm_goto) json_.fieldBool("goto", true);
+    if (a->operands != nullptr) {
+      json_.key("operands");
+      json_.beginArray();
+      for (an_asm_operand_ptr op = a->operands; op != nullptr; op = op->next) {
+        json_.beginObject();
+        if (op->name != nullptr) json_.field("name", op->name);
+#if RECORD_RAW_ASM_OPERAND_DESCRIPTIONS
+        const char* constraint = op->constraints_string != nullptr ? op->constraints_string : "";
+        json_.field("dir", !op->is_output_operand ? "in" : constraint[0] == '+' ? "inout" : "out");
+        json_.field("constraint", constraint);
+#else
+        bool out = (op->modifiers & aom_output) != 0;
+        bool in = (op->modifiers & aom_input) != 0;
+        json_.field("dir", out && in ? "inout" : out ? "out" : "in");
+        std::string constraint = out ? (in ? "+" : "=") : "";
+        for (an_asm_operand_constraint_ptr c = op->constraints; c != nullptr; c = c->next) {
+          constraint += asm_operand_constraint_letters[static_cast<int>(c->kind)];
+#if GNU_X86_ASM_EXTENSIONS_ALLOWED
+          if (c->kind == aoc_cc && c->cond_code != nullptr)
+            constraint += std::string("cc") + c->cond_code;
+#endif
+        }
+        json_.field("constraint", constraint);
+#endif
+        writeExprField("expr", op->expression);
+        json_.endObject();
+      }
+      json_.endArray();
+    }
+    if (a->clobbers != nullptr) {
+      json_.key("clobbers");
+      json_.beginArray();
+      for (a_named_register_list_ptr r = a->clobbers; r != nullptr; r = r->next)
+        json_.string(named_register_names[static_cast<int>(r->reg)]);
+      json_.endArray();
+    }
+    if (a->labels != nullptr) {
+      json_.key("labels");
+      json_.beginArray();
+      for (a_label_list_ptr l = a->labels; l != nullptr; l = l->next)
+        if (l->label != nullptr && l->label->source_corresp.name != nullptr)
+          json_.string(l->label->source_corresp.name);
+      json_.endArray();
+    }
+#endif
   }
 
   // ---- expressions ----------------------------------------------------------------------------
