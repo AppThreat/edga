@@ -1,0 +1,27 @@
+tests/expected/deduction.cpp.json
+  s_236e880d3ee8e7::t_dd1e948fefa1a8 1-1655
+tests/expected/pragmas.c.json
+  s_236e880d3ee8e7::t_ca8975ec881f13 1-537
+tests/fixtures/deduction.cpp
+  s_236e880d3ee8e7::t_9ca4911387c3f5 1-18
+tests/fixtures/pragmas.c
+  s_236e880d3ee8e7::t_f82f3cea1506ed 1-13
+third_party/edgcpp
+  s_236e880d3ee8e7::t_9dbf144df8cf28 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e48ba1124508f2f1b5424dc96303f90b2e48b99e",
+  "prompts": {},
+  "sessions": {
+    "s_236e880d3ee8e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52eeaa6b-eddb-4834-83cf-34eb1a185cc1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
