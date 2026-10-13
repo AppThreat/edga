@@ -1,0 +1,1149 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "asm.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "asm.c",
+   "written": "asm.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "counter",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "external",
+   "asmName": "counter_symbol",
+   "p": [
+    0,
+    30,
+    5
+   ],
+   "start": [
+    0,
+    30,
+    1
+   ],
+   "init": {
+    "k": "constant",
+    "t": 0,
+    "ck": "integer",
+    "value": "0"
+   }
+  }
+ ],
+ "routines": [
+  {
+   "id": 1,
+   "name": "add",
+   "qualifiedName": "add",
+   "type": 1,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    3,
+    5
+   ],
+   "start": [
+    0,
+    3,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 2,
+     "name": "a",
+     "type": 0,
+     "storage": "auto",
+     "p": [
+      0,
+      3,
+      13
+     ],
+     "start": [
+      0,
+      3,
+      9
+     ]
+    },
+    {
+     "id": 3,
+     "name": "b",
+     "type": 0,
+     "storage": "auto",
+     "p": [
+      0,
+      3,
+      20
+     ],
+     "start": [
+      0,
+      3,
+      16
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     3,
+     23
+    ],
+    "end": [
+     0,
+     7,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       4,
+       3
+      ],
+      "end": [
+       0,
+       4,
+       10
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "out",
+        "type": 0,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         4,
+         7
+        ],
+        "start": [
+         0,
+         4,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "k": "asm",
+      "p": [
+       0,
+       5,
+       3
+      ],
+      "end": [
+       0,
+       5,
+       77
+      ],
+      "text": "add %0, %1, %2",
+      "volatile": true,
+      "operands": [
+       {
+        "dir": "out",
+        "constraint": "=r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          5,
+          44
+         ],
+         "range": [
+          [
+           0,
+           5,
+           44
+          ],
+          [
+           0,
+           5,
+           46
+          ]
+         ],
+         "lv": true,
+         "var": 4,
+         "name": "out"
+        }
+       },
+       {
+        "dir": "in",
+        "constraint": "r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          5,
+          55
+         ],
+         "range": [
+          [
+           0,
+           5,
+           55
+          ],
+          [
+           0,
+           5,
+           55
+          ]
+         ],
+         "var": 2,
+         "name": "a"
+        }
+       },
+       {
+        "dir": "in",
+        "constraint": "r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          5,
+          63
+         ],
+         "range": [
+          [
+           0,
+           5,
+           63
+          ],
+          [
+           0,
+           5,
+           63
+          ]
+         ],
+         "var": 3,
+         "name": "b"
+        }
+       }
+      ],
+      "clobbers": [
+       "memory"
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       6,
+       3
+      ],
+      "end": [
+       0,
+       6,
+       13
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 0,
+       "p": [
+        0,
+        6,
+        10
+       ],
+       "range": [
+        [
+         0,
+         6,
+         10
+        ],
+        [
+         0,
+         6,
+         12
+        ]
+       ],
+       "var": 4,
+       "name": "out"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "bump",
+   "qualifiedName": "bump",
+   "type": 2,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    9,
+    5
+   ],
+   "start": [
+    0,
+    9,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "v",
+     "type": 0,
+     "storage": "auto",
+     "modified": true,
+     "p": [
+      0,
+      9,
+      14
+     ],
+     "start": [
+      0,
+      9,
+      10
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     9,
+     17
+    ],
+    "end": [
+     0,
+     12,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "asm",
+      "p": [
+       0,
+       10,
+       3
+      ],
+      "end": [
+       0,
+       10,
+       24
+      ],
+      "text": "",
+      "operands": [
+       {
+        "dir": "inout",
+        "constraint": "+r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          10,
+          21
+         ],
+         "range": [
+          [
+           0,
+           10,
+           21
+          ],
+          [
+           0,
+           10,
+           21
+          ]
+         ],
+         "lv": true,
+         "var": 5,
+         "name": "v"
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       11,
+       3
+      ],
+      "end": [
+       0,
+       11,
+       11
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 0,
+       "p": [
+        0,
+        11,
+        10
+       ],
+       "range": [
+        [
+         0,
+         11,
+         10
+        ],
+        [
+         0,
+         11,
+         10
+        ]
+       ],
+       "var": 5,
+       "name": "v"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "named",
+   "qualifiedName": "named",
+   "type": 3,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    14,
+    5
+   ],
+   "start": [
+    0,
+    14,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 6,
+     "name": "x",
+     "type": 0,
+     "storage": "auto",
+     "p": [
+      0,
+      14,
+      15
+     ],
+     "start": [
+      0,
+      14,
+      11
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     14,
+     18
+    ],
+    "end": [
+     0,
+     18,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       15,
+       3
+      ],
+      "end": [
+       0,
+       15,
+       8
+      ],
+      "decls": [
+       {
+        "id": 7,
+        "name": "y",
+        "type": 0,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         15,
+         7
+        ],
+        "start": [
+         0,
+         15,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "k": "asm",
+      "p": [
+       0,
+       16,
+       3
+      ],
+      "end": [
+       0,
+       16,
+       63
+      ],
+      "text": "mov %[dst], %[src]",
+      "operands": [
+       {
+        "name": "dst",
+        "dir": "out",
+        "constraint": "=r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          16,
+          45
+         ],
+         "range": [
+          [
+           0,
+           16,
+           45
+          ],
+          [
+           0,
+           16,
+           45
+          ]
+         ],
+         "lv": true,
+         "var": 7,
+         "name": "y"
+        }
+       },
+       {
+        "name": "src",
+        "dir": "in",
+        "constraint": "r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          16,
+          60
+         ],
+         "range": [
+          [
+           0,
+           16,
+           60
+          ],
+          [
+           0,
+           16,
+           60
+          ]
+         ],
+         "var": 6,
+         "name": "x"
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       17,
+       3
+      ],
+      "end": [
+       0,
+       17,
+       11
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 0,
+       "p": [
+        0,
+        17,
+        10
+       ],
+       "range": [
+        [
+         0,
+         17,
+         10
+        ],
+        [
+         0,
+         17,
+         10
+        ]
+       ],
+       "var": 7,
+       "name": "y"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "name": "tested",
+   "qualifiedName": "tested",
+   "type": 4,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    20,
+    5
+   ],
+   "start": [
+    0,
+    20,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 8,
+     "name": "x",
+     "type": 0,
+     "storage": "auto",
+     "p": [
+      0,
+      20,
+      16
+     ],
+     "start": [
+      0,
+      20,
+      12
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     20,
+     19
+    ],
+    "end": [
+     0,
+     25,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "asm",
+      "p": [
+       0,
+       21,
+       3
+      ],
+      "end": [
+       0,
+       21,
+       39
+      ],
+      "text": "",
+      "volatile": true,
+      "goto": true,
+      "operands": [
+       {
+        "dir": "in",
+        "constraint": "r",
+        "expr": {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          21,
+          27
+         ],
+         "range": [
+          [
+           0,
+           21,
+           27
+          ],
+          [
+           0,
+           21,
+           27
+          ]
+         ],
+         "var": 8,
+         "name": "x"
+        }
+       }
+      ],
+      "labels": [
+       "fail"
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       22,
+       3
+      ],
+      "end": [
+       0,
+       22,
+       11
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 0,
+       "p": [
+        0,
+        22,
+        10
+       ],
+       "range": [
+        [
+         0,
+         22,
+         10
+        ],
+        [
+         0,
+         22,
+         10
+        ]
+       ],
+       "ck": "integer",
+       "value": "0"
+      }
+     },
+     {
+      "k": "label",
+      "p": [
+       0,
+       23,
+       1
+      ],
+      "end": [
+       0,
+       23,
+       5
+      ],
+      "label": "fail"
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       24,
+       3
+      ],
+      "end": [
+       0,
+       24,
+       11
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 0,
+       "p": [
+        0,
+        24,
+        10
+       ],
+       "range": [
+        [
+         0,
+         24,
+         10
+        ],
+        [
+         0,
+         24,
+         10
+        ]
+       ],
+       "ck": "integer",
+       "value": "1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "name": "barrier",
+   "qualifiedName": "barrier",
+   "type": 5,
+   "returnType": 6,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    27,
+    6
+   ],
+   "start": [
+    0,
+    27,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     27,
+     20
+    ],
+    "end": [
+     0,
+     27,
+     61
+    ],
+    "stmts": [
+     {
+      "k": "asm",
+      "p": [
+       0,
+       27,
+       22
+      ],
+      "end": [
+       0,
+       27,
+       59
+      ],
+      "text": "",
+      "volatile": true,
+      "clobbers": [
+       "memory"
+      ]
+     },
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "renamed",
+   "qualifiedName": "renamed",
+   "type": 7,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "extern",
+   "asmName": "real_symbol",
+   "p": [
+    0,
+    29,
+    12
+   ],
+   "start": [
+    0,
+    29,
+    1
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 0
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "name": "call",
+   "qualifiedName": "call",
+   "type": 8,
+   "returnType": 0,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    32,
+    5
+   ],
+   "start": [
+    0,
+    32,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     32,
+     16
+    ],
+    "end": [
+     0,
+     32,
+     47
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       32,
+       18
+      ],
+      "end": [
+       0,
+       32,
+       45
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 0,
+       "p": [
+        0,
+        32,
+        36
+       ],
+       "range": [
+        [
+         0,
+         32,
+         25
+        ],
+        [
+         0,
+         32,
+         44
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 0,
+         "p": [
+          0,
+          32,
+          32
+         ],
+         "range": [
+          [
+           0,
+           32,
+           25
+          ],
+          [
+           0,
+           32,
+           34
+          ]
+         ],
+         "op": "call",
+         "callee": 6,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 9,
+           "p": [
+            0,
+            32,
+            25
+           ],
+           "range": [
+            [
+             0,
+             32,
+             25
+            ],
+            [
+             0,
+             32,
+             31
+            ]
+           ],
+           "routine": 6,
+           "name": "renamed"
+          },
+          {
+           "k": "constant",
+           "t": 0,
+           "p": [
+            0,
+            32,
+            33
+           ],
+           "range": [
+            [
+             0,
+             32,
+             33
+            ],
+            [
+             0,
+             32,
+             33
+            ]
+           ],
+           "ck": "integer",
+           "value": "1"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 0,
+         "p": [
+          0,
+          32,
+          38
+         ],
+         "range": [
+          [
+           0,
+           32,
+           38
+          ],
+          [
+           0,
+           32,
+           44
+          ]
+         ],
+         "var": 1,
+         "name": "counter"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 1,
+   "kind": "routine",
+   "name": "int (int, int)",
+   "returns": 0,
+   "params": [
+    0,
+    0
+   ]
+  },
+  {
+   "id": 2,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 0,
+   "params": [
+    0
+   ]
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 0,
+   "params": [
+    0
+   ]
+  },
+  {
+   "id": 4,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 0,
+   "params": [
+    0
+   ]
+  },
+  {
+   "id": 5,
+   "kind": "routine",
+   "name": "void (void)",
+   "returns": 6,
+   "params": []
+  },
+  {
+   "id": 6,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 7,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 0,
+   "params": [
+    0
+   ]
+  },
+  {
+   "id": 8,
+   "kind": "routine",
+   "name": "int (void)",
+   "returns": 0,
+   "params": []
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "int (*)(int)",
+   "size": 8,
+   "to": 7
+  }
+ ],
+ "diagnostics": []
+}
