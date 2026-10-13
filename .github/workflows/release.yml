@@ -3,10 +3,21 @@ name: release
 # A v* tag builds edga for each platform, runs the golden tests on the binary, and attaches it to
 # the tag's GitHub release with its SHA-256, next to the build's SBOM. atom's container images
 # download these assets.
+#
+# Temporary, until the next release: a push to main builds the same binaries and pushes each to
+# ghcr.io/appthreat/edga:main-<platform> (and :<commit>-<platform>) with oras, for chen's and atom's
+# CI to test against what main exports.
 on:
   push:
     tags:
       - 'v*'
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref == 'refs/heads/main' }}
 
 permissions: {}
 
@@ -73,6 +84,7 @@ jobs:
           retention-days: 1
 
   release:
+    if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-24.04
     permissions:
@@ -99,3 +111,38 @@ jobs:
           gh release upload "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" dist/edga-* dist/sbom-edga.* --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  main:
+    if: github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c  # v8.0.1
+        with:
+          pattern: edga-*
+          path: dist
+          merge-multiple: true
+      - uses: oras-project/setup-oras@1d808f7d7f6995cc68b7bf507bfe5c5446e1dc9d  # v2.0.1
+      - name: Push main's binaries to ghcr.io
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          echo "$GITHUB_TOKEN" | oras login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+          for binary in dist/edga-*; do
+            [[ "$binary" == *.sha256 ]] && continue
+            platform=${binary#dist/edga-}
+            # one file named edga per platform, so a pull writes ./edga
+            mkdir -p "push/$platform"
+            cp "$binary" "push/$platform/edga"
+            (
+              cd "push/$platform"
+              oras push "ghcr.io/appthreat/edga:main-$platform,$GITHUB_SHA-$platform" \
+                --artifact-type application/vnd.appthreat.edga.binary \
+                --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
+                --annotation "org.opencontainers.image.revision=$GITHUB_SHA" \
+                edga:application/octet-stream
+            )
+          done
