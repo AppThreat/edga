@@ -2,9 +2,6 @@
 // The front end calls the back end (edga_back_end.cpp) once the translation unit is parsed; the
 // diagnostics it wrote are added to the document afterwards.
 
-#include <fcntl.h>
-#include <unistd.h>
-
 #include <cctype>
 #include <cstdio>
 #include <cstdlib>
@@ -13,6 +10,7 @@
 #include <vector>
 
 #include "edga_options.h"
+#include "edga_platform.h"
 #include "edga_version.h"
 #include "sarif_reader.h"
 
@@ -55,20 +53,20 @@ bool startsWith(const char* s, const char* prefix) {
   return std::strncmp(s, prefix, std::strlen(prefix)) == 0;
 }
 
-std::string temporaryFile() {
-  const char* dir = std::getenv("TMPDIR");
-  std::string pattern = std::string(dir != nullptr && *dir ? dir : "/tmp") + "/edga-XXXXXX";
-  std::vector<char> name(pattern.begin(), pattern.end());
-  name.push_back('\0');
-  int fd = mkstemp(name.data());
-  if (fd < 0) return "";
-  close(fd);
-  return std::string(name.data());
-}
+// The standard error stream, as a file descriptor.
+#ifdef _WIN32
+enum { kStdErrorFd = 2 };
+#else
+enum { kStdErrorFd = STDERR_FILENO };
+#endif
 
 }  // namespace
 
 int main(int argc, char* argv[]) {
+#ifdef _WIN32
+  // the document on standard output is bytes, not lines of text
+  _setmode(_fileno(stdout), _O_BINARY);
+#endif
   if (argc == 2 && std::strcmp(argv[1], "--version") == 0) {
     printVersion();
     return 0;
@@ -162,7 +160,7 @@ int main(int argc, char* argv[]) {
   // source file, which may be read-only; it goes to a temporary file instead.
   std::string templateInfoFile;
   if (cpp && !userTemplateInfo) {
-    templateInfoFile = temporaryFile();
+    templateInfoFile = edga::temporaryFile();
     if (!templateInfoFile.empty()) {
       args.push_back("--template_info_file");
       args.push_back(templateInfoFile);
@@ -174,7 +172,7 @@ int main(int argc, char* argv[]) {
   }
   std::string sarifFile;
   if (!userDiagnostics) {
-    sarifFile = temporaryFile();
+    sarifFile = edga::temporaryFile();
     if (!sarifFile.empty()) {
       args.push_back("--output_mode");
       args.push_back("sarif");
@@ -189,15 +187,15 @@ int main(int argc, char* argv[]) {
 
   // Errors in the command line are reported before the SARIF log is open: as SARIF results on the
   // standard error, which is captured to give the document them too.
-  std::string stderrFile = sarifFile.empty() ? std::string() : temporaryFile();
+  std::string stderrFile = sarifFile.empty() ? std::string() : edga::temporaryFile();
   int savedStderr = -1;
   if (!stderrFile.empty()) {
     std::fflush(stderr);
-    int captured = open(stderrFile.c_str(), O_WRONLY | O_TRUNC);
+    int captured = edga::openForWriting(stderrFile.c_str());
     if (captured >= 0) {
-      savedStderr = dup(STDERR_FILENO);
-      dup2(captured, STDERR_FILENO);
-      close(captured);
+      savedStderr = edga::duplicateFd(kStdErrorFd);
+      edga::replaceFd(kStdErrorFd, captured);
+      edga::closeFd(captured);
     }
   }
 
@@ -206,8 +204,8 @@ int main(int argc, char* argv[]) {
   std::string earlyErrors;
   if (savedStderr >= 0) {
     std::fflush(stderr);
-    dup2(savedStderr, STDERR_FILENO);
-    close(savedStderr);
+    edga::replaceFd(kStdErrorFd, savedStderr);
+    edga::closeFd(savedStderr);
     if (std::FILE* f = std::fopen(stderrFile.c_str(), "rb")) {
       char buf[65536];
       for (size_t n; (n = std::fread(buf, 1, sizeof buf, f)) > 0;) earlyErrors.append(buf, n);

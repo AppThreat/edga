@@ -3,6 +3,9 @@
 
 cmake_minimum_required(VERSION 3.19)
 
+# The static CRT, so the Windows binary is one self-contained file like the static Linux builds.
+set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded)
+
 project(edga VERSION 0.1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 14)
@@ -21,7 +24,13 @@ endif()
 
 # The front end's configuration for this host (config/macro-conf/<name>).
 if(NOT DEFINED EDGA_MACRO_CONF)
-  if(APPLE)
+  if(WIN32)
+    if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(ARM64|aarch64)$")
+      set(EDGA_MACRO_CONF windows-arm64)
+    else()
+      set(EDGA_MACRO_CONF windows-x86_64)
+    endif()
+  elseif(APPLE)
     set(EDGA_MACRO_CONF macos-arm64)
   elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|ARM64)$")
     set(EDGA_MACRO_CONF linux-aarch64)
@@ -122,8 +131,9 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID MATCHES "Clang"
     endif()
   endif()
 else()
+  # _CRT_SECURE_NO_WARNINGS: the standard C library calls the exporter makes are the safe ones.
   set(EDG_COMPILE_OPTIONS /bigobj /w)
-  set(EDGA_COMPILE_OPTIONS /bigobj /W3)
+  set(EDGA_COMPILE_OPTIONS /bigobj /W3 /D_CRT_SECURE_NO_WARNINGS)
 endif()
 
 # EDG's error message tables, generated from its message files.

@@ -1,0 +1,17 @@
+# Windows on x86_64: MSVC-compatible, LLP64 by default. The platform configuration compiles the
+# GNU extensions in, as the Linux and macOS ones do, because the exporter writes what they add to
+# the IL (case ranges, assigned gotos); the MSVC compiler configuration adds none of its own. The
+# widest floating-point type the target has is binary64 (`long double` is `double`), which the
+# host's own double represents, so the SoftFloat library the platform configuration otherwise asks
+# for is not used and the binary stays self-contained. The MSVC host compiler has no quadmath
+# either, so float128 values are not computed by the front end (as on aarch64 Linux and musl).
+import <support/platform/windows-x86_64/base>
+import <support/compiler/msvc/base>
+import <support/simple-conf/release/base>
+import <edga/common>
+
+GNU_EXTENSIONS_ALLOWED=1
+USE_SOFTFLOAT=0
+USE_FLOAT128_FOR_HOST_FP_VALUE=0
+USE_QUADMATH_LIBRARY=0
+FLOAT128_ENABLING_POSSIBLE=0

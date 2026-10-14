@@ -1,0 +1,2 @@
+# Byte-exact: a fixture with Windows line endings, which a checkout must not rewrite.
+tests/fixtures/crlf.c -text

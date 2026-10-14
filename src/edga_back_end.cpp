@@ -6,6 +6,7 @@
 // end's configuration. A node the front end made implicitly (a conversion, a `!= 0` test, an
 // implicit `this`) is kept and marked "implicit".
 
+#include <cctype>
 #include <climits>
 #include <cstdio>
 #include <cstdlib>
@@ -17,6 +18,7 @@
 #include <vector>
 
 #include "edga_options.h"
+#include "edga_platform.h"
 #include "edga_version.h"
 #include "fe_common.h"
 #include "il_walk.h"
@@ -31,19 +33,23 @@ namespace edga {
 
 namespace {
 
-std::string realPath(const char* path) {
-  if (path == nullptr || *path == '\0') return "";
-  char* resolved = ::realpath(path, nullptr);
-  if (resolved == nullptr) return path;
-  std::string out(resolved);
-  std::free(resolved);
-  return out;
+// A path character as it is compared: Windows paths are case-insensitive, and either character
+// separates directories there.
+char pathChar(char c) {
+#ifdef _WIN32
+  if (c == '\\') return '/';
+  return static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+#else
+  return c;
+#endif
 }
 
 bool underDirectory(const std::string& path, const std::string& dir) {
   if (dir.empty()) return true;
-  if (path.size() < dir.size() || path.compare(0, dir.size(), dir) != 0) return false;
-  return path.size() == dir.size() || path[dir.size()] == '/' || dir.back() == '/';
+  if (path.size() < dir.size()) return false;
+  for (size_t i = 0; i < dir.size(); ++i)
+    if (pathChar(path[i]) != pathChar(dir[i])) return false;
+  return path.size() == dir.size() || pathChar(path[dir.size()]) == '/' || dir.back() == '/';
 }
 
 class Exporter {
@@ -87,7 +93,8 @@ class Exporter {
 
   void writeUnit() {
     json_.beginObject();
-    json_.field("path", primary_source_file_name);
+    // as the files table spells paths: absolute, with '/' separators
+    json_.field("path", realPath(primary_source_file_name));
     json_.field("language", C_mode() ? "c" : "c++");
     json_.field("status", is_at_least_one_error() ? "errors" : "ok");
     json_.key("mode");
@@ -1359,7 +1366,7 @@ std::FILE* openOutput() {
 // stops part way never leaves half a document there.
 std::FILE* openBackEndOutput() {
   if (options().out != "-") return openOutput();
-  std::FILE* f = std::tmpfile();
+  std::FILE* f = temporaryStream();
   if (f == nullptr) std::fprintf(stderr, "edga: cannot create a temporary file\n");
   return f;
 }
@@ -1411,7 +1418,7 @@ void finishUnit(const std::vector<Diagnostic>& diagnostics) {
       std::fwrite(buffer, 1, n, stdout);
     std::fflush(stdout);
   }
-  std::fclose(output);
+  closeStream(output);
   output = nullptr;
 }
 
@@ -1422,7 +1429,7 @@ void writeFailedUnit(const char* sourceFile, const std::vector<Diagnostic>& diag
     delete writer;
     writer = nullptr;
   }
-  if (output != nullptr) std::fclose(output);
+  if (output != nullptr) closeStream(output);
   output = nullptr;
   std::FILE* f = openOutput();
   if (f == nullptr) return;
