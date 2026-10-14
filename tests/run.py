@@ -6,10 +6,9 @@ Fixtures declare what they use instead of including system headers, so the outpu
 depend on the host's C library. The first line of a fixture may give front end options:
 `// edga-options: --c++17`. Run with --update to rewrite the expected files.
 
-A build whose target's data model changes what the fixtures' types are has its own expected
-directory, tests/expected/<configuration>/ (windows-x86_64: LLP64, where size_t is an unsigned
-long long, the ids of the types after it shift, and size-dependent code draws diagnostics of
-its own). Those files are per-configuration; the others are shared by every build.
+A build whose target's data model changes the fixtures' types has its own expected directory
+(OWN_EXPECTED_DIRECTORIES), holding only the fixtures that differ there; the rest are shared by
+every build.
 """
 
 import argparse
@@ -86,24 +85,39 @@ def normalise(document):
     return document
 
 
+def command(edga, fixture):
+    return [
+        str(edga),
+        # plain char is unsigned on aarch64 Linux and signed on the other hosts
+        "--signed_chars",
+        *fixture_options(fixture),
+        "--edga-root",
+        str(FIXTURES),
+    ]
+
+
 def export(edga, fixture):
     with tempfile.TemporaryDirectory() as tmp:
         out = Path(tmp) / "out.json"
-        cmd = [
-            str(edga),
-            # plain char is unsigned on aarch64 Linux and signed on the other hosts
-            "--signed_chars",
-            *fixture_options(fixture),
-            "--edga-root",
-            str(FIXTURES),
-            "--edga-out",
-            str(out),
-            str(fixture),
-        ]
+        cmd = command(edga, fixture) + ["--edga-out", str(out), str(fixture)]
         run = subprocess.run(cmd, capture_output=True, text=True, cwd=FIXTURES)
         if not out.exists():
             raise RuntimeError(f"{fixture.name}: no output\n{run.stderr}")
         return json.loads(out.read_text(encoding="utf-8"))
+
+
+def stdout_differs(edga, fixture, document):
+    """Why the document edga writes to standard output (no --edga-out) is not the one it writes to
+    a file, or None. It goes through a temporary file first, and on Windows standard output must
+    be binary: a line ending translated there would be a carriage return in the JSON."""
+    run = subprocess.run(command(edga, fixture) + [str(fixture)], capture_output=True, cwd=FIXTURES)
+    if b"\r" in run.stdout:
+        return "a carriage return on standard output"
+    try:
+        written = json.loads(run.stdout.decode("utf-8"))
+    except ValueError as e:
+        return f"standard output is not JSON: {e}"
+    return None if normalise(written) == normalise(document) else "a different document"
 
 
 def main():
@@ -139,20 +153,21 @@ def main():
                     print(f"     {list(e.path)}: {e.message[:200]}")
                 continue
         actual = json.dumps(normalise(document), indent=1, sort_keys=False) + "\n"
-        shared_path = EXPECTED / (fixture.name + ".json")
         if args.update:
-            # a build with its own directory writes there only the fixtures its target makes
-            # differ; what matches the shared files stays shared
+            shared_path = EXPECTED / (fixture.name + ".json")
             own_path = directory / (fixture.name + ".json")
             shared = shared_path.read_text(encoding="utf-8") if shared_path.exists() else ""
-            if directory != EXPECTED and actual != shared:
+            if directory == EXPECTED:
+                shared_path.write_text(actual, encoding="utf-8", newline="\n")
+                print(f"updated {shared_path.name}")
+            elif actual == shared:
+                # a build with its own directory keeps there only what its target makes differ
+                own_path.unlink(missing_ok=True)
+                print(f"shared   {fixture.name}")
+            else:
                 own_path.parent.mkdir(parents=True, exist_ok=True)
                 own_path.write_text(actual, encoding="utf-8", newline="\n")
                 print(f"updated {own_path.relative_to(EXPECTED)}")
-            else:
-                own_path.unlink(missing_ok=True)
-                shared_path.write_text(actual, encoding="utf-8", newline="\n")
-                print(f"updated {shared_path.name}")
             continue
         this_expected = expected_path(directory, fixture.name)
         expected = this_expected.read_text(encoding="utf-8") if this_expected.exists() else ""
@@ -170,6 +185,14 @@ def main():
             )
         else:
             print(f"ok   {fixture.name}")
+        # once: the same document on standard output as in a file
+        if fixture == fixtures[0]:
+            why = stdout_differs(Path(args.edga).resolve(), fixture, document)
+            if why is not None:
+                failures += 1
+                print(f"FAIL {fixture.name} on standard output: {why}")
+            else:
+                print(f"ok   {fixture.name} on standard output")
     if failures:
         print(f"{failures} of {len(fixtures)} fixtures differ")
         return 1

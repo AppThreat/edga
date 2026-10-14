@@ -21,14 +21,8 @@
 
 namespace edga {
 
-#ifdef _WIN32
-// The one temporary stream the exporter opens at a time (the back end's output when it goes to
-// standard output), by name, so it can be removed when the stream closes.
-inline std::string& temporaryStreamName() {
-  static std::string name;
-  return name;
-}
-#endif
+// The standard error stream's file descriptor (STDERR_FILENO, which Windows does not define).
+constexpr int kStandardErrorFd = 2;
 
 // The file's absolute path as the platform resolves it: symlinks followed where the platform does
 // so itself, '.' and '..' removed. Empty for null or empty input, the input itself when it cannot
@@ -71,30 +65,23 @@ inline std::string temporaryFile() {
 #endif
 }
 
-// A stream over a new empty temporary file, or null: what std::tmpfile gives on POSIX, but in the
-// platform's temporary directory on Windows, where std::tmpfile uses the current drive's root.
-// closeStream removes the file again.
+// A stream over a new empty temporary file, removed when the stream is closed, or null: what
+// std::tmpfile gives, but in the platform's temporary directory on Windows, where std::tmpfile
+// uses the current drive's root.
 inline std::FILE* temporaryStream() {
 #ifdef _WIN32
-  std::string& name = temporaryStreamName();
-  name = temporaryFile();
-  std::FILE* f = name.empty() ? nullptr : std::fopen(name.c_str(), "w+b");
-  if (f == nullptr) name.clear();
+  std::string name = temporaryFile();
+  if (name.empty()) return nullptr;
+  int fd = _open(name.c_str(), _O_RDWR | _O_BINARY | _O_TEMPORARY);
+  if (fd < 0) {
+    std::remove(name.c_str());
+    return nullptr;
+  }
+  std::FILE* f = _fdopen(fd, "w+b");
+  if (f == nullptr) _close(fd);
   return f;
 #else
   return std::tmpfile();
-#endif
-}
-
-// Closes a stream temporaryStream made, removing its file; other streams as fclose does.
-inline void closeStream(std::FILE* f) {
-  std::fclose(f);
-#ifdef _WIN32
-  std::string& name = temporaryStreamName();
-  if (!name.empty()) {
-    std::remove(name.c_str());
-    name.clear();
-  }
 #endif
 }
 

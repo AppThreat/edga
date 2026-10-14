@@ -1418,7 +1418,7 @@ void finishUnit(const std::vector<Diagnostic>& diagnostics) {
       std::fwrite(buffer, 1, n, stdout);
     std::fflush(stdout);
   }
-  closeStream(output);
+  std::fclose(output);
   output = nullptr;
 }
 
@@ -1429,7 +1429,7 @@ void writeFailedUnit(const char* sourceFile, const std::vector<Diagnostic>& diag
     delete writer;
     writer = nullptr;
   }
-  if (output != nullptr) closeStream(output);
+  if (output != nullptr) std::fclose(output);
   output = nullptr;
   std::FILE* f = openOutput();
   if (f == nullptr) return;

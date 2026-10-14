@@ -159,16 +159,18 @@ jobs:
             [[ "$binary" == *.sha256 ]] && continue
             platform=${binary#dist/edga-}
             platform=${platform%.exe}
-            # one file per platform named after what it is there (edga, edga.exe), so a pull
-            # writes a runnable file
+            # one file per platform, named as the binary is run there (edga, or edga.exe on
+            # Windows), so a pull writes ./edga or ./edga.exe
+            name=edga
+            [[ "$binary" == *.exe ]] && name=edga.exe
             mkdir -p "push/$platform"
-            cp "$binary" "push/$platform/$(basename "$binary")"
+            cp "$binary" "push/$platform/$name"
             (
               cd "push/$platform"
               oras push "ghcr.io/appthreat/edga:main-$platform,$GITHUB_SHA-$platform" \
                 --artifact-type application/vnd.appthreat.edga.binary \
                 --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
                 --annotation "org.opencontainers.image.revision=$GITHUB_SHA" \
-                "$(basename "$binary"):application/octet-stream"
+                "$name:application/octet-stream"
             )
           done

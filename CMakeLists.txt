@@ -4,7 +4,7 @@
 cmake_minimum_required(VERSION 3.19)
 
 # The static CRT, so the Windows binary is one self-contained file like the static Linux builds.
-set(CMAKE_MSVC_RUNTIME_LIBRARY MultiThreaded)
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
 project(edga VERSION 0.1.1 LANGUAGES CXX)
 

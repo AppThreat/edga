@@ -53,13 +53,6 @@ bool startsWith(const char* s, const char* prefix) {
   return std::strncmp(s, prefix, std::strlen(prefix)) == 0;
 }
 
-// The standard error stream, as a file descriptor.
-#ifdef _WIN32
-enum { kStdErrorFd = 2 };
-#else
-enum { kStdErrorFd = STDERR_FILENO };
-#endif
-
 }  // namespace
 
 int main(int argc, char* argv[]) {
@@ -193,8 +186,8 @@ int main(int argc, char* argv[]) {
     std::fflush(stderr);
     int captured = edga::openForWriting(stderrFile.c_str());
     if (captured >= 0) {
-      savedStderr = edga::duplicateFd(kStdErrorFd);
-      edga::replaceFd(kStdErrorFd, captured);
+      savedStderr = edga::duplicateFd(edga::kStandardErrorFd);
+      edga::replaceFd(edga::kStandardErrorFd, captured);
       edga::closeFd(captured);
     }
   }
@@ -204,7 +197,7 @@ int main(int argc, char* argv[]) {
   std::string earlyErrors;
   if (savedStderr >= 0) {
     std::fflush(stderr);
-    edga::replaceFd(kStdErrorFd, savedStderr);
+    edga::replaceFd(edga::kStandardErrorFd, savedStderr);
     edga::closeFd(savedStderr);
     if (std::FILE* f = std::fopen(stderrFile.c_str(), "rb")) {
       char buf[65536];
