@@ -38,7 +38,8 @@ next to the source files, so a read-only source tree works.
 ## Releases
 
 Each GitHub release carries edga for linux-amd64 and linux-arm64 (static, glibc), linuxmusl-amd64
-and linuxmusl-arm64 (static, musl, built in Alpine: `tools/build-alpine.sh`) and darwin-arm64, with
+and linuxmusl-arm64 (static, musl, built in Alpine: `tools/build-alpine.sh`), darwin-arm64 and
+windows-amd64 and windows-arm64 (`edga.exe`, built with MSVC, statically linked to the CRT), with
 SHA-256 files and a CycloneDX SBOM (`sbom-edga.cdx.json`, from `tools/sbom.py`). atom's container
 images install it; chen finds edga with `EDGA_PATH`, `--edga-path` or on the `PATH`.
 
@@ -56,8 +57,19 @@ cmake --build build --target edga
 
 The build needs CMake 3.19+, Python 3 (EDG's configuration tool), and a C++14 compiler. The front
 end's configuration for the host is chosen from `config/macro-conf` (`linux-x86_64`,
-`linux-x86_64-musl`, `linux-aarch64`, `macos-arm64`); set `-DEDGA_MACRO_CONF=<name>` to pick one. The front end's
-sources are compiled unmodified.
+`linux-x86_64-musl`, `linux-aarch64`, `macos-arm64`, `windows-x86_64`, `windows-arm64`); set
+`-DEDGA_MACRO_CONF=<name>` to pick one. The front end's sources are compiled unmodified.
+
+On Windows, build from a Visual Studio environment so CMake finds MSVC:
+
+```bat
+call "C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" x64
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --target edga
+```
+
+(use `vcvarsall.bat arm64` for `windows-arm64`.) The golden tests run the same way:
+`python tests\run.py --edga build\bin\edga.exe`.
 
 ## Tests
 

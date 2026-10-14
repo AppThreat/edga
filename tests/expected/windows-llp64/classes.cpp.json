@@ -1,0 +1,2598 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "classes.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": true,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "classes.cpp",
+   "written": "classes.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "measure",
+   "qualifiedName": "geometry::measure",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    26,
+    5
+   ],
+   "start": [
+    0,
+    26,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "s",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      26,
+      26
+     ],
+     "start": [
+      0,
+      26,
+      13
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     26,
+     29
+    ],
+    "end": [
+     0,
+     26,
+     48
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       26,
+       31
+      ],
+      "end": [
+       0,
+       26,
+       46
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        26,
+        44
+       ],
+       "range": [
+        [
+         0,
+         26,
+         38
+        ],
+        [
+         0,
+         26,
+         45
+        ]
+       ],
+       "op": "dot_member_call",
+       "virtual": true,
+       "callee": 2,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 3,
+         "p": [
+          0,
+          26,
+          40
+         ],
+         "range": [
+          [
+           0,
+           26,
+           40
+          ],
+          [
+           0,
+           26,
+           43
+          ]
+         ],
+         "routine": 2,
+         "name": "area"
+        },
+        {
+         "k": "operation",
+         "t": 4,
+         "p": [
+          0,
+          26,
+          38
+         ],
+         "lv": true,
+         "implicit": true,
+         "op": "ref_indirect",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 2,
+           "p": [
+            0,
+            26,
+            38
+           ],
+           "range": [
+            [
+             0,
+             26,
+             38
+            ],
+            [
+             0,
+             26,
+             38
+            ]
+           ],
+           "var": 1,
+           "name": "s"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "combined",
+   "qualifiedName": "geometry::combined",
+   "type": 5,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    28,
+    5
+   ],
+   "start": [
+    0,
+    28,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     28,
+     16
+    ],
+    "end": [
+     0,
+     33,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       29,
+       3
+      ],
+      "end": [
+       0,
+       29,
+       15
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "sq",
+        "type": 6,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         29,
+         10
+        ],
+        "start": [
+         0,
+         29,
+         3
+        ],
+        "init": {
+         "k": "constructor",
+         "var": 2,
+         "routine": 4,
+         "args": [
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            29,
+            13
+           ],
+           "range": [
+            [
+             0,
+             29,
+             13
+            ],
+            [
+             0,
+             29,
+             13
+            ]
+           ],
+           "ck": "integer",
+           "value": "3"
+          }
+         ],
+         "destructor": 5
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       30,
+       3
+      ],
+      "end": [
+       0,
+       30,
+       15
+      ],
+      "decls": [
+       {
+        "id": 3,
+        "name": "a",
+        "type": 7,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         30,
+         8
+        ],
+        "start": [
+         0,
+         30,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 3,
+         "const": {
+          "k": "constant",
+          "t": 7,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 1,
+            "ck": "integer",
+            "value": "1"
+           },
+           {
+            "k": "constant",
+            "t": 1,
+            "ck": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       31,
+       3
+      ],
+      "end": [
+       0,
+       31,
+       17
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "b",
+        "type": 7,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         31,
+         8
+        ],
+        "start": [
+         0,
+         31,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 4,
+         "expr": {
+          "k": "operation",
+          "t": 7,
+          "p": [
+           0,
+           31,
+           14
+          ],
+          "range": [
+           [
+            0,
+            31,
+            12
+           ],
+           [
+            0,
+            31,
+            16
+           ]
+          ],
+          "op": "dot_member_call",
+          "operatorSyntax": true,
+          "callee": 6,
+          "ops": [
+           {
+            "k": "routine",
+            "t": 8,
+            "p": [
+             0,
+             31,
+             14
+            ],
+            "routine": 6,
+            "name": "operator+"
+           },
+           {
+            "k": "operation",
+            "t": 9,
+            "p": [
+             0,
+             31,
+             12
+            ],
+            "lv": true,
+            "implicit": true,
+            "op": "lvalue_adjust",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 7,
+              "p": [
+               0,
+               31,
+               12
+              ],
+              "range": [
+               [
+                0,
+                31,
+                12
+               ],
+               [
+                0,
+                31,
+                12
+               ]
+              ],
+              "lv": true,
+              "var": 3,
+              "name": "a"
+             }
+            ]
+           },
+           {
+            "k": "operation",
+            "t": 10,
+            "p": [
+             0,
+             31,
+             16
+            ],
+            "implicit": true,
+            "op": "reference_to",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 9,
+              "p": [
+               0,
+               31,
+               16
+              ],
+              "lv": true,
+              "implicit": true,
+              "op": "lvalue_adjust",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 7,
+                "p": [
+                 0,
+                 31,
+                 16
+                ],
+                "range": [
+                 [
+                  0,
+                  31,
+                  16
+                 ],
+                 [
+                  0,
+                  31,
+                  16
+                 ]
+                ],
+                "lv": true,
+                "var": 3,
+                "name": "a"
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       32,
+       3
+      ],
+      "end": [
+       0,
+       32,
+       27
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        32,
+        22
+       ],
+       "range": [
+        [
+         0,
+         32,
+         10
+        ],
+        [
+         0,
+         32,
+         26
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          32,
+          17
+         ],
+         "range": [
+          [
+           0,
+           32,
+           10
+          ],
+          [
+           0,
+           32,
+           20
+          ]
+         ],
+         "op": "call",
+         "callee": 1,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 11,
+           "p": [
+            0,
+            32,
+            10
+           ],
+           "range": [
+            [
+             0,
+             32,
+             10
+            ],
+            [
+             0,
+             32,
+             16
+            ]
+           ],
+           "routine": 1,
+           "name": "measure"
+          },
+          {
+           "k": "operation",
+           "t": 2,
+           "p": [
+            0,
+            32,
+            18
+           ],
+           "implicit": true,
+           "op": "reference_to",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 4,
+             "p": [
+              0,
+              32,
+              18
+             ],
+             "lv": true,
+             "implicit": true,
+             "op": "base_class_cast",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 6,
+               "p": [
+                0,
+                32,
+                18
+               ],
+               "range": [
+                [
+                 0,
+                 32,
+                 18
+                ],
+                [
+                 0,
+                 32,
+                 19
+                ]
+               ],
+               "lv": true,
+               "var": 2,
+               "name": "sq"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          32,
+          25
+         ],
+         "range": [
+          [
+           0,
+           32,
+           24
+          ],
+          [
+           0,
+           32,
+           26
+          ]
+         ],
+         "op": "dot_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 7,
+           "p": [
+            0,
+            32,
+            24
+           ],
+           "range": [
+            [
+             0,
+             32,
+             24
+            ],
+            [
+             0,
+             32,
+             24
+            ]
+           ],
+           "lv": true,
+           "var": 4,
+           "name": "b"
+          },
+          {
+           "k": "field",
+           "t": 1,
+           "p": [
+            0,
+            32,
+            26
+           ],
+           "range": [
+            [
+             0,
+             32,
+             26
+            ],
+            [
+             0,
+             32,
+             26
+            ]
+           ],
+           "name": "x"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 7,
+   "name": "depth",
+   "qualifiedName": "geometry::depth",
+   "type": 12,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    37,
+    5
+   ],
+   "start": [
+    0,
+    37,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "s",
+     "type": 13,
+     "storage": "auto",
+     "p": [
+      0,
+      37,
+      17
+     ],
+     "start": [
+      0,
+      37,
+      11
+     ]
+    },
+    {
+     "id": 6,
+     "name": "scale",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      37,
+      24
+     ],
+     "start": [
+      0,
+      37,
+      20
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     37,
+     35
+    ],
+    "end": [
+     0,
+     37,
+     74
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       37,
+       37
+      ],
+      "end": [
+       0,
+       37,
+       72
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        37,
+        61
+       ],
+       "range": [
+        [
+         0,
+         37,
+         44
+        ],
+        [
+         0,
+         37,
+         71
+        ]
+       ],
+       "op": "question",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 14,
+         "p": [
+          0,
+          37,
+          46
+         ],
+         "range": [
+          [
+           0,
+           37,
+           44
+          ],
+          [
+           0,
+           37,
+           59
+          ]
+         ],
+         "op": "eq",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 13,
+           "p": [
+            0,
+            37,
+            44
+           ],
+           "range": [
+            [
+             0,
+             37,
+             44
+            ],
+            [
+             0,
+             37,
+             44
+            ]
+           ],
+           "var": 5,
+           "name": "s"
+          },
+          {
+           "k": "constant",
+           "t": 13,
+           "p": [
+            0,
+            37,
+            49
+           ],
+           "range": [
+            [
+             0,
+             37,
+             49
+            ],
+            [
+             0,
+             37,
+             59
+            ]
+           ],
+           "ck": "integer",
+           "value": "4"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          37,
+          63
+         ],
+         "range": [
+          [
+           0,
+           37,
+           63
+          ],
+          [
+           0,
+           37,
+           67
+          ]
+         ],
+         "var": 6,
+         "name": "scale"
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          37,
+          71
+         ],
+         "range": [
+          [
+           0,
+           37,
+           71
+          ],
+          [
+           0,
+           37,
+           71
+          ]
+         ],
+         "ck": "integer",
+         "value": "1"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 8,
+   "name": "dark_depth",
+   "qualifiedName": "geometry::dark_depth",
+   "type": 15,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    39,
+    5
+   ],
+   "start": [
+    0,
+    39,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     39,
+     18
+    ],
+    "end": [
+     0,
+     39,
+     47
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       39,
+       20
+      ],
+      "end": [
+       0,
+       39,
+       45
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        39,
+        32
+       ],
+       "range": [
+        [
+         0,
+         39,
+         27
+        ],
+        [
+         0,
+         39,
+         44
+        ]
+       ],
+       "op": "call",
+       "callee": 7,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 16,
+         "p": [
+          0,
+          39,
+          27
+         ],
+         "range": [
+          [
+           0,
+           39,
+           27
+          ],
+          [
+           0,
+           39,
+           31
+          ]
+         ],
+         "routine": 7,
+         "name": "depth"
+        },
+        {
+         "k": "constant",
+         "t": 13,
+         "p": [
+          0,
+          39,
+          33
+         ],
+         "range": [
+          [
+           0,
+           39,
+           33
+          ],
+          [
+           0,
+           39,
+           43
+          ]
+         ],
+         "ck": "integer",
+         "value": "4"
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          37,
+          32
+         ],
+         "range": [
+          [
+           0,
+           37,
+           32
+          ],
+          [
+           0,
+           37,
+           32
+          ]
+         ],
+         "defaultArgument": true,
+         "ck": "integer",
+         "value": "2"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "operator+",
+   "qualifiedName": "geometry::Vec2::operator+",
+   "type": 17,
+   "returnType": 7,
+   "prototyped": true,
+   "thisClass": 7,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "special": "operator",
+   "operator": "plus",
+   "class": 7,
+   "inline": true,
+   "p": [
+    0,
+    7,
+    8
+   ],
+   "start": [
+    0,
+    7,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 7,
+     "name": "",
+     "type": 18,
+     "storage": "auto",
+     "this": true
+    },
+    {
+     "id": 8,
+     "name": "other",
+     "type": 10,
+     "storage": "auto",
+     "p": [
+      0,
+      7,
+      30
+     ],
+     "start": [
+      0,
+      7,
+      18
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     7,
+     43
+    ],
+    "end": [
+     0,
+     7,
+     80
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       7,
+       45
+      ],
+      "end": [
+       0,
+       7,
+       78
+      ],
+      "init": {
+       "k": "nonconstant_aggregate",
+       "const": {
+        "k": "constant",
+        "t": 7,
+        "ck": "aggregate",
+        "elements": [
+         {
+          "k": "constant",
+          "t": 1,
+          "ck": "dynamic_init",
+          "init": {
+           "k": "expression",
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             7,
+             55
+            ],
+            "range": [
+             [
+              0,
+              7,
+              53
+             ],
+             [
+              0,
+              7,
+              63
+             ]
+            ],
+            "op": "add",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               53
+              ],
+              "implicit": true,
+              "op": "points_to_field",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 19,
+                "var": 7,
+                "name": ""
+               },
+               {
+                "k": "field",
+                "t": 1,
+                "p": [
+                 0,
+                 7,
+                 53
+                ],
+                "range": [
+                 [
+                  0,
+                  7,
+                  53
+                 ],
+                 [
+                  0,
+                  7,
+                  53
+                 ]
+                ],
+                "name": "x"
+               }
+              ]
+             },
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               62
+              ],
+              "range": [
+               [
+                0,
+                7,
+                57
+               ],
+               [
+                0,
+                7,
+                63
+               ]
+              ],
+              "op": "dot_field",
+              "ops": [
+               {
+                "k": "operation",
+                "t": 9,
+                "p": [
+                 0,
+                 7,
+                 57
+                ],
+                "lv": true,
+                "implicit": true,
+                "op": "ref_indirect",
+                "ops": [
+                 {
+                  "k": "variable",
+                  "t": 10,
+                  "p": [
+                   0,
+                   7,
+                   57
+                  ],
+                  "range": [
+                   [
+                    0,
+                    7,
+                    57
+                   ],
+                   [
+                    0,
+                    7,
+                    61
+                   ]
+                  ],
+                  "var": 8,
+                  "name": "other"
+                 }
+                ]
+               },
+               {
+                "k": "field",
+                "t": 1,
+                "p": [
+                 0,
+                 7,
+                 63
+                ],
+                "range": [
+                 [
+                  0,
+                  7,
+                  63
+                 ],
+                 [
+                  0,
+                  7,
+                  63
+                 ]
+                ],
+                "name": "x"
+               }
+              ]
+             }
+            ]
+           }
+          }
+         },
+         {
+          "k": "constant",
+          "t": 1,
+          "ck": "dynamic_init",
+          "init": {
+           "k": "expression",
+           "expr": {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             7,
+             68
+            ],
+            "range": [
+             [
+              0,
+              7,
+              66
+             ],
+             [
+              0,
+              7,
+              76
+             ]
+            ],
+            "op": "add",
+            "ops": [
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               66
+              ],
+              "implicit": true,
+              "op": "points_to_field",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 19,
+                "var": 7,
+                "name": ""
+               },
+               {
+                "k": "field",
+                "t": 1,
+                "p": [
+                 0,
+                 7,
+                 66
+                ],
+                "range": [
+                 [
+                  0,
+                  7,
+                  66
+                 ],
+                 [
+                  0,
+                  7,
+                  66
+                 ]
+                ],
+                "name": "y",
+                "offset": 4
+               }
+              ]
+             },
+             {
+              "k": "operation",
+              "t": 1,
+              "p": [
+               0,
+               7,
+               75
+              ],
+              "range": [
+               [
+                0,
+                7,
+                70
+               ],
+               [
+                0,
+                7,
+                76
+               ]
+              ],
+              "op": "dot_field",
+              "ops": [
+               {
+                "k": "operation",
+                "t": 9,
+                "p": [
+                 0,
+                 7,
+                 70
+                ],
+                "lv": true,
+                "implicit": true,
+                "op": "ref_indirect",
+                "ops": [
+                 {
+                  "k": "variable",
+                  "t": 10,
+                  "p": [
+                   0,
+                   7,
+                   70
+                  ],
+                  "range": [
+                   [
+                    0,
+                    7,
+                    70
+                   ],
+                   [
+                    0,
+                    7,
+                    74
+                   ]
+                  ],
+                  "var": 8,
+                  "name": "other"
+                 }
+                ]
+               },
+               {
+                "k": "field",
+                "t": 1,
+                "p": [
+                 0,
+                 7,
+                 76
+                ],
+                "range": [
+                 [
+                  0,
+                  7,
+                  76
+                 ],
+                 [
+                  0,
+                  7,
+                  76
+                 ]
+                ],
+                "name": "y",
+                "offset": 4
+               }
+              ]
+             }
+            ]
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 9,
+   "name": "operator=",
+   "qualifiedName": "geometry::Vec2::operator=",
+   "type": 20,
+   "returnType": 21,
+   "prototyped": true,
+   "thisClass": 7,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 7,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    5,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 10
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "name": "operator=",
+   "qualifiedName": "geometry::Vec2::operator=",
+   "type": 22,
+   "returnType": 21,
+   "prototyped": true,
+   "thisClass": 7,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 7,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    5,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 23
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "name": "~Shape",
+   "qualifiedName": "geometry::Shape::~Shape",
+   "type": 24,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 26,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "special": "destructor",
+   "class": 26,
+   "virtual": true,
+   "inline": true,
+   "p": [
+    0,
+    12,
+    11
+   ],
+   "start": [
+    0,
+    12,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 9,
+     "name": "",
+     "type": 27,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     12,
+     20
+    ],
+    "end": [
+     0,
+     12,
+     21
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "area",
+   "qualifiedName": "geometry::Shape::area",
+   "type": 28,
+   "returnType": 1,
+   "prototyped": true,
+   "thisClass": 26,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "class": 26,
+   "virtual": true,
+   "pureVirtual": true,
+   "p": [
+    0,
+    13,
+    15
+   ],
+   "start": [
+    0,
+    13,
+    3
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 12,
+   "name": "Shape",
+   "qualifiedName": "geometry::Shape::Shape",
+   "type": 29,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 26,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "special": "constructor",
+   "class": 26,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    10,
+    7
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 10,
+     "name": "",
+     "type": 27,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "implicit": true,
+    "stmts": [
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 13,
+   "name": "Shape",
+   "qualifiedName": "geometry::Shape::Shape",
+   "type": 30,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 26,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "constructor",
+   "class": 26,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    10,
+    7
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 2
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "name": "operator=",
+   "qualifiedName": "geometry::Shape::operator=",
+   "type": 31,
+   "returnType": 32,
+   "prototyped": true,
+   "thisClass": 26,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 26,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    10,
+    7
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 2
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Square",
+   "qualifiedName": "geometry::Square::Square",
+   "type": 33,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "special": "constructor",
+   "class": 6,
+   "inline": true,
+   "p": [
+    0,
+    18,
+    12
+   ],
+   "start": [
+    0,
+    18,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 11,
+     "name": "",
+     "type": 34,
+     "storage": "auto",
+     "this": true
+    },
+    {
+     "id": 12,
+     "name": "side",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      18,
+      23
+     ],
+     "start": [
+      0,
+      18,
+      19
+     ]
+    }
+   ],
+   "ctorInits": [
+    {
+     "base": 26,
+     "implicit": true,
+     "init": {
+      "k": "constructor",
+      "routine": 12,
+      "args": [],
+      "destructor": 11
+     }
+    },
+    {
+     "field": "side_",
+     "init": {
+      "k": "expression",
+      "expr": {
+       "k": "variable",
+       "t": 1,
+       "p": [
+        0,
+        18,
+        37
+       ],
+       "range": [
+        [
+         0,
+         18,
+         37
+        ],
+        [
+         0,
+         18,
+         40
+        ]
+       ],
+       "var": 12,
+       "name": "side"
+      }
+     }
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     18,
+     43
+    ],
+    "end": [
+     0,
+     18,
+     44
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "name": "~Square",
+   "qualifiedName": "geometry::Square::~Square",
+   "type": 35,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "special": "destructor",
+   "class": 6,
+   "virtual": true,
+   "inline": true,
+   "p": [
+    0,
+    19,
+    3
+   ],
+   "start": [
+    0,
+    19,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 13,
+     "name": "",
+     "type": 34,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "ctorInits": [
+    {
+     "base": 26,
+     "implicit": true,
+     "init": {
+      "k": "none",
+      "destructor": 11
+     }
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     19,
+     22
+    ],
+    "end": [
+     0,
+     19,
+     23
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 15,
+   "name": "area",
+   "qualifiedName": "geometry::Square::area",
+   "type": 36,
+   "returnType": 1,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 6,
+   "virtual": true,
+   "inline": true,
+   "p": [
+    0,
+    20,
+    7
+   ],
+   "start": [
+    0,
+    20,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 14,
+     "name": "",
+     "type": 37,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     20,
+     29
+    ],
+    "end": [
+     0,
+     20,
+     53
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       20,
+       31
+      ],
+      "end": [
+       0,
+       20,
+       51
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        20,
+        44
+       ],
+       "range": [
+        [
+         0,
+         20,
+         38
+        ],
+        [
+         0,
+         20,
+         50
+        ]
+       ],
+       "op": "multiply",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          20,
+          38
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 38,
+           "var": 14,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 1,
+           "p": [
+            0,
+            20,
+            38
+           ],
+           "range": [
+            [
+             0,
+             20,
+             38
+            ],
+            [
+             0,
+             20,
+             42
+            ]
+           ],
+           "name": "side_",
+           "offset": 8
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          20,
+          46
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 38,
+           "var": 14,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 1,
+           "p": [
+            0,
+            20,
+            46
+           ],
+           "range": [
+            [
+             0,
+             20,
+             46
+            ],
+            [
+             0,
+             20,
+             50
+            ]
+           ],
+           "name": "side_",
+           "offset": 8
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 16,
+   "name": "Square",
+   "qualifiedName": "geometry::Square::Square",
+   "type": 39,
+   "returnType": 25,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "constructor",
+   "class": 6,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    16,
+    7
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 40
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "name": "operator=",
+   "qualifiedName": "geometry::Square::operator=",
+   "type": 41,
+   "returnType": 42,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 6,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    16,
+    7
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 40
+    }
+   ]
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int (const geometry::Shape &)",
+   "returns": 1,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "pointer",
+   "name": "const geometry::Shape &",
+   "size": 8,
+   "to": 4,
+   "reference": true
+  },
+  {
+   "id": 3,
+   "kind": "pointer",
+   "name": "int (*)() const",
+   "size": 8,
+   "to": 28
+  },
+  {
+   "id": 4,
+   "kind": "typeref",
+   "name": "const geometry::Shape",
+   "of": 26,
+   "refKind": "none"
+  },
+  {
+   "id": 5,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 6,
+   "kind": "class",
+   "name": "geometry::Square",
+   "size": 16,
+   "tag": "Square",
+   "qualifiedName": "geometry::Square",
+   "p": [
+    0,
+    16,
+    7
+   ],
+   "span": [
+    [
+     0,
+     16,
+     1
+    ],
+    [
+     0,
+     24,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "side_",
+     "type": 1,
+     "offset": 8,
+     "p": [
+      0,
+      23,
+      7
+     ]
+    }
+   ],
+   "bases": [
+    {
+     "type": 26
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "struct",
+   "name": "geometry::Vec2",
+   "size": 8,
+   "tag": "Vec2",
+   "qualifiedName": "geometry::Vec2",
+   "p": [
+    0,
+    5,
+    8
+   ],
+   "span": [
+    [
+     0,
+     5,
+     1
+    ],
+    [
+     0,
+     8,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "x",
+     "type": 1,
+     "offset": 0,
+     "p": [
+      0,
+      6,
+      7
+     ]
+    },
+    {
+     "name": "y",
+     "type": 1,
+     "offset": 4,
+     "p": [
+      0,
+      6,
+      10
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 8,
+   "kind": "pointer",
+   "name": "geometry::Vec2 (*)(const geometry::Vec2 &) const",
+   "size": 8,
+   "to": 17
+  },
+  {
+   "id": 9,
+   "kind": "typeref",
+   "name": "const geometry::Vec2",
+   "of": 7,
+   "refKind": "none"
+  },
+  {
+   "id": 10,
+   "kind": "pointer",
+   "name": "const geometry::Vec2 &",
+   "size": 8,
+   "to": 9,
+   "reference": true
+  },
+  {
+   "id": 11,
+   "kind": "pointer",
+   "name": "int (*)(const geometry::Shape &)",
+   "size": 8,
+   "to": 0
+  },
+  {
+   "id": 12,
+   "kind": "routine",
+   "name": "int (geometry::Shade, int)",
+   "returns": 1,
+   "params": [
+    13,
+    1
+   ]
+  },
+  {
+   "id": 13,
+   "kind": "integer",
+   "name": "geometry::Shade",
+   "size": 4,
+   "signed": true,
+   "enum": true,
+   "tag": "Shade",
+   "qualifiedName": "geometry::Shade",
+   "scoped": true,
+   "p": [
+    0,
+    35,
+    12
+   ],
+   "span": [
+    [
+     0,
+     35,
+     1
+    ],
+    [
+     0,
+     35,
+     42
+    ]
+   ],
+   "enumerators": [
+    {
+     "name": "Light",
+     "value": "0",
+     "p": [
+      0,
+      35,
+      26
+     ]
+    },
+    {
+     "name": "Dark",
+     "value": "4",
+     "p": [
+      0,
+      35,
+      33
+     ]
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "kind": "integer",
+   "name": "bool",
+   "size": 1,
+   "signed": true,
+   "bool": true
+  },
+  {
+   "id": 15,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 16,
+   "kind": "pointer",
+   "name": "int (*)(geometry::Shade, int)",
+   "size": 8,
+   "to": 12
+  },
+  {
+   "id": 17,
+   "kind": "routine",
+   "name": "geometry::Vec2 (const geometry::Vec2 &) const",
+   "returns": 7,
+   "params": [
+    10
+   ]
+  },
+  {
+   "id": 18,
+   "kind": "typeref",
+   "name": "const geometry::Vec2 *const",
+   "of": 19,
+   "refKind": "none"
+  },
+  {
+   "id": 19,
+   "kind": "pointer",
+   "name": "const geometry::Vec2 *",
+   "size": 8,
+   "to": 9
+  },
+  {
+   "id": 20,
+   "kind": "routine",
+   "name": "geometry::Vec2 &(const geometry::Vec2 &)",
+   "returns": 21,
+   "params": [
+    10
+   ]
+  },
+  {
+   "id": 21,
+   "kind": "pointer",
+   "name": "geometry::Vec2 &",
+   "size": 8,
+   "to": 7,
+   "reference": true
+  },
+  {
+   "id": 22,
+   "kind": "routine",
+   "name": "geometry::Vec2 &(geometry::Vec2 &&)",
+   "returns": 21,
+   "params": [
+    23
+   ]
+  },
+  {
+   "id": 23,
+   "kind": "pointer",
+   "name": "geometry::Vec2 &&",
+   "size": 8,
+   "to": 7,
+   "reference": true,
+   "rvalueReference": true
+  },
+  {
+   "id": 24,
+   "kind": "routine",
+   "name": "void () noexcept",
+   "returns": 25,
+   "params": []
+  },
+  {
+   "id": 25,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 26,
+   "kind": "class",
+   "name": "geometry::Shape",
+   "size": 8,
+   "tag": "__Q2_8geometry5Shape",
+   "qualifiedName": "geometry::Shape",
+   "p": [
+    0,
+    10,
+    7
+   ],
+   "span": [
+    [
+     0,
+     10,
+     1
+    ],
+    [
+     0,
+     14,
+     1
+    ]
+   ],
+   "fields": [],
+   "bases": []
+  },
+  {
+   "id": 27,
+   "kind": "typeref",
+   "name": "geometry::Shape *const",
+   "of": 43,
+   "refKind": "none"
+  },
+  {
+   "id": 28,
+   "kind": "routine",
+   "name": "int () const",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 29,
+   "kind": "routine",
+   "name": "void () noexcept",
+   "returns": 25,
+   "params": []
+  },
+  {
+   "id": 30,
+   "kind": "routine",
+   "name": "void (const geometry::Shape &)",
+   "returns": 25,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 31,
+   "kind": "routine",
+   "name": "geometry::Shape &(const geometry::Shape &)",
+   "returns": 32,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 32,
+   "kind": "pointer",
+   "name": "geometry::Shape &",
+   "size": 8,
+   "to": 26,
+   "reference": true
+  },
+  {
+   "id": 33,
+   "kind": "routine",
+   "name": "void (int)",
+   "returns": 25,
+   "params": [
+    1
+   ]
+  },
+  {
+   "id": 34,
+   "kind": "typeref",
+   "name": "geometry::Square *const",
+   "of": 44,
+   "refKind": "none"
+  },
+  {
+   "id": 35,
+   "kind": "routine",
+   "name": "void () noexcept",
+   "returns": 25,
+   "params": []
+  },
+  {
+   "id": 36,
+   "kind": "routine",
+   "name": "int () const",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 37,
+   "kind": "typeref",
+   "name": "const geometry::Square *const",
+   "of": 38,
+   "refKind": "none"
+  },
+  {
+   "id": 38,
+   "kind": "pointer",
+   "name": "const geometry::Square *",
+   "size": 8,
+   "to": 45
+  },
+  {
+   "id": 39,
+   "kind": "routine",
+   "name": "void (const geometry::Square &)",
+   "returns": 25,
+   "params": [
+    40
+   ]
+  },
+  {
+   "id": 40,
+   "kind": "pointer",
+   "name": "const geometry::Square &",
+   "size": 8,
+   "to": 45,
+   "reference": true
+  },
+  {
+   "id": 41,
+   "kind": "routine",
+   "name": "geometry::Square &(const geometry::Square &)",
+   "returns": 42,
+   "params": [
+    40
+   ]
+  },
+  {
+   "id": 42,
+   "kind": "pointer",
+   "name": "geometry::Square &",
+   "size": 8,
+   "to": 6,
+   "reference": true
+  },
+  {
+   "id": 43,
+   "kind": "pointer",
+   "name": "geometry::Shape *",
+   "size": 8,
+   "to": 26
+  },
+  {
+   "id": 44,
+   "kind": "pointer",
+   "name": "geometry::Square *",
+   "size": 8,
+   "to": 6
+  },
+  {
+   "id": 45,
+   "kind": "typeref",
+   "name": "const geometry::Square",
+   "of": 6,
+   "refKind": "none"
+  }
+ ],
+ "diagnostics": []
+}
