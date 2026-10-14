@@ -1,0 +1,14 @@
+src/edga_back_end.cpp
+  h_0926447d100ad2 547-557,573-575,588,644
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e256ed368651a8a1ffe5f832c75b91cd01303b25",
+  "prompts": {},
+  "humans": {
+    "h_0926447d100ad2": {
+      "author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
