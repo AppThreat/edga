@@ -29,8 +29,12 @@ OPTIONS_PREFIX = "// edga-options:"
 
 # Configurations with an expected directory of their own: LLP64 targets, where size_t is an
 # unsigned long long, the ids of the types after it shift, and size-dependent code draws
-# diagnostics of its own. --update creates the directory for them.
-OWN_EXPECTED_CONFIGURATIONS = ("windows-x86_64",)
+# diagnostics of its own (the Windows x86_64 and ARM64 targets model the same types, so they
+# share the directory). --update writes it.
+OWN_EXPECTED_DIRECTORIES = {
+    "windows-x86_64": "windows-llp64",
+    "windows-arm64": "windows-llp64",
+}
 
 
 def fixture_options(path):
@@ -52,9 +56,9 @@ def configuration_of(edga):
 def expected_dir(configuration):
     """Where a build's expected files are: its own directory when it has one, the shared one
     otherwise."""
-    own = EXPECTED / configuration
-    if own.is_dir() or configuration in OWN_EXPECTED_CONFIGURATIONS:
-        return own
+    name = OWN_EXPECTED_DIRECTORIES.get(configuration)
+    if name is not None:
+        return EXPECTED / name
     return EXPECTED
 
 

@@ -1,0 +1,58 @@
+# Windows on ARM64: MSVC-compatible, LLP64. The front end has no Windows ARM64 platform
+# configuration, so this one composes it from the generic Windows platform and the ARM64
+# architecture, with the data model and layout MSVC's ARM64 target uses (a long of 4 bytes,
+# size_t an unsigned long long, wchar_t an unsigned short, no 128-bit integers; see Microsoft's
+# ARM64 ABI documentation and setjmp.h). The GNU extensions are compiled in, as on every other
+# platform, because the exporter writes what they add to the IL. As on Windows x86_64, the
+# SoftFloat library and float128 are left out (the widest floating-point type the target has is
+# binary64), so the binary stays self-contained.
+import <support/platform/windows/base>
+import <support/arch/arm64/base>
+import <support/compiler/msvc/base>
+import <support/simple-conf/release/base>
+import <edga/common>
+
+GNU_EXTENSIONS_ALLOWED=1
+
+# the host's widest value fits in 8 bytes (no binary128 long double, no 128-bit integers),
+# unlike the Linux and macOS ARM64 hosts the architecture configuration was written for
+HOST_ALIGNMENT_REQUIRED=8
+
+TARG_SIZEOF_LONG=4
+TARG_ALIGNOF_LONG=4
+TARG_LONG_FIELD_ALIGNMENT=4
+TARG_SIZE_T_INT_KIND=((an_integer_kind)ik_unsigned_long_long)
+TARG_PTRDIFF_T_INT_KIND=((an_integer_kind)ik_long_long)
+TARG_SSIZE_T_INT_KIND=((an_integer_kind)ik_long_long)
+TARG_WCHAR_T_INT_KIND=((an_integer_kind)ik_unsigned_short)
+TARG_WINT_T_INT_KIND=((an_integer_kind)ik_unsigned_short)
+INT128_EXTENSIONS_ALLOWED=0
+TARG_POINTER_MODE=((a_type_mode_kind)tmk_DI)
+TARG_WORD_MODE=((a_type_mode_kind)tmk_SI)
+TARG_UNWIND_WORD_MODE=((a_type_mode_kind)tmk_SI)
+TARG_MAXIMUM_INTRINSIC_ALIGNMENT=16
+TARG_DEFAULT_NEW_ALIGNMENT=16
+# pack alignment up to 8192, as on Windows x86_64, which needs a wider alignment type than
+# the default byte
+TYPE_FOR_TARG_ALIGNMENT=uint16_t
+TARG_MAXIMUM_PACK_ALIGNMENT=8192
+TARG_MICROSOFT_BIT_FIELD_ALLOCATION=1
+TARG_BIT_FIELD_AFFECTS_UNION_ALIGNMENT=0
+TARG_BIT_FIELD_CONTAINER_SIZE=-1
+TARG_UNNAMED_BIT_FIELD_AFFECTS_STRUCT_ALIGNMENT=1
+TARG_ZERO_WIDTH_BIT_FIELD_AFFECTS_STRUCT_ALIGNMENT=1
+TARG_ZERO_WIDTH_BIT_FIELD_ALIGNMENT=-1
+TARG_PAD_ALLOCATED_EMPTY_BASE=0
+TARG_JMP_BUF_ELEMENT_INT_KIND=((an_integer_kind)ik_long_long)
+TARG_JMP_BUF_NUM_ELEMENTS=24
+FP_LONG_DOUBLE_IS_80BIT_EXTENDED=0
+FP_LONG_DOUBLE_IS_BINARY128=0
+FP_LONG_DOUBLE_IS_BINARY64=1
+USE_HOST_FP_CONVERSION_ROUTINES=0
+TYPE_FOR_AN_FP_VALUE_PART=uint32_t
+TYPE_FOR_PREFIX_ENTRY_NUMBER=unsigned int
+
+USE_SOFTFLOAT=0
+USE_FLOAT128_FOR_HOST_FP_VALUE=0
+USE_QUADMATH_LIBRARY=0
+FLOAT128_ENABLING_POSSIBLE=0
