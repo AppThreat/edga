@@ -1,0 +1,16 @@
+config/macro-conf/windows-arm64/base.cmakedef
+  h_0926447d100ad2 1-58
+tests/run.py
+  h_0926447d100ad2 32-37,59-61
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6ed044efa2a58b895783a8f23a7e0114c280eaf0",
+  "prompts": {},
+  "humans": {
+    "h_0926447d100ad2": {
+      "author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
