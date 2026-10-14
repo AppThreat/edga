@@ -39,6 +39,10 @@ jobs:
             musl: true
           - os: macos-15
             platform: darwin-arm64
+          - os: windows-latest
+            platform: windows-amd64
+          - os: windows-11-arm
+            platform: windows-arm64
     runs-on: ${{ matrix.os }}
     permissions:
       contents: read
@@ -47,6 +51,7 @@ jobs:
         with:
           persist-credentials: false
       - name: EDG sources
+        shell: bash
         run: tools/fetch-edg.sh
       - name: Build and golden tests (musl)
         if: ${{ matrix.musl }}
@@ -55,27 +60,46 @@ jobs:
         if: ${{ runner.os == 'Linux' && !matrix.musl }}
         run: sudo apt-get install -y ninja-build g++
       - name: Tools (macOS)
-        if: runner.os == 'macOS'
+        if: ${{ runner.os == 'macOS' }}
         run: brew install ninja
       - name: Build
-        if: ${{ !matrix.musl }}
+        if: ${{ runner.os != 'Windows' && !matrix.musl }}
         run: |
           # Linux release builds are static; the macOS one runs on macOS 13 and later.
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_DEPLOYMENT_TARGET=13.0
           cmake --build build --target edga
           ./build/bin/edga --version
+      # the MSVC environment comes from Visual Studio's own vswhere and vcvars scripts
+      - name: Build (Windows)
+        if: ${{ runner.os == 'Windows' }}
+        shell: cmd
+        run: |
+          for /f "usebackq tokens=*" %%i in (`vswhere -latest -products * -property installationPath`) do call "%%i\VC\Auxiliary\Build\vcvarsall.bat" ${{ runner.arch == 'X64' && 'x64' || 'arm64' }}
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --target edga
+          build\bin\edga.exe --version
       - name: Golden tests
-        if: ${{ !matrix.musl }}
+        if: ${{ runner.os != 'Windows' && !matrix.musl }}
         run: |
           python3 -m pip install --quiet jsonschema || python3 -m pip install --quiet --break-system-packages jsonschema
           python3 tests/run.py --edga build/bin/edga
+      - name: Golden tests (Windows)
+        if: ${{ runner.os == 'Windows' }}
+        shell: bash
+        run: |
+          python -m pip install --quiet jsonschema
+          python tests/run.py --edga build/bin/edga.exe
       - name: Package
+        shell: bash
         run: |
           mkdir dist
-          cp build/bin/edga "dist/edga-${{ matrix.platform }}"
-          cd dist
-          shasum -a 256 "edga-${{ matrix.platform }}" > "edga-${{ matrix.platform }}.sha256"
-          cat "edga-${{ matrix.platform }}.sha256"
+          if [[ -f build/bin/edga.exe ]]; then
+            cp build/bin/edga.exe "dist/edga-${{ matrix.platform }}.exe"
+            (cd dist && sha256sum "edga-${{ matrix.platform }}.exe" > "edga-${{ matrix.platform }}.exe.sha256" && cat "edga-${{ matrix.platform }}.exe.sha256")
+          else
+            cp build/bin/edga "dist/edga-${{ matrix.platform }}"
+            (cd dist && shasum -a 256 "edga-${{ matrix.platform }}" > "edga-${{ matrix.platform }}.sha256" && cat "edga-${{ matrix.platform }}.sha256")
+          fi
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a  # v7.0.1
         with:
           name: edga-${{ matrix.platform }}
@@ -134,15 +158,17 @@ jobs:
           for binary in dist/edga-*; do
             [[ "$binary" == *.sha256 ]] && continue
             platform=${binary#dist/edga-}
-            # one file named edga per platform, so a pull writes ./edga
+            platform=${platform%.exe}
+            # one file per platform named after what it is there (edga, edga.exe), so a pull
+            # writes a runnable file
             mkdir -p "push/$platform"
-            cp "$binary" "push/$platform/edga"
+            cp "$binary" "push/$platform/$(basename "$binary")"
             (
               cd "push/$platform"
               oras push "ghcr.io/appthreat/edga:main-$platform,$GITHUB_SHA-$platform" \
                 --artifact-type application/vnd.appthreat.edga.binary \
                 --annotation "org.opencontainers.image.source=https://github.com/$GITHUB_REPOSITORY" \
                 --annotation "org.opencontainers.image.revision=$GITHUB_SHA" \
-                edga:application/octet-stream
+                "$(basename "$binary"):application/octet-stream"
             )
           done

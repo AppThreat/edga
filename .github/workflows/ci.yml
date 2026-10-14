@@ -30,12 +30,15 @@ jobs:
           - os: ubuntu-24.04
           - os: ubuntu-24.04-arm
           - os: macos-15
+          - os: windows-latest
+          - os: windows-11-arm
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
         with:
           persist-credentials: false
       - name: EDG sources
+        shell: bash
         run: tools/fetch-edg.sh
       - name: Tools (Linux)
         if: runner.os == 'Linux'
@@ -44,14 +47,31 @@ jobs:
         if: runner.os == 'macOS'
         run: brew install ninja
       - name: Build
+        if: runner.os != 'Windows'
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
           cmake --build build --target edga
           ./build/bin/edga --version
+      # the MSVC environment comes from Visual Studio's own vswhere and vcvars scripts
+      - name: Build (Windows)
+        if: runner.os == 'Windows'
+        shell: cmd
+        run: |
+          for /f "usebackq tokens=*" %%i in (`vswhere -latest -products * -property installationPath`) do call "%%i\VC\Auxiliary\Build\vcvarsall.bat" ${{ runner.arch == 'X64' && 'x64' || 'arm64' }}
+          cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --target edga
+          build\bin\edga.exe --version
       - name: Golden tests
+        if: runner.os != 'Windows'
         run: |
           python3 -m pip install --quiet jsonschema || python3 -m pip install --quiet --break-system-packages jsonschema
           python3 tests/run.py --edga build/bin/edga
+      - name: Golden tests (Windows)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          python -m pip install --quiet jsonschema
+          python tests/run.py --edga build/bin/edga.exe
 
   musl:
     strategy:
