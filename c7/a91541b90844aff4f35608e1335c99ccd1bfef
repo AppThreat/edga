@@ -1,0 +1,29 @@
+src/edga_main.cpp
+  s_236e880d3ee8e7::t_a4a81913937696 189-190,200
+src/edga_back_end.cpp
+  s_236e880d3ee8e7::t_a4a81913937696 1421,1432
+src/edga_platform.h
+  s_236e880d3ee8e7::t_a4a81913937696 24-25,68-70,73-81
+.github/workflows/release.yml
+  s_236e880d3ee8e7::t_a4a81913937696 162-165,167,174
+CMakeLists.txt
+  s_236e880d3ee8e7::t_a4a81913937696 7
+tests/run.py
+  s_236e880d3ee8e7::t_c2ed8de994bc9f 9-11,88-98,102,109-122,157,160-167,188-195
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c7a91541b90844aff4f35608e1335c99ccd1bfef",
+  "prompts": {},
+  "sessions": {
+    "s_236e880d3ee8e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52eeaa6b-eddb-4834-83cf-34eb1a185cc1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
