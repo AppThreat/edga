@@ -57,8 +57,7 @@ inline std::string temporaryFile() {
 #ifdef _WIN32
   char dir[MAX_PATH + 1];
   char name[MAX_PATH + 1];
-  if (GetTempPathA(sizeof dir, dir) == 0 || GetTempFileNameA(dir, "edga", 0, name) == 0)
-    return "";
+  if (GetTempPathA(sizeof dir, dir) == 0 || GetTempFileNameA(dir, "edga", 0, name) == 0) return "";
   return std::string(name);
 #else
   const char* dir = std::getenv("TMPDIR");
