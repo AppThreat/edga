@@ -1,0 +1,44 @@
+.gitattributes
+  h_0926447d100ad2 1-2
+CMakeLists.txt
+  h_0926447d100ad2 6-8,27-33,134,136
+config/macro-conf/windows-x86_64/base.cmakedef
+  h_0926447d100ad2 1-17
+src/edga_back_end.cpp
+  h_0926447d100ad2 9,21,36-44,49-52,96-97,1369,1421,1432
+src/edga_main.cpp
+  h_0926447d100ad2 13,56-61,66-69,163,175,190,194,196-198,207-208
+src/edga_platform.h
+  h_0926447d100ad2 1-136
+tests/expected/crlf.c.json
+  h_0926447d100ad2 1-899
+tests/expected/windows-x86_64/classes.cpp.json
+  h_0926447d100ad2 1-2598
+tests/expected/windows-x86_64/deduction.cpp.json
+  h_0926447d100ad2 1-1655
+tests/expected/windows-x86_64/fortify.c.json
+  h_0926447d100ad2 1-1088
+tests/expected/windows-x86_64/initialisers.c.json
+  h_0926447d100ad2 1-1579
+tests/expected/windows-x86_64/pointers.c.json
+  h_0926447d100ad2 1-1580
+tests/expected/windows-x86_64/statements.cpp.json
+  h_0926447d100ad2 1-4346
+tests/expected/windows-x86_64/templates.cpp.json
+  h_0926447d100ad2 1-2462
+tests/fixtures/crlf.c
+  h_0926447d100ad2 1-13
+tests/run.py
+  h_0926447d100ad2 8-12,30-34,43-67,123-124,138,140-151,153-154,162
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "23863c7cda744041a767c8e02b89fb4030f75f34",
+  "prompts": {},
+  "humans": {
+    "h_0926447d100ad2": {
+      "author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
