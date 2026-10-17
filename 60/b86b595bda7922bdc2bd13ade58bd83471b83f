@@ -1,0 +1,18 @@
+src/edga_back_end.cpp
+  h_0926447d100ad2 547-557,573-575,588,644
+tests/fixtures/selection_init.cpp
+  h_0926447d100ad2 1-18
+tests/expected/selection_init.cpp.json
+  h_0926447d100ad2 1-729
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "60b86b595bda7922bdc2bd13ade58bd83471b83f",
+  "prompts": {},
+  "humans": {
+    "h_0926447d100ad2": {
+      "author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
