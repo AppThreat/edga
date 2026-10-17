@@ -1,0 +1,877 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "array_bounds.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "array_bounds.c",
+   "written": "array_bounds.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "fixed",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "external",
+   "addressTaken": true,
+   "p": [
+    0,
+    12,
+    6
+   ],
+   "start": [
+    0,
+    12,
+    1
+   ]
+  },
+  {
+   "id": 2,
+   "name": "unknown",
+   "type": 1,
+   "storage": "extern",
+   "linkage": "external",
+   "addressTaken": true,
+   "p": [
+    0,
+    13,
+    13
+   ],
+   "start": [
+    0,
+    13,
+    1
+   ]
+  }
+ ],
+ "routines": [
+  {
+   "id": 1,
+   "name": "first_bytes",
+   "qualifiedName": "first_bytes",
+   "type": 2,
+   "returnType": 3,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    14,
+    5
+   ],
+   "start": [
+    0,
+    14,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 3,
+     "name": "z",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      14,
+      35
+     ],
+     "start": [
+      0,
+      14,
+      17
+     ]
+    },
+    {
+     "id": 4,
+     "name": "f",
+     "type": 5,
+     "storage": "auto",
+     "p": [
+      0,
+      14,
+      60
+     ],
+     "start": [
+      0,
+      14,
+      38
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     14,
+     63
+    ],
+    "end": [
+     0,
+     16,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       15,
+       3
+      ],
+      "end": [
+       0,
+       15,
+       57
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 3,
+       "p": [
+        0,
+        15,
+        45
+       ],
+       "range": [
+        [
+         0,
+         15,
+         10
+        ],
+        [
+         0,
+         15,
+         56
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          15,
+          34
+         ],
+         "range": [
+          [
+           0,
+           15,
+           10
+          ],
+          [
+           0,
+           15,
+           43
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 3,
+           "p": [
+            0,
+            15,
+            21
+           ],
+           "range": [
+            [
+             0,
+             15,
+             10
+            ],
+            [
+             0,
+             15,
+             32
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 3,
+             "p": [
+              0,
+              15,
+              10
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 6,
+               "p": [
+                0,
+                15,
+                17
+               ],
+               "range": [
+                [
+                 0,
+                 15,
+                 10
+                ],
+                [
+                 0,
+                 15,
+                 19
+                ]
+               ],
+               "op": "subscript",
+               "ops": [
+                {
+                 "k": "operation",
+                 "t": 7,
+                 "p": [
+                  0,
+                  15,
+                  11
+                 ],
+                 "implicit": true,
+                 "op": "array_to_pointer",
+                 "ops": [
+                  {
+                   "k": "operation",
+                   "t": 8,
+                   "p": [
+                    0,
+                    15,
+                    11
+                   ],
+                   "range": [
+                    [
+                     0,
+                     15,
+                     10
+                    ],
+                    [
+                     0,
+                     15,
+                     16
+                    ]
+                   ],
+                   "lv": true,
+                   "op": "points_to_field",
+                   "ops": [
+                    {
+                     "k": "variable",
+                     "t": 4,
+                     "p": [
+                      0,
+                      15,
+                      10
+                     ],
+                     "range": [
+                      [
+                       0,
+                       15,
+                       10
+                      ],
+                      [
+                       0,
+                       15,
+                       10
+                      ]
+                     ],
+                     "var": 3,
+                     "name": "z"
+                    },
+                    {
+                     "k": "field",
+                     "t": 8,
+                     "p": [
+                      0,
+                      15,
+                      13
+                     ],
+                     "range": [
+                      [
+                       0,
+                       15,
+                       13
+                      ],
+                      [
+                       0,
+                       15,
+                       16
+                      ]
+                     ],
+                     "name": "data",
+                     "offset": 4
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "k": "constant",
+                 "t": 3,
+                 "p": [
+                  0,
+                  15,
+                  18
+                 ],
+                 "range": [
+                  [
+                   0,
+                   15,
+                   18
+                  ],
+                  [
+                   0,
+                   15,
+                   18
+                  ]
+                 ],
+                 "ck": "integer",
+                 "value": "0"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 3,
+             "p": [
+              0,
+              15,
+              23
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 6,
+               "p": [
+                0,
+                15,
+                30
+               ],
+               "range": [
+                [
+                 0,
+                 15,
+                 23
+                ],
+                [
+                 0,
+                 15,
+                 32
+                ]
+               ],
+               "op": "subscript",
+               "ops": [
+                {
+                 "k": "operation",
+                 "t": 7,
+                 "p": [
+                  0,
+                  15,
+                  24
+                 ],
+                 "implicit": true,
+                 "op": "array_to_pointer",
+                 "ops": [
+                  {
+                   "k": "operation",
+                   "t": 9,
+                   "p": [
+                    0,
+                    15,
+                    24
+                   ],
+                   "range": [
+                    [
+                     0,
+                     15,
+                     23
+                    ],
+                    [
+                     0,
+                     15,
+                     29
+                    ]
+                   ],
+                   "lv": true,
+                   "op": "points_to_field",
+                   "ops": [
+                    {
+                     "k": "variable",
+                     "t": 5,
+                     "p": [
+                      0,
+                      15,
+                      23
+                     ],
+                     "range": [
+                      [
+                       0,
+                       15,
+                       23
+                      ],
+                      [
+                       0,
+                       15,
+                       23
+                      ]
+                     ],
+                     "var": 4,
+                     "name": "f"
+                    },
+                    {
+                     "k": "field",
+                     "t": 9,
+                     "p": [
+                      0,
+                      15,
+                      26
+                     ],
+                     "range": [
+                      [
+                       0,
+                       15,
+                       26
+                      ],
+                      [
+                       0,
+                       15,
+                       29
+                      ]
+                     ],
+                     "name": "data",
+                     "offset": 4
+                    }
+                   ]
+                  }
+                 ]
+                },
+                {
+                 "k": "constant",
+                 "t": 3,
+                 "p": [
+                  0,
+                  15,
+                  31
+                 ],
+                 "range": [
+                  [
+                   0,
+                   15,
+                   31
+                  ],
+                  [
+                   0,
+                   15,
+                   31
+                  ]
+                 ],
+                 "ck": "integer",
+                 "value": "0"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 3,
+           "p": [
+            0,
+            15,
+            36
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 6,
+             "p": [
+              0,
+              15,
+              41
+             ],
+             "range": [
+              [
+               0,
+               15,
+               36
+              ],
+              [
+               0,
+               15,
+               43
+              ]
+             ],
+             "op": "subscript",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 7,
+               "p": [
+                0,
+                15,
+                36
+               ],
+               "implicit": true,
+               "op": "array_to_pointer",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 0,
+                 "p": [
+                  0,
+                  15,
+                  36
+                 ],
+                 "range": [
+                  [
+                   0,
+                   15,
+                   36
+                  ],
+                  [
+                   0,
+                   15,
+                   40
+                  ]
+                 ],
+                 "lv": true,
+                 "var": 1,
+                 "name": "fixed"
+                }
+               ]
+              },
+              {
+               "k": "constant",
+               "t": 3,
+               "p": [
+                0,
+                15,
+                42
+               ],
+               "range": [
+                [
+                 0,
+                 15,
+                 42
+                ],
+                [
+                 0,
+                 15,
+                 42
+                ]
+               ],
+               "ck": "integer",
+               "value": "0"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 3,
+         "p": [
+          0,
+          15,
+          47
+         ],
+         "implicit": true,
+         "op": "cast",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 6,
+           "p": [
+            0,
+            15,
+            54
+           ],
+           "range": [
+            [
+             0,
+             15,
+             47
+            ],
+            [
+             0,
+             15,
+             56
+            ]
+           ],
+           "op": "subscript",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 7,
+             "p": [
+              0,
+              15,
+              47
+             ],
+             "implicit": true,
+             "op": "array_to_pointer",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 1,
+               "p": [
+                0,
+                15,
+                47
+               ],
+               "range": [
+                [
+                 0,
+                 15,
+                 47
+                ],
+                [
+                 0,
+                 15,
+                 53
+                ]
+               ],
+               "lv": true,
+               "var": 2,
+               "name": "unknown"
+              }
+             ]
+            },
+            {
+             "k": "constant",
+             "t": 3,
+             "p": [
+              0,
+              15,
+              55
+             ],
+             "range": [
+              [
+               0,
+               15,
+               55
+              ],
+              [
+               0,
+               15,
+               55
+              ]
+             ],
+             "ck": "integer",
+             "value": "0"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "array",
+   "name": "char [4]",
+   "size": 4,
+   "of": 6,
+   "count": 4
+  },
+  {
+   "id": 1,
+   "kind": "array",
+   "name": "char []",
+   "of": 6,
+   "count": 0
+  },
+  {
+   "id": 2,
+   "kind": "routine",
+   "name": "int (struct zero_tail *, struct flexible_tail *)",
+   "returns": 3,
+   "params": [
+    4,
+    5
+   ]
+  },
+  {
+   "id": 3,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 4,
+   "kind": "pointer",
+   "name": "struct zero_tail *",
+   "size": 8,
+   "to": 10
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "struct flexible_tail *",
+   "size": 8,
+   "to": 11
+  },
+  {
+   "id": 6,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  },
+  {
+   "id": 7,
+   "kind": "pointer",
+   "name": "char *",
+   "size": 8,
+   "to": 6
+  },
+  {
+   "id": 8,
+   "kind": "array",
+   "name": "char [0]",
+   "of": 6,
+   "count": 0,
+   "zeroBound": true
+  },
+  {
+   "id": 9,
+   "kind": "array",
+   "name": "char []",
+   "of": 6,
+   "count": 0
+  },
+  {
+   "id": 10,
+   "kind": "struct",
+   "name": "struct zero_tail",
+   "size": 4,
+   "tag": "zero_tail",
+   "qualifiedName": "zero_tail",
+   "p": [
+    0,
+    4,
+    8
+   ],
+   "span": [
+    [
+     0,
+     4,
+     1
+    ],
+    [
+     0,
+     7,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "count",
+     "type": 3,
+     "offset": 0,
+     "p": [
+      0,
+      5,
+      7
+     ]
+    },
+    {
+     "name": "data",
+     "type": 8,
+     "offset": 4,
+     "p": [
+      0,
+      6,
+      8
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 11,
+   "kind": "struct",
+   "name": "struct flexible_tail",
+   "size": 4,
+   "tag": "flexible_tail",
+   "qualifiedName": "flexible_tail",
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "span": [
+    [
+     0,
+     8,
+     1
+    ],
+    [
+     0,
+     11,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "count",
+     "type": 3,
+     "offset": 0,
+     "p": [
+      0,
+      9,
+      7
+     ]
+    },
+    {
+     "name": "data",
+     "type": 9,
+     "offset": 4,
+     "p": [
+      0,
+      10,
+      8
+     ]
+    }
+   ],
+   "bases": []
+  }
+ ],
+ "diagnostics": []
+}

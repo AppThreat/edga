@@ -544,6 +544,17 @@ class Exporter {
 
   // ---- statements -----------------------------------------------------------------------------
 
+  /* The optional initialisation statement of a C++17 selection statement, which the front end
+     keeps in the condition supplement. */
+  void writeSelectionInit(an_expr_node_ptr cond) {
+    if (cond == nullptr) return;
+    if (cond->kind != (an_expr_node_kind)enk_condition) return;
+    a_condition_supplement_ptr c = cond->variant.condition;
+    if (c == nullptr || c->initialization == nullptr) return;
+    json_.key("init");
+    writeStatement(c->initialization);
+  }
+
   void writeStatement(a_statement_ptr s) {
     if (s == nullptr) {
       json_.null();
@@ -559,6 +570,9 @@ class Exporter {
         writeExprField("expr", s->expr);
         break;
       case stmk_if:
+        // A C++17 if-with-initialiser keeps its init statement in the condition supplement; the
+        // statement's own variant has no field for it
+        writeSelectionInit(s->expr);
         writeExprField("cond", s->expr);
         json_.key("then");
         writeStatement(s->variant.if_stmt.then_statement);
@@ -571,6 +585,7 @@ class Exporter {
       // condition's value is known
       case stmk_constexpr_if: {
         a_constexpr_if_ptr ci = s->variant.constexpr_if;
+        writeSelectionInit(s->expr);
         writeExprField("cond", s->expr);
         if (ci != nullptr) {
           if (ci->value_known) json_.fieldBool("value", ci->value);
@@ -626,6 +641,7 @@ class Exporter {
         break;
       }
       case stmk_switch:
+        writeSelectionInit(s->expr);
         writeExprField("cond", s->expr);
         json_.key("body");
         writeStatement(s->variant.switch_stmt.body_statement);
@@ -1231,6 +1247,9 @@ class Exporter {
         if (!t->variant.array.is_variable_size_array &&
             !t->variant.array.is_template_dependent_size_array) {
           json_.field("count", static_cast<long long>(t->variant.array.variant.number_of_elements));
+          // a count of 0 also stands for an unknown bound (`[]`); the front end marks a declared
+          // zero bound (`[0]`) apart
+          if (t->variant.array.bound_is_zero) json_.fieldBool("zeroBound", true);
         } else {
           json_.fieldBool("variableSize", true);
         }
