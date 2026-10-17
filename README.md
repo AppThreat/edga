@@ -10,6 +10,11 @@ they came from, and where macro-expanded code came from.
 [chen](https://github.com/AppThreat/chen) reads it to build a code property graph, as an
 alternative to its CDT-based C/C++ frontend.
 
+Two documents under `docs/` go deeper: [how EDG and edga work](docs/how-edga-works.md)
+(the front end's architecture, the exporter, the JSON document, and chen's `edg2atom`
+frontend around it) and [EDG and Eclipse CDT compared](docs/edg-versus-cdt.md) (the
+two designs, their relative strengths, and what the difference means in the graph).
+
 ## Usage
 
 ```bash
