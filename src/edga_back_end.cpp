@@ -544,8 +544,8 @@ class Exporter {
 
   // ---- statements -----------------------------------------------------------------------------
 
-  /* The optional initialisation statement of a C++17/C23 selection statement, which the front
-     end keeps in the condition supplement. */
+  /* The optional initialisation statement of a C++17 selection statement, which the front end
+     keeps in the condition supplement. */
   void writeSelectionInit(an_expr_node_ptr cond) {
     if (cond == nullptr) return;
     if (cond->kind != (an_expr_node_kind)enk_condition) return;
@@ -570,8 +570,8 @@ class Exporter {
         writeExprField("expr", s->expr);
         break;
       case stmk_if:
-        // A C++17 (or C23) if-with-initialiser keeps its init statement in the condition
-        // supplement; the statement's own variant has no field for it
+        // A C++17 if-with-initialiser keeps its init statement in the condition supplement; the
+        // statement's own variant has no field for it
         writeSelectionInit(s->expr);
         writeExprField("cond", s->expr);
         json_.key("then");
@@ -1247,6 +1247,9 @@ class Exporter {
         if (!t->variant.array.is_variable_size_array &&
             !t->variant.array.is_template_dependent_size_array) {
           json_.field("count", static_cast<long long>(t->variant.array.variant.number_of_elements));
+          // a count of 0 also stands for an unknown bound (`[]`); the front end marks a declared
+          // zero bound (`[0]`) apart
+          if (t->variant.array.bound_is_zero) json_.fieldBool("zeroBound", true);
         } else {
           json_.fieldBool("variableSize", true);
         }

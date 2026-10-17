@@ -308,6 +308,7 @@
         "of": { "type": "integer" },
         "count": { "type": "integer" },
         "variableSize": { "type": "boolean" },
+        "zeroBound": { "type": "boolean", "description": "A declared zero bound (`[0]`): `count` is 0 for an array of unknown bound (`[]`) as well." },
         "returns": { "type": "integer" },
         "params": { "type": "array", "items": { "type": "integer" } },
         "variadic": { "type": "boolean" },
