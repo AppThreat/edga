@@ -1,0 +1,25 @@
+src/edga_back_end.cpp
+  s_236e880d3ee8e7::t_5ad4004360726f 547-548,573-574,1250-1252
+tests/fixtures/array_bounds.c
+  s_236e880d3ee8e7::t_92891fcbef92f9 1-16
+tests/expected/array_bounds.c.json
+  s_236e880d3ee8e7::t_412dd89d5c263f 1-877
+schema/edga-1.schema.json
+  s_236e880d3ee8e7::t_5ad4004360726f 311
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "16414c1a15d3c46944dab3c9e3b72743215d470f",
+  "prompts": {},
+  "sessions": {
+    "s_236e880d3ee8e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52eeaa6b-eddb-4834-83cf-34eb1a185cc1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
