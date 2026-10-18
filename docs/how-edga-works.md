@@ -202,6 +202,34 @@ prints them for diagnostics (`form_type` with the diagnostic output control), so
 with inline namespaces listed separately so a reader can also match the program's
 spelling.
 
+The document also keeps the lifetimes and layout facts the language makes implicit. A
+memory-safety reader needs them, and the IL already holds them:
+
+- **Temporaries.** An initialiser whose end destroys its object says how long it lives
+  (`"lifetime"`). A temporary lasts to the end of its full-expression
+  (`"fullExpression"`), so in `const char *p = make().c_str();` the string is gone before
+  `p` is read. A local, or a temporary a reference binding extends, lasts to the end of
+  its block (`"block"`). The destructor is named beside it.
+- **Lambda captures.** A lambda's initialiser lists its `"captures"`, each with:
+  - the closure member that holds it;
+  - the outer variable it copies or refers to (`"byReference"`), or an init-capture's
+    `"initializer"`;
+  - whether a capture default added it (`"implicit"`).
+
+  Values, extents and lifetimes reach a lambda's body through these. A lambda whose captures
+  are all constants (`[k = 16]`) is folded by the front end into a constant of its closure
+  type. That constant names the lambda's call operator (`"lambdaRoutine"`), and its elements
+  are the members' values, in member order.
+- **Compound literals.** `(int[]){x, 0}` is an unnamed object that lives as long as the
+  enclosing block (C99 6.5.2.5p5). Its initialiser, or its aggregate constant, is marked
+  `"compoundLiteral"`.
+- **Layout.** Every member has its byte offset. A bit-field also has its width (`"bits"`)
+  and its bit offset within that byte. A flexible array member, the last member, of
+  unknown bound, is marked `"flexible"`: its elements are the bytes the object has past
+  its offset, so its extent is the allocation's, not the declaration's. A variable-length
+  array's bound is the `set_vla_size` statement's `"size"`, evaluated where the array is
+  declared.
+
 ### Positions and macro provenance
 
 A position is `[file id, line, column]`, and file ids are assigned in include order

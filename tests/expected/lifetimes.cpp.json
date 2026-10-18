@@ -1,0 +1,3518 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "lifetimes.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": true,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "lifetimes.cpp",
+   "written": "lifetimes.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "make",
+   "qualifiedName": "make",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "p": [
+    0,
+    18,
+    6
+   ],
+   "start": [
+    0,
+    18,
+    1
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "id",
+     "type": 2
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "use",
+   "qualifiedName": "use",
+   "type": 3,
+   "returnType": 4,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "p": [
+    0,
+    19,
+    6
+   ],
+   "start": [
+    0,
+    19,
+    1
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 5
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "temporary_ends",
+   "qualifiedName": "temporary_ends",
+   "type": 6,
+   "returnType": 4,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    21,
+    6
+   ],
+   "start": [
+    0,
+    21,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "id",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      21,
+      25
+     ],
+     "start": [
+      0,
+      21,
+      21
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     21,
+     29
+    ],
+    "end": [
+     0,
+     24,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       22,
+       3
+      ],
+      "end": [
+       0,
+       22,
+       35
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "p",
+        "type": 5,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         22,
+         15
+        ],
+        "start": [
+         0,
+         22,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 2,
+         "expr": {
+          "k": "operation",
+          "t": 5,
+          "p": [
+           0,
+           22,
+           33
+          ],
+          "range": [
+           [
+            0,
+            22,
+            19
+           ],
+           [
+            0,
+            22,
+            34
+           ]
+          ],
+          "op": "dot_member_call",
+          "callee": 4,
+          "ops": [
+           {
+            "k": "routine",
+            "t": 7,
+            "p": [
+             0,
+             22,
+             28
+            ],
+            "range": [
+             [
+              0,
+              22,
+              28
+             ],
+             [
+              0,
+              22,
+              32
+             ]
+            ],
+            "routine": 4,
+            "name": "c_str"
+           },
+           {
+            "k": "operation",
+            "t": 8,
+            "implicit": true,
+            "op": "class_rvalue_adjust",
+            "ops": [
+             {
+              "k": "temp_init",
+              "t": 1,
+              "p": [
+               0,
+               22,
+               23
+              ],
+              "range": [
+               [
+                0,
+                22,
+                19
+               ],
+               [
+                0,
+                22,
+                26
+               ]
+              ],
+              "init": {
+               "k": "class_result_via_ctor",
+               "lifetime": "fullExpression",
+               "expr": {
+                "k": "operation",
+                "t": 1,
+                "p": [
+                 0,
+                 22,
+                 23
+                ],
+                "range": [
+                 [
+                  0,
+                  22,
+                  19
+                 ],
+                 [
+                  0,
+                  22,
+                  26
+                 ]
+                ],
+                "op": "call",
+                "callee": 1,
+                "ops": [
+                 {
+                  "k": "routine",
+                  "t": 9,
+                  "p": [
+                   0,
+                   22,
+                   19
+                  ],
+                  "range": [
+                   [
+                    0,
+                    22,
+                    19
+                   ],
+                   [
+                    0,
+                    22,
+                    22
+                   ]
+                  ],
+                  "routine": 1,
+                  "name": "make"
+                 },
+                 {
+                  "k": "variable",
+                  "t": 2,
+                  "p": [
+                   0,
+                   22,
+                   24
+                  ],
+                  "range": [
+                   [
+                    0,
+                    22,
+                    24
+                   ],
+                   [
+                    0,
+                    22,
+                    25
+                   ]
+                  ],
+                  "var": 1,
+                  "name": "id"
+                 }
+                ]
+               },
+               "destructor": 5
+              }
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       23,
+       3
+      ],
+      "end": [
+       0,
+       23,
+       9
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 4,
+       "p": [
+        0,
+        23,
+        6
+       ],
+       "range": [
+        [
+         0,
+         23,
+         3
+        ],
+        [
+         0,
+         23,
+         8
+        ]
+       ],
+       "op": "call",
+       "callee": 2,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 10,
+         "p": [
+          0,
+          23,
+          3
+         ],
+         "range": [
+          [
+           0,
+           23,
+           3
+          ],
+          [
+           0,
+           23,
+           5
+          ]
+         ],
+         "routine": 2,
+         "name": "use"
+        },
+        {
+         "k": "variable",
+         "t": 5,
+         "p": [
+          0,
+          23,
+          7
+         ],
+         "range": [
+          [
+           0,
+           23,
+           7
+          ],
+          [
+           0,
+           23,
+           7
+          ]
+         ],
+         "var": 2,
+         "name": "p"
+        }
+       ]
+      }
+     },
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "reference_extends",
+   "qualifiedName": "reference_extends",
+   "type": 11,
+   "returnType": 4,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    26,
+    6
+   ],
+   "start": [
+    0,
+    26,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 3,
+     "name": "id",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      26,
+      28
+     ],
+     "start": [
+      0,
+      26,
+      24
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     26,
+     32
+    ],
+    "end": [
+     0,
+     29,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       27,
+       3
+      ],
+      "end": [
+       0,
+       27,
+       30
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "kept",
+        "type": 12,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         27,
+         15
+        ],
+        "start": [
+         0,
+         27,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 4,
+         "expr": {
+          "k": "operation",
+          "t": 12,
+          "p": [
+           0,
+           27,
+           22
+          ],
+          "implicit": true,
+          "op": "reference_to",
+          "ops": [
+           {
+            "k": "operation",
+            "t": 8,
+            "p": [
+             0,
+             27,
+             26
+            ],
+            "lv": true,
+            "implicit": true,
+            "op": "lvalue_adjust",
+            "ops": [
+             {
+              "k": "temp_init",
+              "t": 1,
+              "p": [
+               0,
+               27,
+               26
+              ],
+              "range": [
+               [
+                0,
+                27,
+                22
+               ],
+               [
+                0,
+                27,
+                29
+               ]
+              ],
+              "lv": true,
+              "init": {
+               "k": "class_result_via_ctor",
+               "lifetime": "block",
+               "expr": {
+                "k": "operation",
+                "t": 1,
+                "p": [
+                 0,
+                 27,
+                 26
+                ],
+                "range": [
+                 [
+                  0,
+                  27,
+                  22
+                 ],
+                 [
+                  0,
+                  27,
+                  29
+                 ]
+                ],
+                "op": "call",
+                "callee": 1,
+                "ops": [
+                 {
+                  "k": "routine",
+                  "t": 9,
+                  "p": [
+                   0,
+                   27,
+                   22
+                  ],
+                  "range": [
+                   [
+                    0,
+                    27,
+                    22
+                   ],
+                   [
+                    0,
+                    27,
+                    25
+                   ]
+                  ],
+                  "routine": 1,
+                  "name": "make"
+                 },
+                 {
+                  "k": "variable",
+                  "t": 2,
+                  "p": [
+                   0,
+                   27,
+                   27
+                  ],
+                  "range": [
+                   [
+                    0,
+                    27,
+                    27
+                   ],
+                   [
+                    0,
+                    27,
+                    28
+                   ]
+                  ],
+                  "var": 3,
+                  "name": "id"
+                 }
+                ]
+               },
+               "destructor": 5
+              }
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       28,
+       3
+      ],
+      "end": [
+       0,
+       28,
+       20
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 4,
+       "p": [
+        0,
+        28,
+        6
+       ],
+       "range": [
+        [
+         0,
+         28,
+         3
+        ],
+        [
+         0,
+         28,
+         19
+        ]
+       ],
+       "op": "call",
+       "callee": 2,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 10,
+         "p": [
+          0,
+          28,
+          3
+         ],
+         "range": [
+          [
+           0,
+           28,
+           3
+          ],
+          [
+           0,
+           28,
+           5
+          ]
+         ],
+         "routine": 2,
+         "name": "use"
+        },
+        {
+         "k": "operation",
+         "t": 5,
+         "p": [
+          0,
+          28,
+          17
+         ],
+         "range": [
+          [
+           0,
+           28,
+           7
+          ],
+          [
+           0,
+           28,
+           18
+          ]
+         ],
+         "op": "dot_member_call",
+         "callee": 4,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 7,
+           "p": [
+            0,
+            28,
+            12
+           ],
+           "range": [
+            [
+             0,
+             28,
+             12
+            ],
+            [
+             0,
+             28,
+             16
+            ]
+           ],
+           "routine": 4,
+           "name": "c_str"
+          },
+          {
+           "k": "operation",
+           "t": 8,
+           "p": [
+            0,
+            28,
+            7
+           ],
+           "lv": true,
+           "implicit": true,
+           "op": "ref_indirect",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 12,
+             "p": [
+              0,
+              28,
+              7
+             ],
+             "range": [
+              [
+               0,
+               28,
+               7
+              ],
+              [
+               0,
+               28,
+               10
+              ]
+             ],
+             "var": 4,
+             "name": "kept"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 7,
+   "name": "captures",
+   "qualifiedName": "captures",
+   "type": 13,
+   "returnType": 2,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    31,
+    5
+   ],
+   "start": [
+    0,
+    31,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "seed",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      31,
+      18
+     ],
+     "start": [
+      0,
+      31,
+      14
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     31,
+     24
+    ],
+    "end": [
+     0,
+     40,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       32,
+       3
+      ],
+      "end": [
+       0,
+       32,
+       19
+      ],
+      "decls": [
+       {
+        "id": 6,
+        "name": "local",
+        "type": 2,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         32,
+         7
+        ],
+        "start": [
+         0,
+         32,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 6,
+         "expr": {
+          "k": "variable",
+          "t": 2,
+          "p": [
+           0,
+           32,
+           15
+          ],
+          "range": [
+           [
+            0,
+            32,
+            15
+           ],
+           [
+            0,
+            32,
+            18
+           ]
+          ],
+          "var": 5,
+          "name": "seed"
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       33,
+       3
+      ],
+      "end": [
+       0,
+       33,
+       20
+      ],
+      "decls": [
+       {
+        "id": 7,
+        "name": "buf",
+        "type": 14,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         33,
+         8
+        ],
+        "start": [
+         0,
+         33,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 7,
+         "const": {
+          "k": "constant",
+          "t": 14,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 15,
+            "ck": "integer",
+            "value": "0",
+            "expr": {
+             "k": "operation",
+             "t": 15,
+             "p": [
+              0,
+              33,
+              18
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "constant",
+               "t": 2,
+               "p": [
+                0,
+                33,
+                18
+               ],
+               "range": [
+                [
+                 0,
+                 33,
+                 18
+                ],
+                [
+                 0,
+                 33,
+                 18
+                ]
+               ],
+               "ck": "integer",
+               "value": "0"
+              }
+             ]
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       34,
+       3
+      ],
+      "end": [
+       0,
+       34,
+       45
+      ],
+      "decls": [
+       {
+        "id": 8,
+        "name": "by_ref",
+        "type": 16,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         34,
+         8
+        ],
+        "start": [
+         0,
+         34,
+         3
+        ],
+        "init": {
+         "k": "lambda",
+         "var": 8,
+         "const": {
+          "k": "constant",
+          "t": 16,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 17,
+            "ck": "dynamic_init",
+            "init": {
+             "k": "expression",
+             "expr": {
+              "k": "operation",
+              "t": 17,
+              "p": [
+               0,
+               34,
+               19
+              ],
+              "implicit": true,
+              "op": "reference_to",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 2,
+                "p": [
+                 0,
+                 34,
+                 19
+                ],
+                "range": [
+                 [
+                  0,
+                  34,
+                  19
+                 ],
+                 [
+                  0,
+                  34,
+                  23
+                 ]
+                ],
+                "lv": true,
+                "var": 6,
+                "name": "local"
+               }
+              ]
+             }
+            }
+           }
+          ]
+         },
+         "routine": 8,
+         "captures": [
+          {
+           "field": "local",
+           "var": 6,
+           "byReference": true
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       35,
+       3
+      ],
+      "end": [
+       0,
+       35,
+       60
+      ],
+      "decls": [
+       {
+        "id": 9,
+        "name": "by_copy",
+        "type": 18,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         35,
+         8
+        ],
+        "start": [
+         0,
+         35,
+         3
+        ],
+        "init": {
+         "k": "lambda",
+         "var": 9,
+         "const": {
+          "k": "constant",
+          "t": 18,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "dynamic_init",
+            "init": {
+             "k": "expression",
+             "expr": {
+              "k": "variable",
+              "t": 2,
+              "p": [
+               0,
+               35,
+               19
+              ],
+              "range": [
+               [
+                0,
+                35,
+                19
+               ],
+               [
+                0,
+                35,
+                23
+               ]
+              ],
+              "var": 6,
+              "name": "local"
+             }
+            }
+           },
+           {
+            "k": "constant",
+            "t": 19,
+            "ck": "dynamic_init",
+            "init": {
+             "k": "expression",
+             "expr": {
+              "k": "operation",
+              "t": 19,
+              "p": [
+               0,
+               35,
+               27
+              ],
+              "implicit": true,
+              "op": "reference_to",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 14,
+                "p": [
+                 0,
+                 35,
+                 27
+                ],
+                "range": [
+                 [
+                  0,
+                  35,
+                  27
+                 ],
+                 [
+                  0,
+                  35,
+                  29
+                 ]
+                ],
+                "lv": true,
+                "var": 7,
+                "name": "buf"
+               }
+              ]
+             }
+            }
+           }
+          ]
+         },
+         "routine": 9,
+         "captures": [
+          {
+           "field": "local",
+           "var": 6
+          },
+          {
+           "field": "buf",
+           "var": 7,
+           "byReference": true
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       36,
+       3
+      ],
+      "end": [
+       0,
+       36,
+       45
+      ],
+      "decls": [
+       {
+        "id": 10,
+        "name": "init",
+        "type": 20,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         36,
+         8
+        ],
+        "start": [
+         0,
+         36,
+         3
+        ],
+        "init": {
+         "k": "lambda",
+         "var": 10,
+         "const": {
+          "k": "constant",
+          "t": 20,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "dynamic_init",
+            "init": {
+             "k": "expression",
+             "expr": {
+              "k": "operation",
+              "t": 2,
+              "p": [
+               0,
+               36,
+               25
+              ],
+              "range": [
+               [
+                0,
+                36,
+                20
+               ],
+               [
+                0,
+                36,
+                27
+               ]
+              ],
+              "op": "multiply",
+              "ops": [
+               {
+                "k": "variable",
+                "t": 2,
+                "p": [
+                 0,
+                 36,
+                 20
+                ],
+                "range": [
+                 [
+                  0,
+                  36,
+                  20
+                 ],
+                 [
+                  0,
+                  36,
+                  23
+                 ]
+                ],
+                "var": 5,
+                "name": "seed"
+               },
+               {
+                "k": "constant",
+                "t": 2,
+                "p": [
+                 0,
+                 36,
+                 27
+                ],
+                "range": [
+                 [
+                  0,
+                  36,
+                  27
+                 ],
+                 [
+                  0,
+                  36,
+                  27
+                 ]
+                ],
+                "ck": "integer",
+                "value": "2"
+               }
+              ]
+             }
+            }
+           }
+          ]
+         },
+         "routine": 10,
+         "captures": [
+          {
+           "field": "n",
+           "initializer": {
+            "k": "expression",
+            "expr": {
+             "k": "operation",
+             "t": 2,
+             "p": [
+              0,
+              36,
+              25
+             ],
+             "range": [
+              [
+               0,
+               36,
+               20
+              ],
+              [
+               0,
+               36,
+               27
+              ]
+             ],
+             "op": "multiply",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 2,
+               "p": [
+                0,
+                36,
+                20
+               ],
+               "range": [
+                [
+                 0,
+                 36,
+                 20
+                ],
+                [
+                 0,
+                 36,
+                 23
+                ]
+               ],
+               "var": 5,
+               "name": "seed"
+              },
+              {
+               "k": "constant",
+               "t": 2,
+               "p": [
+                0,
+                36,
+                27
+               ],
+               "range": [
+                [
+                 0,
+                 36,
+                 27
+                ],
+                [
+                 0,
+                 36,
+                 27
+                ]
+               ],
+               "ck": "integer",
+               "value": "2"
+              }
+             ]
+            }
+           }
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       37,
+       3
+      ],
+      "end": [
+       0,
+       37,
+       42
+      ],
+      "decls": [
+       {
+        "id": 11,
+        "name": "implicit",
+        "type": 21,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         37,
+         8
+        ],
+        "start": [
+         0,
+         37,
+         3
+        ],
+        "init": {
+         "k": "lambda",
+         "var": 11,
+         "const": {
+          "k": "constant",
+          "t": 21,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "dynamic_init",
+            "init": {
+             "k": "expression",
+             "expr": {
+              "k": "variable",
+              "t": 2,
+              "p": [
+               0,
+               37,
+               34
+              ],
+              "range": [
+               [
+                0,
+                37,
+                34
+               ],
+               null
+              ],
+              "var": 6,
+              "name": "local"
+             }
+            }
+           }
+          ]
+         },
+         "routine": 11,
+         "captures": [
+          {
+           "field": "local",
+           "var": 6,
+           "implicit": true
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       38,
+       3
+      ],
+      "end": [
+       0,
+       38,
+       41
+      ],
+      "decls": [
+       {
+        "id": 12,
+        "name": "folded",
+        "type": 22,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         38,
+         8
+        ],
+        "start": [
+         0,
+         38,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 12,
+         "const": {
+          "k": "constant",
+          "t": 22,
+          "ck": "aggregate",
+          "lambdaRoutine": 12,
+          "elements": [
+           {
+            "k": "constant",
+            "t": 2,
+            "ck": "integer",
+            "value": "16"
+           }
+          ],
+          "expr": {
+           "k": "initializer",
+           "t": 22,
+           "p": [
+            0,
+            38,
+            17
+           ],
+           "range": [
+            [
+             0,
+             38,
+             17
+            ],
+            [
+             0,
+             38,
+             40
+            ]
+           ]
+          }
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       39,
+       3
+      ],
+      "end": [
+       0,
+       39,
+       63
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        39,
+        53
+       ],
+       "range": [
+        [
+         0,
+         39,
+         10
+        ],
+        [
+         0,
+         39,
+         62
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 2,
+         "p": [
+          0,
+          39,
+          40
+         ],
+         "range": [
+          [
+           0,
+           39,
+           10
+          ],
+          [
+           0,
+           39,
+           51
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 2,
+           "p": [
+            0,
+            39,
+            31
+           ],
+           "range": [
+            [
+             0,
+             39,
+             10
+            ],
+            [
+             0,
+             39,
+             38
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 2,
+             "p": [
+              0,
+              39,
+              19
+             ],
+             "range": [
+              [
+               0,
+               39,
+               10
+              ],
+              [
+               0,
+               39,
+               29
+              ]
+             ],
+             "op": "add",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 2,
+               "p": [
+                0,
+                39,
+                16
+               ],
+               "range": [
+                [
+                 0,
+                 39,
+                 10
+                ],
+                [
+                 0,
+                 39,
+                 17
+                ]
+               ],
+               "op": "dot_member_call",
+               "operatorSyntax": true,
+               "callee": 8,
+               "ops": [
+                {
+                 "k": "routine",
+                 "t": 23,
+                 "p": [
+                  0,
+                  39,
+                  16
+                 ],
+                 "range": [
+                  [
+                   0,
+                   39,
+                   16
+                  ],
+                  [
+                   0,
+                   39,
+                   16
+                  ]
+                 ],
+                 "routine": 8,
+                 "name": "operator()"
+                },
+                {
+                 "k": "operation",
+                 "t": 24,
+                 "p": [
+                  0,
+                  39,
+                  10
+                 ],
+                 "lv": true,
+                 "implicit": true,
+                 "op": "lvalue_adjust",
+                 "ops": [
+                  {
+                   "k": "variable",
+                   "t": 16,
+                   "p": [
+                    0,
+                    39,
+                    10
+                   ],
+                   "range": [
+                    [
+                     0,
+                     39,
+                     10
+                    ],
+                    [
+                     0,
+                     39,
+                     15
+                    ]
+                   ],
+                   "lv": true,
+                   "var": 8,
+                   "name": "by_ref"
+                  }
+                 ]
+                }
+               ]
+              },
+              {
+               "k": "operation",
+               "t": 2,
+               "p": [
+                0,
+                39,
+                28
+               ],
+               "range": [
+                [
+                 0,
+                 39,
+                 21
+                ],
+                [
+                 0,
+                 39,
+                 29
+                ]
+               ],
+               "op": "dot_member_call",
+               "operatorSyntax": true,
+               "callee": 9,
+               "ops": [
+                {
+                 "k": "routine",
+                 "t": 25,
+                 "p": [
+                  0,
+                  39,
+                  28
+                 ],
+                 "range": [
+                  [
+                   0,
+                   39,
+                   28
+                  ],
+                  [
+                   0,
+                   39,
+                   28
+                  ]
+                 ],
+                 "routine": 9,
+                 "name": "operator()"
+                },
+                {
+                 "k": "operation",
+                 "t": 26,
+                 "p": [
+                  0,
+                  39,
+                  21
+                 ],
+                 "lv": true,
+                 "implicit": true,
+                 "op": "lvalue_adjust",
+                 "ops": [
+                  {
+                   "k": "variable",
+                   "t": 18,
+                   "p": [
+                    0,
+                    39,
+                    21
+                   ],
+                   "range": [
+                    [
+                     0,
+                     39,
+                     21
+                    ],
+                    [
+                     0,
+                     39,
+                     27
+                    ]
+                   ],
+                   "lv": true,
+                   "var": 9,
+                   "name": "by_copy"
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 2,
+             "p": [
+              0,
+              39,
+              37
+             ],
+             "range": [
+              [
+               0,
+               39,
+               33
+              ],
+              [
+               0,
+               39,
+               38
+              ]
+             ],
+             "op": "dot_member_call",
+             "operatorSyntax": true,
+             "callee": 10,
+             "ops": [
+              {
+               "k": "routine",
+               "t": 27,
+               "p": [
+                0,
+                39,
+                37
+               ],
+               "range": [
+                [
+                 0,
+                 39,
+                 37
+                ],
+                [
+                 0,
+                 39,
+                 37
+                ]
+               ],
+               "routine": 10,
+               "name": "operator()"
+              },
+              {
+               "k": "operation",
+               "t": 28,
+               "p": [
+                0,
+                39,
+                33
+               ],
+               "lv": true,
+               "implicit": true,
+               "op": "lvalue_adjust",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 20,
+                 "p": [
+                  0,
+                  39,
+                  33
+                 ],
+                 "range": [
+                  [
+                   0,
+                   39,
+                   33
+                  ],
+                  [
+                   0,
+                   39,
+                   36
+                  ]
+                 ],
+                 "lv": true,
+                 "var": 10,
+                 "name": "init"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 2,
+           "p": [
+            0,
+            39,
+            50
+           ],
+           "range": [
+            [
+             0,
+             39,
+             42
+            ],
+            [
+             0,
+             39,
+             51
+            ]
+           ],
+           "op": "dot_member_call",
+           "operatorSyntax": true,
+           "callee": 11,
+           "ops": [
+            {
+             "k": "routine",
+             "t": 29,
+             "p": [
+              0,
+              39,
+              50
+             ],
+             "range": [
+              [
+               0,
+               39,
+               50
+              ],
+              [
+               0,
+               39,
+               50
+              ]
+             ],
+             "routine": 11,
+             "name": "operator()"
+            },
+            {
+             "k": "operation",
+             "t": 30,
+             "p": [
+              0,
+              39,
+              42
+             ],
+             "lv": true,
+             "implicit": true,
+             "op": "lvalue_adjust",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 21,
+               "p": [
+                0,
+                39,
+                42
+               ],
+               "range": [
+                [
+                 0,
+                 39,
+                 42
+                ],
+                [
+                 0,
+                 39,
+                 49
+                ]
+               ],
+               "lv": true,
+               "var": 11,
+               "name": "implicit"
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 2,
+         "p": [
+          0,
+          39,
+          61
+         ],
+         "range": [
+          [
+           0,
+           39,
+           55
+          ],
+          [
+           0,
+           39,
+           62
+          ]
+         ],
+         "op": "dot_member_call",
+         "operatorSyntax": true,
+         "callee": 12,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 31,
+           "p": [
+            0,
+            39,
+            61
+           ],
+           "range": [
+            [
+             0,
+             39,
+             61
+            ],
+            [
+             0,
+             39,
+             61
+            ]
+           ],
+           "routine": 12,
+           "name": "operator()"
+          },
+          {
+           "k": "operation",
+           "t": 32,
+           "p": [
+            0,
+            39,
+            55
+           ],
+           "lv": true,
+           "implicit": true,
+           "op": "lvalue_adjust",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 22,
+             "p": [
+              0,
+              39,
+              55
+             ],
+             "range": [
+              [
+               0,
+               39,
+               55
+              ],
+              [
+               0,
+               39,
+               60
+              ]
+             ],
+             "lv": true,
+             "var": 12,
+             "name": "folded"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 13,
+   "name": "text",
+   "qualifiedName": "text::text",
+   "type": 33,
+   "returnType": 4,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "constructor",
+   "class": 1,
+   "p": [
+    0,
+    8,
+    3
+   ],
+   "start": [
+    0,
+    8,
+    3
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "s",
+     "type": 5
+    }
+   ]
+  },
+  {
+   "id": 14,
+   "name": "text",
+   "qualifiedName": "text::text",
+   "type": 34,
+   "returnType": 4,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "constructor",
+   "class": 1,
+   "p": [
+    0,
+    9,
+    3
+   ],
+   "start": [
+    0,
+    9,
+    3
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "other",
+     "type": 12
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "name": "~text",
+   "qualifiedName": "text::~text",
+   "type": 35,
+   "returnType": 4,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "destructor",
+   "class": 1,
+   "p": [
+    0,
+    10,
+    3
+   ],
+   "start": [
+    0,
+    10,
+    3
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 4,
+   "name": "c_str",
+   "qualifiedName": "text::c_str",
+   "type": 36,
+   "returnType": 5,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "class": 1,
+   "p": [
+    0,
+    11,
+    15
+   ],
+   "start": [
+    0,
+    11,
+    3
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 15,
+   "name": "size",
+   "qualifiedName": "text::size",
+   "type": 37,
+   "returnType": 38,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "class": 1,
+   "p": [
+    0,
+    12,
+    10
+   ],
+   "start": [
+    0,
+    12,
+    3
+   ],
+   "defined": false,
+   "params": []
+  },
+  {
+   "id": 16,
+   "name": "operator=",
+   "qualifiedName": "text::operator=",
+   "type": 39,
+   "returnType": 40,
+   "prototyped": true,
+   "thisClass": 1,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 1,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    7,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 12
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 34, col. 17::operator()",
+   "type": 41,
+   "returnType": 2,
+   "prototyped": true,
+   "thisClass": 16,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 16,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    34,
+    25
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 13,
+     "name": "",
+     "type": 42,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     34,
+     28
+    ],
+    "end": [
+     0,
+     34,
+     44
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       34,
+       30
+      ],
+      "end": [
+       0,
+       34,
+       42
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        34,
+        37
+       ],
+       "implicit": true,
+       "op": "ref_indirect",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 17,
+         "p": [
+          0,
+          34,
+          37
+         ],
+         "range": [
+          [
+           0,
+           34,
+           37
+          ],
+          [
+           0,
+           34,
+           41
+          ]
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 43,
+           "var": 13,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 17,
+           "name": "local"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 9,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 35, col. 18::operator()",
+   "type": 44,
+   "returnType": 2,
+   "prototyped": true,
+   "thisClass": 18,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 18,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    35,
+    31
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 14,
+     "name": "",
+     "type": 45,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     35,
+     34
+    ],
+    "end": [
+     0,
+     35,
+     59
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       35,
+       36
+      ],
+      "end": [
+       0,
+       35,
+       57
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        35,
+        49
+       ],
+       "range": [
+        [
+         0,
+         35,
+         43
+        ],
+        [
+         0,
+         35,
+         56
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 46,
+         "p": [
+          0,
+          35,
+          43
+         ],
+         "range": [
+          [
+           0,
+           35,
+           43
+          ],
+          [
+           0,
+           35,
+           47
+          ]
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 47,
+           "var": 14,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 2,
+           "name": "local"
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 2,
+         "p": [
+          0,
+          35,
+          51
+         ],
+         "implicit": true,
+         "op": "cast",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 15,
+           "p": [
+            0,
+            35,
+            54
+           ],
+           "range": [
+            [
+             0,
+             35,
+             51
+            ],
+            [
+             0,
+             35,
+             56
+            ]
+           ],
+           "op": "subscript",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 48,
+             "p": [
+              0,
+              35,
+              51
+             ],
+             "implicit": true,
+             "op": "array_to_pointer",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 14,
+               "p": [
+                0,
+                35,
+                51
+               ],
+               "lv": true,
+               "implicit": true,
+               "op": "ref_indirect",
+               "ops": [
+                {
+                 "k": "operation",
+                 "t": 19,
+                 "p": [
+                  0,
+                  35,
+                  51
+                 ],
+                 "range": [
+                  [
+                   0,
+                   35,
+                   51
+                  ],
+                  [
+                   0,
+                   35,
+                   53
+                  ]
+                 ],
+                 "implicit": true,
+                 "op": "points_to_field",
+                 "ops": [
+                  {
+                   "k": "variable",
+                   "t": 47,
+                   "var": 14,
+                   "name": ""
+                  },
+                  {
+                   "k": "field",
+                   "t": 19,
+                   "name": "buf",
+                   "offset": 8
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "constant",
+             "t": 2,
+             "p": [
+              0,
+              35,
+              55
+             ],
+             "range": [
+              [
+               0,
+               35,
+               55
+              ],
+              [
+               0,
+               35,
+               55
+              ]
+             ],
+             "ck": "integer",
+             "value": "0"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 10,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 36, col. 15::operator()",
+   "type": 49,
+   "returnType": 2,
+   "prototyped": true,
+   "thisClass": 20,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 20,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    36,
+    29
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 15,
+     "name": "",
+     "type": 50,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     36,
+     32
+    ],
+    "end": [
+     0,
+     36,
+     44
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       36,
+       34
+      ],
+      "end": [
+       0,
+       36,
+       42
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        36,
+        41
+       ],
+       "implicit": true,
+       "op": "points_to_field",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 51,
+         "p": [
+          0,
+          36,
+          41
+         ],
+         "var": 15,
+         "name": ""
+        },
+        {
+         "k": "field",
+         "t": 2,
+         "p": [
+          0,
+          36,
+          41
+         ],
+         "range": [
+          [
+           0,
+           36,
+           41
+          ],
+          [
+           0,
+           36,
+           41
+          ]
+         ],
+         "name": "n"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 11,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 37, col. 19::operator()",
+   "type": 52,
+   "returnType": 2,
+   "prototyped": true,
+   "thisClass": 21,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 21,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    37,
+    22
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 16,
+     "name": "",
+     "type": 53,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     37,
+     25
+    ],
+    "end": [
+     0,
+     37,
+     41
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       37,
+       27
+      ],
+      "end": [
+       0,
+       37,
+       39
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        37,
+        34
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 46,
+         "p": [
+          0,
+          37,
+          34
+         ],
+         "range": [
+          [
+           0,
+           37,
+           34
+          ],
+          [
+           0,
+           37,
+           38
+          ]
+         ],
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 54,
+           "var": 16,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 2,
+           "name": "local"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 12,
+   "name": "operator()",
+   "qualifiedName": "lambda [] type at line 38, col. 17::operator()",
+   "type": 55,
+   "returnType": 2,
+   "prototyped": true,
+   "thisClass": 22,
+   "linkage": "none",
+   "storage": "static",
+   "special": "operator",
+   "operator": "function_call",
+   "class": 22,
+   "inline": true,
+   "lambda": true,
+   "p": [
+    0,
+    38,
+    25
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 17,
+     "name": "",
+     "type": 56,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     38,
+     28
+    ],
+    "end": [
+     0,
+     38,
+     40
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       38,
+       30
+      ],
+      "end": [
+       0,
+       38,
+       38
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 2,
+       "p": [
+        0,
+        38,
+        37
+       ],
+       "implicit": true,
+       "op": "points_to_field",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 57,
+         "p": [
+          0,
+          38,
+          37
+         ],
+         "var": 17,
+         "name": ""
+        },
+        {
+         "k": "field",
+         "t": 2,
+         "p": [
+          0,
+          38,
+          37
+         ],
+         "range": [
+          [
+           0,
+           38,
+           37
+          ],
+          [
+           0,
+           38,
+           37
+          ]
+         ],
+         "name": "k"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "text (int)",
+   "returns": 1,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "struct",
+   "name": "text",
+   "size": 8,
+   "tag": "text",
+   "qualifiedName": "text",
+   "p": [
+    0,
+    7,
+    8
+   ],
+   "span": [
+    [
+     0,
+     7,
+     1
+    ],
+    [
+     0,
+     16,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "data_",
+     "type": 48,
+     "offset": 0,
+     "p": [
+      0,
+      15,
+      9
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 2,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "void (const char *)",
+   "returns": 4,
+   "params": [
+    5
+   ]
+  },
+  {
+   "id": 4,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "const char *",
+   "size": 8,
+   "to": 58
+  },
+  {
+   "id": 6,
+   "kind": "routine",
+   "name": "void (int)",
+   "returns": 4,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "pointer",
+   "name": "const char *(*)() const",
+   "size": 8,
+   "to": 36
+  },
+  {
+   "id": 8,
+   "kind": "typeref",
+   "name": "const text",
+   "of": 1,
+   "refKind": "none"
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "text (*)(int)",
+   "size": 8,
+   "to": 0
+  },
+  {
+   "id": 10,
+   "kind": "pointer",
+   "name": "void (*)(const char *)",
+   "size": 8,
+   "to": 3
+  },
+  {
+   "id": 11,
+   "kind": "routine",
+   "name": "void (int)",
+   "returns": 4,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 12,
+   "kind": "pointer",
+   "name": "const text &",
+   "size": 8,
+   "to": 8,
+   "reference": true
+  },
+  {
+   "id": 13,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 2,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 14,
+   "kind": "array",
+   "name": "char [8]",
+   "size": 8,
+   "of": 15,
+   "count": 8
+  },
+  {
+   "id": 15,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  },
+  {
+   "id": 16,
+   "kind": "class",
+   "name": "lambda [] type at line 34, col. 17",
+   "size": 8,
+   "qualifiedName": "lambda [] type at line 34, col. 17",
+   "p": [
+    0,
+    34,
+    17
+   ],
+   "fields": [
+    {
+     "name": "local",
+     "type": 17,
+     "offset": 0,
+     "p": [
+      0,
+      34,
+      19
+     ]
+    }
+   ],
+   "bases": [],
+   "closure": true
+  },
+  {
+   "id": 17,
+   "kind": "pointer",
+   "name": "int &",
+   "size": 8,
+   "to": 2,
+   "reference": true
+  },
+  {
+   "id": 18,
+   "kind": "class",
+   "name": "lambda [] type at line 35, col. 18",
+   "size": 16,
+   "qualifiedName": "lambda [] type at line 35, col. 18",
+   "p": [
+    0,
+    35,
+    18
+   ],
+   "fields": [
+    {
+     "name": "local",
+     "type": 2,
+     "offset": 0,
+     "p": [
+      0,
+      35,
+      19
+     ]
+    },
+    {
+     "name": "buf",
+     "type": 19,
+     "offset": 8,
+     "p": [
+      0,
+      35,
+      27
+     ]
+    }
+   ],
+   "bases": [],
+   "closure": true
+  },
+  {
+   "id": 19,
+   "kind": "pointer",
+   "name": "char (&)[8]",
+   "size": 8,
+   "to": 14,
+   "reference": true
+  },
+  {
+   "id": 20,
+   "kind": "class",
+   "name": "lambda [] type at line 36, col. 15",
+   "size": 4,
+   "qualifiedName": "lambda [] type at line 36, col. 15",
+   "p": [
+    0,
+    36,
+    15
+   ],
+   "fields": [
+    {
+     "name": "n",
+     "type": 2,
+     "offset": 0,
+     "p": [
+      0,
+      36,
+      16
+     ]
+    }
+   ],
+   "bases": [],
+   "closure": true
+  },
+  {
+   "id": 21,
+   "kind": "class",
+   "name": "lambda [] type at line 37, col. 19",
+   "size": 4,
+   "qualifiedName": "lambda [] type at line 37, col. 19",
+   "p": [
+    0,
+    37,
+    19
+   ],
+   "fields": [
+    {
+     "name": "local",
+     "type": 2,
+     "offset": 0,
+     "p": [
+      0,
+      37,
+      34
+     ]
+    }
+   ],
+   "bases": [],
+   "closure": true
+  },
+  {
+   "id": 22,
+   "kind": "class",
+   "name": "lambda [] type at line 38, col. 17",
+   "size": 4,
+   "qualifiedName": "lambda [] type at line 38, col. 17",
+   "p": [
+    0,
+    38,
+    17
+   ],
+   "fields": [
+    {
+     "name": "k",
+     "type": 2,
+     "offset": 0,
+     "p": [
+      0,
+      38,
+      18
+     ]
+    }
+   ],
+   "bases": [],
+   "closure": true
+  },
+  {
+   "id": 23,
+   "kind": "pointer",
+   "name": "(*)()->int",
+   "size": 8,
+   "to": 41
+  },
+  {
+   "id": 24,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 34, col. 17",
+   "of": 16,
+   "refKind": "none"
+  },
+  {
+   "id": 25,
+   "kind": "pointer",
+   "name": "(*)()->int",
+   "size": 8,
+   "to": 44
+  },
+  {
+   "id": 26,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 35, col. 18",
+   "of": 18,
+   "refKind": "none"
+  },
+  {
+   "id": 27,
+   "kind": "pointer",
+   "name": "(*)()->int",
+   "size": 8,
+   "to": 49
+  },
+  {
+   "id": 28,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 36, col. 15",
+   "of": 20,
+   "refKind": "none"
+  },
+  {
+   "id": 29,
+   "kind": "pointer",
+   "name": "(*)()->int",
+   "size": 8,
+   "to": 52
+  },
+  {
+   "id": 30,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 37, col. 19",
+   "of": 21,
+   "refKind": "none"
+  },
+  {
+   "id": 31,
+   "kind": "pointer",
+   "name": "(*)()->int",
+   "size": 8,
+   "to": 55
+  },
+  {
+   "id": 32,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 38, col. 17",
+   "of": 22,
+   "refKind": "none"
+  },
+  {
+   "id": 33,
+   "kind": "routine",
+   "name": "void (const char *)",
+   "returns": 4,
+   "params": [
+    5
+   ]
+  },
+  {
+   "id": 34,
+   "kind": "routine",
+   "name": "void (const text &)",
+   "returns": 4,
+   "params": [
+    12
+   ]
+  },
+  {
+   "id": 35,
+   "kind": "routine",
+   "name": "void () noexcept",
+   "returns": 4,
+   "params": []
+  },
+  {
+   "id": 36,
+   "kind": "routine",
+   "name": "const char *() const",
+   "returns": 5,
+   "params": []
+  },
+  {
+   "id": 37,
+   "kind": "routine",
+   "name": "size_t () const",
+   "returns": 38,
+   "params": []
+  },
+  {
+   "id": 38,
+   "kind": "typeref",
+   "name": "size_t",
+   "of": 59,
+   "typedef": "size_t",
+   "p": [
+    0,
+    5,
+    23
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 39,
+   "kind": "routine",
+   "name": "text &(const text &)",
+   "returns": 40,
+   "params": [
+    12
+   ]
+  },
+  {
+   "id": 40,
+   "kind": "pointer",
+   "name": "text &",
+   "size": 8,
+   "to": 1,
+   "reference": true
+  },
+  {
+   "id": 41,
+   "kind": "routine",
+   "name": "()->int",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 42,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 34, col. 17 *const",
+   "of": 43,
+   "refKind": "none"
+  },
+  {
+   "id": 43,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 34, col. 17 *",
+   "size": 8,
+   "to": 24
+  },
+  {
+   "id": 44,
+   "kind": "routine",
+   "name": "()->int",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 45,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 35, col. 18 *const",
+   "of": 47,
+   "refKind": "none"
+  },
+  {
+   "id": 46,
+   "kind": "typeref",
+   "name": "const int",
+   "of": 2,
+   "refKind": "none"
+  },
+  {
+   "id": 47,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 35, col. 18 *",
+   "size": 8,
+   "to": 26
+  },
+  {
+   "id": 48,
+   "kind": "pointer",
+   "name": "char *",
+   "size": 8,
+   "to": 15
+  },
+  {
+   "id": 49,
+   "kind": "routine",
+   "name": "()->int",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 50,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 36, col. 15 *const",
+   "of": 51,
+   "refKind": "none"
+  },
+  {
+   "id": 51,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 36, col. 15 *",
+   "size": 8,
+   "to": 28
+  },
+  {
+   "id": 52,
+   "kind": "routine",
+   "name": "()->int",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 53,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 37, col. 19 *const",
+   "of": 54,
+   "refKind": "none"
+  },
+  {
+   "id": 54,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 37, col. 19 *",
+   "size": 8,
+   "to": 30
+  },
+  {
+   "id": 55,
+   "kind": "routine",
+   "name": "()->int",
+   "returns": 2,
+   "params": []
+  },
+  {
+   "id": 56,
+   "kind": "typeref",
+   "name": "const lambda [] type at line 38, col. 17 *const",
+   "of": 57,
+   "refKind": "none"
+  },
+  {
+   "id": 57,
+   "kind": "pointer",
+   "name": "const lambda [] type at line 38, col. 17 *",
+   "size": 8,
+   "to": 32
+  },
+  {
+   "id": 58,
+   "kind": "typeref",
+   "name": "const char",
+   "of": 15,
+   "refKind": "none"
+  },
+  {
+   "id": 59,
+   "kind": "integer",
+   "name": "unsigned long",
+   "size": 8,
+   "signed": false
+  }
+ ],
+ "diagnostics": []
+}

@@ -857,7 +857,8 @@ class Exporter {
       json_.null();
       return;
     }
-    // a full-expression wrapper adds nothing a reader needs
+    // a full-expression wrapper adds nothing a reader needs: each temporary's own initialiser
+    // says how long it lives
     if (e->kind == enk_object_lifetime && e->variant.object_lifetime.expr != nullptr) {
       writeExpr(e->variant.object_lifetime.expr);
       return;
@@ -939,6 +940,7 @@ class Exporter {
             noteRoutine(l->lambda_routine);
           }
           if (l->closure_class != nullptr) json_.field("closure", typeId(l->closure_class));
+          writeCaptures(l);
         }
         break;
       case enk_new_delete: {
@@ -1011,6 +1013,33 @@ class Exporter {
     --depth_;
   }
 
+  // "captures": what a lambda's closure holds, each with the closure member that holds it (none
+  // until the body uses it): an outer variable, by copy or by reference ("this" for the enclosing
+  // object), or an init-capture's initialiser, evaluated where the lambda is
+  void writeCaptures(a_lambda_ptr l) {
+    if (l->capture_list == nullptr) return;
+    json_.key("captures");
+    json_.beginArray();
+    for (a_lambda_capture_ptr c = l->capture_list; c != nullptr; c = c->next) {
+      json_.beginObject();
+      if (c->closure_field != nullptr && c->closure_field->source_corresp.name != nullptr)
+        json_.field("field", c->closure_field->source_corresp.name);
+      if (c->is_init_capture) {
+        json_.key("initializer");
+        writeDynamicInit(c->captured.initializer);
+      } else if (!c->is_indirect_init_capture && !c->is_param_ref_capture &&
+                 c->captured.variable != nullptr) {
+        a_variable_ptr v = c->captured.variable;
+        json_.field("var", variableId(v));
+        if (v->is_this_parameter) json_.fieldBool("this", true);
+      }
+      if (c->capture_by_reference) json_.fieldBool("byReference", true);
+      if (c->is_implicit) json_.fieldBool("implicit", true);
+      json_.endObject();
+    }
+    json_.endArray();
+  }
+
   // ---- initialisers and constants -------------------------------------------------------------
 
   void writeDynamicInit(a_dynamic_init_ptr d) {
@@ -1021,6 +1050,13 @@ class Exporter {
     json_.beginObject();
     json_.field("k", dynamicInitKindName(d->kind));
     if (d->variable != nullptr) json_.field("var", variableId(d->variable));
+    // `(int[]){x, 0}`: the unnamed object a compound literal creates, which lives as long as the
+    // enclosing block (C99 6.5.2.5p5)
+    if (d->is_compound_literal) json_.fieldBool("compoundLiteral", true);
+    // how long the object lives, when its end destroys it: to the end of the full-expression (a
+    // temporary), to the end of its block (a local, or a temporary a reference binding extends),
+    // or to the program's end
+    if (d->lifetime != nullptr) json_.field("lifetime", lifetimeName(d->lifetime->kind));
     switch (d->kind) {
       case dik_expression:
       case dik_class_result_via_ctor:
@@ -1031,7 +1067,21 @@ class Exporter {
       case dik_lambda:
         if (d->variant.constant.ptr != nullptr) {
           json_.key("const");
+          // a lambda's own initialiser names its routine below; only a folded closure needs it
+          // on the constant
+          bool saved = inLambdaInit_;
+          inLambdaInit_ = d->kind == dik_lambda;
           writeConstantNode(d->variant.constant.ptr, nullptr);
+          inLambdaInit_ = saved;
+        }
+        if (d->kind == dik_lambda && d->variant.constant.lambda != nullptr) {
+          a_lambda_ptr l = d->variant.constant.lambda;
+          // the call operator, whether or not anything calls it: what the closure runs
+          if (l->lambda_routine != nullptr) {
+            json_.field("routine", routineId(l->lambda_routine));
+            noteRoutine(l->lambda_routine);
+          }
+          writeCaptures(l);
         }
         break;
       case dik_constructor:
@@ -1136,6 +1186,10 @@ class Exporter {
           json_.field("offset", static_cast<long long>(c->variant.address.offset));
         break;
       case ck_aggregate: {
+        if (c->is_compound_literal) json_.fieldBool("compoundLiteral", true);
+        // a lambda the front end folded to a constant (its captures all constants: `[n = 16]`):
+        // the closure's call operator, which the constant no longer points to
+        writeClosureRoutine(c->type);
         json_.key("elements");
         json_.beginArray();
         for (a_constant_ptr e = c->variant.aggregate.first_constant; e != nullptr; e = e->next)
@@ -1284,7 +1338,15 @@ class Exporter {
           json_.field("name", f->source_corresp.name != nullptr ? f->source_corresp.name : "");
           json_.field("type", typeId(f->type));
           json_.field("offset", static_cast<long long>(f->offset));
-          if (f->is_bit_field) json_.fieldBool("bitField", true);
+          if (f->is_bit_field) {
+            json_.fieldBool("bitField", true);
+            json_.field("bits", static_cast<long long>(f->bit_size));
+            if (f->offset_bit_remainder != 0)
+              json_.field("bitOffset", static_cast<long long>(f->offset_bit_remainder));
+          }
+          // the last member, an array of unknown bound: a flexible array member, whose
+          // elements are the bytes the object has past its offset (C99 6.7.2.1p18)
+          if (f->next == nullptr && isUnknownBoundArray(f->type)) json_.fieldBool("flexible", true);
           position(f->source_corresp.decl_position);
           json_.endObject();
         }
@@ -1323,6 +1385,43 @@ class Exporter {
   }
 
   // ---- ids ------------------------------------------------------------------------------------
+
+  void writeClosureRoutine(a_type_ptr type) {
+    if (inLambdaInit_) return;
+    a_type_ptr t = skip_typerefs(type);
+    if (t == nullptr || !is_immediate_class_type(t)) return;
+    a_class_type_supplement_ptr supp = class_type_supp(t);
+    if (supp == nullptr || !supp->is_lambda_closure_class || supp->assoc_scope == nullptr) return;
+    for (a_routine_ptr r = supp->assoc_scope->routines; r != nullptr; r = r->next) {
+      if (!r->is_lambda_body) continue;
+      json_.field("lambdaRoutine", routineId(r));
+      noteRoutine(r);
+      return;
+    }
+  }
+
+  static const char* lifetimeName(an_object_lifetime_kind kind) {
+    switch (kind) {
+      case olk_expr_temporary:
+        return "fullExpression";
+      case olk_block:
+      case olk_block_after_label:
+        return "block";
+      case olk_try_block:
+        return "try";
+      case olk_global_static:
+      case olk_function_static:
+        return "static";
+    }
+    return "block";
+  }
+
+  static bool isUnknownBoundArray(a_type_ptr t) {
+    t = skip_typerefs(t);
+    return t != nullptr && t->kind == tk_array && !t->variant.array.is_variable_size_array &&
+           !t->variant.array.is_template_dependent_size_array &&
+           t->variant.array.variant.number_of_elements == 0 && !t->variant.array.bound_is_zero;
+  }
 
   long routineId(a_routine_ptr r) {
     auto it = routineIds_.find(r);
@@ -1370,6 +1469,8 @@ class Exporter {
   an_il_to_str_output_control_block octl_;
   a_text_buffer_ptr textBuffer_ = nullptr;
   int depth_ = 0;
+  // writing the constant of a lambda's own initialiser, which names the routine itself
+  bool inLambdaInit_ = false;
 };
 
 // The document stays open after the back end: the diagnostics are added when the front end has
