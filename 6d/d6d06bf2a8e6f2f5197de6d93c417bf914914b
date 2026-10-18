@@ -1,0 +1,23 @@
+src/edga_back_end.cpp
+  s_236e880d3ee8e7::t_73fc63eda8f34c 1072-1080
+tests/expected/lifetimes.cpp.json
+  s_236e880d3ee8e7::t_3885c1ab07073e 1060,1188,1322,1472
+tests/expected/templates.cpp.json
+  s_236e880d3ee8e7::t_89782cceecfb49 629
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6dd6d06bf2a8e6f2f5197de6d93c417bf914914b",
+  "prompts": {},
+  "sessions": {
+    "s_236e880d3ee8e7": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "52eeaa6b-eddb-4834-83cf-34eb1a185cc1",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
