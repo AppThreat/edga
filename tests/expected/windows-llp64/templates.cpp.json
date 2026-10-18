@@ -625,7 +625,19 @@
             }
            }
           ]
-         }
+         },
+         "routine": 4,
+         "captures": [
+          {
+           "field": "scale",
+           "var": 4,
+           "byReference": true
+          },
+          {
+           "field": "n",
+           "var": 1
+          }
+         ]
         }
        }
       ]

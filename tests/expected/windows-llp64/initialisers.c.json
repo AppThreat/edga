@@ -486,10 +486,12 @@
          ],
          "init": {
           "k": "constant",
+          "compoundLiteral": true,
           "const": {
            "k": "constant",
            "t": 1,
            "ck": "aggregate",
+           "compoundLiteral": true,
            "elements": [
             {
              "k": "constant",
@@ -1522,6 +1524,7 @@
      "name": "body",
      "type": 11,
      "offset": 4,
+     "flexible": true,
      "p": [
       0,
       11,

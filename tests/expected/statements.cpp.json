@@ -1247,6 +1247,7 @@
           "init": {
            "k": "constructor",
            "var": 12,
+           "lifetime": "block",
            "routine": 6,
            "args": [
             {

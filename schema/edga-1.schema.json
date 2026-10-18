@@ -237,10 +237,41 @@
             "routine": { "type": "integer" },
             "args": { "type": "array", "items": { "$ref": "#/$defs/expression" } },
             "const": { "$ref": "#/$defs/expression" },
-            "destructor": { "type": "integer" }
+            "destructor": { "type": "integer" },
+            "compoundLiteral": {
+              "type": "boolean",
+              "description": "The unnamed object of a compound literal, `(int[]){x, 0}`: it lives as long as the enclosing block (C99 6.5.2.5p5)."
+            },
+            "lifetime": {
+              "enum": ["fullExpression", "block", "try", "static"],
+              "description": "How long the initialised object lives, when its end destroys it: a temporary to the end of its full-expression; a local, or a temporary a reference binding extends, to the end of its block."
+            },
+            "captures": {
+              "type": "array",
+              "description": "A lambda's captures (k: lambda), in capture-list order.",
+              "items": { "$ref": "#/$defs/capture" }
+            }
           }
         }
       ]
+    },
+    "capture": {
+      "description": "What one capture of a lambda's closure holds: an outer variable by copy or by reference, or an init-capture's initialiser, evaluated where the lambda is.",
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "The closure member that holds it; absent until the lambda's body uses it."
+        },
+        "var": { "type": "integer", "description": "The captured variable." },
+        "this": { "type": "boolean", "description": "The capture is of the enclosing object." },
+        "byReference": { "type": "boolean" },
+        "implicit": {
+          "type": "boolean",
+          "description": "Captured by a capture default, not named in the capture list."
+        },
+        "initializer": { "$ref": "#/$defs/initializer" }
+      }
     },
     "expression": {
       "oneOf": [
@@ -329,7 +360,27 @@
             }
           }
         },
-        "fields": { "type": "array" },
+        "fields": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "type": { "type": "integer" },
+              "offset": { "type": "integer" },
+              "bitField": { "type": "boolean" },
+              "bits": { "type": "integer", "description": "A bit-field's width." },
+              "bitOffset": {
+                "type": "integer",
+                "description": "A bit-field's bit offset within the byte at `offset`."
+              },
+              "flexible": {
+                "type": "boolean",
+                "description": "A flexible array member: the last member, an array of unknown bound, whose elements are the object's bytes past its offset (C99 6.7.2.1p18)."
+              }
+            }
+          }
+        },
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },
         "templateInstance": { "type": "boolean", "description": "An instance of a class template." },

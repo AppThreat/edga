@@ -245,6 +245,7 @@
         "init": {
          "k": "constructor",
          "var": 2,
+         "lifetime": "block",
          "routine": 4,
          "args": [
           {
@@ -1760,6 +1761,7 @@
      "implicit": true,
      "init": {
       "k": "constructor",
+      "lifetime": "block",
       "routine": 12,
       "args": [],
       "destructor": 11
@@ -1855,6 +1857,7 @@
      "implicit": true,
      "init": {
       "k": "none",
+      "lifetime": "block",
       "destructor": 11
      }
     }

@@ -1,0 +1,1875 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "layout.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": true,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "layout.c",
+   "written": "layout.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "malloc",
+   "qualifiedName": "malloc",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "extern",
+   "p": [
+    0,
+    5,
+    7
+   ],
+   "start": [
+    0,
+    5,
+    1
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 2
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "read_pair",
+   "qualifiedName": "read_pair",
+   "type": 3,
+   "returnType": 4,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    22,
+    5
+   ],
+   "start": [
+    0,
+    22,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "x",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      22,
+      19
+     ],
+     "start": [
+      0,
+      22,
+      15
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     22,
+     22
+    ],
+    "end": [
+     0,
+     25,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       23,
+       3
+      ],
+      "end": [
+       0,
+       23,
+       28
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "pair",
+        "type": 5,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         23,
+         8
+        ],
+        "start": [
+         0,
+         23,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 2,
+         "expr": {
+          "k": "operation",
+          "t": 5,
+          "p": [
+           0,
+           23,
+           15
+          ],
+          "implicit": true,
+          "op": "array_to_pointer",
+          "ops": [
+           {
+            "k": "temp_init",
+            "t": 6,
+            "p": [
+             0,
+             23,
+             15
+            ],
+            "range": [
+             [
+              0,
+              23,
+              15
+             ],
+             [
+              0,
+              23,
+              27
+             ]
+            ],
+            "lv": true,
+            "init": {
+             "k": "nonconstant_aggregate",
+             "compoundLiteral": true,
+             "const": {
+              "k": "constant",
+              "t": 6,
+              "ck": "aggregate",
+              "compoundLiteral": true,
+              "elements": [
+               {
+                "k": "constant",
+                "t": 4,
+                "ck": "dynamic_init",
+                "init": {
+                 "k": "expression",
+                 "expr": {
+                  "k": "variable",
+                  "t": 4,
+                  "p": [
+                   0,
+                   23,
+                   23
+                  ],
+                  "range": [
+                   [
+                    0,
+                    23,
+                    23
+                   ],
+                   [
+                    0,
+                    23,
+                    23
+                   ]
+                  ],
+                  "var": 1,
+                  "name": "x"
+                 }
+                }
+               },
+               {
+                "k": "constant",
+                "t": 4,
+                "ck": "integer",
+                "value": "0"
+               }
+              ]
+             }
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       24,
+       3
+      ],
+      "end": [
+       0,
+       24,
+       17
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 4,
+       "p": [
+        0,
+        24,
+        14
+       ],
+       "range": [
+        [
+         0,
+         24,
+         10
+        ],
+        [
+         0,
+         24,
+         16
+        ]
+       ],
+       "op": "subscript",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 5,
+         "p": [
+          0,
+          24,
+          10
+         ],
+         "range": [
+          [
+           0,
+           24,
+           10
+          ],
+          [
+           0,
+           24,
+           13
+          ]
+         ],
+         "var": 2,
+         "name": "pair"
+        },
+        {
+         "k": "constant",
+         "t": 4,
+         "p": [
+          0,
+          24,
+          15
+         ],
+         "range": [
+          [
+           0,
+           24,
+           15
+          ],
+          [
+           0,
+           24,
+           15
+          ]
+         ],
+         "ck": "integer",
+         "value": "1"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "nested",
+   "qualifiedName": "nested",
+   "type": 7,
+   "returnType": 4,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    27,
+    5
+   ],
+   "start": [
+    0,
+    27,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 3,
+     "name": "x",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      27,
+      16
+     ],
+     "start": [
+      0,
+      27,
+      12
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     27,
+     19
+    ],
+    "end": [
+     0,
+     33,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       28,
+       3
+      ],
+      "end": [
+       0,
+       28,
+       9
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "p",
+        "type": 5,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         28,
+         8
+        ],
+        "start": [
+         0,
+         28,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "k": "block",
+      "p": [
+       0,
+       29,
+       3
+      ],
+      "end": [
+       0,
+       31,
+       3
+      ],
+      "stmts": [
+       {
+        "k": "expr",
+        "p": [
+         0,
+         30,
+         5
+        ],
+        "end": [
+         0,
+         30,
+         19
+        ],
+        "expr": {
+         "k": "operation",
+         "t": 5,
+         "p": [
+          0,
+          30,
+          7
+         ],
+         "range": [
+          [
+           0,
+           30,
+           5
+          ],
+          [
+           0,
+           30,
+           18
+          ]
+         ],
+         "op": "assign",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 5,
+           "p": [
+            0,
+            30,
+            5
+           ],
+           "range": [
+            [
+             0,
+             30,
+             5
+            ],
+            [
+             0,
+             30,
+             5
+            ]
+           ],
+           "lv": true,
+           "var": 4,
+           "name": "p"
+          },
+          {
+           "k": "operation",
+           "t": 5,
+           "p": [
+            0,
+            30,
+            9
+           ],
+           "implicit": true,
+           "op": "array_to_pointer",
+           "ops": [
+            {
+             "k": "temp_init",
+             "t": 8,
+             "p": [
+              0,
+              30,
+              9
+             ],
+             "range": [
+              [
+               0,
+               30,
+               9
+              ],
+              [
+               0,
+               30,
+               18
+              ]
+             ],
+             "lv": true,
+             "init": {
+              "k": "nonconstant_aggregate",
+              "compoundLiteral": true,
+              "const": {
+               "k": "constant",
+               "t": 8,
+               "ck": "aggregate",
+               "compoundLiteral": true,
+               "elements": [
+                {
+                 "k": "constant",
+                 "t": 4,
+                 "ck": "dynamic_init",
+                 "init": {
+                  "k": "expression",
+                  "expr": {
+                   "k": "variable",
+                   "t": 4,
+                   "p": [
+                    0,
+                    30,
+                    17
+                   ],
+                   "range": [
+                    [
+                     0,
+                     30,
+                     17
+                    ],
+                    [
+                     0,
+                     30,
+                     17
+                    ]
+                   ],
+                   "var": 3,
+                   "name": "x"
+                  }
+                 }
+                }
+               ]
+              }
+             }
+            }
+           ]
+          }
+         ]
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       32,
+       3
+      ],
+      "end": [
+       0,
+       32,
+       12
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 4,
+       "p": [
+        0,
+        32,
+        10
+       ],
+       "range": [
+        [
+         0,
+         32,
+         10
+        ],
+        [
+         0,
+         32,
+         11
+        ]
+       ],
+       "op": "indirect",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 5,
+         "p": [
+          0,
+          32,
+          11
+         ],
+         "range": [
+          [
+           0,
+           32,
+           11
+          ],
+          [
+           0,
+           32,
+           11
+          ]
+         ],
+         "var": 4,
+         "name": "p"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 4,
+   "name": "make_message",
+   "qualifiedName": "make_message",
+   "type": 9,
+   "returnType": 10,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    35,
+    17
+   ],
+   "start": [
+    0,
+    35,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "n",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      35,
+      37
+     ],
+     "start": [
+      0,
+      35,
+      30
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     35,
+     40
+    ],
+    "end": [
+     0,
+     38,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       36,
+       3
+      ],
+      "end": [
+       0,
+       36,
+       45
+      ],
+      "decls": [
+       {
+        "id": 6,
+        "name": "m",
+        "type": 10,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         36,
+         19
+        ],
+        "start": [
+         0,
+         36,
+         3
+        ],
+        "init": {
+         "k": "expression",
+         "var": 6,
+         "expr": {
+          "k": "operation",
+          "t": 10,
+          "p": [
+           0,
+           36,
+           23
+          ],
+          "implicit": true,
+          "op": "cast",
+          "ops": [
+           {
+            "k": "operation",
+            "t": 1,
+            "p": [
+             0,
+             36,
+             29
+            ],
+            "range": [
+             [
+              0,
+              36,
+              23
+             ],
+             [
+              0,
+              36,
+              44
+             ]
+            ],
+            "op": "call",
+            "callee": 1,
+            "ops": [
+             {
+              "k": "routine",
+              "t": 11,
+              "p": [
+               0,
+               36,
+               23
+              ],
+              "range": [
+               [
+                0,
+                36,
+                23
+               ],
+               [
+                0,
+                36,
+                28
+               ]
+              ],
+              "routine": 1,
+              "name": "malloc"
+             },
+             {
+              "k": "operation",
+              "t": 2,
+              "p": [
+               0,
+               36,
+               30
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "operation",
+                "t": 12,
+                "p": [
+                 0,
+                 36,
+                 41
+                ],
+                "range": [
+                 [
+                  0,
+                  36,
+                  30
+                 ],
+                 [
+                  0,
+                  36,
+                  43
+                 ]
+                ],
+                "op": "add",
+                "ops": [
+                 {
+                  "k": "constant",
+                  "t": 12,
+                  "p": [
+                   0,
+                   36,
+                   30
+                  ],
+                  "range": [
+                   [
+                    0,
+                    36,
+                    30
+                   ],
+                   [
+                    0,
+                    36,
+                    39
+                   ]
+                  ],
+                  "ck": "integer",
+                  "value": "4",
+                  "expr": {
+                   "k": "sizeof",
+                   "t": 12,
+                   "p": [
+                    0,
+                    36,
+                    30
+                   ],
+                   "range": [
+                    [
+                     0,
+                     36,
+                     30
+                    ],
+                    [
+                     0,
+                     36,
+                     39
+                    ]
+                   ],
+                   "expr": {
+                    "k": "operation",
+                    "t": 13,
+                    "p": [
+                     0,
+                     36,
+                     37
+                    ],
+                    "range": [
+                     [
+                      0,
+                      36,
+                      37
+                     ],
+                     [
+                      0,
+                      36,
+                      38
+                     ]
+                    ],
+                    "lv": true,
+                    "op": "indirect",
+                    "ops": [
+                     {
+                      "k": "variable",
+                      "t": 10,
+                      "p": [
+                       0,
+                       36,
+                       38
+                      ],
+                      "range": [
+                       [
+                        0,
+                        36,
+                        38
+                       ],
+                       [
+                        0,
+                        36,
+                        38
+                       ]
+                      ],
+                      "var": 6,
+                      "name": "m"
+                     }
+                    ]
+                   }
+                  }
+                 },
+                 {
+                  "k": "operation",
+                  "t": 12,
+                  "p": [
+                   0,
+                   36,
+                   43
+                  ],
+                  "implicit": true,
+                  "op": "cast",
+                  "ops": [
+                   {
+                    "k": "variable",
+                    "t": 2,
+                    "p": [
+                     0,
+                     36,
+                     43
+                    ],
+                    "range": [
+                     [
+                      0,
+                      36,
+                      43
+                     ],
+                     [
+                      0,
+                      36,
+                      43
+                     ]
+                    ],
+                    "var": 5,
+                    "name": "n"
+                   }
+                  ]
+                 }
+                ]
+               }
+              ]
+             }
+            ]
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       37,
+       3
+      ],
+      "end": [
+       0,
+       37,
+       11
+      ],
+      "expr": {
+       "k": "variable",
+       "t": 10,
+       "p": [
+        0,
+        37,
+        10
+       ],
+       "range": [
+        [
+         0,
+         37,
+         10
+        ],
+        [
+         0,
+         37,
+         10
+        ]
+       ],
+       "var": 6,
+       "name": "m"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "name": "total",
+   "qualifiedName": "total",
+   "type": 14,
+   "returnType": 15,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    40,
+    10
+   ],
+   "start": [
+    0,
+    40,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 7,
+     "name": "f",
+     "type": 16,
+     "storage": "auto",
+     "p": [
+      0,
+      40,
+      29
+     ],
+     "start": [
+      0,
+      40,
+      16
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     40,
+     32
+    ],
+    "end": [
+     0,
+     40,
+     58
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       40,
+       34
+      ],
+      "end": [
+       0,
+       40,
+       56
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 15,
+       "p": [
+        0,
+        40,
+        41
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 4,
+         "p": [
+          0,
+          40,
+          51
+         ],
+         "range": [
+          [
+           0,
+           40,
+           41
+          ],
+          [
+           0,
+           40,
+           55
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 4,
+           "p": [
+            0,
+            40,
+            45
+           ],
+           "range": [
+            [
+             0,
+             40,
+             41
+            ],
+            [
+             0,
+             40,
+             49
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 4,
+             "p": [
+              0,
+              40,
+              41
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 15,
+               "p": [
+                0,
+                40,
+                42
+               ],
+               "range": [
+                [
+                 0,
+                 40,
+                 41
+                ],
+                [
+                 0,
+                 40,
+                 43
+                ]
+               ],
+               "op": "dot_field",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 16,
+                 "p": [
+                  0,
+                  40,
+                  41
+                 ],
+                 "range": [
+                  [
+                   0,
+                   40,
+                   41
+                  ],
+                  [
+                   0,
+                   40,
+                   41
+                  ]
+                 ],
+                 "lv": true,
+                 "var": 7,
+                 "name": "f"
+                },
+                {
+                 "k": "field",
+                 "t": 15,
+                 "p": [
+                  0,
+                  40,
+                  43
+                 ],
+                 "range": [
+                  [
+                   0,
+                   40,
+                   43
+                  ],
+                  [
+                   0,
+                   40,
+                   43
+                  ]
+                 ],
+                 "name": "a"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 4,
+             "p": [
+              0,
+              40,
+              47
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 15,
+               "p": [
+                0,
+                40,
+                48
+               ],
+               "range": [
+                [
+                 0,
+                 40,
+                 47
+                ],
+                [
+                 0,
+                 40,
+                 49
+                ]
+               ],
+               "op": "dot_field",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 16,
+                 "p": [
+                  0,
+                  40,
+                  47
+                 ],
+                 "range": [
+                  [
+                   0,
+                   40,
+                   47
+                  ],
+                  [
+                   0,
+                   40,
+                   47
+                  ]
+                 ],
+                 "lv": true,
+                 "var": 7,
+                 "name": "f"
+                },
+                {
+                 "k": "field",
+                 "t": 15,
+                 "p": [
+                  0,
+                  40,
+                  49
+                 ],
+                 "range": [
+                  [
+                   0,
+                   40,
+                   49
+                  ],
+                  [
+                   0,
+                   40,
+                   49
+                  ]
+                 ],
+                 "name": "b"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 4,
+           "p": [
+            0,
+            40,
+            53
+           ],
+           "implicit": true,
+           "op": "cast",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 15,
+             "p": [
+              0,
+              40,
+              54
+             ],
+             "range": [
+              [
+               0,
+               40,
+               53
+              ],
+              [
+               0,
+               40,
+               55
+              ]
+             ],
+             "op": "dot_field",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 16,
+               "p": [
+                0,
+                40,
+                53
+               ],
+               "range": [
+                [
+                 0,
+                 40,
+                 53
+                ],
+                [
+                 0,
+                 40,
+                 53
+                ]
+               ],
+               "lv": true,
+               "var": 7,
+               "name": "f"
+              },
+              {
+               "k": "field",
+               "t": 15,
+               "p": [
+                0,
+                40,
+                55
+               ],
+               "range": [
+                [
+                 0,
+                 40,
+                 55
+                ],
+                [
+                 0,
+                 40,
+                 55
+                ]
+               ],
+               "name": "c",
+               "offset": 1
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "block_size",
+   "qualifiedName": "block_size",
+   "type": 17,
+   "returnType": 2,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    42,
+    8
+   ],
+   "start": [
+    0,
+    42,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 8,
+     "name": "b",
+     "type": 18,
+     "storage": "auto",
+     "p": [
+      0,
+      42,
+      33
+     ],
+     "start": [
+      0,
+      42,
+      19
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     42,
+     36
+    ],
+    "end": [
+     0,
+     42,
+     57
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       42,
+       38
+      ],
+      "end": [
+       0,
+       42,
+       55
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 2,
+       "p": [
+        0,
+        42,
+        45
+       ],
+       "range": [
+        [
+         0,
+         42,
+         45
+        ],
+        [
+         0,
+         42,
+         54
+        ]
+       ],
+       "ck": "integer",
+       "value": "16",
+       "expr": {
+        "k": "operation",
+        "t": 2,
+        "p": [
+         0,
+         42,
+         45
+        ],
+        "implicit": true,
+        "op": "cast",
+        "ops": [
+         {
+          "k": "constant",
+          "t": 12,
+          "p": [
+           0,
+           42,
+           45
+          ],
+          "range": [
+           [
+            0,
+            42,
+            45
+           ],
+           [
+            0,
+            42,
+            54
+           ]
+          ],
+          "ck": "integer",
+          "value": "16",
+          "expr": {
+           "k": "sizeof",
+           "t": 12,
+           "p": [
+            0,
+            42,
+            45
+           ],
+           "range": [
+            [
+             0,
+             42,
+             45
+            ],
+            [
+             0,
+             42,
+             54
+            ]
+           ],
+           "expr": {
+            "k": "operation",
+            "t": 19,
+            "p": [
+             0,
+             42,
+             52
+            ],
+            "range": [
+             [
+              0,
+              42,
+              52
+             ],
+             [
+              0,
+              42,
+              53
+             ]
+            ],
+            "lv": true,
+            "op": "indirect",
+            "ops": [
+             {
+              "k": "variable",
+              "t": 18,
+              "p": [
+               0,
+               42,
+               53
+              ],
+              "range": [
+               [
+                0,
+                42,
+                53
+               ],
+               [
+                0,
+                42,
+                53
+               ]
+              ],
+              "var": 8,
+              "name": "b"
+             }
+            ]
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "void *(size_t)",
+   "returns": 1,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "pointer",
+   "name": "void *",
+   "size": 8,
+   "to": 20
+  },
+  {
+   "id": 2,
+   "kind": "typeref",
+   "name": "size_t",
+   "of": 21,
+   "typedef": "size_t",
+   "p": [
+    0,
+    4,
+    23
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 4,
+   "params": [
+    4
+   ]
+  },
+  {
+   "id": 4,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "int *",
+   "size": 8,
+   "to": 4
+  },
+  {
+   "id": 6,
+   "kind": "array",
+   "name": "int [2]",
+   "size": 8,
+   "of": 4,
+   "count": 2
+  },
+  {
+   "id": 7,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 4,
+   "params": [
+    4
+   ]
+  },
+  {
+   "id": 8,
+   "kind": "array",
+   "name": "int [1]",
+   "size": 4,
+   "of": 4,
+   "count": 1
+  },
+  {
+   "id": 9,
+   "kind": "routine",
+   "name": "struct message *(size_t)",
+   "returns": 10,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 10,
+   "kind": "pointer",
+   "name": "struct message *",
+   "size": 8,
+   "to": 13
+  },
+  {
+   "id": 11,
+   "kind": "pointer",
+   "name": "void *(*)(size_t)",
+   "size": 8,
+   "to": 0
+  },
+  {
+   "id": 12,
+   "kind": "integer",
+   "name": "unsigned long long",
+   "size": 8,
+   "signed": false
+  },
+  {
+   "id": 13,
+   "kind": "struct",
+   "name": "struct message",
+   "size": 4,
+   "tag": "message",
+   "qualifiedName": "message",
+   "p": [
+    0,
+    7,
+    8
+   ],
+   "span": [
+    [
+     0,
+     7,
+     1
+    ],
+    [
+     0,
+     10,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "len",
+     "type": 2,
+     "offset": 0,
+     "p": [
+      0,
+      8,
+      10
+     ]
+    },
+    {
+     "name": "data",
+     "type": 22,
+     "offset": 4,
+     "flexible": true,
+     "p": [
+      0,
+      9,
+      8
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 14,
+   "kind": "routine",
+   "name": "unsigned int (struct flags)",
+   "returns": 15,
+   "params": [
+    16
+   ]
+  },
+  {
+   "id": 15,
+   "kind": "integer",
+   "name": "unsigned int",
+   "size": 4,
+   "signed": false
+  },
+  {
+   "id": 16,
+   "kind": "struct",
+   "name": "struct flags",
+   "size": 4,
+   "tag": "flags",
+   "qualifiedName": "flags",
+   "p": [
+    0,
+    12,
+    8
+   ],
+   "span": [
+    [
+     0,
+     12,
+     1
+    ],
+    [
+     0,
+     16,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "a",
+     "type": 15,
+     "offset": 0,
+     "bitField": true,
+     "bits": 3,
+     "p": [
+      0,
+      13,
+      12
+     ]
+    },
+    {
+     "name": "b",
+     "type": 15,
+     "offset": 0,
+     "bitField": true,
+     "bits": 5,
+     "bitOffset": 3,
+     "p": [
+      0,
+      14,
+      12
+     ]
+    },
+    {
+     "name": "c",
+     "type": 15,
+     "offset": 1,
+     "bitField": true,
+     "bits": 12,
+     "p": [
+      0,
+      15,
+      12
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 17,
+   "kind": "routine",
+   "name": "size_t (struct block *)",
+   "returns": 2,
+   "params": [
+    18
+   ]
+  },
+  {
+   "id": 18,
+   "kind": "pointer",
+   "name": "struct block *",
+   "size": 8,
+   "to": 19
+  },
+  {
+   "id": 19,
+   "kind": "struct",
+   "name": "struct block",
+   "size": 16,
+   "tag": "block",
+   "qualifiedName": "block",
+   "p": [
+    0,
+    18,
+    37
+   ],
+   "span": [
+    [
+     0,
+     18,
+     1
+    ],
+    [
+     0,
+     20,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "bytes",
+     "type": 23,
+     "offset": 0,
+     "p": [
+      0,
+      19,
+      8
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 20,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 21,
+   "kind": "integer",
+   "name": "unsigned long",
+   "size": 4,
+   "signed": false
+  },
+  {
+   "id": 22,
+   "kind": "array",
+   "name": "char []",
+   "of": 24,
+   "count": 0
+  },
+  {
+   "id": 23,
+   "kind": "array",
+   "name": "char [8]",
+   "size": 8,
+   "of": 24,
+   "count": 8
+  },
+  {
+   "id": 24,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  }
+ ],
+ "diagnostics": [
+  {
+   "level": "warning",
+   "code": "EC867",
+   "message": "declaration of \"size_t\" does not match the expected type \"unsigned long long\"",
+   "file": "layout.c",
+   "line": 4,
+   "column": 23
+  }
+ ]
+}
