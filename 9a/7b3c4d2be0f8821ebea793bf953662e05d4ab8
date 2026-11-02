@@ -1,0 +1,23 @@
+src/edga_back_end.cpp
+  s_0dbbcb5914c2c5::t_bfe11dcd9a04fe 1146-1153
+tests/expected/classes.cpp.json
+  s_0dbbcb5914c2c5::t_e1d5ac3bc698b9 873-878,1048-1053
+schema/edga-1.schema.json
+  s_0dbbcb5914c2c5::t_7c1d6584030262 285-286
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9a7b3c4d2be0f8821ebea793bf953662e05d4ab8",
+  "prompts": {},
+  "sessions": {
+    "s_0dbbcb5914c2c5": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dd7541fb-2df2-4da7-a16f-14967800872a",
+        "model": "GLM-5.3"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
