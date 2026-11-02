@@ -282,6 +282,8 @@
           "required": ["k"],
           "properties": {
             "k": { "type": "string", "description": "operation, constant, variable, field, routine, temp_init, lambda, new_delete, throw, condition, sizeof, statement, ..." },
+            "name": { "type": "string", "description": "The name the source gave a constant the front end folded (an enumerator read)." },
+            "declared": { "$ref": "#/$defs/position", "description": "Where that named constant was declared (the enumerator's header)." },
             "t": { "type": "integer" },
             "range": { "type": "array", "items": { "$ref": "#/$defs/position" } },
             "lv": { "type": "boolean" },

@@ -1143,6 +1143,14 @@ class Exporter {
   }
 
   void writeConstantBody(a_constant_ptr c) {
+    // a constant the source names (an enumerator read the front end folded): the name is the only
+    // trace of the declaration it reads, so the name and where it was declared both ride along -
+    // the constant itself sits at its use
+    if (c->source_corresp.name != nullptr) {
+      json_.field("name", c->source_corresp.name);
+      a_symbol_ptr sym = symbol_for(c);
+      if (sym != nullptr) position(sym->decl_position, "declared");
+    }
     json_.field("ck", constantKindName(c->kind));
     switch (c->kind) {
       case ck_integer:
