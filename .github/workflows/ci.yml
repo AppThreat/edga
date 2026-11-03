@@ -1,7 +1,9 @@
 name: ci
 
-# format is a required status check on main, so this workflow must trigger
-# on merge-group builds too.
+# Every job here is a required status check on main (format, each build and
+# each musl job), so this workflow must trigger on merge-group builds too, and a
+# job's name is part of the branch protection: renaming one, or a matrix entry,
+# needs the protection updated with it.
 on:
   push:
   pull_request:
