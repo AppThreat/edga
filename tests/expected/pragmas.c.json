@@ -516,6 +516,7 @@
    "to": 0
   }
  ],
+ "enumerators": [],
  "diagnostics": [
   {
    "level": "warning",

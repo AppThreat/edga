@@ -42,6 +42,15 @@
     "globals": { "type": "array", "items": { "$ref": "#/$defs/variable" }, "description": "Variables of file and namespace scope, and static data members." },
     "routines": { "type": "array", "items": { "$ref": "#/$defs/routine" } },
     "types": { "type": "array", "items": { "$ref": "#/$defs/type" } },
+    "enumerators": {
+      "type": "array",
+      "description": "The unit's file- and namespace-scope enumerators by name, each where it is declared; a name two enumerators share is left out.",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "properties": { "name": { "type": "string" }, "p": { "$ref": "#/$defs/position" } }
+      }
+    },
     "diagnostics": { "type": "array", "items": { "$ref": "#/$defs/diagnostic" } }
   },
   "$defs": {
@@ -283,7 +292,7 @@
           "properties": {
             "k": { "type": "string", "description": "operation, constant, variable, field, routine, temp_init, lambda, new_delete, throw, condition, sizeof, statement, ..." },
             "name": { "type": "string", "description": "The name the source gave a constant the front end folded (an enumerator read)." },
-            "declared": { "$ref": "#/$defs/position", "description": "Where that named constant was declared (the enumerator's header)." },
+            "declared": { "$ref": "#/$defs/position", "description": "Where the file- or namespace-scope enumerator of that name was declared, when one enumerator has it." },
             "t": { "type": "integer" },
             "range": { "type": "array", "items": { "$ref": "#/$defs/position" } },
             "lv": { "type": "boolean" },

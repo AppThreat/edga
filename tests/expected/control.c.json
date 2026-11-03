@@ -2911,5 +2911,31 @@
    "signed": true
   }
  ],
+ "enumerators": [
+  {
+   "name": "MODE_BOTH",
+   "p": [
+    0,
+    29,
+    40
+   ]
+  },
+  {
+   "name": "MODE_READ",
+   "p": [
+    0,
+    29,
+    13
+   ]
+  },
+  {
+   "name": "MODE_WRITE",
+   "p": [
+    0,
+    29,
+    28
+   ]
+  }
+ ],
  "diagnostics": []
 }
