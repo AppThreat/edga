@@ -1569,6 +1569,7 @@
    "signed": true
   }
  ],
+ "enumerators": [],
  "diagnostics": [
   {
    "level": "warning",

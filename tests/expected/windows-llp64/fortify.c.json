@@ -1075,6 +1075,7 @@
    "refKind": "none"
   }
  ],
+ "enumerators": [],
  "diagnostics": [
   {
    "level": "warning",

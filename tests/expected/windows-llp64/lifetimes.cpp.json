@@ -3514,6 +3514,7 @@
    "signed": false
   }
  ],
+ "enumerators": [],
  "diagnostics": [
   {
    "level": "warning",
