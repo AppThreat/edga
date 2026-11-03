@@ -1,0 +1,53 @@
+schema/edga-1.schema.json
+  s_c0804e5357f0c5::t_8115990443112b 45-53,295
+src/edga_back_end.cpp
+  s_c0804e5357f0c5::t_a2dde6b879ac4c 16,90-105,319-321,340-367,704-705,1197-1200,1522-1523
+tests/expected/array_bounds.c.json
+  s_c0804e5357f0c5::t_2ecdf2371c1340 877
+tests/expected/asm.c.json
+  s_c0804e5357f0c5::t_3778d1496ee06e 1148
+tests/expected/classes.cpp.json
+  s_c0804e5357f0c5::t_dd1d247692d32a 2602
+tests/expected/control.c.json
+  s_c0804e5357f0c5::t_363d6344d0fa68 2914-2939
+tests/expected/crlf.c.json
+  s_c0804e5357f0c5::t_1c276004b06411 898
+tests/expected/deduction.cpp.json
+  s_c0804e5357f0c5::t_47b80fc1d15175 1654
+tests/expected/fortify.c.json
+  s_c0804e5357f0c5::t_3976e912d1e12d 1052
+tests/expected/initialisers.c.json
+  s_c0804e5357f0c5::t_4b926eda022a2f 1565
+tests/expected/layout.c.json
+  s_c0804e5357f0c5::t_ee935f69ce3d02 1796
+tests/expected/lifetimes.cpp.json
+  s_c0804e5357f0c5::t_c15a24f7ec8426 3517
+tests/expected/macros.c.json
+  s_c0804e5357f0c5::t_7e41fa08c70c00 930
+tests/expected/pointers.c.json
+  s_c0804e5357f0c5::t_d68d2ca541750d 1550
+tests/expected/pragmas.c.json
+  s_c0804e5357f0c5::t_47cad7c8f24983 519
+tests/expected/selection_init.cpp.json
+  s_c0804e5357f0c5::t_057efd36560a6c 728
+tests/expected/statements.cpp.json
+  s_c0804e5357f0c5::t_67867a1d8ed6dc 4417
+tests/expected/templates.cpp.json
+  s_c0804e5357f0c5::t_af901a5a7e60d1 2473
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f2edc503b3a8e7022363c52416b263f469ee1283",
+  "prompts": {},
+  "sessions": {
+    "s_c0804e5357f0c5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "75227701-fd30-4fc7-8eae-71a8df8f3a1c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
