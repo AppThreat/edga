@@ -6,6 +6,7 @@
 // end's configuration. A node the front end made implicitly (a conversion, a `!= 0` test, an
 // implicit `this`) is kept and marked "implicit".
 
+#include <algorithm>
 #include <cctype>
 #include <climits>
 #include <cstdio>
@@ -13,7 +14,6 @@
 #include <cstring>
 #include <set>
 #include <string>
-#include <algorithm>
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
