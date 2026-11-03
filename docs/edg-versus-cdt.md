@@ -168,6 +168,86 @@ that was the pointer, `operator-call` on calls that use operator syntax, `vla-si
 `macro-invocation` and `macro-origin` on macro-expanded nodes. These are facts a
 syntax tree does not have.
 
+## What each front end tells a reader of the graph
+
+atom's `callsites` slice asks one question of a C or C++ graph: which uses in the
+project's files are of something a header outside the project declares, and which
+header that is. Both front ends answer it with the same tags, so one reader serves
+both, and the places where they still differ are the ones to know about.
+
+| fact | tag or node | CDT (`c2cpg`) | EDG (`edg2atom`) |
+|---|---|---|---|
+| a call's declaring header | `callee-declared-in` on the call | yes | yes |
+| a global, an enumerator or a function named as a value | `ref-declared-in` on the identifier or method ref | yes | yes, a folded enumerator and a `case` label included, through edga's `enumerators` table |
+| a field reached through a header's struct or class | `type-declared-in` on the field access | yes | yes, the base class that declares the field |
+| a constructor | `constructs-type` with `callee-declared-in` | yes | yes |
+| a macro invocation | an INLINED call named after the macro, full name `<definition file>:<line>:<last line>:<name>:<parameters>` | yes | yes |
+| macros nested in an invocation | `nested-macro` (`<name>@<definition file>`) on the invocation's call | yes, from the reference's own binding, so a name defined twice names the definition in effect | yes, from edga's invocation tree |
+| an invocation no expression carries | `macro-use` (`<name>@<line>:<column>@<definition file>`) on the file's method | not needed: CDT keeps a call for each | yes: an object-like macro the front end folded to a constant |
+| where an expansion's text was written | `macro-origin` | no | yes |
+| an argument as written | `macro-argument-copy` subtrees of the invocation | yes | yes |
+| a file's includes | IMPORT with `include-resolved-path` and `include-system` | every parsed file, headers parsed as units included | the primary file's first inclusion of each header |
+
+Declaring headers are real absolute paths on both, and a project's own files are
+named relative to the input root, so "is this header outside the project" is a
+question about the path, never about a name.
+
+The differences that remain are visible in measurement. On atom's C corpus, scored
+against a clang-based oracle (`callsites` recall and precision by file, line and
+package; member level adds the symbol), the two front ends were measured on
+2026-11-03:
+
+| project | CDT | EDG | CDT, member level | EDG, member level |
+|---|---|---|---|---|
+| libuv examples | 1.0 / 1.0 | 1.0 / 1.0 | 0.851 / 0.984 | 0.889 / 0.986 |
+| jq | 0.912 / 0.918 | 0.945 / 0.924 | 0.746 / 0.689 | 0.827 / 0.711 |
+| OpenSSL TLS demo apps | 0.984 / 1.0 | 0.992 / 1.0 | 0.917 / 0.964 | 0.926 / 0.965 |
+| curl | 0.858 / 0.987 | 0.995 / 0.970 | 0.782 / 0.904 | 0.976 / 0.905 |
+| leveldb (C++) | 0.279 / 0.979 | 0.781 / 0.937 | 0.230 / 0.604 | 0.322 / 0.367 |
+
+What the numbers come from:
+
+- **Macros the CDT parser does not record.** Most of CDT's misses on curl (1,459 of
+  2,212) are uses of `bool` from `stdbool.h`, for which CDT records no macro
+  invocation at all; macOS's fortified string functions are the next largest group.
+  EDG records every invocation it expanded, folded ones included.
+- **Positions inside a project macro.** EDG says where each node of an expansion was
+  written (`macro-origin`) and positions every node at its own text, so a call
+  written in a macro's arguments sits on its own line. CDT positions an expansion at
+  the invocation, so a reader can only fall back to the macro's definition, or to the
+  invocation's argument copies for text the arguments spelled.
+- **C++.** EDG resolves member calls on library classes through the receiver's
+  concrete type (leveldb's `call|type` rows: 379 of 380 on EDG, none on CDT, whose
+  bindings stay unresolved in template-heavy code). Neither front end credits most
+  constructors of library classes yet (1 of 21 on EDG, none on CDT).
+- **Units EDG cannot compile.** A unit whose headers are missing (`lib/macos.c` in curl
+  without the macOS SDK's SystemConfiguration headers, the OpenSSL HTTP/3 demos
+  without nghttp3) is not exported by EDG, and its files have no records; CDT returns
+  a tree for them anyway. `--c-frontend edg-fallback` parses those units with CDT.
+- **Precision against the oracle** is lowered on both front ends by uses the oracle
+  does not see: macros that expand to predefined tokens (`INT_MAX`, `assert`'s
+  `__ASSERT_FILE_NAME`), and fortified functions, which the oracle names by the
+  innermost macro rather than the one written.
+
+Parse fidelity was checked on 31 snippets of C99 to C23 and C++11 to C++23 (the
+`c_std_matrix_gen.py` set in atom's evaluation harness). EDG parses all of them. CDT
+parses all of them since `c2cpg` rewrites the three constructs its grammar lacks
+(`DialectRewrites`: C23 `[[...]]` attributes, digit separators in numbers, and the
+C++23 explicit object parameter `this`), blanking them to spaces so every position
+after them is unchanged, in included headers as well as in the unit itself.
+
+Cost on the same corpus, one `usages` run that builds the atom (wall seconds and peak
+memory): curl 21 s and 6.4 GB on CDT, 21 s and 7.3 GB on EDG; the OpenSSL demo apps
+6.7 s and 4.5 GB on CDT, 6.0 s and 5.4 GB on EDG.
+
+For an agent reading a C graph, the practical rules are short. Read the declaring
+headers from the tags in the table, never from names. Treat a node carrying
+`macro-invocation` as part of that invocation's expansion unless it also carries
+`macro-argument-copy`. On an EDG graph, `macro-origin` says where the text was
+written; on a CDT graph there is no such fact, and a reader has to choose a
+convention. FILE nodes carry a `frontend` tag (`edg` or `cdt`) on graphs built with
+`--c-frontend edg` or `edg-fallback`, which says which set of facts a file has.
+
 ## Relative strengths
 
 EDG's strength is precision. Every expression has a type, every call a target,

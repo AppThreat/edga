@@ -870,6 +870,7 @@
              59
             ]
            ],
+           "name": "Dark",
            "ck": "integer",
            "value": "4"
           }
@@ -1039,6 +1040,7 @@
            43
           ]
          ],
+         "name": "Dark",
          "ck": "integer",
          "value": "4"
         },
@@ -2597,5 +2599,6 @@
    "refKind": "none"
   }
  ],
+ "enumerators": [],
  "diagnostics": []
 }

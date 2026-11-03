@@ -160,6 +160,15 @@ runs even when the unit had errors (`CALL_BACK_END_EVEN_WITH_ERRORS=1` in edga's
 configuration), so a half-digested unit still exports the parts the front end could
 build.
 
+The exporter reads the IL and nothing else. The front end's symbol table, which
+`source_corresp.assoc_info` and the `symbol_for` macro reach, serves the front end's
+own phases and is not safe to follow from the back end: an export that read a folded
+constant's symbol through it crashed about one unit in fifty, at random (exit status
+4), and passed every golden test. What the IL itself keeps is enough for the
+questions the exporter answers. A folded enumerator, for instance, keeps its name in
+`source_corresp.name`, and the scopes' enumerator lists say where each name is
+declared, so the document carries a table of them (`enumerators`) instead.
+
 ### The document
 
 `back_end()` in `src/edga_back_end.cpp` walks the IL and writes one JSON object,
@@ -180,12 +189,17 @@ emit. The shape is fixed by `schema/edga-1.schema.json`, and the golden tests in
   "routines": [ { "id": 1, "qualifiedName": "clamp_size", "type": 0, "returnType": 8,
                   "params": [ ... ], "ctorInits": [ ... ], "body": { "k": "block", "stmts": [ ... ] } } ],
   "types":    [ { "id": 0, "kind": "routine", "name": "int (int)", "returns": 5, "params": [ 3 ] } ],
+  "enumerators": [ { "name": "LIB_BAD", "p": [1, 3, 30] } ],
   "diagnostics": [ { "level": "warning", "code": "EC47", "message": "...", "file": "...", "line": 8 } ]
 }
 ```
 
 What is shared is flat, in tables joined by id: files, macros, invocations, globals,
-routines, types. What is hierarchical is nested: each routine's parameters,
+routines, types. The `enumerators` table maps each file- or namespace-scope enumerator
+name the unit declares to where it is declared, leaving out a name two enumerators
+share: a constant the front end folded (`LIB_BAD` in an expression, or in a `case`
+label) keeps only its name, and in C its type is `int` rather than the enum's, so
+the name is the way back to the header that declared it. What is hierarchical is nested: each routine's parameters,
 constructor initialisers and body form a tree of statements and expressions, because a
 body is read as a whole and a table for it would be all indirection. The routines
 table grows while it is being written, because writing a call expression notes the

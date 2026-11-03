@@ -6,6 +6,7 @@
 // end's configuration. A node the front end made implicitly (a conversion, a `!= 0` test, an
 // implicit `this`) is kept and marked "implicit".
 
+#include <algorithm>
 #include <cctype>
 #include <climits>
 #include <cstdio>
@@ -86,6 +87,22 @@ class Exporter {
     // last: every type the document refers to, and the types they refer to
     json_.key("types");
     writeTypes();
+    // the file- and namespace-scope enumerators by name, where each is declared: what a `case`
+    // label or a folded constant reads keeps only the name, and in C the enum type is not the
+    // constant's type. A name two enumerators share is left out.
+    json_.key("enumerators");
+    json_.beginArray();
+    std::vector<std::string> names;
+    for (const auto& entry : enumeratorDecls_)
+      if (ambiguousEnumerators_.count(entry.first) == 0) names.push_back(entry.first);
+    std::sort(names.begin(), names.end());
+    for (const std::string& name : names) {
+      json_.beginObject();
+      json_.field("name", name.c_str());
+      position(enumeratorDecls_.at(name));
+      json_.endObject();
+    }
+    json_.endArray();
   }
 
  private:
@@ -299,6 +316,9 @@ class Exporter {
       }
     }
     for (a_type_ptr t = s->types; t != nullptr; t = t->next) {
+      if (t->kind == tk_integer && t->variant.integer.enum_type &&
+          !t->variant.integer.is_scoped_enum && (s->kind == sck_file || s->kind == sck_namespace))
+        noteEnumerators(t);
       if (is_immediate_class_type(t) && !type_is_nonreal(t) && class_type_supp(t) != nullptr) {
         a_scope_ptr cs = class_type_supp(t)->assoc_scope;
         if (cs != nullptr) {
@@ -315,6 +335,34 @@ class Exporter {
         inlineNamespaces_.insert(qualifiedName(&ns->source_corresp, iek_namespace));
       collect(ns->variant.assoc_scope);
     }
+  }
+
+  // Where each unscoped enumerator of a file or namespace scope is declared, by name: a constant
+  // the front end folded keeps only the name it was read by (in C its type is `int`, not the
+  // enum's), and this is the IL's own record of that name. A name two enumerators share has no
+  // entry: which one a use read cannot be told from the name.
+  void noteEnumerators(a_type_ptr t) {
+    for (a_constant_ptr c = t->variant.integer.enum_info.constant_list; c != nullptr; c = c->next) {
+      if (c->source_corresp.name == nullptr) continue;
+      const std::string name = c->source_corresp.name;
+      const a_source_position& at = c->source_corresp.decl_position;
+      auto found = enumeratorDecls_.find(name);
+      if (found == enumeratorDecls_.end()) {
+        enumeratorDecls_.emplace(name, at);
+      } else if (found->second.seq != at.seq) {
+        ambiguousEnumerators_.insert(name);
+      }
+    }
+  }
+
+  // The name a folded constant was read by and, for an enumerator, where it was declared.
+  void writeConstantName(a_constant_ptr c) {
+    if (c->source_corresp.name == nullptr) return;
+    json_.field("name", c->source_corresp.name);
+    const std::string name = c->source_corresp.name;
+    auto found = enumeratorDecls_.find(name);
+    if (found != enumeratorDecls_.end() && ambiguousEnumerators_.count(name) == 0)
+      position(found->second, "declared");
   }
 
   // ---- routines -------------------------------------------------------------------------------
@@ -653,6 +701,8 @@ class Exporter {
         } else {
           json_.key("value");
           writeConstantValue(entry->case_value);
+          // `case LIB_BAD:` reads an enumerator by name, as a folded constant in an expression does
+          writeConstantName(entry->case_value);
           if (entry->range_end != nullptr) {
             json_.key("rangeEnd");
             writeConstantValue(entry->range_end);
@@ -1143,6 +1193,11 @@ class Exporter {
   }
 
   void writeConstantBody(a_constant_ptr c) {
+    // a constant the source names (an enumerator read the front end folded): the name is the only
+    // trace of the declaration it reads, so the name and where an enumerator of that name was
+    // declared both ride along, from the scopes' own enumerator lists (the symbol table is the
+    // front end's, and not safe to read from the back end)
+    writeConstantName(c);
     json_.field("ck", constantKindName(c->kind));
     switch (c->kind) {
       case ck_integer:
@@ -1464,6 +1519,8 @@ class Exporter {
   std::unordered_map<a_variable_ptr, long> variableIds_;
   std::vector<a_routine_ptr> routines_;
   std::unordered_set<a_routine_ptr> seenRoutines_;
+  std::unordered_map<std::string, a_source_position> enumeratorDecls_;
+  std::unordered_set<std::string> ambiguousEnumerators_;
   std::vector<a_variable_ptr> globals_;
   std::set<std::string> inlineNamespaces_;
   an_il_to_str_output_control_block octl_;
