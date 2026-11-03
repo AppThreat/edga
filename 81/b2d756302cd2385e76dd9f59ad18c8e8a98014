@@ -1,0 +1,22 @@
+docs/edg-versus-cdt.md
+  s_c0804e5357f0c5::t_155c98ba48ef5f 171-250
+docs/how-edga-works.md
+  s_c0804e5357f0c5::t_7d6c62df410956 163-171
+  s_c0804e5357f0c5::t_7cf1cdcc40c363 192,198-202
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "81b2d756302cd2385e76dd9f59ad18c8e8a98014",
+  "prompts": {},
+  "sessions": {
+    "s_c0804e5357f0c5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "75227701-fd30-4fc7-8eae-71a8df8f3a1c",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
