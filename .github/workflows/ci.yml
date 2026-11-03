@@ -3,9 +3,12 @@ name: ci
 # Every job here is a required status check on main (format, each build and
 # each musl job), so this workflow must trigger on merge-group builds too, and a
 # job's name is part of the branch protection: renaming one, or a matrix entry,
-# needs the protection updated with it.
+# needs the protection updated with it. Pushes to the merge queue's own
+# branches are skipped: the merge_group event already builds them.
 on:
   push:
+    branches-ignore:
+      - 'gh-readonly-queue/**'
   pull_request:
   merge_group:
 
