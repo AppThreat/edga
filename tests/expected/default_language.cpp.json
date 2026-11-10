@@ -1,0 +1,63 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "default_language.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "default_language.cpp",
+   "written": "default_language.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "letter",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "cplusplus_external",
+   "p": [
+    0,
+    4,
+    6
+   ],
+   "start": [
+    0,
+    4,
+    1
+   ],
+   "init": {
+    "k": "constant",
+    "t": 0,
+    "ck": "integer",
+    "value": "97"
+   }
+  }
+ ],
+ "routines": [],
+ "types": [
+  {
+   "id": 0,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}

@@ -142,6 +142,9 @@ int main(int argc, char* argv[]) {
       if (name.size() > std::strlen(suffix) &&
           name.compare(name.size() - std::strlen(suffix), std::string::npos, suffix) == 0)
         cpp = true;
+    // The front end's own default is C++, so any other name needs C asked for, and its plain
+    // `--c` is C89; C17 is what GCC and Clang compile by default.
+    if (!cpp) args.push_back("--c17");
   }
   if (cpp && !userInstantiation) {
     args.push_back("--instantiate");
