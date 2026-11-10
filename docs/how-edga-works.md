@@ -288,8 +288,10 @@ from standard error and parsed as SARIF text. The document then closes with them
 `ok` the front end reported no errors. `errors` it reported some, and the document
 holds the parts it could build (an exporter that gives up on the first error would be
 useless for analysis, where the code base is the input, not the deliverable). `failed`
-the front end never reached the back end, for instance the primary file cannot be
-opened; the document is then just the tool, the tu and the diagnostics. For the same
+the front end read the primary file but never reached the back end, for instance at an
+`#error` directive or an `#include` it cannot open; the document is then just the tool, the tu and the diagnostics.
+A primary file that cannot be read at all gives no document, only the error on
+standard error and exit status 4. For the same
 reason the back end writes to a temporary stream when the output is standard output
 and copies it over only once the document is complete, so a crash never leaves half a
 JSON file on stdout.
