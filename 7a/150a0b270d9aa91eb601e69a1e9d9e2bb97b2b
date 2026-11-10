@@ -1,0 +1,19 @@
+third_party/edgcpp
+  s_97dc7936d49ed3::t_70bd3f7777a157 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7a150a0b270d9aa91eb601e69a1e9d9e2bb97b2b",
+  "prompts": {},
+  "sessions": {
+    "s_97dc7936d49ed3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02f970fc-c39f-46eb-b8fc-2055b0fe55b0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
