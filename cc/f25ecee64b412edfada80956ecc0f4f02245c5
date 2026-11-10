@@ -1,0 +1,27 @@
+tests/fixtures/default_language.cpp
+  s_97dc7936d49ed3::t_6e12a659b34bfb 1-4
+tests/expected/default_language.cpp.json
+  s_97dc7936d49ed3::t_6e12a659b34bfb 1-63
+tests/expected/default_language.c.json
+  s_97dc7936d49ed3::t_6e12a659b34bfb 1-106
+src/edga_main.cpp
+  s_97dc7936d49ed3::t_bc37614ecf53c9 145-147
+tests/fixtures/default_language.c
+  s_97dc7936d49ed3::t_6e12a659b34bfb 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ccf25ecee64b412edfada80956ecc0f4f02245c5",
+  "prompts": {},
+  "sessions": {
+    "s_97dc7936d49ed3": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "02f970fc-c39f-46eb-b8fc-2055b0fe55b0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
