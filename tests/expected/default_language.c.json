@@ -1,0 +1,106 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "default_language.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "default_language.c",
+   "written": "default_language.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "letter",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "external",
+   "p": [
+    0,
+    4,
+    6
+   ],
+   "start": [
+    0,
+    4,
+    1
+   ],
+   "init": {
+    "k": "constant",
+    "t": 0,
+    "ck": "integer",
+    "value": "97",
+    "expr": {
+     "k": "operation",
+     "t": 0,
+     "p": [
+      0,
+      4,
+      15
+     ],
+     "implicit": true,
+     "op": "cast",
+     "ops": [
+      {
+       "k": "constant",
+       "t": 1,
+       "p": [
+        0,
+        4,
+        15
+       ],
+       "range": [
+        [
+         0,
+         4,
+         15
+        ],
+        [
+         0,
+         4,
+         17
+        ]
+       ],
+       "ck": "integer",
+       "value": "97"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "routines": [],
+ "types": [
+  {
+   "id": 0,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}
