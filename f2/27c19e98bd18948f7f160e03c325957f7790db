@@ -1,0 +1,32 @@
+src/edga_back_end.cpp
+  s_fce6a55305eb85::t_ec8947417e52f8 1035-1040
+  s_fce6a55305eb85::t_1157c7db7fd69a 305,311-313,317-321
+  s_fce6a55305eb85::t_acec5e28985189 314-316
+  s_fce6a55305eb85::t_2ffb51ddb412e9 473-476,480
+  s_fce6a55305eb85::t_579ead1741ecc8 352-365,394
+  s_fce6a55305eb85::t_7d07ac6786e58e 1704-1708
+  s_fce6a55305eb85::t_62d6169acb7482 1422-1424
+  s_fce6a55305eb85::t_ac7fa02857b50b 494
+  s_fce6a55305eb85::t_9dceb04f12736e 366-373,375-393,395-402,1621
+  s_fce6a55305eb85::t_7b2e5d71272fd5 1602-1620
+  s_fce6a55305eb85::t_75e4694e36b857 374
+  s_fce6a55305eb85::t_77dbddcc5ec3fa 72
+  s_fce6a55305eb85::t_8d5b262ba257f0 403
+  s_fce6a55305eb85::t_04ecec53a0ac77 1622
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f227c19e98bd18948f7f160e03c325957f7790db",
+  "prompts": {},
+  "sessions": {
+    "s_fce6a55305eb85": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dwf-dwfrun-cb218136-b565-4fde-8248-07cf9457667c-actor_3_1",
+        "model": "GLM-5.3-Flash"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
