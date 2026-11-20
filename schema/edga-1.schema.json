@@ -60,6 +60,27 @@
         { "type": "null" }
       ]
     },
+    "templateObject": {
+      "type": "object",
+      "description": "The template a routine, class or variable was generated from. The id is shared by every instance of one template in the unit.",
+      "required": ["id", "name", "qualifiedName"],
+      "properties": {
+        "id": { "type": "integer", "description": "Shared by every instance of one template in the unit; not stable across documents." },
+        "name": { "type": "string", "description": "The template's own name, `Box` or `get`, not an instance's." },
+        "qualifiedName": { "type": "string", "description": "The template as the front end qualifies it, its parameters in place: `Box<T>::get`." },
+        "p": { "$ref": "#/$defs/position", "description": "Where the template is declared." }
+      }
+    },
+    "templateArg": {
+      "type": "object",
+      "description": "One argument an instance is based on. A type argument names the type by id; a non-type argument carries its value; a template argument carries the template's name.",
+      "properties": {
+        "type": { "type": "integer", "description": "A type argument: the id of the type." },
+        "value": { "type": "string", "description": "A non-type argument, as the front end prints its value." },
+        "name": { "type": "string", "description": "A template argument: the template's name." },
+        "qualifiedName": { "type": "string", "description": "A template argument: the template's qualified name." }
+      }
+    },
     "located": {
       "type": "object",
       "properties": {
@@ -122,6 +143,9 @@
         "implicit": { "type": "boolean" },
         "addressTaken": { "type": "boolean" },
         "modified": { "type": "boolean" },
+        "template": { "$ref": "#/$defs/templateObject", "description": "For a variable template instance or a static data member of a class template instance: the template it was generated from." },
+        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order." },
+        "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "init": { "$ref": "#/$defs/initializer" },
         "zeroInit": { "type": "boolean" },
         "bound": { "$ref": "#/$defs/expression", "description": "A structured binding: the part of its object it names." },
@@ -156,6 +180,9 @@
         "inline": { "type": "boolean" },
         "implicit": { "type": "boolean" },
         "templateInstance": { "type": "boolean" },
+        "template": { "$ref": "#/$defs/templateObject", "description": "For a routine the front end generated from a template: the template it came from. Its id is shared by the template's other instances in the unit." },
+        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order. Absent for a member of a class template instance, whose own template takes no arguments." },
+        "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "lambda": { "type": "boolean" },
         "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers, else its declarator." },
         "attributes": { "type": "array", "items": { "$ref": "#/$defs/attribute" } },
@@ -396,6 +423,9 @@
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },
         "templateInstance": { "type": "boolean", "description": "An instance of a class template." },
+        "template": { "$ref": "#/$defs/templateObject", "description": "The class template or specialisation the class was generated from. Its id is shared by the template's other instances in the unit." },
+        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order, against the primary template's parameters." },
+        "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "typedef": { "type": "string" },
         "refKind": { "type": "string" }
       }

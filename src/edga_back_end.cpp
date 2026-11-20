@@ -408,6 +408,8 @@ class Exporter {
     if (r->compiler_generated) json_.fieldBool("implicit", true);
     if (r->is_template_function) json_.fieldBool("templateInstance", true);
     if (r->is_lambda_body) json_.fieldBool("lambda", true);
+    if (r->assoc_template != nullptr)
+      writeTemplateIdentity(r->assoc_template, r->template_arg_list, r->is_specialized != 0);
     position(r->source_corresp.decl_position);
     // where the declaration starts: its specifiers (`int`, `static`), else its declarator (a
     // constructor's name)
@@ -544,6 +546,9 @@ class Exporter {
     if (v->compiler_generated) json_.fieldBool("implicit", true);
     if (v->address_taken) json_.fieldBool("addressTaken", true);
     if (parameter && v->param_value_has_been_changed) json_.fieldBool("modified", true);
+    if (v->template_info != nullptr)
+      writeTemplateIdentity(v->template_info->assoc_template, v->template_info->template_arg_list,
+                            v->is_specialized != 0);
     position(v->source_corresp.decl_position);
     writeAttributes(v->source_corresp.attributes);
     // where the declaration starts: its specifiers (`const std::vector<int> &v` at `const`)
@@ -1438,6 +1443,9 @@ class Exporter {
           if (t->variant.class_struct_union.is_template_class &&
               !t->variant.class_struct_union.is_nonreal_class)
             json_.fieldBool("templateInstance", true);
+          if (supp->assoc_template != nullptr)
+            writeTemplateIdentity(supp->assoc_template, supp->template_arg_list,
+                                  t->variant.class_struct_union.is_specialized != 0);
         }
         break;
       }
@@ -1453,6 +1461,72 @@ class Exporter {
         break;
     }
     json_.endObject();
+  }
+
+  // ---- template identity ----------------------------------------------------------------------
+
+  // The id of a template: shared by every instance of one template in the unit, taken from the
+  // template's canonical IL entry (a template declared more than once has an entry per
+  // declaration, and the instances point at the representative one).
+  long templateId(a_template_ptr t) {
+    if (t->canonical_template != nullptr) t = t->canonical_template;
+    auto it = templateIds_.find(t);
+    if (it != templateIds_.end()) return it->second;
+    long id = static_cast<long>(templateIds_.size()) + 1;
+    templateIds_[t] = id;
+    return id;
+  }
+
+  // A non-type argument's value as the front end prints it.
+  std::string constantText(a_constant_ptr c) {
+    reset_text_buffer(textBuffer_);
+    form_constant(c, /*need_parens=*/FALSE, &octl_);
+    return std::string(textBuffer_->buffer, textBuffer_->size);
+  }
+
+  // The template an entity the front end generated from a template came from: its id, its name
+  // and qualified name, and where the template is declared.
+  void writeTemplateField(a_template_ptr t) {
+    json_.key("template");
+    json_.beginObject();
+    json_.field("id", templateId(t));
+    json_.field("name", t->source_corresp.name != nullptr ? t->source_corresp.name : "");
+    json_.field("qualifiedName", qualifiedName(&t->source_corresp, iek_template));
+    position(t->source_corresp.decl_position);
+    json_.endObject();
+  }
+
+  // The arguments an instance is based on, in order: a type argument by its type id, a non-type
+  // argument as the front end prints its value, a template argument by its name and qualified
+  // name. The placeholder that opens a pack is not an argument; the pack's elements are.
+  void writeTemplateArgsField(a_template_arg_ptr args) {
+    json_.key("templateArgs");
+    json_.beginArray();
+    for (a_template_arg_ptr a = args; a != nullptr; a = a->next) {
+      if (a->kind == tak_start_of_pack_expansion) continue;
+      json_.beginObject();
+      if (a->kind == tak_type && a->variant.type != nullptr) {
+        json_.field("type", typeId(a->variant.type));
+      } else if (a->kind == tak_nontype && a->variant.constant != nullptr) {
+        json_.field("value", constantText(a->variant.constant));
+      } else if (a->kind == tak_template && a->variant.templ.ptr != nullptr) {
+        a_template_ptr arg = a->variant.templ.ptr;
+        json_.field("name", arg->source_corresp.name != nullptr ? arg->source_corresp.name : "");
+        json_.field("qualifiedName", qualifiedName(&arg->source_corresp, iek_template));
+      }
+      json_.endObject();
+    }
+    json_.endArray();
+  }
+
+  // `template`, `templateArgs` and `explicit` on a routine, class or variable the front end
+  // generated from a template. An explicit specialisation is an instance of its primary
+  // template whose definition the unit supplies on its own; the front end marks it
+  // `is_specialized`.
+  void writeTemplateIdentity(a_template_ptr t, a_template_arg_ptr args, bool specialized) {
+    if (t != nullptr) writeTemplateField(t);
+    if (args != nullptr) writeTemplateArgsField(args);
+    if (specialized) json_.fieldBool("explicit", true);
   }
 
   // ---- ids ------------------------------------------------------------------------------------
@@ -1533,6 +1607,7 @@ class Exporter {
   std::unordered_map<a_type_ptr, long> typeIds_;
   std::unordered_map<a_routine_ptr, long> routineIds_;
   std::unordered_map<a_variable_ptr, long> variableIds_;
+  std::unordered_map<a_template_ptr, long> templateIds_;
   std::vector<a_routine_ptr> routines_;
   std::unordered_set<a_routine_ptr> seenRoutines_;
   std::unordered_map<std::string, a_source_position> enumeratorDecls_;

@@ -92,6 +92,31 @@ only routines defined in files under `--edga-root` (or in any header with `--edg
 The routines table is not limited to definitions: every routine a call names is written, even
 when it is declared in a header or in a scope the first walk did not reach.
 
+## Templates and their instances
+
+A routine, class, struct, union or variable the front end generated from a template names that
+template and the arguments it was generated with:
+
+| Field | What it holds |
+|---|---|
+| `template` | The template the entity came from: `id`, `name` (`Box`, `get`), `qualifiedName` (`Box<T>::get`, the template's parameters in place), and `p`, where the template is declared. The `id` is shared by every instance of one template in the unit, so the two instances of `twice` in a unit carry the same `template.id` and differ in `templateArgs`. |
+| `templateArgs` | The arguments the instance is based on, in order. A type argument is `{"type": <type id>}`; a non-type argument is `{"value": "<as the front end prints it>"}`; a template template argument is `{"name": ..., "qualifiedName": ...}`. Against the primary template's parameters: an instance of a partial specialisation of `Box<T>` over `T *` carries `Box` and the argument `int *` for `Box<int *>`. A member of a class template instance has no `templateArgs` of its own; its template is the member's declaration in the template (`Box<T>::get`), which takes the class's arguments. |
+| `explicit` | The entity is an explicit specialisation (`template <> ...`): its definition is supplied on its own, and its `template` names the primary template. |
+
+The members of an instance of a class template are generated the same way: each method and static
+data member points at the member template it came from, and the class itself points at the class
+template. Two instances of one function template share their `template.id` and differ in
+`templateArgs`:
+
+```json
+{"id": 2, "name": "twice", "qualifiedName": "twice", "templateInstance": true,
+ "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 12, 1]},
+ "templateArgs": [{"type": 0}]}
+{"id": 4, "name": "twice", "qualifiedName": "twice", "templateInstance": true,
+ "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 12, 1]},
+ "templateArgs": [{"type": 7}]}
+```
+
 ## Bodies: statements, expressions and initialisers
 
 A body is a tree. Every node has `k`, its kind, which is the front end's kind name without its
@@ -138,7 +163,7 @@ bytes. The other fields depend on the kind:
 | `pointer` | `to`, and `reference` or `rvalueReference` for C++ references. |
 | `array` | `of`, `count`, `variableSize`, and `zeroBound` for a declared `[0]` (an unknown bound also has `count` 0). |
 | `routine` | `returns`, `params`, `variadic`. |
-| `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`. |
+| `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
 | `typeref` | A typedef: `typedef` is its name and `to` the type it names. |
 | `ptr_to_member`, `vector`, `nullptr`, `complex`, ... | The remaining front end type kinds, with `to` or `of` where they point at another type. |
 | `void`, `error` | Nothing more; `error` stands for a type the front end could not determine. |
