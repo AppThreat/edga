@@ -1,0 +1,32 @@
+docs/json-format.md
+  s_fce6a55305eb85::t_1e63e04ece4fe8 106-109
+  s_fce6a55305eb85::t_0512fda45a4384 166
+  s_fce6a55305eb85::t_596d00dab69998 95-105,110-119
+schema/edga-1.schema.json
+  s_fce6a55305eb85::t_7e01327c64c286 146-148
+  s_fce6a55305eb85::t_8f95efe6ab9c8f 183-185
+  s_fce6a55305eb85::t_b811a617e42f53 63-83
+  s_fce6a55305eb85::t_caa808e5535b51 426-428
+src/edga_back_end.cpp
+  s_fce6a55305eb85::t_57b6c151111b46 549-551
+  s_fce6a55305eb85::t_5cf7b2a1416839 1466-1531
+  s_fce6a55305eb85::t_42f4ff59c368e8 1446-1448
+  s_fce6a55305eb85::t_1b998da794faea 411-412
+  s_fce6a55305eb85::t_ab369ba83114a2 1610
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "4ee38269d813895d9494d7d0ac3f3caf4e88eced",
+  "prompts": {},
+  "sessions": {
+    "s_fce6a55305eb85": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dwf-dwfrun-cb218136-b565-4fde-8248-07cf9457667c-actor_3_1",
+        "model": "GLM-5.3-Flash"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
