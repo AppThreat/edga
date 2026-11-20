@@ -120,7 +120,8 @@ template. Two instances of one function template share their `template.id` and d
 
 A template the unit never instantiates still has its body exported, as a prototype. Inside one,
 the code keeps the shape the source wrote: a type a template parameter stands for has the kind
-`dependent` and the parameter's name (`T`), a call whose callee depends on a parameter is a call
+`dependent` and the parameter's name (`T`, or `<unnamed>` for one the front end makes for a type
+it cannot name), a call whose callee depends on a parameter is a call
 with no `callee` and the name as written (`{"op": "call", "name": "size", ...}`), and the class
 the prototype belongs to appears with the parameters in place (`Unused<T>`). The front end scans
 every template's body for this, instead of deferring the bodies of the templates nothing uses;
@@ -175,7 +176,7 @@ bytes. The other fields depend on the kind:
 | `routine` | `returns`, `params`, `variadic`. |
 | `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
 | `typeref` | A typedef: `typedef` is its name and `to` the type it names. |
-| `dependent` | A template parameter: `name` is the parameter's name (`T`). Types built on one keep their own kind and name the dependent type by id. |
+| `dependent` | A template parameter: `name` is the parameter's name (`T`), or `<unnamed>` for the parameter the front end makes for a type it cannot name, such as the type of a call in a template's own code. Types built on one keep their own kind and name the dependent type by id. |
 | `ptr_to_member`, `vector`, `nullptr`, `complex`, ... | The remaining front end type kinds, with `to` or `of` where they point at another type. |
 | `void`, `error` | Nothing more; `error` stands for a type the front end could not determine. |
 
