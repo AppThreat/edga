@@ -79,6 +79,8 @@ int main(int argc, char* argv[]) {
       return 0;
     } else if (std::strcmp(arg, "--edga-headers") == 0) {
       edga::options().headers = true;
+    } else if (std::strcmp(arg, "--edga-no-prototypes") == 0) {
+      edga::options().prototypes = false;
     } else if (std::strcmp(arg, "--edga-out") == 0 || std::strcmp(arg, "--edga-root") == 0) {
       if (i + 1 >= argc) {
         std::fprintf(stderr, "edga: %s needs a value\n", arg);
@@ -127,10 +129,13 @@ int main(int argc, char* argv[]) {
   // Defaults for exporting: keep the bodies of functions nothing calls, give every template the
   // unit uses its instances' bodies (here, without the prelinker's files), keep going past many
   // errors (the valid parts of the file are still exported), and diagnostics as SARIF for the
-  // document. The user's own options come after, so they win.
+  // document. With prototypes exported, the front end scans every template's body instead of
+  // deferring the ones nothing uses, so the prototype instantiation exists to export. The
+  // user's own options come after, so they win.
   std::vector<std::string> args;
   args.push_back(argv[0]);
   if (!userPruning) args.push_back("--no_remove_unneeded_entities");
+  if (edga::options().prototypes) args.push_back("--no_defer_parse_function_templates");
   // EDG's predefined macro file is in the lib directory of an EDG installation, which edga is
   // not; the compiler's own macros come from the caller (`--preinclude_macros`).
   if (!userMacroFile) args.push_back("--clear_flag=use_predefined_macro_file");

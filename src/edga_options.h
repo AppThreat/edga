@@ -17,6 +17,11 @@ struct Options {
   std::string root;
   // Export the bodies of functions defined in headers outside the project as well.
   bool headers = false;
+  // Export the prototype instantiation of every template the unit does not instantiate for
+  // real. With the flag off, the front end also keeps its own deferral of function-template
+  // prototype instantiation, so the unit exports exactly what it did before prototypes were
+  // exported.
+  bool prototypes = true;
 };
 
 Options& options();
