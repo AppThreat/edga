@@ -24,9 +24,17 @@ T twice(T x) {
   return sum + x + x;
 }
 
+struct reading {
+  int get() const { return 1; }
+};
+
+// The name the template below calls back with, found when an instance is built.
+void helper(reading);
+
 // Nothing instantiates this function template or the class template member below.
 template <typename T>
 int unused(T p) {
+  helper(p);
   return p.size() + 1;
 }
 
@@ -91,10 +99,6 @@ struct Wrapper {
 template <typename T>
 struct Table {
   static const bool small = traits::is_small<T>::value;
-};
-
-struct reading {
-  int get() const { return 1; }
 };
 
 int use(int n) {
