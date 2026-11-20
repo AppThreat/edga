@@ -203,6 +203,7 @@
             "var": { "type": "integer" },
             "variable": { "$ref": "#/$defs/variable", "description": "range_based_for: the variable the for-range-declaration declares." },
             "over": { "$ref": "#/$defs/initializer", "description": "range_based_for: what is iterated over." },
+            "expanded": { "$ref": "#/$defs/statement", "description": "expansion_statement: the block the front end builds, one block per element that declares the for-range-declaration for that element and then holds the body. Absent while the expansion waits for a template's instantiation." },
             "statementExpression": { "type": "boolean" },
             "arrayType": { "type": "integer", "description": "set_vla_size: the variable length array type whose number of elements is fixed here." },
             "size": { "$ref": "#/$defs/expression", "description": "set_vla_size: the number of elements, as written." },

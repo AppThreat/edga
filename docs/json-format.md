@@ -98,7 +98,8 @@ A body is a tree. Every node has `k`, its kind, which is the front end's kind na
 prefix (`stmk_`, `enk_`). Statement kinds include `block` (with `stmts`), `decl` (with `decls`, a
 list of variables), `expression` (with `expr`), `if` (`cond`, `then`, `else`), `while`,
 `end_test_while`, `for` (`init`, `cond`, `inc`, `body`), `range_based_for` (`variable`, `over`,
-`body`), `switch` and `switch_case`, `return`, `goto` and `label`, `try_block` (with `handlers`),
+`body`), `expansion_statement` (C++26 `template for`: `init`, and `expanded`, a block holding one
+block per element), `switch` and `switch_case`, `return`, `goto` and `label`, `try_block` (with `handlers`),
 `asm` (`text`, `operands`) and `set_vla_size` (`arrayType`, `size`).
 
 An expression has `k`, `t` (its type id), `range`, and `lv` when it is an lvalue. The common kinds
