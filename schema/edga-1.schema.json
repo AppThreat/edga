@@ -181,6 +181,10 @@
         "implicit": { "type": "boolean" },
         "templateInstance": { "type": "boolean" },
         "template": { "$ref": "#/$defs/templateObject", "description": "For a routine the front end generated from a template: the template it came from. Its id is shared by the template's other instances in the unit." },
+        "prototype": {
+          "type": "boolean",
+          "description": "The prototype instantiation of a template nothing in the unit instantiated for real: the body the front end scanned for the function template or the class template member, with the parameters still in place. Not an instance: it carries no templateInstance flag."
+        },
         "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order. Absent for a member of a class template instance, whose own template takes no arguments." },
         "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "lambda": { "type": "boolean" },
@@ -365,7 +369,7 @@
       "required": ["id", "kind", "name"],
       "properties": {
         "id": { "type": "integer" },
-        "kind": { "type": "string" },
+        "kind": { "type": "string", "description": "The front end's kind name without its tk_ prefix; a template parameter type is `dependent`, naming the parameter." },
         "name": { "type": "string", "description": "The type as C or C++ spells it." },
         "size": { "type": "integer" },
         "signed": { "type": "boolean" },

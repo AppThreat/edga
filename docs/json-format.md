@@ -102,6 +102,7 @@ template and the arguments it was generated with:
 | `template` | The template the entity came from: `id`, `name` (`Box`, `get`), `qualifiedName` (`Box<T>::get`, the template's parameters in place), and `p`, where the template is declared. The `id` is shared by every instance of one template in the unit, so the two instances of `twice` in a unit carry the same `template.id` and differ in `templateArgs`. |
 | `templateArgs` | The arguments the instance is based on, in order. A type argument is `{"type": <type id>}`; a non-type argument is `{"value": "<as the front end prints it>"}`; a template template argument is `{"name": ..., "qualifiedName": ...}`. Against the primary template's parameters: an instance of a partial specialisation of `Box<T>` over `T *` carries `Box` and the argument `int *` for `Box<int *>`. A member of a class template instance has no `templateArgs` of its own; its template is the member's declaration in the template (`Box<T>::get`), which takes the class's arguments. |
 | `explicit` | The entity is an explicit specialisation (`template <> ...`): its definition is supplied on its own, and its `template` names the primary template. |
+| `prototype` | The routine is the prototype instantiation of a template nothing in the unit instantiated for real: the body the front end scanned for the template, with the parameters still in place. It carries its `template` object and its body, and no `templateInstance` flag, because it is not an instance. |
 
 The members of an instance of a class template are generated the same way: each method and static
 data member points at the member template it came from, and the class itself points at the class
@@ -116,6 +117,15 @@ template. Two instances of one function template share their `template.id` and d
  "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 12, 1]},
  "templateArgs": [{"type": 7}]}
 ```
+
+A template the unit never instantiates still has its body exported, as a prototype. Inside one,
+the code keeps the shape the source wrote: a type a template parameter stands for has the kind
+`dependent` and the parameter's name (`T`), a call whose callee depends on a parameter is a call
+with no `callee` and the name as written (`{"op": "call", "name": "size", ...}`), and the class
+the prototype belongs to appears with the parameters in place (`Unused<T>`). The front end scans
+every template's body for this, instead of deferring the bodies of the templates nothing uses;
+`--edga-no-prototypes` turns both off, and a unit exported with it has exactly the shape the
+versions before prototypes exported wrote.
 
 ## Bodies: statements, expressions and initialisers
 
@@ -165,6 +175,7 @@ bytes. The other fields depend on the kind:
 | `routine` | `returns`, `params`, `variadic`. |
 | `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
 | `typeref` | A typedef: `typedef` is its name and `to` the type it names. |
+| `dependent` | A template parameter: `name` is the parameter's name (`T`). Types built on one keep their own kind and name the dependent type by id. |
 | `ptr_to_member`, `vector`, `nullptr`, `complex`, ... | The remaining front end type kinds, with `to` or `of` where they point at another type. |
 | `void`, `error` | Nothing more; `error` stands for a type the front end could not determine. |
 
