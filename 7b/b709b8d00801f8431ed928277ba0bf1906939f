@@ -1,0 +1,22 @@
+src/edga_main.cpp
+  s_fce6a55305eb85::t_2feb6d2c3f9dcf 132-134,138
+  s_fce6a55305eb85::t_998e130d136de5 82-83
+src/edga_options.h
+  s_fce6a55305eb85::t_ca37e7a2a6c7be 20-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7bb709b8d00801f8431ed928277ba0bf1906939f",
+  "prompts": {},
+  "sessions": {
+    "s_fce6a55305eb85": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dwf-dwfrun-cb218136-b565-4fde-8248-07cf9457667c-actor_3_1",
+        "model": "GLM-5.3-Flash"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
