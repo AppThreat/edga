@@ -1,0 +1,445 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "templates_no_prototypes.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": true,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "templates_no_prototypes.cpp",
+   "written": "templates_no_prototypes.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "use",
+   "qualifiedName": "use",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    16,
+    5
+   ],
+   "start": [
+    0,
+    16,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     16,
+     11
+    ],
+    "end": [
+     0,
+     16,
+     31
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       16,
+       13
+      ],
+      "end": [
+       0,
+       16,
+       29
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        16,
+        26
+       ],
+       "range": [
+        [
+         0,
+         16,
+         20
+        ],
+        [
+         0,
+         16,
+         28
+        ]
+       ],
+       "op": "call",
+       "callee": 2,
+       "ops": [
+        {
+         "k": "routine",
+         "t": 2,
+         "p": [
+          0,
+          16,
+          20
+         ],
+         "range": [
+          [
+           0,
+           16,
+           20
+          ],
+          [
+           0,
+           16,
+           25
+          ]
+         ],
+         "routine": 2,
+         "name": "scaled"
+        },
+        {
+         "k": "constant",
+         "t": 1,
+         "p": [
+          0,
+          16,
+          27
+         ],
+         "range": [
+          [
+           0,
+           16,
+           27
+          ],
+          [
+           0,
+           16,
+           27
+          ]
+         ],
+         "ck": "integer",
+         "value": "3"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "scaled",
+   "qualifiedName": "scaled",
+   "type": 3,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "scaled",
+    "qualifiedName": "scaled",
+    "p": [
+     0,
+     5,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ],
+   "p": [
+    0,
+    6,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "x",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      6,
+      12
+     ],
+     "start": [
+      0,
+      6,
+      10
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     6,
+     15
+    ],
+    "end": [
+     0,
+     9,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       7,
+       3
+      ],
+      "end": [
+       0,
+       7,
+       14
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "sum",
+        "type": 1,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         7,
+         5
+        ],
+        "start": [
+         0,
+         7,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 2,
+         "const": {
+          "k": "constant",
+          "t": 1,
+          "ck": "integer",
+          "value": "0",
+          "expr": {
+           "k": "temp_init",
+           "t": 1,
+           "p": [
+            0,
+            7,
+            11
+           ],
+           "range": [
+            [
+             0,
+             7,
+             11
+            ],
+            [
+             0,
+             7,
+             13
+            ]
+           ],
+           "init": {
+            "k": "zero"
+           }
+          }
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       8,
+       3
+      ],
+      "end": [
+       0,
+       8,
+       21
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        8,
+        18
+       ],
+       "range": [
+        [
+         0,
+         8,
+         10
+        ],
+        [
+         0,
+         8,
+         20
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          8,
+          14
+         ],
+         "range": [
+          [
+           0,
+           8,
+           10
+          ],
+          [
+           0,
+           8,
+           16
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            8,
+            10
+           ],
+           "range": [
+            [
+             0,
+             8,
+             10
+            ],
+            [
+             0,
+             8,
+             12
+            ]
+           ],
+           "var": 2,
+           "name": "sum"
+          },
+          {
+           "k": "variable",
+           "t": 1,
+           "p": [
+            0,
+            8,
+            16
+           ],
+           "range": [
+            [
+             0,
+             8,
+             16
+            ],
+            [
+             0,
+             8,
+             16
+            ]
+           ],
+           "var": 1,
+           "name": "x"
+          }
+         ]
+        },
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          8,
+          20
+         ],
+         "range": [
+          [
+           0,
+           8,
+           20
+          ],
+          [
+           0,
+           8,
+           20
+          ]
+         ],
+         "var": 1,
+         "name": "x"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "pointer",
+   "name": "int (*)(int)",
+   "size": 8,
+   "to": 3
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "int (int)",
+   "returns": 1,
+   "params": [
+    1
+   ]
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}
