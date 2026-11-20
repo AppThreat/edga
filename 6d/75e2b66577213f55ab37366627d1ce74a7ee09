@@ -1,0 +1,25 @@
+tests/fixtures/templates_functions.h
+  s_fce6a55305eb85::t_e2c43d3735b6a4 1-31
+tests/fixtures/templates.cpp
+  s_fce6a55305eb85::t_5a094eb0604cfe 2-27,29-30,33-37,44-59,62-97,101-105,107,110-115,117-118,120-124
+  s_fce6a55305eb85::t_98d22fed2bd025 60-61
+  s_fce6a55305eb85::t_4756787c8f0128 108,116,119
+  s_fce6a55305eb85::t_78f3ee6f97c307 38-43
+  s_fce6a55305eb85::t_e1b19424e749c6 106,109
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "6d75e2b66577213f55ab37366627d1ce74a7ee09",
+  "prompts": {},
+  "sessions": {
+    "s_fce6a55305eb85": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dwf-dwfrun-cb218136-b565-4fde-8248-07cf9457667c-actor_3_1",
+        "model": "GLM-5.3-Flash"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
