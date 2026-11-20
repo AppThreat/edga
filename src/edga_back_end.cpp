@@ -69,6 +69,7 @@ class Exporter {
     json_.key("macroInvocations");
     writeMacroInvocations();
     collect(il_header.primary_scope);
+    collectPrototypes();
     // names are written as the front end qualifies them, inline namespaces included
     // (`std::__1::vector`); a program names their members without them
     json_.key("inlineNamespaces");
@@ -301,12 +302,23 @@ class Exporter {
   // compiler-generated members, which source sequence lists leave out.
   void collect(a_scope_ptr s) {
     if (s == nullptr) return;
+    scopes_.push_back(s);
     for (a_routine_ptr r = s->routines; r != nullptr; r = r->next) {
       if (r->is_prototype_instantiation) continue;
       if (special_kind_is(r, sfk_deduction_guide)) continue;
       // the front end's own declarations (`operator new`, builtins) are written when referred to
       if (r->source_corresp.decl_position.seq == 0 && r->function_def_number == 0) continue;
-      if (seenRoutines_.insert(r).second) routines_.push_back(r);
+      if (seenRoutines_.insert(r).second) {
+        routines_.push_back(r);
+        // an instance names the template it came from; a prototype is exported only for a
+        // template the unit does not instantiate for real, so only a body counts: a member
+        // declared in an instantiated class but never used is not one
+        if (r->assoc_template != nullptr && r->function_def_number != NULL_function_def_number) {
+          a_template_ptr t = r->assoc_template;
+          if (t->canonical_template != nullptr) t = t->canonical_template;
+          templatesWithRealInstances_.insert(t);
+        }
+      }
     }
     if (s->kind == sck_file || s->kind == sck_namespace) {
       for (a_variable_ptr v = s->variables; v != nullptr; v = v->next) {
@@ -335,6 +347,58 @@ class Exporter {
         inlineNamespaces_.insert(qualifiedName(&ns->source_corresp, iek_namespace));
       collect(ns->variant.assoc_scope);
     }
+  }
+
+  // Whether a routine's body is exported: the unit defines it and the file it is defined in is
+  // under the project root (or every header counts, with --edga-headers). A prototype follows
+  // the same rule as any other body: one whose file is outside the root has nothing to give the
+  // consumer, and the templates of the C library and toolchain headers alone would otherwise
+  // add a declaration to every unit.
+  bool bodyExportable(a_routine_ptr r) {
+    a_line_number line = 0;
+    a_seq_number seq = r->source_corresp.decl_position.seq != 0
+                           ? r->source_corresp.decl_position.seq
+                           : r->source_corresp.decl_position.orig_seq;
+    a_source_file_ptr definedIn = seq != 0 ? fileOfSeq(seq, &line) : nullptr;
+    return inRoot(definedIn) || (options().headers && definedIn != nullptr);
+  }
+
+  // The prototype instantiations of templates the unit does not instantiate for real: the body
+  // the front end scanned for a function template, and for a member function of a class
+  // template whose real instance nothing uses. Walked after every scope is visited, so the
+  // unit's real instances are all known.
+  void collectPrototypes() {
+    if (!options().prototypes) return;
+    for (a_scope_ptr s : scopes_) {
+      for (a_template_ptr t = s->templates; t != nullptr; t = t->next) {
+        if (t->kind == templk_function || t->kind == templk_member_function) {
+          notePrototype(t->prototype_instantiation.routine);
+        } else if (t->kind == templk_class || t->kind == templk_member_class) {
+          // a class template's prototype instantiation is a nonreal class whose scope holds the
+          // prototype of each member
+          a_type_ptr pt = t->prototype_instantiation.type;
+          if (pt == nullptr || !is_immediate_class_type(pt)) continue;
+          a_class_type_supplement_ptr supp = class_type_supp(pt);
+          if (supp == nullptr || supp->assoc_scope == nullptr) continue;
+          for (a_routine_ptr r = supp->assoc_scope->routines; r != nullptr; r = r->next)
+            notePrototype(r);
+        }
+      }
+    }
+  }
+
+  void notePrototype(a_routine_ptr r) {
+    if (r == nullptr || !r->is_prototype_instantiation) return;
+    if (r->compiler_generated || special_kind_is(r, sfk_deduction_guide)) return;
+    if (r->function_def_number == NULL_function_def_number) return;
+    if (!bodyExportable(r)) return;
+    if (seenRoutines_.count(r) != 0) return;
+    a_template_ptr t = r->assoc_template;
+    if (t != nullptr) {
+      if (t->canonical_template != nullptr) t = t->canonical_template;
+      if (templatesWithRealInstances_.count(t) != 0) return;
+    }
+    if (seenRoutines_.insert(r).second) routines_.push_back(r);
   }
 
   // Where each unscoped enumerator of a file or namespace scope is declared, by name: a constant
@@ -406,8 +470,14 @@ class Exporter {
     if (r->pure_virtual) json_.fieldBool("pureVirtual", true);
     if (r->is_inline) json_.fieldBool("inline", true);
     if (r->compiler_generated) json_.fieldBool("implicit", true);
-    if (r->is_template_function) json_.fieldBool("templateInstance", true);
+    // a prototype instantiation is not an instance: it stands for every instance of its
+    // template, with the parameters still in place
+    if (r->is_template_function && !r->is_prototype_instantiation)
+      json_.fieldBool("templateInstance", true);
     if (r->is_lambda_body) json_.fieldBool("lambda", true);
+    if (r->assoc_template != nullptr)
+      writeTemplateIdentity(r->assoc_template, r->template_arg_list, r->is_specialized != 0);
+    if (r->is_prototype_instantiation) json_.fieldBool("prototype", true);
     position(r->source_corresp.decl_position);
     // where the declaration starts: its specifiers (`int`, `static`), else its declarator (a
     // constructor's name)
@@ -421,13 +491,7 @@ class Exporter {
 
     a_scope_ptr body = nullptr;
     if (r->function_def_number != NULL_function_def_number) body = scope_for_routine_or_null(r);
-    a_line_number line = 0;
-    a_seq_number seq = r->source_corresp.decl_position.seq != 0
-                           ? r->source_corresp.decl_position.seq
-                           : r->source_corresp.decl_position.orig_seq;
-    a_source_file_ptr definedIn = seq != 0 ? fileOfSeq(seq, &line) : nullptr;
-    bool exportBody = body != nullptr && body->assoc_block != nullptr &&
-                      (inRoot(definedIn) || (options().headers && definedIn != nullptr));
+    bool exportBody = body != nullptr && bodyExportable(r);
     json_.fieldBool("defined", body != nullptr);
     if (exportBody) {
       a_scope_ptr saved = innermost_function_scope;
@@ -544,6 +608,9 @@ class Exporter {
     if (v->compiler_generated) json_.fieldBool("implicit", true);
     if (v->address_taken) json_.fieldBool("addressTaken", true);
     if (parameter && v->param_value_has_been_changed) json_.fieldBool("modified", true);
+    if (v->template_info != nullptr)
+      writeTemplateIdentity(v->template_info->assoc_template, v->template_info->template_arg_list,
+                            v->is_specialized != 0);
     position(v->source_corresp.decl_position);
     writeAttributes(v->source_corresp.attributes);
     // where the declaration starts: its specifiers (`const std::vector<int> &v` at `const`)
@@ -965,6 +1032,12 @@ class Exporter {
           if (target != nullptr) {
             json_.field("callee", routineId(target));
             noteRoutine(target);
+          } else {
+            // a call in a template's own code the front end could not resolve: the callee
+            // depends on a template parameter, and the name the source wrote is the only
+            // identity the call has
+            const char* written = dependentCalleeName(callee);
+            if (written != nullptr) json_.field("name", written);
           }
         }
         writeExprList("ops", e->variant.operation.operands);
@@ -1346,7 +1419,9 @@ class Exporter {
   void writeType(a_type_ptr t, long id) {
     json_.beginObject();
     json_.field("id", id);
-    json_.field("kind", typeKindName(t->kind));
+    // a type a template parameter stands for: the parameter itself, named by its name in the
+    // template (`T`); types built on it keep their kind and name the dependent type by id
+    json_.field("kind", t->kind == tk_template_param ? "dependent" : typeKindName(t->kind));
     json_.field("name", spell(t));
     if (t->size != 0) json_.field("size", static_cast<long long>(t->size));
     switch (t->kind) {
@@ -1438,6 +1513,9 @@ class Exporter {
           if (t->variant.class_struct_union.is_template_class &&
               !t->variant.class_struct_union.is_nonreal_class)
             json_.fieldBool("templateInstance", true);
+          if (supp->assoc_template != nullptr)
+            writeTemplateIdentity(supp->assoc_template, supp->template_arg_list,
+                                  t->variant.class_struct_union.is_specialized != 0);
         }
         break;
       }
@@ -1453,6 +1531,93 @@ class Exporter {
         break;
     }
     json_.endObject();
+  }
+
+  // ---- template identity ----------------------------------------------------------------------
+
+  // The id of a template: shared by every instance of one template in the unit, taken from the
+  // template's canonical IL entry (a template declared more than once has an entry per
+  // declaration, and the instances point at the representative one).
+  long templateId(a_template_ptr t) {
+    if (t->canonical_template != nullptr) t = t->canonical_template;
+    auto it = templateIds_.find(t);
+    if (it != templateIds_.end()) return it->second;
+    long id = static_cast<long>(templateIds_.size()) + 1;
+    templateIds_[t] = id;
+    return id;
+  }
+
+  // A non-type argument's value as the front end prints it.
+  std::string constantText(a_constant_ptr c) {
+    reset_text_buffer(textBuffer_);
+    form_constant(c, /*need_parens=*/FALSE, &octl_);
+    return std::string(textBuffer_->buffer, textBuffer_->size);
+  }
+
+  // The template an entity the front end generated from a template came from: its id, its name
+  // and qualified name, and where the template is declared.
+  void writeTemplateField(a_template_ptr t) {
+    json_.key("template");
+    json_.beginObject();
+    json_.field("id", templateId(t));
+    json_.field("name", t->source_corresp.name != nullptr ? t->source_corresp.name : "");
+    json_.field("qualifiedName", qualifiedName(&t->source_corresp, iek_template));
+    position(t->source_corresp.decl_position);
+    json_.endObject();
+  }
+
+  // The arguments an instance is based on, in order: a type argument by its type id, a non-type
+  // argument as the front end prints its value, a template argument by its name and qualified
+  // name. The placeholder that opens a pack is not an argument; the pack's elements are.
+  void writeTemplateArgsField(a_template_arg_ptr args) {
+    json_.key("templateArgs");
+    json_.beginArray();
+    for (a_template_arg_ptr a = args; a != nullptr; a = a->next) {
+      if (a->kind == tak_start_of_pack_expansion) continue;
+      json_.beginObject();
+      if (a->kind == tak_type && a->variant.type != nullptr) {
+        json_.field("type", typeId(a->variant.type));
+      } else if (a->kind == tak_nontype && a->variant.constant != nullptr) {
+        json_.field("value", constantText(a->variant.constant));
+      } else if (a->kind == tak_template && a->variant.templ.ptr != nullptr) {
+        a_template_ptr arg = a->variant.templ.ptr;
+        json_.field("name", arg->source_corresp.name != nullptr ? arg->source_corresp.name : "");
+        json_.field("qualifiedName", qualifiedName(&arg->source_corresp, iek_template));
+      }
+      json_.endObject();
+    }
+    json_.endArray();
+  }
+
+  // `template`, `templateArgs` and `explicit` on a routine, class or variable the front end
+  // generated from a template. An explicit specialisation is an instance of its primary
+  // template whose definition the unit supplies on its own; the front end marks it
+  // `is_specialized`.
+  void writeTemplateIdentity(a_template_ptr t, a_template_arg_ptr args, bool specialized) {
+    if (t != nullptr) writeTemplateField(t);
+    if (args != nullptr) writeTemplateArgsField(args);
+    if (specialized) json_.fieldBool("explicit", true);
+  }
+
+  // The name a call the front end could not resolve was written with: a template parameter
+  // constant names the callee, either directly (`helper(p)`, the name looked up when the
+  // template is instantiated) or as the member an access on a parameter names (`p.get()`).
+  static const char* dependentCalleeName(an_expr_node_ptr e) {
+    if (e == nullptr) return nullptr;
+    if (e->kind == (an_expr_node_kind)enk_constant) {
+      a_constant_ptr c = e->variant.constant.ptr;
+      if (c != nullptr && c->kind == ck_template_param && c->source_corresp.name != nullptr)
+        return c->source_corresp.name;
+      return nullptr;
+    }
+    if (e->kind == (an_expr_node_kind)enk_operation) {
+      an_expr_operator_kind op = e->variant.operation.kind;
+      if (op == eok_dot_static || op == eok_points_to_static) {
+        an_expr_node_ptr first = e->variant.operation.operands;
+        return dependentCalleeName(first != nullptr ? first->next : nullptr);
+      }
+    }
+    return nullptr;
   }
 
   // ---- ids ------------------------------------------------------------------------------------
@@ -1533,8 +1698,14 @@ class Exporter {
   std::unordered_map<a_type_ptr, long> typeIds_;
   std::unordered_map<a_routine_ptr, long> routineIds_;
   std::unordered_map<a_variable_ptr, long> variableIds_;
+  std::unordered_map<a_template_ptr, long> templateIds_;
   std::vector<a_routine_ptr> routines_;
   std::unordered_set<a_routine_ptr> seenRoutines_;
+  // every scope collect() visited, in visit order; the prototypes are gathered from their
+  // template lists once all of the unit's real instances are known
+  std::vector<a_scope_ptr> scopes_;
+  // the canonical template entry of every template the unit instantiated for real
+  std::unordered_set<a_template_ptr> templatesWithRealInstances_;
   std::unordered_map<std::string, a_source_position> enumeratorDecls_;
   std::unordered_set<std::string> ambiguousEnumerators_;
   std::vector<a_variable_ptr> globals_;
