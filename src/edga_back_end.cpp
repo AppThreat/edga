@@ -688,6 +688,22 @@ class Exporter {
         writeStatement(s->variant.range_based_for_loop.statement);
         break;
       }
+      // C++26 `template for`: not a loop but one block per element, which the front end builds
+      // when the elements are known; the prototype body it scanned first is not written
+      case stmk_expansion_statement: {
+        an_expansion_stmt_info_ptr info = s->variant.expansion_statement.extra_info;
+        if (info != nullptr) {
+          if (info->initialization != nullptr) {
+            json_.key("init");
+            writeStatement(info->initialization);
+          }
+          if (info->expanded_statement != nullptr) {
+            json_.key("expanded");
+            writeStatement(info->expanded_statement);
+          }
+        }
+        break;
+      }
       case stmk_switch:
         writeSelectionInit(s->expr);
         writeExprField("cond", s->expr);
