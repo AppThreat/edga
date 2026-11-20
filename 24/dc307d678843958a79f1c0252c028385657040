@@ -1,0 +1,24 @@
+schema/edga-1.schema.json
+  s_fce6a55305eb85::t_ba3f6ad35cb922 184-187
+  s_fce6a55305eb85::t_d61644fc581b41 372
+docs/json-format.md
+  s_fce6a55305eb85::t_0456d4810cba94 105,121-128
+  s_fce6a55305eb85::t_56f1da11a9b46d 178
+  s_fce6a55305eb85::t_2336c0b35927c5 129
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "24dc307d678843958a79f1c0252c028385657040",
+  "prompts": {},
+  "sessions": {
+    "s_fce6a55305eb85": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_dwf-dwfrun-cb218136-b565-4fde-8248-07cf9457667c-actor_3_1",
+        "model": "GLM-5.3-Flash"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
