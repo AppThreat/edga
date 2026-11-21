@@ -1639,7 +1639,8 @@ class Exporter {
   // through.
   static const char* dependentCalleeName(an_expr_node_ptr e) {
     if (e == nullptr) return nullptr;
-    if (e->kind == (an_expr_node_kind)enk_constant) return templateParamName(e->variant.constant.ptr);
+    if (e->kind == (an_expr_node_kind)enk_constant)
+      return templateParamName(e->variant.constant.ptr);
     if (e->kind == (an_expr_node_kind)enk_operation) {
       an_expr_operator_kind op = e->variant.operation.kind;
       an_expr_node_ptr first = e->variant.operation.operands;
