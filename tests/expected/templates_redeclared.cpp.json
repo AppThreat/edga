@@ -1,0 +1,798 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "templates_redeclared.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "templates_redeclared.cpp",
+   "written": "templates_redeclared.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "main",
+   "qualifiedName": "main",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    14,
+    5
+   ],
+   "start": [
+    0,
+    14,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     15,
+     1
+    ],
+    "end": [
+     0,
+     18,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       16,
+       5
+      ],
+      "end": [
+       0,
+       16,
+       22
+      ],
+      "decls": [
+       {
+        "id": 1,
+        "name": "p",
+        "type": 2,
+        "storage": "auto",
+        "linkage": "none",
+        "p": [
+         0,
+         16,
+         15
+        ],
+        "start": [
+         0,
+         16,
+         5
+        ],
+        "init": {
+         "k": "constant",
+         "var": 1,
+         "const": {
+          "k": "constant",
+          "t": 2,
+          "ck": "aggregate",
+          "elements": [
+           {
+            "k": "constant",
+            "t": 1,
+            "ck": "integer",
+            "value": "1"
+           },
+           {
+            "k": "constant",
+            "t": 1,
+            "ck": "integer",
+            "value": "2"
+           }
+          ]
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       17,
+       5
+      ],
+      "end": [
+       0,
+       17,
+       54
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        17,
+        39
+       ],
+       "range": [
+        [
+         0,
+         17,
+         12
+        ],
+        [
+         0,
+         17,
+         53
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          17,
+          19
+         ],
+         "range": [
+          [
+           0,
+           17,
+           12
+          ],
+          [
+           0,
+           17,
+           37
+          ]
+         ],
+         "op": "call",
+         "callee": 2,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 3,
+           "p": [
+            0,
+            17,
+            12
+           ],
+           "range": [
+            [
+             0,
+             17,
+             12
+            ],
+            [
+             0,
+             17,
+             18
+            ]
+           ],
+           "routine": 2,
+           "name": "combine"
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            17,
+            21
+           ],
+           "range": [
+            [
+             0,
+             17,
+             20
+            ],
+            [
+             0,
+             17,
+             26
+            ]
+           ],
+           "op": "dot_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 2,
+             "p": [
+              0,
+              17,
+              20
+             ],
+             "range": [
+              [
+               0,
+               17,
+               20
+              ],
+              [
+               0,
+               17,
+               20
+              ]
+             ],
+             "lv": true,
+             "var": 1,
+             "name": "p"
+            },
+            {
+             "k": "field",
+             "t": 1,
+             "p": [
+              0,
+              17,
+              22
+             ],
+             "range": [
+              [
+               0,
+               17,
+               22
+              ],
+              [
+               0,
+               17,
+               26
+              ]
+             ],
+             "name": "first"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            17,
+            30
+           ],
+           "range": [
+            [
+             0,
+             17,
+             29
+            ],
+            [
+             0,
+             17,
+             36
+            ]
+           ],
+           "op": "dot_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 2,
+             "p": [
+              0,
+              17,
+              29
+             ],
+             "range": [
+              [
+               0,
+               17,
+               29
+              ],
+              [
+               0,
+               17,
+               29
+              ]
+             ],
+             "lv": true,
+             "var": 1,
+             "name": "p"
+            },
+            {
+             "k": "field",
+             "t": 1,
+             "p": [
+              0,
+              17,
+              31
+             ],
+             "range": [
+              [
+               0,
+               17,
+               31
+              ],
+              [
+               0,
+               17,
+               36
+              ]
+             ],
+             "name": "second",
+             "offset": 4
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          17,
+          48
+         ],
+         "range": [
+          [
+           0,
+           17,
+           41
+          ],
+          [
+           0,
+           17,
+           53
+          ]
+         ],
+         "op": "call",
+         "callee": 2,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 3,
+           "p": [
+            0,
+            17,
+            41
+           ],
+           "range": [
+            [
+             0,
+             17,
+             41
+            ],
+            [
+             0,
+             17,
+             47
+            ]
+           ],
+           "routine": 2,
+           "name": "combine"
+          },
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            17,
+            49
+           ],
+           "range": [
+            [
+             0,
+             17,
+             49
+            ],
+            [
+             0,
+             17,
+             49
+            ]
+           ],
+           "ck": "integer",
+           "value": "3"
+          },
+          {
+           "k": "constant",
+           "t": 1,
+           "p": [
+            0,
+            17,
+            52
+           ],
+           "range": [
+            [
+             0,
+             17,
+             52
+            ],
+            [
+             0,
+             17,
+             52
+            ]
+           ],
+           "ck": "integer",
+           "value": "4"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "combine",
+   "qualifiedName": "combine",
+   "type": 4,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "combine",
+    "qualifiedName": "combine",
+    "p": [
+     0,
+     5,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ],
+   "p": [
+    0,
+    12,
+    24
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 2,
+     "name": "a",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      34
+     ],
+     "start": [
+      0,
+      12,
+      32
+     ]
+    },
+    {
+     "id": 3,
+     "name": "b",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      12,
+      39
+     ],
+     "start": [
+      0,
+      12,
+      37
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     12,
+     42
+    ],
+    "end": [
+     0,
+     12,
+     58
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       12,
+       44
+      ],
+      "end": [
+       0,
+       12,
+       56
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        12,
+        53
+       ],
+       "range": [
+        [
+         0,
+         12,
+         51
+        ],
+        [
+         0,
+         12,
+         55
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          12,
+          51
+         ],
+         "range": [
+          [
+           0,
+           12,
+           51
+          ],
+          [
+           0,
+           12,
+           51
+          ]
+         ],
+         "var": 2,
+         "name": "a"
+        },
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          12,
+          55
+         ],
+         "range": [
+          [
+           0,
+           12,
+           55
+          ],
+          [
+           0,
+           12,
+           55
+          ]
+         ],
+         "var": 3,
+         "name": "b"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 3,
+   "name": "operator=",
+   "qualifiedName": "Pair<int>::operator=",
+   "type": 5,
+   "returnType": 6,
+   "prototyped": true,
+   "thisClass": 2,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 2,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    7,
+    29
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 7
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "operator=",
+   "qualifiedName": "Pair<int>::operator=",
+   "type": 8,
+   "returnType": 6,
+   "prototyped": true,
+   "thisClass": 2,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 2,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    7,
+    29
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 9
+    }
+   ]
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "struct",
+   "name": "Pair<int>",
+   "size": 8,
+   "tag": "Pair",
+   "qualifiedName": "Pair<int>",
+   "p": [
+    0,
+    7,
+    29
+   ],
+   "fields": [
+    {
+     "name": "first",
+     "type": 1,
+     "offset": 0,
+     "p": [
+      0,
+      8,
+      7
+     ]
+    },
+    {
+     "name": "second",
+     "type": 1,
+     "offset": 4,
+     "p": [
+      0,
+      9,
+      7
+     ]
+    }
+   ],
+   "bases": [],
+   "templateInstance": true,
+   "template": {
+    "id": 2,
+    "name": "Pair",
+    "qualifiedName": "Pair",
+    "p": [
+     0,
+     7,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "kind": "pointer",
+   "name": "int (*)(int, int)",
+   "size": 8,
+   "to": 4
+  },
+  {
+   "id": 4,
+   "kind": "routine",
+   "name": "int (int, int)",
+   "returns": 1,
+   "params": [
+    1,
+    1
+   ]
+  },
+  {
+   "id": 5,
+   "kind": "routine",
+   "name": "Pair<int> &(const Pair<int> &)",
+   "returns": 6,
+   "params": [
+    7
+   ]
+  },
+  {
+   "id": 6,
+   "kind": "pointer",
+   "name": "Pair<int> &",
+   "size": 8,
+   "to": 2,
+   "reference": true
+  },
+  {
+   "id": 7,
+   "kind": "pointer",
+   "name": "const Pair<int> &",
+   "size": 8,
+   "to": 10,
+   "reference": true
+  },
+  {
+   "id": 8,
+   "kind": "routine",
+   "name": "Pair<int> &(Pair<int> &&)",
+   "returns": 6,
+   "params": [
+    9
+   ]
+  },
+  {
+   "id": 9,
+   "kind": "pointer",
+   "name": "Pair<int> &&",
+   "size": 8,
+   "to": 2,
+   "reference": true,
+   "rvalueReference": true
+  },
+  {
+   "id": 10,
+   "kind": "typeref",
+   "name": "const Pair<int>",
+   "of": 2,
+   "refKind": "none"
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}

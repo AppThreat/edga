@@ -120,6 +120,49 @@ def stdout_differs(edga, fixture, document):
     return None if normalise(written) == normalise(document) else "a different document"
 
 
+def root_rule_case(edga):
+    """A project whose unit and its include root disagree: two templates nothing instantiates,
+    one in the unit and one in a header outside the root. The unit's own template exports its
+    prototype, the header's does not, and --edga-headers exports both. Every fixture runs with
+    --edga-root inside the fixtures, so no golden pins this rule."""
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        src = tmp / "src"
+        inc = tmp / "include"
+        src.mkdir()
+        inc.mkdir()
+        (src / "unit.cpp").write_text(
+            '#include "out_of_root.h"\n'
+            "template<typename T> T in_unit(T x) { return x + x; }\n"
+            "int main() { return 0; }\n",
+            encoding="utf-8",
+        )
+        (inc / "out_of_root.h").write_text(
+            "template<typename T> T out_of_root(T x) { return x * 2; }\n",
+            encoding="utf-8",
+        )
+        seen = {}
+        for extra, label in (([], "rooted"), (["--edga-headers"], "headers")):
+            out = tmp / f"out-{label}.json"
+            run = subprocess.run(
+                [str(edga), "--c++17", *extra, "--edga-root", str(src),
+                 "-I", str(inc), "--edga-out", str(out), str(src / "unit.cpp")],
+                capture_output=True, text=True,
+            )
+            if not out.exists():
+                raise RuntimeError(f"the root rule case produced no output\n{run.stderr}")
+            document = json.loads(out.read_text(encoding="utf-8"))
+            seen[label] = sorted(
+                r.get("qualifiedName") for r in document.get("routines", []) if r.get("prototype")
+            )
+    problems = []
+    if seen["rooted"] != ["in_unit"]:
+        problems.append(f"prototypes exported outside the root: {seen['rooted']}")
+    if seen["headers"] != ["in_unit", "out_of_root"]:
+        problems.append(f"--edga-headers exported the wrong prototypes: {seen['headers']}")
+    return problems
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--edga", required=True, help="the edga binary")
@@ -193,6 +236,13 @@ def main():
                 print(f"FAIL {fixture.name} on standard output: {why}")
             else:
                 print(f"ok   {fixture.name} on standard output")
+    if not args.names:
+        problems = root_rule_case(Path(args.edga).resolve())
+        for problem in problems:
+            failures += 1
+            print(f"FAIL the root rule case: {problem}")
+        if not problems:
+            print("ok   the root rule case")
     if failures:
         print(f"{failures} of {len(fixtures)} fixtures differ")
         return 1

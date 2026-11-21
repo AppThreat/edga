@@ -110,13 +110,16 @@ template. Two instances of one function template share their `template.id` and d
 `templateArgs`:
 
 ```json
-{"id": 2, "name": "twice", "qualifiedName": "twice", "templateInstance": true,
- "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 12, 1]},
+{"id": 2, "name": "twice", "qualifiedName": "twice", "templateInstance": true, "p": [0, 68, 8],
+ "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 21, 1]},
+ "templateArgs": [{"type": 6}]}
+{"id": 4, "name": "twice", "qualifiedName": "twice", "templateInstance": true, "p": [0, 22, 3],
+ "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 21, 1]},
  "templateArgs": [{"type": 0}]}
-{"id": 4, "name": "twice", "qualifiedName": "twice", "templateInstance": true,
- "template": {"id": 3, "name": "twice", "qualifiedName": "twice", "p": [0, 12, 1]},
- "templateArgs": [{"type": 7}]}
 ```
+
+The ids and positions are the ones `tests/expected/templates.cpp.json` carries for the same
+constructs: one instance the unit calls directly, one it calls through the other.
 
 A template the unit never instantiates still has its body exported, as a prototype. Inside one,
 the code keeps the shape the source wrote: a type a template parameter stands for has the kind
