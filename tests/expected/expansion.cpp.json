@@ -1702,6 +1702,21 @@
    "linkage": "cplusplus_external",
    "storage": "unspecified",
    "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "scaled",
+    "qualifiedName": "scaled",
+    "p": [
+     0,
+     28,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ],
    "p": [
     0,
     28,

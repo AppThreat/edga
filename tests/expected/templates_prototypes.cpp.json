@@ -1,0 +1,2813 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "templates_prototypes.cpp",
+  "language": "c++",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "templates_prototypes.cpp",
+   "written": "templates_prototypes.cpp",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [],
+ "routines": [
+  {
+   "id": 1,
+   "name": "narrow",
+   "qualifiedName": "narrow",
+   "type": 0,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "narrow",
+    "qualifiedName": "narrow",
+    "p": [
+     0,
+     22,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 2
+    }
+   ],
+   "explicit": true,
+   "p": [
+    0,
+    26,
+    5
+   ],
+   "start": [
+    0,
+    26,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 1,
+     "name": "c",
+     "type": 2,
+     "storage": "auto",
+     "p": [
+      0,
+      26,
+      23
+     ],
+     "start": [
+      0,
+      26,
+      18
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     26,
+     26
+    ],
+    "end": [
+     0,
+     26,
+     38
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       26,
+       28
+      ],
+      "end": [
+       0,
+       26,
+       36
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 1,
+       "p": [
+        0,
+        26,
+        35
+       ],
+       "range": [
+        [
+         0,
+         26,
+         35
+        ],
+        [
+         0,
+         26,
+         35
+        ]
+       ],
+       "ck": "integer",
+       "value": "7"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 2,
+   "name": "use",
+   "qualifiedName": "use",
+   "type": 3,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    43,
+    5
+   ],
+   "start": [
+    0,
+    43,
+    1
+   ],
+   "defined": true,
+   "params": [],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     43,
+     11
+    ],
+    "end": [
+     0,
+     48,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "decl",
+      "p": [
+       0,
+       44,
+       3
+      ],
+      "end": [
+       0,
+       44,
+       15
+      ],
+      "decls": [
+       {
+        "id": 2,
+        "name": "a",
+        "type": 4,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         44,
+         14
+        ],
+        "start": [
+         0,
+         44,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       45,
+       3
+      ],
+      "end": [
+       0,
+       45,
+       18
+      ],
+      "decls": [
+       {
+        "id": 3,
+        "name": "b",
+        "type": 5,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         45,
+         17
+        ],
+        "start": [
+         0,
+         45,
+         3
+        ]
+       }
+      ]
+     },
+     {
+      "k": "decl",
+      "p": [
+       0,
+       46,
+       3
+      ],
+      "end": [
+       0,
+       46,
+       15
+      ],
+      "decls": [
+       {
+        "id": 4,
+        "name": "x",
+        "type": 6,
+        "storage": "auto",
+        "linkage": "none",
+        "addressTaken": true,
+        "p": [
+         0,
+         46,
+         12
+        ],
+        "start": [
+         0,
+         46,
+         3
+        ],
+        "init": {
+         "k": "constant",
+         "var": 4,
+         "const": {
+          "k": "constant",
+          "t": 6,
+          "ck": "aggregate",
+          "elements": []
+         }
+        }
+       }
+      ]
+     },
+     {
+      "k": "return",
+      "p": [
+       0,
+       47,
+       3
+      ],
+      "end": [
+       0,
+       47,
+       71
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        47,
+        62
+       ],
+       "range": [
+        [
+         0,
+         47,
+         10
+        ],
+        [
+         0,
+         47,
+         70
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          47,
+          48
+         ],
+         "range": [
+          [
+           0,
+           47,
+           10
+          ],
+          [
+           0,
+           47,
+           60
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            47,
+            27
+           ],
+           "range": [
+            [
+             0,
+             47,
+             10
+            ],
+            [
+             0,
+             47,
+             46
+            ]
+           ],
+           "op": "add",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 1,
+             "p": [
+              0,
+              47,
+              10
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 7,
+               "p": [
+                0,
+                47,
+                23
+               ],
+               "range": [
+                [
+                 0,
+                 47,
+                 10
+                ],
+                [
+                 0,
+                 47,
+                 25
+                ]
+               ],
+               "op": "dot_member_call",
+               "callee": 3,
+               "ops": [
+                {
+                 "k": "routine",
+                 "t": 8,
+                 "p": [
+                  0,
+                  47,
+                  12
+                 ],
+                 "range": [
+                  [
+                   0,
+                   47,
+                   12
+                  ],
+                  [
+                   0,
+                   47,
+                   22
+                  ]
+                 ],
+                 "routine": 3,
+                 "name": "conv"
+                },
+                {
+                 "k": "operation",
+                 "t": 9,
+                 "p": [
+                  0,
+                  47,
+                  10
+                 ],
+                 "lv": true,
+                 "implicit": true,
+                 "op": "lvalue_adjust",
+                 "ops": [
+                  {
+                   "k": "variable",
+                   "t": 4,
+                   "p": [
+                    0,
+                    47,
+                    10
+                   ],
+                   "range": [
+                    [
+                     0,
+                     47,
+                     10
+                    ],
+                    [
+                     0,
+                     47,
+                     10
+                    ]
+                   ],
+                   "lv": true,
+                   "var": 2,
+                   "name": "a"
+                  }
+                 ]
+                },
+                {
+                 "k": "constant",
+                 "t": 1,
+                 "p": [
+                  0,
+                  47,
+                  24
+                 ],
+                 "range": [
+                  [
+                   0,
+                   47,
+                   24
+                  ],
+                  [
+                   0,
+                   47,
+                   24
+                  ]
+                 ],
+                 "ck": "integer",
+                 "value": "1"
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 1,
+             "p": [
+              0,
+              47,
+              29
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 7,
+               "p": [
+                0,
+                47,
+                42
+               ],
+               "range": [
+                [
+                 0,
+                 47,
+                 29
+                ],
+                [
+                 0,
+                 47,
+                 46
+                ]
+               ],
+               "op": "dot_member_call",
+               "callee": 4,
+               "ops": [
+                {
+                 "k": "routine",
+                 "t": 10,
+                 "p": [
+                  0,
+                  47,
+                  31
+                 ],
+                 "range": [
+                  [
+                   0,
+                   47,
+                   31
+                  ],
+                  [
+                   0,
+                   47,
+                   41
+                  ]
+                 ],
+                 "routine": 4,
+                 "name": "conv"
+                },
+                {
+                 "k": "operation",
+                 "t": 11,
+                 "p": [
+                  0,
+                  47,
+                  29
+                 ],
+                 "lv": true,
+                 "implicit": true,
+                 "op": "lvalue_adjust",
+                 "ops": [
+                  {
+                   "k": "variable",
+                   "t": 5,
+                   "p": [
+                    0,
+                    47,
+                    29
+                   ],
+                   "range": [
+                    [
+                     0,
+                     47,
+                     29
+                    ],
+                    [
+                     0,
+                     47,
+                     29
+                    ]
+                   ],
+                   "lv": true,
+                   "var": 3,
+                   "name": "b"
+                  }
+                 ]
+                },
+                {
+                 "k": "constant",
+                 "t": 12,
+                 "p": [
+                  0,
+                  47,
+                  43
+                 ],
+                 "range": [
+                  [
+                   0,
+                   47,
+                   43
+                  ],
+                  [
+                   0,
+                   47,
+                   45
+                  ]
+                 ],
+                 "ck": "float",
+                 "value": "2.0"
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 1,
+           "p": [
+            0,
+            47,
+            56
+           ],
+           "range": [
+            [
+             0,
+             47,
+             50
+            ],
+            [
+             0,
+             47,
+             60
+            ]
+           ],
+           "op": "call",
+           "callee": 1,
+           "ops": [
+            {
+             "k": "routine",
+             "t": 13,
+             "p": [
+              0,
+              47,
+              50
+             ],
+             "range": [
+              [
+               0,
+               47,
+               50
+              ],
+              [
+               0,
+               47,
+               55
+              ]
+             ],
+             "routine": 1,
+             "name": "narrow"
+            },
+            {
+             "k": "constant",
+             "t": 2,
+             "p": [
+              0,
+              47,
+              57
+             ],
+             "range": [
+              [
+               0,
+               47,
+               57
+              ],
+              [
+               0,
+               47,
+               59
+              ]
+             ],
+             "ck": "integer",
+             "value": "99"
+            }
+           ]
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 1,
+         "p": [
+          0,
+          47,
+          69
+         ],
+         "range": [
+          [
+           0,
+           47,
+           64
+          ],
+          [
+           0,
+           47,
+           70
+          ]
+         ],
+         "op": "dot_member_call",
+         "callee": 5,
+         "ops": [
+          {
+           "k": "routine",
+           "t": 14,
+           "p": [
+            0,
+            47,
+            66
+           ],
+           "range": [
+            [
+             0,
+             47,
+             66
+            ],
+            [
+             0,
+             47,
+             68
+            ]
+           ],
+           "routine": 5,
+           "name": "get"
+          },
+          {
+           "k": "operation",
+           "t": 15,
+           "p": [
+            0,
+            47,
+            64
+           ],
+           "lv": true,
+           "implicit": true,
+           "op": "lvalue_adjust",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 6,
+             "p": [
+              0,
+              47,
+              64
+             ],
+             "range": [
+              [
+               0,
+               47,
+               64
+              ],
+              [
+               0,
+               47,
+               64
+              ]
+             ],
+             "lv": true,
+             "var": 4,
+             "name": "x"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 5,
+   "name": "get",
+   "qualifiedName": "Box<int>::get",
+   "type": 16,
+   "returnType": 1,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 6,
+   "templateInstance": true,
+   "template": {
+    "id": 2,
+    "name": "get",
+    "qualifiedName": "Box<T>::get",
+    "p": [
+     0,
+     31,
+     5
+    ]
+   },
+   "explicit": true,
+   "p": [
+    0,
+    35,
+    15
+   ],
+   "start": [
+    0,
+    35,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "",
+     "type": 17,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     35,
+     27
+    ],
+    "end": [
+     0,
+     35,
+     39
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       35,
+       29
+      ],
+      "end": [
+       0,
+       35,
+       37
+      ],
+      "expr": {
+       "k": "constant",
+       "t": 1,
+       "p": [
+        0,
+        35,
+        36
+       ],
+       "range": [
+        [
+         0,
+         35,
+         36
+        ],
+        [
+         0,
+         35,
+         36
+        ]
+       ],
+       "ck": "integer",
+       "value": "1"
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 6,
+   "name": "operator=",
+   "qualifiedName": "Box<int>::operator=",
+   "type": 18,
+   "returnType": 19,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 6,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    29,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 20
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "name": "operator=",
+   "qualifiedName": "Box<int>::operator=",
+   "type": 21,
+   "returnType": 19,
+   "prototyped": true,
+   "thisClass": 6,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 6,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    29,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 22
+    }
+   ]
+  },
+  {
+   "id": 8,
+   "name": "operator=",
+   "qualifiedName": "Outer<int>::operator=",
+   "type": 23,
+   "returnType": 24,
+   "prototyped": true,
+   "thisClass": 4,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 4,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 25
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "name": "operator=",
+   "qualifiedName": "Outer<int>::operator=",
+   "type": 26,
+   "returnType": 24,
+   "prototyped": true,
+   "thisClass": 4,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 4,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 27
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "conv",
+   "qualifiedName": "Outer<int>::conv",
+   "type": 28,
+   "returnType": 7,
+   "prototyped": true,
+   "thisClass": 4,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 4,
+   "inline": true,
+   "templateInstance": true,
+   "template": {
+    "id": 3,
+    "name": "conv",
+    "qualifiedName": "Outer<T>::conv",
+    "p": [
+     0,
+     9,
+     3
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 7
+    }
+   ],
+   "p": [
+    0,
+    10,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 6,
+     "name": "",
+     "type": 29,
+     "storage": "auto",
+     "this": true
+    },
+    {
+     "id": 7,
+     "name": "t",
+     "type": 1,
+     "storage": "auto",
+     "p": [
+      0,
+      10,
+      12
+     ],
+     "start": [
+      0,
+      10,
+      10
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     10,
+     21
+    ],
+    "end": [
+     0,
+     10,
+     49
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       10,
+       23
+      ],
+      "end": [
+       0,
+       10,
+       47
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 7,
+       "p": [
+        0,
+        10,
+        30
+       ],
+       "range": [
+        [
+         0,
+         10,
+         30
+        ],
+        [
+         0,
+         10,
+         46
+        ]
+       ],
+       "op": "cast",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 1,
+         "p": [
+          0,
+          10,
+          45
+         ],
+         "range": [
+          [
+           0,
+           10,
+           45
+          ],
+          [
+           0,
+           10,
+           45
+          ]
+         ],
+         "var": 7,
+         "name": "t"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 10,
+   "name": "operator=",
+   "qualifiedName": "Outer<double>::operator=",
+   "type": 30,
+   "returnType": 31,
+   "prototyped": true,
+   "thisClass": 5,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 5,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 32
+    }
+   ]
+  },
+  {
+   "id": 11,
+   "name": "operator=",
+   "qualifiedName": "Outer<double>::operator=",
+   "type": 33,
+   "returnType": 31,
+   "prototyped": true,
+   "thisClass": 5,
+   "linkage": "cplusplus_external",
+   "storage": "extern",
+   "special": "operator",
+   "operator": "assign",
+   "class": 5,
+   "inline": true,
+   "implicit": true,
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "defined": false,
+   "params": [
+    {
+     "name": "",
+     "type": 34
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "conv",
+   "qualifiedName": "Outer<double>::conv",
+   "type": 35,
+   "returnType": 7,
+   "prototyped": true,
+   "thisClass": 5,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 5,
+   "inline": true,
+   "templateInstance": true,
+   "template": {
+    "id": 3,
+    "name": "conv",
+    "qualifiedName": "Outer<T>::conv",
+    "p": [
+     0,
+     9,
+     3
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 7
+    }
+   ],
+   "p": [
+    0,
+    10,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 8,
+     "name": "",
+     "type": 36,
+     "storage": "auto",
+     "this": true
+    },
+    {
+     "id": 9,
+     "name": "t",
+     "type": 12,
+     "storage": "auto",
+     "p": [
+      0,
+      10,
+      12
+     ],
+     "start": [
+      0,
+      10,
+      10
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     10,
+     21
+    ],
+    "end": [
+     0,
+     10,
+     49
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       10,
+       23
+      ],
+      "end": [
+       0,
+       10,
+       47
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 7,
+       "p": [
+        0,
+        10,
+        30
+       ],
+       "range": [
+        [
+         0,
+         10,
+         30
+        ],
+        [
+         0,
+         10,
+         46
+        ]
+       ],
+       "op": "cast",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 12,
+         "p": [
+          0,
+          10,
+          45
+         ],
+         "range": [
+          [
+           0,
+           10,
+           45
+          ],
+          [
+           0,
+           10,
+           45
+          ]
+         ],
+         "var": 9,
+         "name": "t"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 12,
+   "name": "twice",
+   "qualifiedName": "Outer<T>::Inner::twice",
+   "type": 37,
+   "returnType": 38,
+   "prototyped": true,
+   "thisClass": 39,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 39,
+   "inline": true,
+   "template": {
+    "id": 4,
+    "name": "twice",
+    "qualifiedName": "Outer<T>::Inner::twice",
+    "p": [
+     0,
+     13,
+     7
+    ]
+   },
+   "prototype": true,
+   "p": [
+    0,
+    13,
+    7
+   ],
+   "start": [
+    0,
+    13,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 10,
+     "name": "",
+     "type": 40,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     13,
+     21
+    ],
+    "end": [
+     0,
+     13,
+     37
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       13,
+       23
+      ],
+      "end": [
+       0,
+       13,
+       35
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 41,
+       "p": [
+        0,
+        13,
+        32
+       ],
+       "range": [
+        [
+         0,
+         13,
+         30
+        ],
+        [
+         0,
+         13,
+         34
+        ]
+       ],
+       "op": "add",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 42,
+         "p": [
+          0,
+          13,
+          30
+         ],
+         "lv": true,
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 43,
+           "var": 10,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 38,
+           "p": [
+            0,
+            13,
+            30
+           ],
+           "range": [
+            [
+             0,
+             13,
+             30
+            ],
+            [
+             0,
+             13,
+             30
+            ]
+           ],
+           "name": "x"
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 42,
+         "p": [
+          0,
+          13,
+          34
+         ],
+         "lv": true,
+         "implicit": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 43,
+           "var": 10,
+           "name": ""
+          },
+          {
+           "k": "field",
+           "t": 38,
+           "p": [
+            0,
+            13,
+            34
+           ],
+           "range": [
+            [
+             0,
+             13,
+             34
+            ],
+            [
+             0,
+             13,
+             34
+            ]
+           ],
+           "name": "x"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 13,
+   "name": "id",
+   "qualifiedName": "Outer<T>::Nested<U>::id",
+   "type": 44,
+   "returnType": 45,
+   "prototyped": true,
+   "thisClass": 46,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 46,
+   "inline": true,
+   "template": {
+    "id": 5,
+    "name": "id",
+    "qualifiedName": "Outer<T>::Nested<U>::id",
+    "p": [
+     0,
+     18,
+     7
+    ]
+   },
+   "prototype": true,
+   "p": [
+    0,
+    18,
+    7
+   ],
+   "start": [
+    0,
+    18,
+    5
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 11,
+     "name": "",
+     "type": 47,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     18,
+     18
+    ],
+    "end": [
+     0,
+     18,
+     30
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       18,
+       20
+      ],
+      "end": [
+       0,
+       18,
+       28
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 48,
+       "p": [
+        0,
+        18,
+        27
+       ],
+       "lv": true,
+       "implicit": true,
+       "op": "points_to_field",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 49,
+         "var": 11,
+         "name": ""
+        },
+        {
+         "k": "field",
+         "t": 45,
+         "p": [
+          0,
+          18,
+          27
+         ],
+         "range": [
+          [
+           0,
+           18,
+           27
+          ],
+          [
+           0,
+           18,
+           27
+          ]
+         ],
+         "name": "u"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 14,
+   "name": "narrow",
+   "qualifiedName": "narrow",
+   "type": 50,
+   "returnType": 1,
+   "prototyped": true,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "template": {
+    "id": 1,
+    "name": "narrow",
+    "qualifiedName": "narrow",
+    "p": [
+     0,
+     22,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 51
+    }
+   ],
+   "prototype": true,
+   "p": [
+    0,
+    23,
+    5
+   ],
+   "start": [
+    0,
+    23,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 12,
+     "name": "t",
+     "type": 51,
+     "storage": "auto",
+     "modified": true,
+     "p": [
+      0,
+      23,
+      14
+     ],
+     "start": [
+      0,
+      23,
+      12
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     23,
+     17
+    ],
+    "end": [
+     0,
+     23,
+     34
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       23,
+       19
+      ],
+      "end": [
+       0,
+       23,
+       32
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 1,
+       "p": [
+        0,
+        23,
+        26
+       ],
+       "range": [
+        [
+         0,
+         23,
+         26
+        ],
+        [
+         0,
+         23,
+         31
+        ]
+       ],
+       "op": "cast",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 51,
+         "p": [
+          0,
+          23,
+          31
+         ],
+         "range": [
+          [
+           0,
+           23,
+           31
+          ],
+          [
+           0,
+           23,
+           31
+          ]
+         ],
+         "lv": true,
+         "var": 12,
+         "name": "t"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 15,
+   "name": "get",
+   "qualifiedName": "Box<T>::get",
+   "type": 52,
+   "returnType": 53,
+   "prototyped": true,
+   "thisClass": 54,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 54,
+   "inline": true,
+   "template": {
+    "id": 2,
+    "name": "get",
+    "qualifiedName": "Box<T>::get",
+    "p": [
+     0,
+     31,
+     5
+    ]
+   },
+   "prototype": true,
+   "p": [
+    0,
+    31,
+    5
+   ],
+   "start": [
+    0,
+    31,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 13,
+     "name": "",
+     "type": 55,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     31,
+     17
+    ],
+    "end": [
+     0,
+     31,
+     29
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       31,
+       19
+      ],
+      "end": [
+       0,
+       31,
+       27
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 56,
+       "p": [
+        0,
+        31,
+        26
+       ],
+       "lv": true,
+       "implicit": true,
+       "op": "points_to_field",
+       "ops": [
+        {
+         "k": "variable",
+         "t": 57,
+         "var": 13,
+         "name": ""
+        },
+        {
+         "k": "field",
+         "t": 53,
+         "p": [
+          0,
+          31,
+          26
+         ],
+         "range": [
+          [
+           0,
+           31,
+           26
+          ],
+          [
+           0,
+           31,
+           26
+          ]
+         ],
+         "name": "v"
+        }
+       ]
+      }
+     }
+    ]
+   }
+  },
+  {
+   "id": 16,
+   "name": "g",
+   "qualifiedName": "Calls<T>::g",
+   "type": 58,
+   "returnType": 1,
+   "prototyped": true,
+   "thisClass": 59,
+   "linkage": "cplusplus_external",
+   "storage": "unspecified",
+   "class": 59,
+   "inline": true,
+   "template": {
+    "id": 6,
+    "name": "g",
+    "qualifiedName": "Calls<T>::g",
+    "p": [
+     0,
+     40,
+     7
+    ]
+   },
+   "prototype": true,
+   "p": [
+    0,
+    40,
+    7
+   ],
+   "start": [
+    0,
+    40,
+    3
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 14,
+     "name": "",
+     "type": 60,
+     "storage": "auto",
+     "this": true
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     40,
+     11
+    ],
+    "end": [
+     0,
+     40,
+     43
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       40,
+       13
+      ],
+      "end": [
+       0,
+       40,
+       41
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 41,
+       "p": [
+        0,
+        40,
+        39
+       ],
+       "range": [
+        [
+         0,
+         40,
+         20
+        ],
+        [
+         0,
+         40,
+         40
+        ]
+       ],
+       "op": "call",
+       "name": "get",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 41,
+         "p": [
+          0,
+          40,
+          21
+         ],
+         "range": [
+          [
+           0,
+           40,
+           20
+          ],
+          [
+           0,
+           40,
+           38
+          ]
+         ],
+         "op": "dot_static",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 61,
+           "p": [
+            0,
+            40,
+            20
+           ],
+           "lv": true,
+           "implicit": true,
+           "op": "points_to_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 62,
+             "var": 14,
+             "name": ""
+            },
+            {
+             "k": "field",
+             "t": 61,
+             "p": [
+              0,
+              40,
+              20
+             ],
+             "range": [
+              [
+               0,
+               40,
+               20
+              ],
+              [
+               0,
+               40,
+               20
+              ]
+             ],
+             "name": "p"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 41,
+           "p": [
+            0,
+            40,
+            39
+           ],
+           "implicit": true,
+           "op": "lvalue",
+           "ops": [
+            {
+             "k": "constant",
+             "t": 41,
+             "p": [
+              0,
+              40,
+              39
+             ],
+             "range": [
+              [
+               0,
+               40,
+               39
+              ],
+              [
+               0,
+               40,
+               39
+              ]
+             ],
+             "ck": "template_param"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "routine",
+   "name": "int (char)",
+   "returns": 1,
+   "params": [
+    2
+   ]
+  },
+  {
+   "id": 1,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 2,
+   "kind": "integer",
+   "name": "char",
+   "size": 1,
+   "signed": true
+  },
+  {
+   "id": 3,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 4,
+   "kind": "struct",
+   "name": "Outer<int>",
+   "size": 1,
+   "tag": "Outer",
+   "qualifiedName": "Outer<int>",
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "fields": [],
+   "bases": [],
+   "templateInstance": true,
+   "template": {
+    "id": 7,
+    "name": "Outer",
+    "qualifiedName": "Outer",
+    "p": [
+     0,
+     7,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ]
+  },
+  {
+   "id": 5,
+   "kind": "struct",
+   "name": "Outer<double>",
+   "size": 1,
+   "tag": "Outer",
+   "qualifiedName": "Outer<double>",
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "fields": [],
+   "bases": [],
+   "templateInstance": true,
+   "template": {
+    "id": 7,
+    "name": "Outer",
+    "qualifiedName": "Outer",
+    "p": [
+     0,
+     7,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 12
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "kind": "struct",
+   "name": "Box<int>",
+   "size": 4,
+   "tag": "Box",
+   "qualifiedName": "Box<int>",
+   "p": [
+    0,
+    29,
+    8
+   ],
+   "fields": [
+    {
+     "name": "v",
+     "type": 1,
+     "offset": 0,
+     "p": [
+      0,
+      30,
+      5
+     ]
+    }
+   ],
+   "bases": [],
+   "templateInstance": true,
+   "template": {
+    "id": 8,
+    "name": "Box",
+    "qualifiedName": "Box",
+    "p": [
+     0,
+     28,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 1
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "kind": "integer",
+   "name": "short",
+   "size": 2,
+   "signed": true
+  },
+  {
+   "id": 8,
+   "kind": "pointer",
+   "name": "short (*)(int) const",
+   "size": 8,
+   "to": 28
+  },
+  {
+   "id": 9,
+   "kind": "typeref",
+   "name": "const Outer<int>",
+   "of": 4,
+   "refKind": "none"
+  },
+  {
+   "id": 10,
+   "kind": "pointer",
+   "name": "short (*)(double) const",
+   "size": 8,
+   "to": 35
+  },
+  {
+   "id": 11,
+   "kind": "typeref",
+   "name": "const Outer<double>",
+   "of": 5,
+   "refKind": "none"
+  },
+  {
+   "id": 12,
+   "kind": "float",
+   "name": "double",
+   "size": 8
+  },
+  {
+   "id": 13,
+   "kind": "pointer",
+   "name": "int (*)(char)",
+   "size": 8,
+   "to": 0
+  },
+  {
+   "id": 14,
+   "kind": "pointer",
+   "name": "int (*)() const",
+   "size": 8,
+   "to": 16
+  },
+  {
+   "id": 15,
+   "kind": "typeref",
+   "name": "const Box<int>",
+   "of": 6,
+   "refKind": "none"
+  },
+  {
+   "id": 16,
+   "kind": "routine",
+   "name": "int () const",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 17,
+   "kind": "typeref",
+   "name": "const Box<int> *const",
+   "of": 63,
+   "refKind": "none"
+  },
+  {
+   "id": 18,
+   "kind": "routine",
+   "name": "Box<int> &(const Box<int> &)",
+   "returns": 19,
+   "params": [
+    20
+   ]
+  },
+  {
+   "id": 19,
+   "kind": "pointer",
+   "name": "Box<int> &",
+   "size": 8,
+   "to": 6,
+   "reference": true
+  },
+  {
+   "id": 20,
+   "kind": "pointer",
+   "name": "const Box<int> &",
+   "size": 8,
+   "to": 15,
+   "reference": true
+  },
+  {
+   "id": 21,
+   "kind": "routine",
+   "name": "Box<int> &(Box<int> &&)",
+   "returns": 19,
+   "params": [
+    22
+   ]
+  },
+  {
+   "id": 22,
+   "kind": "pointer",
+   "name": "Box<int> &&",
+   "size": 8,
+   "to": 6,
+   "reference": true,
+   "rvalueReference": true
+  },
+  {
+   "id": 23,
+   "kind": "routine",
+   "name": "Outer<int> &(const Outer<int> &)",
+   "returns": 24,
+   "params": [
+    25
+   ]
+  },
+  {
+   "id": 24,
+   "kind": "pointer",
+   "name": "Outer<int> &",
+   "size": 8,
+   "to": 4,
+   "reference": true
+  },
+  {
+   "id": 25,
+   "kind": "pointer",
+   "name": "const Outer<int> &",
+   "size": 8,
+   "to": 9,
+   "reference": true
+  },
+  {
+   "id": 26,
+   "kind": "routine",
+   "name": "Outer<int> &(Outer<int> &&)",
+   "returns": 24,
+   "params": [
+    27
+   ]
+  },
+  {
+   "id": 27,
+   "kind": "pointer",
+   "name": "Outer<int> &&",
+   "size": 8,
+   "to": 4,
+   "reference": true,
+   "rvalueReference": true
+  },
+  {
+   "id": 28,
+   "kind": "routine",
+   "name": "short (int) const",
+   "returns": 7,
+   "params": [
+    1
+   ]
+  },
+  {
+   "id": 29,
+   "kind": "typeref",
+   "name": "const Outer<int> *const",
+   "of": 64,
+   "refKind": "none"
+  },
+  {
+   "id": 30,
+   "kind": "routine",
+   "name": "Outer<double> &(const Outer<double> &)",
+   "returns": 31,
+   "params": [
+    32
+   ]
+  },
+  {
+   "id": 31,
+   "kind": "pointer",
+   "name": "Outer<double> &",
+   "size": 8,
+   "to": 5,
+   "reference": true
+  },
+  {
+   "id": 32,
+   "kind": "pointer",
+   "name": "const Outer<double> &",
+   "size": 8,
+   "to": 11,
+   "reference": true
+  },
+  {
+   "id": 33,
+   "kind": "routine",
+   "name": "Outer<double> &(Outer<double> &&)",
+   "returns": 31,
+   "params": [
+    34
+   ]
+  },
+  {
+   "id": 34,
+   "kind": "pointer",
+   "name": "Outer<double> &&",
+   "size": 8,
+   "to": 5,
+   "reference": true,
+   "rvalueReference": true
+  },
+  {
+   "id": 35,
+   "kind": "routine",
+   "name": "short (double) const",
+   "returns": 7,
+   "params": [
+    12
+   ]
+  },
+  {
+   "id": 36,
+   "kind": "typeref",
+   "name": "const Outer<double> *const",
+   "of": 65,
+   "refKind": "none"
+  },
+  {
+   "id": 37,
+   "kind": "routine",
+   "name": "T () const",
+   "returns": 38,
+   "params": []
+  },
+  {
+   "id": 38,
+   "kind": "dependent",
+   "name": "T",
+   "size": 1
+  },
+  {
+   "id": 39,
+   "kind": "struct",
+   "name": "Outer<T>::Inner",
+   "size": 1,
+   "tag": "Inner",
+   "qualifiedName": "Outer<T>::Inner",
+   "p": [
+    0,
+    11,
+    10
+   ],
+   "span": [
+    [
+     0,
+     11,
+     3
+    ],
+    [
+     0,
+     14,
+     3
+    ]
+   ],
+   "fields": [
+    {
+     "name": "x",
+     "type": 38,
+     "offset": 0,
+     "p": [
+      0,
+      12,
+      7
+     ]
+    }
+   ],
+   "bases": [],
+   "template": {
+    "id": 9,
+    "name": "Inner",
+    "qualifiedName": "Outer<T>::Inner",
+    "p": [
+     0,
+     11,
+     10
+    ]
+   }
+  },
+  {
+   "id": 40,
+   "kind": "typeref",
+   "name": "const Outer<T>::Inner *const",
+   "of": 43,
+   "refKind": "none"
+  },
+  {
+   "id": 41,
+   "kind": "dependent",
+   "name": "<unnamed>",
+   "size": 1
+  },
+  {
+   "id": 42,
+   "kind": "typeref",
+   "name": "const T",
+   "of": 38,
+   "refKind": "none"
+  },
+  {
+   "id": 43,
+   "kind": "pointer",
+   "name": "const Outer<T>::Inner *",
+   "size": 8,
+   "to": 66
+  },
+  {
+   "id": 44,
+   "kind": "routine",
+   "name": "U () const",
+   "returns": 45,
+   "params": []
+  },
+  {
+   "id": 45,
+   "kind": "dependent",
+   "name": "U",
+   "size": 1
+  },
+  {
+   "id": 46,
+   "kind": "struct",
+   "name": "Outer<T>::Nested<U>",
+   "size": 1,
+   "tag": "Nested",
+   "qualifiedName": "Outer<T>::Nested<U>",
+   "p": [
+    0,
+    16,
+    10
+   ],
+   "span": [
+    [
+     0,
+     16,
+     3
+    ],
+    [
+     0,
+     19,
+     3
+    ]
+   ],
+   "fields": [
+    {
+     "name": "u",
+     "type": 45,
+     "offset": 0,
+     "p": [
+      0,
+      17,
+      7
+     ]
+    }
+   ],
+   "bases": [],
+   "template": {
+    "id": 10,
+    "name": "Nested",
+    "qualifiedName": "Outer<T>::Nested",
+    "p": [
+     0,
+     15,
+     3
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 45
+    }
+   ]
+  },
+  {
+   "id": 47,
+   "kind": "typeref",
+   "name": "const Outer<T>::Nested<U> *const",
+   "of": 49,
+   "refKind": "none"
+  },
+  {
+   "id": 48,
+   "kind": "typeref",
+   "name": "const U",
+   "of": 45,
+   "refKind": "none"
+  },
+  {
+   "id": 49,
+   "kind": "pointer",
+   "name": "const Outer<T>::Nested<U> *",
+   "size": 8,
+   "to": 67
+  },
+  {
+   "id": 50,
+   "kind": "routine",
+   "name": "int (T)",
+   "returns": 1,
+   "params": [
+    51
+   ]
+  },
+  {
+   "id": 51,
+   "kind": "dependent",
+   "name": "T",
+   "size": 1
+  },
+  {
+   "id": 52,
+   "kind": "routine",
+   "name": "T () const",
+   "returns": 53,
+   "params": []
+  },
+  {
+   "id": 53,
+   "kind": "dependent",
+   "name": "T",
+   "size": 1
+  },
+  {
+   "id": 54,
+   "kind": "struct",
+   "name": "Box<T>",
+   "size": 1,
+   "tag": "Box",
+   "qualifiedName": "Box<T>",
+   "p": [
+    0,
+    29,
+    8
+   ],
+   "span": [
+    [
+     0,
+     29,
+     1
+    ],
+    [
+     0,
+     32,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "v",
+     "type": 53,
+     "offset": 0,
+     "p": [
+      0,
+      30,
+      5
+     ]
+    }
+   ],
+   "bases": [],
+   "template": {
+    "id": 8,
+    "name": "Box",
+    "qualifiedName": "Box",
+    "p": [
+     0,
+     28,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 53
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "kind": "typeref",
+   "name": "const Box<T> *const",
+   "of": 57,
+   "refKind": "none"
+  },
+  {
+   "id": 56,
+   "kind": "typeref",
+   "name": "const T",
+   "of": 53,
+   "refKind": "none"
+  },
+  {
+   "id": 57,
+   "kind": "pointer",
+   "name": "const Box<T> *",
+   "size": 8,
+   "to": 68
+  },
+  {
+   "id": 58,
+   "kind": "routine",
+   "name": "int ()",
+   "returns": 1,
+   "params": []
+  },
+  {
+   "id": 59,
+   "kind": "struct",
+   "name": "Calls<T>",
+   "size": 1,
+   "tag": "Calls",
+   "qualifiedName": "Calls<T>",
+   "p": [
+    0,
+    38,
+    8
+   ],
+   "span": [
+    [
+     0,
+     38,
+     1
+    ],
+    [
+     0,
+     41,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "p",
+     "type": 61,
+     "offset": 0,
+     "p": [
+      0,
+      39,
+      5
+     ]
+    }
+   ],
+   "bases": [],
+   "template": {
+    "id": 11,
+    "name": "Calls",
+    "qualifiedName": "Calls",
+    "p": [
+     0,
+     37,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "type": 61
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "kind": "typeref",
+   "name": "Calls<T> *const",
+   "of": 62,
+   "refKind": "none"
+  },
+  {
+   "id": 61,
+   "kind": "dependent",
+   "name": "T",
+   "size": 1
+  },
+  {
+   "id": 62,
+   "kind": "pointer",
+   "name": "Calls<T> *",
+   "size": 8,
+   "to": 59
+  },
+  {
+   "id": 63,
+   "kind": "pointer",
+   "name": "const Box<int> *",
+   "size": 8,
+   "to": 15
+  },
+  {
+   "id": 64,
+   "kind": "pointer",
+   "name": "const Outer<int> *",
+   "size": 8,
+   "to": 9
+  },
+  {
+   "id": 65,
+   "kind": "pointer",
+   "name": "const Outer<double> *",
+   "size": 8,
+   "to": 11
+  },
+  {
+   "id": 66,
+   "kind": "typeref",
+   "name": "const Outer<T>::Inner",
+   "of": 39,
+   "refKind": "none"
+  },
+  {
+   "id": 67,
+   "kind": "typeref",
+   "name": "const Outer<T>::Nested<U>",
+   "of": 46,
+   "refKind": "none"
+  },
+  {
+   "id": 68,
+   "kind": "typeref",
+   "name": "const Box<T>",
+   "of": 54,
+   "refKind": "none"
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}
