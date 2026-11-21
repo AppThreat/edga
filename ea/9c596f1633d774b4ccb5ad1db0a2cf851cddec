@@ -1,0 +1,27 @@
+README.md
+  s_8a4433d1784041::t_ce6812557ead25 53
+docs/how-edga-works.md
+  s_8a4433d1784041::t_21c02a3daa9abf 144,146,221-228
+docs/json-format.md
+  s_8a4433d1784041::t_5ace3d8544cc8c 129-136
+src/edga_main.cpp
+  s_8a4433d1784041::t_3f8a55a9517143 42,47-48,134-138
+src/edga_options.h
+  s_8a4433d1784041::t_aed306ad25728a 21-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ea9c596f1633d774b4ccb5ad1db0a2cf851cddec",
+  "prompts": {},
+  "sessions": {
+    "s_8a4433d1784041": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ef82bff-b756-4a5d-8551-a808005aa216",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
