@@ -29,8 +29,8 @@ for the release:
 | Windows ARM64 | `edga-windows-arm64.exe` | MSVC, static CRT |
 
 ```bash
-curl -LO https://github.com/AppThreat/edga/releases/download/v0.3.0/edga-linux-amd64
-curl -LO https://github.com/AppThreat/edga/releases/download/v0.3.0/edga-linux-amd64.sha256
+curl -LO https://github.com/AppThreat/edga/releases/download/v0.4.0/edga-linux-amd64
+curl -LO https://github.com/AppThreat/edga/releases/download/v0.4.0/edga-linux-amd64.sha256
 sha256sum -c edga-linux-amd64.sha256
 chmod +x edga-linux-amd64 && mv edga-linux-amd64 /usr/local/bin/edga
 edga --version
@@ -81,7 +81,7 @@ compilation database, is described in [how EDG and edga work](docs/how-edga-work
 ```json
 {
   "schema": "edga/1",
-  "tool": { "name": "edga", "version": "0.3.0", "edgCommit": "123522f...", "config": "linux-x86_64-..." },
+  "tool": { "name": "edga", "version": "0.4.0", "edgCommit": "123522f...", "config": "linux-x86_64-..." },
   "tu": { "path": "src/main.c", "language": "c", "status": "ok", "mode": { "gcc": true, "gpp": false, "clang": false, "microsoft": false } },
   "files": [ ... ], "macros": [ ... ], "macroInvocations": [ ... ], "inlineNamespaces": [ ... ],
   "globals": [ ... ], "routines": [ ... ], "types": [ ... ], "enumerators": [ ... ],
