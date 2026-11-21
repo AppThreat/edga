@@ -137,9 +137,12 @@ everything else to the front end:
 
 ```
 main()                          src/edga_main.cpp
-  strip --edga-out/--edga-root/--edga-headers
+  strip --edga-out/--edga-root/--edga-headers/--edga-no-prototypes
   add defaults the user did not give:
     --no_remove_unneeded_entities   keep bodies nothing calls
+    --no_defer_parse_function_templates
+                                    scan every template's body, so a template
+                                    nothing instantiates still exports a body
     --instantiate used              instances the unit uses get bodies
     --no_auto_instantiation         ... without the prelinker
     --error_limit 1000000           keep going past many errors
@@ -205,6 +208,18 @@ body is read as a whole and a table for it would be all indirection. The routine
 table grows while it is being written, because writing a call expression notes the
 callee, and the callee's own entry (which may live in a header or another scope the
 initial walk did not reach) is then written too.
+
+Templates get their bodies exported in two steps. The `--no_defer_parse_function_templates`
+default makes the front end scan the body of every template the unit declares instead of
+deferring the ones nothing uses, and after the unit is walked the back end collects the
+prototype instantiations this created: the bodies of the templates the unit never instantiated
+for real, written with `prototype: true` and the template parameters still in place
+([Templates and their instances](json-format.md#templates-and-their-instances) describes the
+fields). A prototype is held to the same rule as any other body: one whose file is outside
+`--edga-root` is not written, unless `--edga-headers` puts headers outside the root in scope,
+and one the front end scanned no body for does not exist to write. `--edga-no-prototypes`
+turns both steps off: the front end defers the unused bodies again and the back end skips the
+collection, so the unit exports exactly what the versions before prototypes exported wrote.
 
 Everything the front end resolved is in the tree with the resolution attached: an
 operation node names its operator by kind, a call says which routine it resolved to,
