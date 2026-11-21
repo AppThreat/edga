@@ -1,0 +1,19 @@
+src/edga_back_end.cpp
+  s_8a4433d1784041::t_d531b485ec66ba 1642-1643
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2168525c29558844a43264a4a472a88962a96fe5",
+  "prompts": {},
+  "sessions": {
+    "s_8a4433d1784041": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ef82bff-b756-4a5d-8551-a808005aa216",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
