@@ -1,0 +1,28 @@
+tests/run.py
+  s_8788a01b4477b0::t_af6dcc2532078f 239-245
+  s_8788a01b4477b0::t_6881f9d4f9ab07 124-127,137
+  s_8788a01b4477b0::t_9f0b3315ae9da6 123,128-136,138-165
+docs/json-format.md
+  s_8788a01b4477b0::t_956a5c3bb6a667 113-117,121-122
+  s_8788a01b4477b0::t_4a2a91c3feb188 123
+tests/fixtures/templates_redeclared.cpp
+  s_8788a01b4477b0::t_3c093033bdd9ba 1-18
+tests/expected/templates_redeclared.cpp.json
+  s_8788a01b4477b0::t_658aa115d47c6b 1-798
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "322f52720b2b24fe1e24f4635f953c2c955587d9",
+  "prompts": {},
+  "sessions": {
+    "s_8788a01b4477b0": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "sess_c41334aa-2343-4dc4-8b07-1cbbaab93edf",
+        "model": "unknown"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
