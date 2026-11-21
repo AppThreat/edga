@@ -1,0 +1,23 @@
+CMakeLists.txt
+  s_8a4433d1784041::t_2ee35edaea1ed3 9
+README.md
+  s_8a4433d1784041::t_2ee35edaea1ed3 32-33,84
+docs/maintaining.md
+  s_8a4433d1784041::t_2ee35edaea1ed3 72-73
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c046f08f089c8a3f0cd7dc631eae2719995ae61d",
+  "prompts": {},
+  "sessions": {
+    "s_8a4433d1784041": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "5ef82bff-b756-4a5d-8551-a808005aa216",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
