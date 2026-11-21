@@ -1332,6 +1332,21 @@
    "storage": "unspecified",
    "inline": true,
    "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "is_nothrow",
+    "qualifiedName": "is_nothrow",
+    "p": [
+     0,
+     5,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "value": "true"
+    }
+   ],
    "p": [
     0,
     6,
@@ -1414,6 +1429,21 @@
    "storage": "unspecified",
    "inline": true,
    "templateInstance": true,
+   "template": {
+    "id": 1,
+    "name": "is_nothrow",
+    "qualifiedName": "is_nothrow",
+    "p": [
+     0,
+     5,
+     1
+    ]
+   },
+   "templateArgs": [
+    {
+     "value": "false"
+    }
+   ],
    "p": [
     0,
     6,
