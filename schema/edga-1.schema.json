@@ -185,7 +185,7 @@
           "type": "boolean",
           "description": "The prototype instantiation of a template nothing in the unit instantiated for real: the body the front end scanned for the function template or the class template member, with the parameters still in place. Not an instance: it carries no templateInstance flag."
         },
-        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order. Absent for a member of a class template instance, whose own template takes no arguments." },
+        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order. Absent for a member of a class template instance, whose own template takes no arguments, unless the member is itself a function template. On a prototype, the template's own parameters." },
         "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "lambda": { "type": "boolean" },
         "start": { "$ref": "#/$defs/position", "description": "Where the declaration starts: its specifiers, else its declarator." },
@@ -427,8 +427,8 @@
         "bases": { "type": "array" },
         "closure": { "type": "boolean" },
         "templateInstance": { "type": "boolean", "description": "An instance of a class template." },
-        "template": { "$ref": "#/$defs/templateObject", "description": "The class template or specialisation the class was generated from. Its id is shared by the template's other instances in the unit." },
-        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order, against the primary template's parameters." },
+        "template": { "$ref": "#/$defs/templateObject", "description": "The class template the class was generated from, or the partial specialisation it was generated from (its own id and position, the primary template's name). Its id is shared by the template's other instances in the unit." },
+        "templateArgs": { "type": "array", "items": { "$ref": "#/$defs/templateArg" }, "description": "The arguments the instance is based on, in order, against the primary template's parameters. On the class a prototype belongs to, the template's own parameters." },
         "explicit": { "type": "boolean", "description": "An explicit specialisation: its definition is supplied on its own, `template <> ...`, and its template names the primary template." },
         "typedef": { "type": "string" },
         "refKind": { "type": "string" }

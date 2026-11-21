@@ -99,8 +99,8 @@ template and the arguments it was generated with:
 
 | Field | What it holds |
 |---|---|
-| `template` | The template the entity came from: `id`, `name` (`Box`, `get`), `qualifiedName` (`Box<T>::get`, the template's parameters in place), and `p`, where the template is declared. The `id` is shared by every instance of one template in the unit, so the two instances of `twice` in a unit carry the same `template.id` and differ in `templateArgs`. |
-| `templateArgs` | The arguments the instance is based on, in order. A type argument is `{"type": <type id>}`; a non-type argument is `{"value": "<as the front end prints it>"}`; a template template argument is `{"name": ..., "qualifiedName": ...}`. Against the primary template's parameters: an instance of a partial specialisation of `Box<T>` over `T *` carries `Box` and the argument `int *` for `Box<int *>`. A member of a class template instance has no `templateArgs` of its own; its template is the member's declaration in the template (`Box<T>::get`), which takes the class's arguments. |
+| `template` | The template the entity came from: `id`, `name` (`Box`, `get`), `qualifiedName` (`Box<T>::get`, the template's parameters in place), and `p`, where the template is declared. The `id` is shared by every instance of one template in the unit, so the two instances of `twice` in a unit carry the same `template.id` and differ in `templateArgs`. An instance of a partial specialisation names the partial specialisation: its own `id` and position, the same `name` and `qualifiedName` as the primary template for a class (`Box`), and the specialisation's pattern for a member (`Box<T *>::deref`). |
+| `templateArgs` | The arguments the instance is based on, in order. A type argument is `{"type": <type id>}`; a non-type argument is `{"value": "<as the front end prints it>"}`; a template template argument is `{"name": ..., "qualifiedName": ...}`. The arguments are always against the primary template's parameters: `Box<int *>` carries the argument `int *`. A member of a class template instance has no `templateArgs` of its own; its template is the member's declaration in the template (`Box<T>::get`), which takes the class's arguments. A member function template of a class template instance (`conv<short>` called on an `Outer<int>`) carries its own arguments (`short`), and its template is the member template the source declares (`Outer<T>::conv`), shared by the instances made through every instance of the class. A prototype carries the template's own parameters as its `templateArgs` (`T`, a non-type parameter by its name as `{"value": "N"}`, a template template parameter by its name), and so does the class a prototype belongs to (`Box<T>`). |
 | `explicit` | The entity is an explicit specialisation (`template <> ...`): its definition is supplied on its own, and its `template` names the primary template. |
 | `prototype` | The routine is the prototype instantiation of a template nothing in the unit instantiated for real: the body the front end scanned for the template, with the parameters still in place. It carries its `template` object and its body, and no `templateInstance` flag, because it is not an instance. |
 
@@ -126,7 +126,11 @@ the code keeps the shape the source wrote: a type a template parameter stands fo
 `dependent` and the parameter's name (`T`, or `<unnamed>` for one the front end makes for a type
 it cannot name), a call whose callee depends on a parameter is a call
 with no `callee` and the name as written (`{"op": "call", "name": "size", ...}`), and the class
-the prototype belongs to appears with the parameters in place (`Unused<T>`). For this the front
+the prototype belongs to appears with the parameters in place (`Unused<T>`). Prototypes are found
+for function templates, member functions of class templates, and members of the classes and
+member class templates nested in a class template; a friend function defined inside a class
+template has none. An explicit specialisation does not count as an instance when deciding
+whether a template's prototype is written. For this the front
 end checks the body of every template, instead of deferring the bodies of the templates nothing
 instantiates as GNU and Clang modes otherwise do. Errors it finds in those bodies, often in
 system headers written for compilers that defer (libc++ among them), are written as diagnostics

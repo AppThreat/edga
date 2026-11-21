@@ -313,10 +313,10 @@ class Exporter {
         // an instance names the template it came from; a prototype is exported only for a
         // template the unit does not instantiate for real, so only a body counts: a member
         // declared in an instantiated class but never used is not one
-        if (r->assoc_template != nullptr && r->function_def_number != NULL_function_def_number) {
-          a_template_ptr t = r->assoc_template;
-          if (t->canonical_template != nullptr) t = t->canonical_template;
-          templatesWithRealInstances_.insert(t);
+        // an explicit specialisation supplies its own body, so it is not one of the template's
+        if (r->assoc_template != nullptr && r->function_def_number != NULL_function_def_number &&
+            !r->is_specialized) {
+          templatesWithRealInstances_.insert(originalTemplate(r->assoc_template));
         }
       }
     }
@@ -369,22 +369,37 @@ class Exporter {
   // unit's real instances are all known.
   void collectPrototypes() {
     if (!options().prototypes) return;
-    for (a_scope_ptr s : scopes_) {
-      for (a_template_ptr t = s->templates; t != nullptr; t = t->next) {
-        if (t->kind == templk_function || t->kind == templk_member_function) {
-          notePrototype(t->prototype_instantiation.routine);
-        } else if (t->kind == templk_class || t->kind == templk_member_class) {
-          // a class template's prototype instantiation is a nonreal class whose scope holds the
-          // prototype of each member
-          a_type_ptr pt = t->prototype_instantiation.type;
-          if (pt == nullptr || !is_immediate_class_type(pt)) continue;
-          a_class_type_supplement_ptr supp = class_type_supp(pt);
-          if (supp == nullptr || supp->assoc_scope == nullptr) continue;
-          for (a_routine_ptr r = supp->assoc_scope->routines; r != nullptr; r = r->next)
-            notePrototype(r);
-        }
+    std::unordered_set<a_scope_ptr> walked;
+    for (a_scope_ptr s : scopes_) collectTemplatePrototypes(s, walked);
+  }
+
+  // The prototypes a scope's template list holds: a function template's routine, and every
+  // member of a class template's prototype class.
+  void collectTemplatePrototypes(a_scope_ptr s, std::unordered_set<a_scope_ptr>& walked) {
+    if (s == nullptr) return;
+    for (a_template_ptr t = s->templates; t != nullptr; t = t->next) {
+      if (t->kind == templk_function || t->kind == templk_member_function) {
+        notePrototype(t->prototype_instantiation.routine);
+      } else if (t->kind == templk_class || t->kind == templk_member_class) {
+        collectClassPrototypes(t->prototype_instantiation.type, walked);
       }
     }
+  }
+
+  // A class template's prototype instantiation is a nonreal class whose scope holds the prototype
+  // of each member. The classes nested in it, its member templates, and the friends it defines
+  // are walked the same way, so a member of `Outer<T>::Inner` or of `Outer<T>::Nested<U>` is found
+  // too. A scope is walked once.
+  void collectClassPrototypes(a_type_ptr pt, std::unordered_set<a_scope_ptr>& walked) {
+    if (pt == nullptr || !is_immediate_class_type(pt)) return;
+    a_class_type_supplement_ptr supp = class_type_supp(pt);
+    if (supp == nullptr || supp->assoc_scope == nullptr) return;
+    a_scope_ptr scope = supp->assoc_scope;
+    if (!walked.insert(scope).second) return;
+    for (a_routine_ptr r = scope->routines; r != nullptr; r = r->next) notePrototype(r);
+    for (a_type_ptr nested = scope->types; nested != nullptr; nested = nested->next)
+      collectClassPrototypes(nested, walked);
+    collectTemplatePrototypes(scope, walked);
   }
 
   void notePrototype(a_routine_ptr r) {
@@ -393,11 +408,9 @@ class Exporter {
     if (r->function_def_number == NULL_function_def_number) return;
     if (!bodyExportable(r)) return;
     if (seenRoutines_.count(r) != 0) return;
-    a_template_ptr t = r->assoc_template;
-    if (t != nullptr) {
-      if (t->canonical_template != nullptr) t = t->canonical_template;
-      if (templatesWithRealInstances_.count(t) != 0) return;
-    }
+    if (r->assoc_template != nullptr &&
+        templatesWithRealInstances_.count(originalTemplate(r->assoc_template)) != 0)
+      return;
     if (seenRoutines_.insert(r).second) routines_.push_back(r);
   }
 
@@ -491,7 +504,7 @@ class Exporter {
 
     a_scope_ptr body = nullptr;
     if (r->function_def_number != NULL_function_def_number) body = scope_for_routine_or_null(r);
-    bool exportBody = body != nullptr && bodyExportable(r);
+    bool exportBody = body != nullptr && body->assoc_block != nullptr && bodyExportable(r);
     json_.fieldBool("defined", body != nullptr);
     if (exportBody) {
       a_scope_ptr saved = innermost_function_scope;
@@ -1535,11 +1548,29 @@ class Exporter {
 
   // ---- template identity ----------------------------------------------------------------------
 
+  // The template declaration an entity really comes from. A template declared more than once has
+  // an entry per declaration, and the canonical one stands for them all. A member template of a
+  // class template instance (`conv` in `Outer<int>`) is an entry of that instance, whose
+  // `prototype_template` leads back to the member template the source declares (`Outer<T>::conv`),
+  // so the instances made through `Outer<int>` and `Outer<double>` share one template.
+  static a_template_ptr originalTemplate(a_template_ptr t) {
+    for (int guard = 0; t != nullptr && guard < 64; ++guard) {
+      if (t->canonical_template != nullptr && t->canonical_template != t) {
+        t = t->canonical_template;
+      } else if (t->prototype_template != nullptr && t->prototype_template != t) {
+        t = t->prototype_template;
+      } else {
+        break;
+      }
+    }
+    return t;
+  }
+
   // The id of a template: shared by every instance of one template in the unit, taken from the
   // template's canonical IL entry (a template declared more than once has an entry per
   // declaration, and the instances point at the representative one).
   long templateId(a_template_ptr t) {
-    if (t->canonical_template != nullptr) t = t->canonical_template;
+    t = originalTemplate(t);
     auto it = templateIds_.find(t);
     if (it != templateIds_.end()) return it->second;
     long id = static_cast<long>(templateIds_.size()) + 1;
@@ -1557,6 +1588,7 @@ class Exporter {
   // The template an entity the front end generated from a template came from: its id, its name
   // and qualified name, and where the template is declared.
   void writeTemplateField(a_template_ptr t) {
+    t = originalTemplate(t);
     json_.key("template");
     json_.beginObject();
     json_.field("id", templateId(t));
@@ -1601,21 +1633,31 @@ class Exporter {
 
   // The name a call the front end could not resolve was written with: a template parameter
   // constant names the callee, either directly (`helper(p)`, the name looked up when the
-  // template is instantiated) or as the member an access on a parameter names (`p.get()`).
+  // template is instantiated) or as the member an access on a parameter names (`p.get()`). A
+  // callee written with explicit template arguments (`p.template get<int>()`) is a reference to
+  // a template whose constant names it, and an implicit conversion around the callee is looked
+  // through.
   static const char* dependentCalleeName(an_expr_node_ptr e) {
     if (e == nullptr) return nullptr;
-    if (e->kind == (an_expr_node_kind)enk_constant) {
-      a_constant_ptr c = e->variant.constant.ptr;
-      if (c != nullptr && c->kind == ck_template_param && c->source_corresp.name != nullptr)
-        return c->source_corresp.name;
-      return nullptr;
-    }
+    if (e->kind == (an_expr_node_kind)enk_constant) return templateParamName(e->variant.constant.ptr);
     if (e->kind == (an_expr_node_kind)enk_operation) {
       an_expr_operator_kind op = e->variant.operation.kind;
-      if (op == eok_dot_static || op == eok_points_to_static) {
-        an_expr_node_ptr first = e->variant.operation.operands;
+      an_expr_node_ptr first = e->variant.operation.operands;
+      if (op == eok_dot_static || op == eok_points_to_static)
         return dependentCalleeName(first != nullptr ? first->next : nullptr);
-      }
+      if (e->compiler_generated && first != nullptr && first->next == nullptr)
+        return dependentCalleeName(first);
+    }
+    return nullptr;
+  }
+
+  // The name a template parameter constant carries, through the template reference that
+  // explicit template arguments make of it.
+  static const char* templateParamName(a_constant_ptr c) {
+    for (int guard = 0; c != nullptr && c->kind == ck_template_param && guard < 8; ++guard) {
+      if (c->source_corresp.name != nullptr) return c->source_corresp.name;
+      if (c->variant.template_param.kind != tpck_template_ref) return nullptr;
+      c = c->variant.template_param.variant.template_ref.con;
     }
     return nullptr;
   }
