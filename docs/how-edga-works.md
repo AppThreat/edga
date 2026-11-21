@@ -141,8 +141,9 @@ main()                          src/edga_main.cpp
   add defaults the user did not give:
     --no_remove_unneeded_entities   keep bodies nothing calls
     --no_defer_parse_function_templates
-                                    scan every template's body, so a template
+                                    check every template's body, so a template
                                     nothing instantiates still exports a body
+                                    (left out with --edga-no-prototypes)
     --instantiate used              instances the unit uses get bodies
     --no_auto_instantiation         ... without the prelinker
     --error_limit 1000000           keep going past many errors
@@ -217,9 +218,14 @@ for real, written with `prototype: true` and the template parameters still in pl
 ([Templates and their instances](json-format.md#templates-and-their-instances) describes the
 fields). A prototype is held to the same rule as any other body: one whose file is outside
 `--edga-root` is not written, unless `--edga-headers` puts headers outside the root in scope,
-and one the front end scanned no body for does not exist to write. `--edga-no-prototypes`
-turns both steps off: the front end defers the unused bodies again and the back end skips the
-collection, so the unit exports exactly what the versions before prototypes exported wrote.
+and one the front end scanned no body for does not exist to write. Checking those bodies has a
+cost: GNU and Clang modes normally defer a template's body until something instantiates it, as
+those compilers do, and system headers written for them (libc++ among them) hold template bodies
+that do not survive the check. The errors found there are written as diagnostics and set
+`status: errors` and exit status 2, while the document is still written in full.
+`--edga-no-prototypes` turns both steps off: the front end defers the unused bodies again and
+the back end skips the collection, so the unit's status and exit status are what they were
+before prototypes were exported.
 
 Everything the front end resolved is in the tree with the resolution attached: an
 operation node names its operator by kind, a call says which routine it resolved to,

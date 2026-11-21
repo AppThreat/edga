@@ -126,10 +126,14 @@ the code keeps the shape the source wrote: a type a template parameter stands fo
 `dependent` and the parameter's name (`T`, or `<unnamed>` for one the front end makes for a type
 it cannot name), a call whose callee depends on a parameter is a call
 with no `callee` and the name as written (`{"op": "call", "name": "size", ...}`), and the class
-the prototype belongs to appears with the parameters in place (`Unused<T>`). The front end scans
-every template's body for this, instead of deferring the bodies of the templates nothing uses;
-`--edga-no-prototypes` turns both off, and a unit exported with it has exactly the shape the
-versions before prototypes exported wrote.
+the prototype belongs to appears with the parameters in place (`Unused<T>`). For this the front
+end checks the body of every template, instead of deferring the bodies of the templates nothing
+instantiates as GNU and Clang modes otherwise do. Errors it finds in those bodies, often in
+system headers written for compilers that defer (libc++ among them), are written as diagnostics
+and set `status` to `errors` and the exit status to 2; the document is still written in full.
+`--edga-no-prototypes` leaves the prototypes out and keeps the front end's deferral, so the
+status is what it was before prototypes were exported. The `template`, `templateArgs` and
+`explicit` fields and the `dependent` type kind are written either way.
 
 ## Bodies: statements, expressions and initialisers
 

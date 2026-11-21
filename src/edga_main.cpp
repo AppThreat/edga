@@ -39,11 +39,13 @@ void printVersion() {
 void printUsage() {
   std::printf(
       "Usage: edga [front end options...] [--edga-out <file.json>] [--edga-root <dir>]\n"
-      "            [--edga-headers] <source file>\n"
+      "            [--edga-headers] [--edga-no-prototypes] <source file>\n"
       "\n"
       "  --edga-out <file>   write the translation unit as JSON to <file> (default: stdout)\n"
       "  --edga-root <dir>   export function bodies only for files under <dir>\n"
       "  --edga-headers      also export bodies defined in headers outside <dir>\n"
+      "  --edga-no-prototypes  do not export the bodies of templates the unit does not\n"
+      "                      instantiate, and keep the front end's deferral of them\n"
       "  --edga-version      print the exporter's version, the EDG commit and configuration\n"
       "\n"
       "Every other option goes to the EDG front end.\n");
@@ -129,9 +131,11 @@ int main(int argc, char* argv[]) {
   // Defaults for exporting: keep the bodies of functions nothing calls, give every template the
   // unit uses its instances' bodies (here, without the prelinker's files), keep going past many
   // errors (the valid parts of the file are still exported), and diagnostics as SARIF for the
-  // document. With prototypes exported, the front end scans every template's body instead of
-  // deferring the ones nothing uses, so the prototype instantiation exists to export. The
-  // user's own options come after, so they win.
+  // document. With prototypes exported, the front end checks the body of every template instead
+  // of deferring the ones nothing instantiates, so the prototype instantiation exists to export.
+  // Errors it finds in those bodies (often in system headers written for compilers that defer,
+  // such as libc++) are diagnostics and set the unit's status to errors, while the document is
+  // still written in full. The user's own options come after, so they win.
   std::vector<std::string> args;
   args.push_back(argv[0]);
   if (!userPruning) args.push_back("--no_remove_unneeded_entities");

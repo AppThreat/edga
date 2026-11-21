@@ -50,6 +50,7 @@ edga [front end options...] --edga-out tu.json --edga-root <project dir> file.c
 | `--edga-out <file>` | Where the JSON goes. The default is standard output. |
 | `--edga-root <dir>` | Function bodies are exported only for files under this directory. Functions defined elsewhere are listed by their declaration. |
 | `--edga-headers` | Also export the bodies of functions defined in headers outside `--edga-root`. |
+| `--edga-no-prototypes` | Leave out the bodies of templates the unit does not instantiate, and keep the front end's deferral of them (see [prototypes](docs/json-format.md#templates-and-their-instances)). |
 | `--edga-version`, `--version` | Print the exporter's version, the EDG commit it was built from and its configuration fingerprint. |
 | `--edga-help`, `--help` | Print the options above. |
 
