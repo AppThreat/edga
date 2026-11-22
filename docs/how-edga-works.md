@@ -8,7 +8,11 @@ code property graph. It is written for a reader who wants to understand the pipe
 end to end, with pointers into the source rather than paraphrases of it.
 
 A companion document, [edg-versus-cdt.md](edg-versus-cdt.md), compares this front end
-with the Eclipse CDT parser that chen also offers.
+with the Eclipse CDT parser that chen also offers. Three more pages are written for
+particular readers: [pointer-arithmetic.md](pointer-arithmetic.md) and
+[memory-safety-facts.md](memory-safety-facts.md) for someone writing security checks over
+the document, and [driving-edga.md](driving-edga.md) for someone running edga with a
+project's compiler settings.
 
 ## The EDG C/C++ front end
 

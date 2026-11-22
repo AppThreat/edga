@@ -143,18 +143,19 @@ status is what it was before prototypes were exported. The `template`, `template
 
 A body is a tree. Every node has `k`, its kind, which is the front end's kind name without its
 prefix (`stmk_`, `enk_`). Statement kinds include `block` (with `stmts`), `decl` (with `decls`, a
-list of variables), `expression` (with `expr`), `if` (`cond`, `then`, `else`), `while`,
-`end_test_while`, `for` (`init`, `cond`, `inc`, `body`), `range_based_for` (`variable`, `over`,
-`body`), `expansion_statement` (C++26 `template for`: `init`, and `expanded`, a block holding one
-block per element), `switch` and `switch_case`, `return`, `goto` and `label`, `try_block` (with `handlers`),
-`asm` (`text`, `operands`) and `set_vla_size` (`arrayType`, `size`).
+list of variables), `expr` (an expression statement, with `expr`), `if` (`cond`, `then`, `else`),
+`while`, `end_test_while`, `for` (`init`, `cond`, `inc`, `body`), `range_based_for` (`variable`,
+`over`, `body`), `expansion_statement` (C++26 `template for`: `init`, and `expanded`, a block
+holding one block per element), `switch` and `switch_case`, `return`, `goto` and `label`,
+`try_block` (with `handlers`), `asm` (`text`, `operands`) and `set_vla_size` (`arrayType`,
+`size`). The statement kind `expr` is not the initialiser kind `expression` described below.
 
 An expression has `k`, `t` (its type id), `range`, and `lv` when it is an lvalue. The common kinds
 are:
 
 | `k` | Meaning and fields |
 |---|---|
-| `operation` | An operator applied to `ops`. `op` names it (`add`, `assign`, `call`, `cast`, `padd`, `subscript`, `points_to_field`, `question`, ...). A call has `callee`, the routine id, when it resolved to one; `virtual` and `operatorSyntax` say how it was called. |
+| `operation` | An operator applied to `ops`. `op` names it (`add`, `assign`, `call`, `cast`, `padd`, `subscript`, `points_to_field`, `question`, ...). A call has `callee`, the routine id, when it resolved to one; `virtual` and `operatorSyntax` say how it was called. A `padd` or `subscript` whose pointer or array operand is written second (`n + p`, `i[a]`) carries `pointerSecond: true`. |
 | `variable` | A use of the variable `var`, with its `name`. |
 | `routine` | A use of the routine `routine`, with its `name`. |
 | `field` | A member, by `name`. |
@@ -185,7 +186,7 @@ bytes. The other fields depend on the kind:
 | `pointer` | `to`, and `reference` or `rvalueReference` for C++ references. |
 | `array` | `of`, `count`, `variableSize`, and `zeroBound` for a declared `[0]` (an unknown bound also has `count` 0). |
 | `routine` | `returns`, `params`, `variadic`. |
-| `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
+| `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bitField`, `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
 | `typeref` | A typedef: `typedef` is its name and `to` the type it names. |
 | `dependent` | A template parameter: `name` is the parameter's name (`T`), or `<unnamed>` for the parameter the front end makes for a type it cannot name, such as the type of a call in a template's own code. Types built on one keep their own kind and name the dependent type by id. |
 | `ptr_to_member`, `vector`, `nullptr`, `complex`, ... | The remaining front end type kinds, with `to` or `of` where they point at another type. |

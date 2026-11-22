@@ -101,6 +101,13 @@ The [JSON format reference](docs/json-format.md) describes every table and field
   what a consumer can rely on between versions.
 - [How EDG and edga work](docs/how-edga-works.md): the front end's architecture and intermediate
   language, how the exporter walks it, and how chen and atom use the result.
+- [Pointer arithmetic, arrays and bounds](docs/pointer-arithmetic.md): how pointer arithmetic,
+  decay, subscripts and extents appear in the document, with worked security examples.
+- [Memory-safety facts in the document](docs/memory-safety-facts.md): conversions, extents,
+  layout, lifetimes, resolved library calls and macro provenance, for analysts writing rules.
+- [Driving edga as the project's compiler](docs/driving-edga.md): dialect, macros and include
+  directories for a compile engineer wiring edga into a build, including the shims current
+  toolchains need.
 - [EDG and Eclipse CDT compared](docs/edg-versus-cdt.md): the two designs, their strengths, and
   what the difference means in a code property graph.
 - [Maintaining edga](docs/maintaining.md): updating the EDG commit, the golden tests on each
