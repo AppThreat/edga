@@ -69,8 +69,8 @@ GITHUB_TOKEN=$(gh auth token) gh actlock -u
 3. Merge the pull request, then tag the merge commit on main and push the tag:
 
    ```bash
-   git tag -s v0.4.0 -m "edga 0.4.0"
-   git push origin v0.4.0
+   git tag -s v0.4.1 -m "edga 0.4.1"
+   git push origin v0.4.1
    ```
 
 4. The tag starts `.github/workflows/release.yml`. It builds edga for each platform, runs the

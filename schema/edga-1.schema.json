@@ -376,6 +376,7 @@
         "enum": { "type": "boolean" },
         "bool": { "type": "boolean" },
         "tag": { "type": "string" },
+        "typedefName": { "type": "string", "description": "A record declared without a tag: the earliest typedef in its scope that names the record itself (`MonRec` for `typedef struct { ... } MonRec, *MonPtr;`)." },
         "to": { "type": "integer" },
         "reference": { "type": "boolean" },
         "rvalueReference": { "type": "boolean" },
