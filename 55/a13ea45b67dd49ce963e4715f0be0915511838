@@ -1,0 +1,38 @@
+src/edga_back_end.cpp
+  s_8dea141d2102f2::t_91e2044458fc0c 331,355-356,359-362,366-371,1773
+  s_8dea141d2102f2::t_27d7e423b9d749 353-354,357-358,363-365,372-379,1291,1517,1772
+tests/fixtures/typedef_names.c
+  s_8dea141d2102f2::t_7b32561bab7408 2-13
+  s_8dea141d2102f2::t_27d7e423b9d749 1,14-15
+tests/expected/typedef_names.c.json
+  s_8dea141d2102f2::t_56bc30b0683572 1-725,1013-1072,1074-1086,1088-1093,1095-1105,1107-1138,1168-1170,1172-1173,1175-1176,1178-1186,1188-1189,1191-1199,1201-1247,1295-1341,1343-1379,1398-1399
+  s_8dea141d2102f2::t_27d7e423b9d749 726-1012,1073,1087,1094,1106,1139-1167,1171,1174,1177,1187,1190,1200,1248-1294,1342,1380-1395
+  s_8dea141d2102f2::t_aa93c0322e75fb 1396-1397
+docs/json-format.md
+  s_8dea141d2102f2::t_7a2e27f16997f1 189
+  s_8dea141d2102f2::t_1281b13a21750e 185
+CMakeLists.txt
+  s_8dea141d2102f2::t_1cca33b5b4a0d5 9
+README.md
+  s_8dea141d2102f2::t_a02907c529722b 32-33,84
+docs/maintaining.md
+  s_8dea141d2102f2::t_520402d08c4549 72-73
+schema/edga-1.schema.json
+  s_8dea141d2102f2::t_4c3506ffce17b0 379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "55a13ea45b67dd49ce963e4715f0be0915511838",
+  "prompts": {},
+  "sessions": {
+    "s_8dea141d2102f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e068eebe-ac6f-4afd-be4c-e00784ab099a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
