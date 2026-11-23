@@ -350,21 +350,31 @@ class Exporter {
     }
   }
 
-  // A record declared without a tag takes its name from the typedef that declares it
-  // (`typedef struct { ... } MonRec, *MonPtr;` is `MonRec`), the name the source uses for it and
+  // A record or enumeration declared without a tag takes its name from the typedef that declares
+  // it (`typedef struct { ... } MonRec, *MonPtr;` is `MonRec`), the name the source uses for it and
   // the one C++ gives it for linkage. The front end's own name for every such record is
   // `<unnamed>`, and its type table lists a typedef only where the unit uses it, so the name is
-  // recorded here from the scope's declarations: the earliest typedef that names the record
-  // itself, not a pointer, array or qualified form of it.
+  // recorded here from the scope's declarations: the earliest typedef that names the type itself,
+  // not a pointer, array or qualified form of it.
   void noteTypedefName(a_type_ptr t) {
     if (t->kind != tk_typeref || t->source_corresp.name == nullptr) return;
     a_type_ptr target = t->variant.typeref.type;
     if (target == nullptr || target->source_corresp.name != nullptr) return;
-    if (target->kind != tk_class && target->kind != tk_struct && target->kind != tk_union) return;
+    bool record = target->kind == tk_class || target->kind == tk_struct || target->kind == tk_union;
+    bool enumeration = target->kind == tk_integer && target->variant.integer.enum_type;
+    if (!record && !enumeration) return;
     auto it = typedefNames_.find(target);
     if (it == typedefNames_.end() ||
         t->source_corresp.decl_position.seq < it->second->source_corresp.decl_position.seq)
       typedefNames_[target] = t;
+  }
+
+  // The typedef name noteTypedefName recorded for a type declared without a tag.
+  void writeTypedefName(a_type_ptr t) {
+    if (t->source_corresp.name != nullptr) return;
+    auto named = typedefNames_.find(t);
+    if (named != typedefNames_.end())
+      json_.field("typedefName", named->second->source_corresp.name);
   }
 
   // Whether a routine's body is exported: the unit defines it and the file it is defined in is
@@ -1278,6 +1288,7 @@ class Exporter {
   // An enumeration's specifier and its enumerators, each with its value and where it is named.
   void writeEnumerators(a_type_ptr t) {
     if (t->variant.integer.is_scoped_enum) json_.fieldBool("scoped", true);
+    writeTypedefName(t);
     position(t->source_corresp.decl_position);
     if (t->source_corresp.decl_pos_info != nullptr)
       range(t->source_corresp.decl_pos_info->specifiers_range, "span");
@@ -1503,11 +1514,7 @@ class Exporter {
       case tk_union: {
         if (t->source_corresp.name != nullptr) json_.field("tag", t->source_corresp.name);
         json_.field("qualifiedName", qualifiedName(&t->source_corresp, iek_type));
-        if (t->source_corresp.name == nullptr) {
-          auto named = typedefNames_.find(t);
-          if (named != typedefNames_.end())
-            json_.field("typedefName", named->second->source_corresp.name);
-        }
+        writeTypedefName(t);
         position(t->source_corresp.decl_position);
         // the class-specifier, `struct S { ... }`: what is defined inside the braces
         if (t->source_corresp.decl_pos_info != nullptr)
@@ -1762,7 +1769,7 @@ class Exporter {
   std::unordered_map<a_macro_ptr, long> macroIds_;
   std::vector<a_type_ptr> types_;
   std::unordered_map<a_type_ptr, long> typeIds_;
-  // the typedef that names each record declared without a tag, by noteTypedefName
+  // the typedef that names each record or enumeration declared without a tag, by noteTypedefName
   std::unordered_map<a_type_ptr, a_type_ptr> typedefNames_;
   std::unordered_map<a_routine_ptr, long> routineIds_;
   std::unordered_map<a_variable_ptr, long> variableIds_;

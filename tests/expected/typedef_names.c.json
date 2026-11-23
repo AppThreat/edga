@@ -723,6 +723,293 @@
      }
     ]
    }
+  },
+  {
+   "id": 2,
+   "name": "paint",
+   "qualifiedName": "paint",
+   "type": 11,
+   "returnType": 12,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    15,
+    10
+   ],
+   "start": [
+    0,
+    15,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 5,
+     "name": "c",
+     "type": 12,
+     "storage": "auto",
+     "p": [
+      0,
+      15,
+      25
+     ],
+     "start": [
+      0,
+      15,
+      16
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     15,
+     28
+    ],
+    "end": [
+     0,
+     15,
+     72
+    ],
+    "stmts": [
+     {
+      "k": "return",
+      "p": [
+       0,
+       15,
+       30
+      ],
+      "end": [
+       0,
+       15,
+       70
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 12,
+       "p": [
+        0,
+        15,
+        37
+       ],
+       "implicit": true,
+       "op": "cast",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 13,
+         "p": [
+          0,
+          15,
+          50
+         ],
+         "range": [
+          [
+           0,
+           15,
+           37
+          ],
+          [
+           0,
+           15,
+           69
+          ]
+         ],
+         "op": "question",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 10,
+           "p": [
+            0,
+            15,
+            39
+           ],
+           "range": [
+            [
+             0,
+             15,
+             37
+            ],
+            [
+             0,
+             15,
+             48
+            ]
+           ],
+           "op": "eq",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 10,
+             "p": [
+              0,
+              15,
+              37
+             ],
+             "implicit": true,
+             "op": "cast",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 12,
+               "p": [
+                0,
+                15,
+                37
+               ],
+               "range": [
+                [
+                 0,
+                 15,
+                 37
+                ],
+                [
+                 0,
+                 15,
+                 37
+                ]
+               ],
+               "var": 5,
+               "name": "c"
+              }
+             ]
+            },
+            {
+             "k": "constant",
+             "t": 10,
+             "p": [
+              0,
+              15,
+              42
+             ],
+             "range": [
+              [
+               0,
+               15,
+               42
+              ],
+              [
+               0,
+               15,
+               48
+              ]
+             ],
+             "ck": "integer",
+             "value": "0",
+             "expr": {
+              "k": "operation",
+              "t": 10,
+              "p": [
+               0,
+               15,
+               42
+              ],
+              "implicit": true,
+              "op": "cast",
+              "ops": [
+               {
+                "k": "constant",
+                "t": 13,
+                "p": [
+                 0,
+                 15,
+                 42
+                ],
+                "range": [
+                 [
+                  0,
+                  15,
+                  42
+                 ],
+                 [
+                  0,
+                  15,
+                  48
+                 ]
+                ],
+                "name": "CLR_RED",
+                "declared": [
+                 0,
+                 14,
+                 16
+                ],
+                "ck": "integer",
+                "value": "0"
+               }
+              ]
+             }
+            }
+           ]
+          },
+          {
+           "k": "constant",
+           "t": 13,
+           "p": [
+            0,
+            15,
+            52
+           ],
+           "range": [
+            [
+             0,
+             15,
+             52
+            ],
+            [
+             0,
+             15,
+             59
+            ]
+           ],
+           "name": "CLR_BLUE",
+           "declared": [
+            0,
+            14,
+            25
+           ],
+           "ck": "integer",
+           "value": "1"
+          },
+          {
+           "k": "constant",
+           "t": 13,
+           "p": [
+            0,
+            15,
+            63
+           ],
+           "range": [
+            [
+             0,
+             15,
+             63
+            ],
+            [
+             0,
+             15,
+             69
+            ]
+           ],
+           "name": "CLR_RED",
+           "declared": [
+            0,
+            14,
+            16
+           ],
+           "ck": "integer",
+           "value": "0"
+          }
+         ]
+        }
+       ]
+      }
+     }
+    ]
+   }
   }
  ],
  "types": [
@@ -783,7 +1070,7 @@
    "id": 3,
    "kind": "typeref",
    "name": "MonPtr",
-   "of": 11,
+   "of": 14,
    "typedef": "MonPtr",
    "p": [
     0,
@@ -797,14 +1084,14 @@
    "kind": "pointer",
    "name": "first_t *",
    "size": 8,
-   "to": 12
+   "to": 15
   },
   {
    "id": 5,
    "kind": "pointer",
    "name": "second_t *",
    "size": 8,
-   "to": 13
+   "to": 16
   },
   {
    "id": 6,
@@ -816,7 +1103,7 @@
    "id": 7,
    "kind": "typeref",
    "name": "range",
-   "of": 14,
+   "of": 17,
    "typedef": "range",
    "p": [
     0,
@@ -849,16 +1136,45 @@
   },
   {
    "id": 11,
-   "kind": "pointer",
-   "name": "struct <unnamed> *",
-   "size": 8,
-   "to": 15
+   "kind": "routine",
+   "name": "colour_t (colour_t)",
+   "returns": 12,
+   "params": [
+    12
+   ]
   },
   {
    "id": 12,
    "kind": "typeref",
+   "name": "colour_t",
+   "of": 18,
+   "typedef": "colour_t",
+   "p": [
+    0,
+    14,
+    36
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 13,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 14,
+   "kind": "pointer",
+   "name": "struct <unnamed> *",
+   "size": 8,
+   "to": 19
+  },
+  {
+   "id": 15,
+   "kind": "typeref",
    "name": "first_t",
-   "of": 16,
+   "of": 20,
    "typedef": "first_t",
    "p": [
     0,
@@ -868,10 +1184,10 @@
    "refKind": "none"
   },
   {
-   "id": 13,
+   "id": 16,
    "kind": "typeref",
    "name": "second_t",
-   "of": 16,
+   "of": 20,
    "typedef": "second_t",
    "p": [
     0,
@@ -881,7 +1197,7 @@
    "refKind": "none"
   },
   {
-   "id": 14,
+   "id": 17,
    "kind": "struct",
    "name": "struct <unnamed>",
    "size": 8,
@@ -929,7 +1245,53 @@
    "bases": []
   },
   {
-   "id": 15,
+   "id": 18,
+   "kind": "integer",
+   "name": "enum <unnamed>",
+   "size": 4,
+   "signed": true,
+   "enum": true,
+   "typedefName": "colour_t",
+   "p": [
+    0,
+    14,
+    14
+   ],
+   "span": [
+    [
+     0,
+     14,
+     9
+    ],
+    [
+     0,
+     14,
+     34
+    ]
+   ],
+   "enumerators": [
+    {
+     "name": "CLR_RED",
+     "value": "0",
+     "p": [
+      0,
+      14,
+      16
+     ]
+    },
+    {
+     "name": "CLR_BLUE",
+     "value": "1",
+     "p": [
+      0,
+      14,
+      25
+     ]
+    }
+   ]
+  },
+  {
+   "id": 19,
    "kind": "struct",
    "name": "struct <unnamed>",
    "size": 68,
@@ -977,7 +1339,7 @@
    "bases": []
   },
   {
-   "id": 16,
+   "id": 20,
    "kind": "struct",
    "name": "struct <unnamed>",
    "size": 4,
@@ -1015,6 +1377,23 @@
    "bases": []
   }
  ],
- "enumerators": [],
+ "enumerators": [
+  {
+   "name": "CLR_BLUE",
+   "p": [
+    0,
+    14,
+    25
+   ]
+  },
+  {
+   "name": "CLR_RED",
+   "p": [
+    0,
+    14,
+    16
+   ]
+  }
+ ],
  "diagnostics": []
 }

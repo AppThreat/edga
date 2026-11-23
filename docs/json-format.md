@@ -182,7 +182,7 @@ bytes. The other fields depend on the kind:
 
 | `kind` | Fields |
 |---|---|
-| `integer`, `float` | `signed`, `bool`, `enum`; an enum has `tag`, `scoped` and `enumerators` (`name`, `value`, `p`). |
+| `integer`, `float` | `signed`, `bool`, `enum`; an enum has `tag`, `scoped` and `enumerators` (`name`, `value`, `p`), and one declared without a tag has `typedefName` as a record does. |
 | `pointer` | `to`, and `reference` or `rvalueReference` for C++ references. |
 | `array` | `of`, `count`, `variableSize`, and `zeroBound` for a declared `[0]` (an unknown bound also has `count` 0). |
 | `routine` | `returns`, `params`, `variadic`. |
