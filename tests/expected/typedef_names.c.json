@@ -1,0 +1,1020 @@
+{
+ "schema": "edga/1",
+ "tu": {
+  "path": "typedef_names.c",
+  "language": "c",
+  "status": "ok",
+  "mode": {
+   "gcc": false,
+   "gpp": false,
+   "clang": false,
+   "microsoft": false
+  }
+ },
+ "files": [
+  {
+   "id": 0,
+   "path": "typedef_names.c",
+   "written": "typedef_names.c",
+   "system": false,
+   "inRoot": true
+  }
+ ],
+ "macros": [],
+ "macroInvocations": [],
+ "inlineNamespaces": [],
+ "globals": [
+  {
+   "id": 1,
+   "name": "global_record",
+   "type": 0,
+   "storage": "unspecified",
+   "linkage": "external",
+   "p": [
+    0,
+    8,
+    19
+   ],
+   "start": [
+    0,
+    8,
+    1
+   ]
+  }
+ ],
+ "routines": [
+  {
+   "id": 1,
+   "name": "touch",
+   "qualifiedName": "touch",
+   "type": 1,
+   "returnType": 2,
+   "prototyped": true,
+   "linkage": "external",
+   "storage": "unspecified",
+   "p": [
+    0,
+    10,
+    6
+   ],
+   "start": [
+    0,
+    10,
+    1
+   ],
+   "defined": true,
+   "params": [
+    {
+     "id": 2,
+     "name": "m",
+     "type": 3,
+     "storage": "auto",
+     "p": [
+      0,
+      10,
+      19
+     ],
+     "start": [
+      0,
+      10,
+      12
+     ]
+    },
+    {
+     "id": 3,
+     "name": "f",
+     "type": 4,
+     "storage": "auto",
+     "p": [
+      0,
+      10,
+      31
+     ],
+     "start": [
+      0,
+      10,
+      22
+     ]
+    },
+    {
+     "id": 4,
+     "name": "s",
+     "type": 5,
+     "storage": "auto",
+     "p": [
+      0,
+      10,
+      44
+     ],
+     "start": [
+      0,
+      10,
+      34
+     ]
+    }
+   ],
+   "body": {
+    "k": "block",
+    "p": [
+     0,
+     10,
+     47
+    ],
+    "end": [
+     0,
+     13,
+     1
+    ],
+    "stmts": [
+     {
+      "k": "expr",
+      "p": [
+       0,
+       11,
+       5
+      ],
+      "end": [
+       0,
+       11,
+       31
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 6,
+       "p": [
+        0,
+        11,
+        28
+       ],
+       "range": [
+        [
+         0,
+         11,
+         5
+        ],
+        [
+         0,
+         11,
+         30
+        ]
+       ],
+       "op": "assign",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 6,
+         "p": [
+          0,
+          11,
+          24
+         ],
+         "range": [
+          [
+           0,
+           11,
+           5
+          ],
+          [
+           0,
+           11,
+           26
+          ]
+         ],
+         "lv": true,
+         "op": "dot_field",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 7,
+           "p": [
+            0,
+            11,
+            13
+           ],
+           "range": [
+            [
+             0,
+             11,
+             5
+            ],
+            [
+             0,
+             11,
+             23
+            ]
+           ],
+           "lv": true,
+           "op": "subscript",
+           "ops": [
+            {
+             "k": "operation",
+             "t": 8,
+             "p": [
+              0,
+              11,
+              6
+             ],
+             "implicit": true,
+             "op": "array_to_pointer",
+             "ops": [
+              {
+               "k": "operation",
+               "t": 9,
+               "p": [
+                0,
+                11,
+                6
+               ],
+               "range": [
+                [
+                 0,
+                 11,
+                 5
+                ],
+                [
+                 0,
+                 11,
+                 12
+                ]
+               ],
+               "lv": true,
+               "op": "points_to_field",
+               "ops": [
+                {
+                 "k": "variable",
+                 "t": 3,
+                 "p": [
+                  0,
+                  11,
+                  5
+                 ],
+                 "range": [
+                  [
+                   0,
+                   11,
+                   5
+                  ],
+                  [
+                   0,
+                   11,
+                   5
+                  ]
+                 ],
+                 "var": 2,
+                 "name": "m"
+                },
+                {
+                 "k": "field",
+                 "t": 9,
+                 "p": [
+                  0,
+                  11,
+                  8
+                 ],
+                 "range": [
+                  [
+                   0,
+                   11,
+                   8
+                  ],
+                  [
+                   0,
+                   11,
+                   12
+                  ]
+                 ],
+                 "name": "hsync",
+                 "offset": 4
+                }
+               ]
+              }
+             ]
+            },
+            {
+             "k": "operation",
+             "t": 10,
+             "p": [
+              0,
+              11,
+              15
+             ],
+             "range": [
+              [
+               0,
+               11,
+               14
+              ],
+              [
+               0,
+               11,
+               22
+              ]
+             ],
+             "op": "points_to_field",
+             "ops": [
+              {
+               "k": "variable",
+               "t": 3,
+               "p": [
+                0,
+                11,
+                14
+               ],
+               "range": [
+                [
+                 0,
+                 11,
+                 14
+                ],
+                [
+                 0,
+                 11,
+                 14
+                ]
+               ],
+               "var": 2,
+               "name": "m"
+              },
+              {
+               "k": "field",
+               "t": 10,
+               "p": [
+                0,
+                11,
+                17
+               ],
+               "range": [
+                [
+                 0,
+                 11,
+                 17
+                ],
+                [
+                 0,
+                 11,
+                 22
+                ]
+               ],
+               "name": "nHsync"
+              }
+             ]
+            }
+           ]
+          },
+          {
+           "k": "field",
+           "t": 6,
+           "p": [
+            0,
+            11,
+            25
+           ],
+           "range": [
+            [
+             0,
+             11,
+             25
+            ],
+            [
+             0,
+             11,
+             26
+            ]
+           ],
+           "name": "lo"
+          }
+         ]
+        },
+        {
+         "k": "constant",
+         "t": 6,
+         "p": [
+          0,
+          11,
+          30
+         ],
+         "range": [
+          [
+           0,
+           11,
+           30
+          ],
+          [
+           0,
+           11,
+           30
+          ]
+         ],
+         "ck": "float",
+         "value": "1.0",
+         "expr": {
+          "k": "operation",
+          "t": 6,
+          "p": [
+           0,
+           11,
+           30
+          ],
+          "implicit": true,
+          "op": "cast",
+          "ops": [
+           {
+            "k": "constant",
+            "t": 10,
+            "p": [
+             0,
+             11,
+             30
+            ],
+            "range": [
+             [
+              0,
+              11,
+              30
+             ],
+             [
+              0,
+              11,
+              30
+             ]
+            ],
+            "ck": "integer",
+            "value": "1"
+           }
+          ]
+         }
+        }
+       ]
+      }
+     },
+     {
+      "k": "expr",
+      "p": [
+       0,
+       12,
+       5
+      ],
+      "end": [
+       0,
+       12,
+       34
+      ],
+      "expr": {
+       "k": "operation",
+       "t": 10,
+       "p": [
+        0,
+        12,
+        10
+       ],
+       "range": [
+        [
+         0,
+         12,
+         5
+        ],
+        [
+         0,
+         12,
+         33
+        ]
+       ],
+       "op": "assign",
+       "ops": [
+        {
+         "k": "operation",
+         "t": 10,
+         "p": [
+          0,
+          12,
+          6
+         ],
+         "range": [
+          [
+           0,
+           12,
+           5
+          ],
+          [
+           0,
+           12,
+           8
+          ]
+         ],
+         "lv": true,
+         "op": "points_to_field",
+         "ops": [
+          {
+           "k": "variable",
+           "t": 4,
+           "p": [
+            0,
+            12,
+            5
+           ],
+           "range": [
+            [
+             0,
+             12,
+             5
+            ],
+            [
+             0,
+             12,
+             5
+            ]
+           ],
+           "var": 3,
+           "name": "f"
+          },
+          {
+           "k": "field",
+           "t": 10,
+           "p": [
+            0,
+            12,
+            8
+           ],
+           "range": [
+            [
+             0,
+             12,
+             8
+            ],
+            [
+             0,
+             12,
+             8
+            ]
+           ],
+           "name": "a"
+          }
+         ]
+        },
+        {
+         "k": "operation",
+         "t": 10,
+         "p": [
+          0,
+          12,
+          17
+         ],
+         "range": [
+          [
+           0,
+           12,
+           12
+          ],
+          [
+           0,
+           12,
+           33
+          ]
+         ],
+         "op": "add",
+         "ops": [
+          {
+           "k": "operation",
+           "t": 10,
+           "p": [
+            0,
+            12,
+            13
+           ],
+           "range": [
+            [
+             0,
+             12,
+             12
+            ],
+            [
+             0,
+             12,
+             15
+            ]
+           ],
+           "op": "points_to_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 5,
+             "p": [
+              0,
+              12,
+              12
+             ],
+             "range": [
+              [
+               0,
+               12,
+               12
+              ],
+              [
+               0,
+               12,
+               12
+              ]
+             ],
+             "var": 4,
+             "name": "s"
+            },
+            {
+             "k": "field",
+             "t": 10,
+             "p": [
+              0,
+              12,
+              15
+             ],
+             "range": [
+              [
+               0,
+               12,
+               15
+              ],
+              [
+               0,
+               12,
+               15
+              ]
+             ],
+             "name": "a"
+            }
+           ]
+          },
+          {
+           "k": "operation",
+           "t": 10,
+           "p": [
+            0,
+            12,
+            32
+           ],
+           "range": [
+            [
+             0,
+             12,
+             19
+            ],
+            [
+             0,
+             12,
+             33
+            ]
+           ],
+           "op": "dot_field",
+           "ops": [
+            {
+             "k": "variable",
+             "t": 0,
+             "p": [
+              0,
+              12,
+              19
+             ],
+             "range": [
+              [
+               0,
+               12,
+               19
+              ],
+              [
+               0,
+               12,
+               31
+              ]
+             ],
+             "lv": true,
+             "var": 1,
+             "name": "global_record"
+            },
+            {
+             "k": "field",
+             "t": 10,
+             "p": [
+              0,
+              12,
+              33
+             ],
+             "range": [
+              [
+               0,
+               12,
+               33
+              ],
+              [
+               0,
+               12,
+               33
+              ]
+             ],
+             "name": "c"
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      }
+     },
+     {
+      "k": "return",
+      "implicit": true
+     }
+    ]
+   }
+  }
+ ],
+ "types": [
+  {
+   "id": 0,
+   "kind": "struct",
+   "name": "struct <unnamed>",
+   "size": 4,
+   "qualifiedName": "<unnamed>",
+   "p": [
+    0,
+    8,
+    8
+   ],
+   "span": [
+    [
+     0,
+     8,
+     1
+    ],
+    [
+     0,
+     8,
+     17
+    ]
+   ],
+   "fields": [
+    {
+     "name": "c",
+     "type": 10,
+     "offset": 0,
+     "p": [
+      0,
+      8,
+      14
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 1,
+   "kind": "routine",
+   "name": "void (MonPtr, first_t *, second_t *)",
+   "returns": 2,
+   "params": [
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "id": 2,
+   "kind": "void",
+   "name": "void"
+  },
+  {
+   "id": 3,
+   "kind": "typeref",
+   "name": "MonPtr",
+   "of": 11,
+   "typedef": "MonPtr",
+   "p": [
+    0,
+    6,
+    56
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 4,
+   "kind": "pointer",
+   "name": "first_t *",
+   "size": 8,
+   "to": 12
+  },
+  {
+   "id": 5,
+   "kind": "pointer",
+   "name": "second_t *",
+   "size": 8,
+   "to": 13
+  },
+  {
+   "id": 6,
+   "kind": "float",
+   "name": "float",
+   "size": 4
+  },
+  {
+   "id": 7,
+   "kind": "typeref",
+   "name": "range",
+   "of": 14,
+   "typedef": "range",
+   "p": [
+    0,
+    2,
+    34
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 8,
+   "kind": "pointer",
+   "name": "range *",
+   "size": 8,
+   "to": 7
+  },
+  {
+   "id": 9,
+   "kind": "array",
+   "name": "range [8]",
+   "size": 64,
+   "of": 7,
+   "count": 8
+  },
+  {
+   "id": 10,
+   "kind": "integer",
+   "name": "int",
+   "size": 4,
+   "signed": true
+  },
+  {
+   "id": 11,
+   "kind": "pointer",
+   "name": "struct <unnamed> *",
+   "size": 8,
+   "to": 15
+  },
+  {
+   "id": 12,
+   "kind": "typeref",
+   "name": "first_t",
+   "of": 16,
+   "typedef": "first_t",
+   "p": [
+    0,
+    7,
+    27
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 13,
+   "kind": "typeref",
+   "name": "second_t",
+   "of": 16,
+   "typedef": "second_t",
+   "p": [
+    0,
+    7,
+    36
+   ],
+   "refKind": "none"
+  },
+  {
+   "id": 14,
+   "kind": "struct",
+   "name": "struct <unnamed>",
+   "size": 8,
+   "qualifiedName": "<unnamed>",
+   "typedefName": "range",
+   "p": [
+    0,
+    2,
+    16
+   ],
+   "span": [
+    [
+     0,
+     2,
+     9
+    ],
+    [
+     0,
+     2,
+     32
+    ]
+   ],
+   "fields": [
+    {
+     "name": "lo",
+     "type": 6,
+     "offset": 0,
+     "p": [
+      0,
+      2,
+      24
+     ]
+    },
+    {
+     "name": "hi",
+     "type": 6,
+     "offset": 4,
+     "p": [
+      0,
+      2,
+      28
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 15,
+   "kind": "struct",
+   "name": "struct <unnamed>",
+   "size": 68,
+   "qualifiedName": "<unnamed>",
+   "typedefName": "MonRec",
+   "p": [
+    0,
+    3,
+    16
+   ],
+   "span": [
+    [
+     0,
+     3,
+     9
+    ],
+    [
+     0,
+     6,
+     1
+    ]
+   ],
+   "fields": [
+    {
+     "name": "nHsync",
+     "type": 10,
+     "offset": 0,
+     "p": [
+      0,
+      4,
+      9
+     ]
+    },
+    {
+     "name": "hsync",
+     "type": 9,
+     "offset": 4,
+     "p": [
+      0,
+      5,
+      11
+     ]
+    }
+   ],
+   "bases": []
+  },
+  {
+   "id": 16,
+   "kind": "struct",
+   "name": "struct <unnamed>",
+   "size": 4,
+   "qualifiedName": "<unnamed>",
+   "typedefName": "first_t",
+   "p": [
+    0,
+    7,
+    16
+   ],
+   "span": [
+    [
+     0,
+     7,
+     9
+    ],
+    [
+     0,
+     7,
+     25
+    ]
+   ],
+   "fields": [
+    {
+     "name": "a",
+     "type": 10,
+     "offset": 0,
+     "p": [
+      0,
+      7,
+      22
+     ]
+    }
+   ],
+   "bases": []
+  }
+ ],
+ "enumerators": [],
+ "diagnostics": []
+}

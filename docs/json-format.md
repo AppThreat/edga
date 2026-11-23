@@ -186,7 +186,7 @@ bytes. The other fields depend on the kind:
 | `pointer` | `to`, and `reference` or `rvalueReference` for C++ references. |
 | `array` | `of`, `count`, `variableSize`, and `zeroBound` for a declared `[0]` (an unknown bound also has `count` 0). |
 | `routine` | `returns`, `params`, `variadic`. |
-| `class`, `struct`, `union` | `tag`, `qualifiedName`, `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bitField`, `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
+| `class`, `struct`, `union` | `tag`, `qualifiedName`, `typedefName` (for a record declared without a tag, the earliest typedef in its scope that names the record itself: `MonRec` for `typedef struct { ... } MonRec, *MonPtr;`), `incomplete`, `span`, `fields` (`name`, `type`, `offset`, and `bitField`, `bits`, `bitOffset` and `flexible` where they apply), `bases`, `closure` for a lambda's closure type, `templateInstance`, and for an instance of a class template `template`, `templateArgs` and `explicit`. |
 | `typeref` | A typedef: `typedef` is its name and `to` the type it names. |
 | `dependent` | A template parameter: `name` is the parameter's name (`T`), or `<unnamed>` for the parameter the front end makes for a type it cannot name, such as the type of a call in a template's own code. Types built on one keep their own kind and name the dependent type by id. |
 | `ptr_to_member`, `vector`, `nullptr`, `complex`, ... | The remaining front end type kinds, with `to` or `of` where they point at another type. |
