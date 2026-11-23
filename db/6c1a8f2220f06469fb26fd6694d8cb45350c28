@@ -1,0 +1,28 @@
+src/edga_back_end.cpp
+  s_8dea141d2102f2::t_27d7e423b9d749 353-354,357-358,363-365,372-379,1291,1517,1772
+tests/expected/typedef_names.c.json
+  s_8dea141d2102f2::t_27d7e423b9d749 726-1012,1073,1087,1094,1106,1139-1167,1171,1174,1177,1187,1190,1200,1248-1294,1342,1380-1395
+  s_8dea141d2102f2::t_aa93c0322e75fb 1396-1397
+tests/fixtures/typedef_names.c
+  s_8dea141d2102f2::t_27d7e423b9d749 1,14-15
+docs/json-format.md
+  s_8dea141d2102f2::t_1281b13a21750e 185
+schema/edga-1.schema.json
+  s_8dea141d2102f2::t_4c3506ffce17b0 379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "db6c1a8f2220f06469fb26fd6694d8cb45350c28",
+  "prompts": {},
+  "sessions": {
+    "s_8dea141d2102f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e068eebe-ac6f-4afd-be4c-e00784ab099a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Prabhu Subramanian <prabhu@appthreat.com>"
+    }
+  }
+}
